@@ -14,13 +14,13 @@ class OrderDetail extends Migration
     public function up()
     {
         Schema::create('OrderDetail',function (Blueprint $table){
-            $table->increments('OrderDetail_Id');
+            $table->increments('Id');
             $table->integer('OrderDetail_OrderId')->unsigned();
             $table->integer('OrderDetail_ProductID')->unsigned();
             $table->string('OrderDetail_Description');
             $table->timestamps();
-            $table->foreign('OrderDetail_OrderId')->references('Order_Id')->on('Order');
-            $table->foreign('OrderDetail_ProductId')->references('Product_Id')->on('Products');
+            $table->foreign('OrderDetail_OrderId')->references('Id')->on('Order');
+            $table->foreign('OrderDetail_ProductId')->references('Id')->on('Products');
 
 
         });

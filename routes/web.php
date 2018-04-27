@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('Page.home');
-});
+Route::get('/','MainController@getproducts');
 Route::get('slider', function () {
     return view('Page.slider');
 });
@@ -23,9 +21,7 @@ Route::get('content', function () {
 Route::get('cart', function () {
     return view('Page.cart');
 });
-Route::get('product_detail', function () {
-    return view('Page.product_detail');
-});
+Route::get('product_detail/{id}','MainController@getproduct_detail')->name('product_detail');
 Route::get('contact', function () {
     return view('Page.contact');
 });
@@ -40,3 +36,5 @@ Route::get('product', function () {
 });
 Route::get('phpdom','DomController@test');
 Route::post('login','MainController@login')->name('login');
+Route::post('register','MainController@register')->name('register');
+Route::get('logout','MainController@logout')->name('logout');

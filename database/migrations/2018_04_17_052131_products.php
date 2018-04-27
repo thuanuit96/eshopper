@@ -15,29 +15,30 @@ class Products extends Migration
     {
         Schema::Create('Products',function (Blueprint $table)
         {
-            $table->increments('Product_Id');
-            $table->string('Product_Name')->default(null);
-            $table->string('Product_Description')->default(null);
-            $table->float('Product_Price')->default(null);
-            $table->string('Product_Color')->default(null);
-            $table->string('Product_Material')->default(null);
-            $table->integer('Product_Size')->default(null);
-            $table->string('ProductDetail')->default(null);
-            $table->integer('Product_TotalView')->default(null);
-            $table->tinyInteger('Product_IsSellOff')->default(null);
-            $table->string('Product_Alias')->default(null);
-            $table->integer('Product_Image1')->default(null);
-            $table->integer('Product_Image2')->default(null);
-            $table->integer('Product_Image3')->default(null);
-            $table->integer('Product_Image4')->default(null);
-            $table->integer('Product_CategoryId')->unsigned();
-            $table->foreign('Product_CategoryId')->references('Category_Id')->on('Categories');
-
+            $table->increments('Id');
+            $table->string('Product_Name')->nullable();
+            $table->string('Product_Description')->nullable();
+            $table->float('Product_Price')->nullable();
+            $table->string('Product_Color')->nullable();
+            $table->string('Product_Material')->nullable();
+            $table->integer('Product_Size')->nullable();
+            $table->string('ProductDetail')->nullable();
+            $table->integer('Product_TotalView')->nullable();
+            $table->tinyInteger('Product_IsSellOff')->nullable();
+            $table->string('Product_Alias')->nullable();
+            $table->integer('Product_Image1')->nullable();
+            $table->integer('Product_Image2')->nullable();
+            $table->integer('Product_Image3')->nullable();
+            $table->integer('Product_Image4')->nullable();
+            $table->integer('Product_CategoryId')->unsigned()->nullable();;
+            $table->integer('Product_BrandId')->unsigned()->nullable();;
+            $table->integer('Product_CustomerId')->unsigned()->nullable();;
             $table->timestamps();
 
 
 
         });
+
     }
 
     /**

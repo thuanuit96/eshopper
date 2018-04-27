@@ -1,6 +1,7 @@
 @extends('page.index')
 @section('product_detail')
 <section>
+    <base href="http://eshopper.dev/">
     <div class="container">
         <div class="row">
             <div class="col-sm-3">
@@ -137,7 +138,7 @@
                     </div><!--/price-range-->
 
                     <div class="shipping text-center"><!--shipping-->
-                        <img src="images/home/shipping.jpg" alt="" />
+                        <img src="{{asset('images/home/shipping.jpg')}}" alt="" />
                     </div><!--/shipping-->
 
                 </div>
@@ -147,7 +148,7 @@
                 <div class="product-details"><!--product-details-->
                     <div class="col-sm-5">
                         <div class="view-product">
-                            <img src="images/product-details/1.jpg" alt="" />
+                            <img src="{{asset('images/product-details/1.jpg')}}" alt="" />
                             <h3>ZOOM</h3>
                         </div>
                         <div id="similar-product" class="carousel slide" data-ride="carousel">
@@ -185,11 +186,11 @@
                     <div class="col-sm-7">
                         <div class="product-information"><!--/product-information-->
                             <img src="images/product-details/new.jpg" class="newarrival" alt="" />
-                            <h2>Anne Klein Sleeveless Colorblock Scuba</h2>
+                            <h2>{{$product_detail->Product_Name}}</h2>
                             <p>Web ID: 1089772</p>
                             <img src="images/product-details/rating.png" alt="" />
                             <span>
-									<span>US $59</span>
+									<span>${{$product_detail->Product_Price}}</span>
 									<label>Quantity:</label>
 									<input type="text" value="3" />
 									<button type="button" class="btn btn-fefault cart">

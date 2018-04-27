@@ -15,10 +15,10 @@ class SubCategory extends Migration
     {
         Schema::Create(
             'SubCategory',function (Blueprint $table){
-            $table->increments('SubCategory_Id');
+            $table->increments('Id');
             $table->string('SubCategory_Name')->nullable();
             $table->integer('Subcategory_CategoryId')->unsigned();
-            $table->foreign('Subcategory_CategoryId')->references('Category_Id')->on('Categories');
+            $table->foreign('Subcategory_CategoryId')->references('Id')->on('Categories');
             $table->timestamps();
 
         }

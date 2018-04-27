@@ -1,4 +1,20 @@
+
 <header id="header"><!--header-->
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    @if(Session::has('alert'))
+        <div class="alert alert-success" style="width: 20%">
+        {{Session::get('alert')}}
+        </div>
+
+    @endif
     <div class="header_top"><!--header_top-->
         <div class="container">
             <div class="row">
@@ -11,7 +27,9 @@
                     </div>
                 </div>
                 <div class="col-sm-4">
+                    @if(!Session::has('account'))
                     <a href="https://www.facebook.com/  " class=" btn btn-info">Đăng nhập bằng Facebook</a>
+                    @endif
                 </div>
                 <div class="col-sm-4">
                     <div class="social-icons pull-right">
@@ -41,9 +59,15 @@
                 <div class="col-sm-8">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="#"><i class="fa fa-user"></i> Tài khoản</a></li>
+                            @if(Session::has('account'))
+                            <li><a href="#"><i class="fa fa-user"></i> <span style="color: red">{{Session::get('account')}}</span></a></li>
+                            @endif
                             <li><a href="#"><i class="fa fa-star"></i> Yêu thích</a></li>
                             <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
+                                @if(Session::has('account'))
+                                <li><a href="{{route('logout')}}"><i class="fa fa-user"></i> Đăng xuất</a></li>
+                                @endif
+                                @if(!Session::has('account'))
                             <li><a href="#" data-toggle="modal" data-target="#login" ><i class="fa fa-lock"></i> Đăng nhập</a>
 
                                 <div id="login" class="modal fade" role="dialog">
@@ -60,7 +84,6 @@
                                                     <form action="{{route('login')}}" method="post">
                                                         {!! csrf_field() !!}
                                                         <input type="text" name="username" placeholder="Tên tài khoản" required  />
-                                                        <input type="email" name="email" placeholder="Địa chỉ email" required />
                                                         <input type="password" name="password" placeholder="Mật Khẩu"  required/>
                                                         <span>
                                                         <input type="checkbox" class="checkbox">
@@ -96,10 +119,11 @@
                                             </div>
                                             <div class="modal-body">
                                                 <div class="signup-form"><!--sign up form-->
-                                                    <form action="#">
-                                                        <input type="text" placeholder="Tài khoản"/>
-                                                        <input type="email" placeholder="Địa chỉ email"/>
-                                                        <input type="password" placeholder="Mật khẩu"/>
+                                                    <form action="{{route('register')}}" method="post">
+                                                        {!! csrf_field() !!}
+                                                        <input type="text" name="username" placeholder="Tài khoản"/>
+                                                        <input type="email" name="email" placeholder="Địa chỉ email"/>
+                                                        <input type="password" name="password" placeholder="Mật khẩu"/>
                                                         <div>
                                                         <button  style="float: left;" type="submit" class="btn btn-default">Đăng ký</button>
 
@@ -116,6 +140,7 @@
                                 </div>
 
                             </li>
+                                @endif
                         </ul>
                     </div>
                 </div>
