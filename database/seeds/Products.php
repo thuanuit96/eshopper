@@ -13,9 +13,9 @@ class Products extends Seeder
     {
         for ($i = 0; $i < 100; $i++) {
             DB::table('Products')->insert([
-                'Product_Name' => 'Áo khoác mùa hè hà nội ' . rand(1, 100),
-                'Product_Price' => rand(1, 100),
-                'Product_color' => 'red'
+                'Name' => 'Áo khoác mùa hè hà nội ' . rand(1, 100),
+                'Price' => rand(1, 100),
+                'color' => 'red'
 
             ]);
         }

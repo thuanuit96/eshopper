@@ -16,7 +16,7 @@ class Categories extends Seeder
         $category=array('Thời trang nam','Thời trang nữ','Phụ kiện');
         foreach ($category as $value){
             DB::table('Categories')->insert([
-                'Category_name' => $value,
+                'name' => $value,
         ]);
         }
 

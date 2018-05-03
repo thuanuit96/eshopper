@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Categories extends Migration
+class Promotion extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class Categories extends Migration
      */
     public function up()
     {
-        Schema::create('Categories', function (Blueprint $table) {
+        Schema::create('Promotion',function (Blueprint $table){
             $table->increments('Id');
-            $table->string('Name',50);
-            $table->timestamps();
+            $table->string('Name')->nullable();
+
+
+
+
         });
     }
 
@@ -27,6 +30,6 @@ class Categories extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Categories');
+
     }
 }

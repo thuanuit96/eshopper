@@ -16,9 +16,9 @@ class SubCategory extends Migration
         Schema::Create(
             'SubCategory',function (Blueprint $table){
             $table->increments('Id');
-            $table->string('SubCategory_Name')->nullable();
-            $table->integer('Subcategory_CategoryId')->unsigned();
-            $table->foreign('Subcategory_CategoryId')->references('Id')->on('Categories');
+            $table->string('Name')->nullable();
+            $table->integer('CategoryId')->unsigned();
+            $table->foreign('CategoryId')->references('Id')->on('Categories');
             $table->timestamps();
 
         }

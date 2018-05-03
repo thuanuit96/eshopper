@@ -1,6 +1,90 @@
 @extends('Page.index')
 @section('cart')
-<section id="cart_items">
+
+<header><script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+
+    <style>
+
+        #cartContent {
+            border: 1px solid #ccc;
+            background: #fafafa;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+        #cartContent tr.cartItem td
+        {
+            padding: 12px;
+        }
+        .borImgscart {
+            display: block;
+            width: 70px;
+            height: 70px;
+            position: relative;
+            float: left;
+            overflow: hidden;
+            margin: 0 10px 0 0;
+        }
+        .nameProductcart
+        {font-size:13px;font-weight:700}
+        .nameProductcart a {
+            color: #444;
+        }
+        .removeCartItem:hover {
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            box-shadow: inset 0px 0px 6px #eae9e9;
+            background: #f8f8f8;
+        }
+        .removeCartItem {
+            color: #444;
+            padding: 4px 8px;
+            border: 1px solid transparent;
+        }
+        #cartContent tr.title {
+            background: #f8f8f8;
+            border-bottom: 1px solid #ccc;
+        }
+        #cartContent {
+            border-width: 1px;
+            border-style: solid;
+            border-color: rgb(204, 204, 204);
+            border-image: initial;
+            background: rgb(250, 250, 250);
+
+        }
+        #cartContent tr.title td {
+            padding: 10px;
+        }
+        .grid-100{width:100%}
+        .cartNavigator {
+            margin: 15px 0 0;
+        }
+        .cartNavigator .btnCheckOut {
+            float: right;
+            background: #e15452;
+        }
+        .btnCheckOut,.buyMore {
+            padding: 6px 20px;
+            display: inline-block;
+            color: #fff;
+            font-size: 15px;
+            border-radius: 2px;
+        }
+        .buyMore {
+            background: #ddd;
+            color: #666;
+        }
+        .btnCheckOut:hover {
+            background: #888;
+        }
+        .singleCart{
+    margin: 0;
+        }
+    </style>
+</header>
+
+<div class="singleCart">
+
     <div class="container">
         <div class="breadcrumbs">
             <ol class="breadcrumb">
@@ -8,174 +92,159 @@
                 <li class="active">Shopping Cart</li>
             </ol>
         </div>
-        <div class="table-responsive cart_info">
-            <table class="table table-condensed">
-                <thead>
-                <tr class="cart_menu">
-                    <td class="image">Item</td>
-                    <td class="description"></td>
-                    <td class="price">Price</td>
-                    <td class="quantity">Quantity</td>
-                    <td class="total">Total</td>
-                    <td></td>
-                </tr>
-                </thead>
+        <div class="grid-100">
+            <table id="cartContent">
                 <tbody>
-                <tr>
-                    <td class="cart_product">
-                        <a href=""><img src="images/cart/one.png" alt=""></a>
-                    </td>
-                    <td class="cart_description">
-                        <h4><a href="">Colorblock Scuba</a></h4>
-                        <p>Web ID: 1089772</p>
-                    </td>
-                    <td class="cart_price">
-                        <p>$59</p>
-                    </td>
-                    <td class="cart_quantity">
-                        <div class="cart_quantity_button">
-                            <a class="cart_quantity_up" href=""> + </a>
-                            <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                            <a class="cart_quantity_down" href=""> - </a>
-                        </div>
-                    </td>
-                    <td class="cart_total">
-                        <p class="cart_total_price">$59</p>
-                    </td>
-                    <td class="cart_delete">
-                        <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                    </td>
+                <tr class="title .odd">
+                    <td width="500">Sản phẩm</td>
+                    <td width="200">Đơn giá</td>
+                    <td width="200">Số lượng</td>
+                    <td width="200">Thành tiền</td>
+                    <td width="200">&nbsp;</td>
                 </tr>
+                @foreach($cart as $item)
+                <tr class="cartItem .even">
+                    <td class="last" width="500">
+                        <a class="borImgscart" href="#">
+                            <img src="//cdn.nhanh.vn/cdn/store/81/ps/20180402/1_2_25_1_05_003_118_02_10700023_01_thumb_294x441.jpg" alt="Chân váy nữ xếp ly kẻ caro. Basic đen kẻ trắng S" title="Chân váy nữ xếp ly kẻ caro. Basic đen kẻ trắng S">
+                        </a>
+                        <p class="nameProductcart"><a href="">{{$item->name}}</a></p>
+                        <br>
+                    </td>
+                    <td width="200">
+                        <p style="font-weight: bold">
+                            {{ number_format($item->price)}} VNĐ
+                        </p>
+                    </td>
+                    <td width="200">
+                        <input type="number" id="quantity" value="{{$item->qty}}" maxlength="10" data-id="6763694" class="qty-input updateCart" min="1" max="5">
+                    </td>
+                    <td width="200" style="font-weight: bold">
+                        {{ number_format($item->subtotal)}}
+                    </td>
+                    <td  width="200" class="cart_delete">
+                        <a class="removeCartItem" href="" data-toggle="modal" data-target="#delete-modal" data-id=""><i style="font-size: 14px" class="fa fa-trash-o"></i>Xóa</a>
+                        <div class="modal fade" id="delete-modal" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Delete Confirmation</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Xóa sản phẩm khỏi giỏ hàng ?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <form action="{{route('cart_delete')}}" method="post" id="#Form1">
+                                            {!! csrf_field() !!}
+                                            <input type="hidden" name="product_id" value="{{$item->id}}">
+                                            <button type="submit" class="btn btn-default" onclick="cart_delete({{$item->id}})">Yes</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                                        </form>
+                                        <script type="text/javascript">
 
-                <tr>
-                    <td class="cart_product">
-                        <a href=""><img src="images/cart/two.png" alt=""></a>
-                    </td>
-                    <td class="cart_description">
-                        <h4><a href="">Colorblock Scuba</a></h4>
-                        <p>Web ID: 1089772</p>
-                    </td>
-                    <td class="cart_price">
-                        <p>$59</p>
-                    </td>
-                    <td class="cart_quantity">
-                        <div class="cart_quantity_button">
-                            <a class="cart_quantity_up" href=""> + </a>
-                            <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                            <a class="cart_quantity_down" href=""> - </a>
+                                            var frm = $('#Form1');
+
+                                            frm.submit(function (e) {
+
+                                                e.preventDefault();
+
+                                                $.ajax({
+                                                    type: frm.attr('method'),
+                                                    url: frm.attr('action'),
+                                                    data: frm.serialize(),
+                                                    success: function (data) {
+                                                        console.log('Submission was successful.');
+                                                        console.log(data);
+                                                    },
+                                                    error: function (data) {
+                                                        console.log('An error occurred.');
+                                                        console.log(data);
+                                                    },
+                                                });
+                                            });
+
+
+                                            function qty_up(product_id,key) {
+                                                console.log(product_id);
+
+                                                // $.ajax({
+                                                //     type: "GET",
+                                                //     url:"qty_up",
+                                                //     data:{
+                                                //         product_id:product_id,
+                                                //
+                                                //
+                                                //     },
+                                                //     success: function (data) {
+                                                //         console.log('Submission was successful.');
+                                                //         console.log(data);
+                                                //         $('#qty_input').val(data);
+                                                //
+                                                //
+                                                //     },
+                                                //     // error: function (data) {
+                                                //     //     console.log('An error occurred.');
+                                                //     //     console.log(data);
+                                                //     // },
+                                                // });
+
+                                            }
+                                            function qty_down(product_id) {
+                                                console.log(product_id);
+
+                                                $.ajax({
+                                                    type: "GET",
+                                                    url:"qty_down",
+                                                    datatype:"json",
+                                                    data:{
+                                                        product_id:product_id,
+
+
+                                                    },
+                                                    success: function (data) {
+                                                        console.log('Submission was successful.');
+                                                        console.log(data[2]);
+                                                        $('#qty_input').val(data[1]);
+
+                                                    },
+                                                    // error: function (data) {
+                                                    //     console.log('An error occurred.');
+                                                    //     console.log(data);
+                                                    // },
+                                                });
+
+                                            }
+
+
+
+                                        </script>
+
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
-                    </td>
-                    <td class="cart_total">
-                        <p class="cart_total_price">$59</p>
-                    </td>
-                    <td class="cart_delete">
-                        <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+
                     </td>
                 </tr>
-                <tr>
-                    <td class="cart_product">
-                        <a href=""><img src="images/cart/three.png" alt=""></a>
-                    </td>
-                    <td class="cart_description">
-                        <h4><a href="">Colorblock Scuba</a></h4>
-                        <p>Web ID: 1089772</p>
-                    </td>
-                    <td class="cart_price">
-                        <p>$59</p>
-                    </td>
-                    <td class="cart_quantity">
-                        <div class="cart_quantity_button">
-                            <a class="cart_quantity_up" href=""> + </a>
-                            <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                            <a class="cart_quantity_down" href=""> - </a>
-                        </div>
-                    </td>
-                    <td class="cart_total">
-                        <p class="cart_total_price">$59</p>
-                    </td>
-                    <td class="cart_delete">
-                        <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                    </td>
+                @endforeach
+                <tr class="title lastTr .odd" style="text-align: left">
+                    <td class="last" width="500">&nbsp;</td>
+                    <td width="400" colspan="2"> <b style="color: #ed1c24;font-size: 16px">&nbsp;</b></td>
+                    <td width="400" colspan="2">Tổng cộng: <b style="color: #ed1c24;font-size: 16px">{{number_format(Cart::subtotal())}}đ</b></td>
                 </tr>
                 </tbody>
             </table>
+            <div class="cartNavigator">
+                <a href="{{route('checkout')}}" class="btnCheckOut btnRed">Tiến hành thanh toán</a>
+                <a href="http://bosua.vn/chan-vay-nu-xep-ly-ke-caro.-basic-den-ke-trang-p7012104.html" class="buyMore btnGreen">Mua thêm sản phẩm khác</a>
+                <span class="clearfix"></span>
+            </div>
+            <br><br>
         </div>
     </div>
-</section> <!--/#cart_items-->
-<section id="do_action">
-    <div class="container">
-        <div class="heading">
-            <h3>What would you like to do next?</h3>
-            <p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="chose_area">
-                    <ul class="user_option">
-                        <li>
-                            <input type="checkbox">
-                            <label>Use Coupon Code</label>
-                        </li>
-                        <li>
-                            <input type="checkbox">
-                            <label>Use Gift Voucher</label>
-                        </li>
-                        <li>
-                            <input type="checkbox">
-                            <label>Estimate Shipping & Taxes</label>
-                        </li>
-                    </ul>
-                    <ul class="user_info">
-                        <li class="single_field">
-                            <label>Country:</label>
-                            <select>
-                                <option>United States</option>
-                                <option>Bangladesh</option>
-                                <option>UK</option>
-                                <option>India</option>
-                                <option>Pakistan</option>
-                                <option>Ucrane</option>
-                                <option>Canada</option>
-                                <option>Dubai</option>
-                            </select>
+</div>
 
-                        </li>
-                        <li class="single_field">
-                            <label>Region / State:</label>
-                            <select>
-                                <option>Select</option>
-                                <option>Dhaka</option>
-                                <option>London</option>
-                                <option>Dillih</option>
-                                <option>Lahore</option>
-                                <option>Alaska</option>
-                                <option>Canada</option>
-                                <option>Dubai</option>
-                            </select>
-
-                        </li>
-                        <li class="single_field zip-field">
-                            <label>Zip Code:</label>
-                            <input type="text">
-                        </li>
-                    </ul>
-                    <a class="btn btn-default update" href="">Get Quotes</a>
-                    <a class="btn btn-default check_out" href="">Continue</a>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="total_area">
-                    <ul>
-                        <li>Cart Sub Total <span>$59</span></li>
-                        <li>Eco Tax <span>$2</span></li>
-                        <li>Shipping Cost <span>Free</span></li>
-                        <li>Total <span>$61</span></li>
-                    </ul>
-                    <a class="btn btn-default update" href="">Update</a>
-                    <a class="btn btn-default check_out" href="">Check Out</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section><!--/#do_action-->
 @stop

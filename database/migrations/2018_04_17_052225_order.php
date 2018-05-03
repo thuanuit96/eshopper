@@ -15,12 +15,14 @@ class Order extends Migration
     {
         Schema::create('Order',function (Blueprint $table){
             $table->increments('Id');
-            $table->string('Order_UserId')->nullable();
-            $table->string('Order_CustomerName')->nullable(false)->change();
-            $table->string('Order_Address')->nullable(false)->change();
-            $table->string('Order_Phone')->nullable(false)->change();
-            $table->string('Order_Email')->nullable(false)->change();
-            $table->increments('Order_Quantity')->nullable(false)->change();
+            $table->string('UserId')->nullable();
+            $table->string('CustomerId')->nullable();
+            $table->date('Order_date')->nullable();
+            $table->float('Total')->nullable();
+            $table->string('Note')->nullable();
+            $table->string('Payment_Method')->nullable();
+            $table->string('Payment_Status')->nullable();
+            $table->string('Status')->nullable();
             $table->timestamps();
 
     });

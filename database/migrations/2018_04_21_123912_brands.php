@@ -16,7 +16,7 @@ class Brands extends Migration
         Schema::Create(
             'Brands',function (Blueprint $table){
             $table->increments('Id');
-            $table->string('Brand_Name')->nullable();
+            $table->string('Name')->nullable();
             $table->timestamps();
 
         }

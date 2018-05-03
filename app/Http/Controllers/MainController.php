@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Validator;
 use App\Categories;
 use App\SubCategory;
 use Session;
+use Cart;
+
 
 use Hash;
 
@@ -39,6 +41,7 @@ class MainController extends Controller
 
      Auth::logout();
      Session::forget('account');
+     Cart::destroy();
      return redirect()->back();
 
 
@@ -93,6 +96,72 @@ class MainController extends Controller
     public  function  getproduct_detail($id)
     {
         $product_detail=Products::find($id);
+
+
         return view('Page.product_detail',['product_detail'=>$product_detail]);
     }
+    public  function  cart($id){
+
+        $product = Products::find($id);
+        $cartInfo = [
+            'id' => $id,
+            'name' => $product->Product_Name,
+            'price' => $product->Product_Price,
+            'qty' => '1'
+        ];
+        Cart::add($cartInfo);
+        $cart = Cart::content();
+          echo Cart::count();
+
+//         return redirect()->back()->withInput(['cart'=>$cart]);
+    }
+    public  function  listcart(){
+
+                $cart=Cart::content();
+
+                return view('Page.cart',['cart'=>$cart]);
+    }
+    public  function  cart_delete(Request $request){
+        $id=$request->product_id;
+        $cart = Cart::content(); //Lấy nội dung của giỏ hàng
+        $item = Cart::search(function ($cart) use($id) { // Lấy nội dung có id=$id
+            return $cart->id == $id;
+        })->first();
+        $rowId =$item->rowId;
+        Cart::remove($rowId);
+        return back();
+
+    }
+    public function qty_up(Request $request){
+        $id=$request->product_id;
+        $cart = Cart::content(); //Lấy nội dung của giỏ hàng
+        $item = Cart::search(function ($cart) use($id) { // Lấy  object có id=$id
+            return $cart->id == $id;
+        })->first();
+        Cart::update($item->rowId, $item->qty + 1);
+        echo $item->qty;
+    }
+    public function qty_down(Request $request){
+        $id=$request->product_id;
+        $cart = Cart::content(); //Lấy nội dung của giỏ hàng
+        $item = Cart::search(function ($cart) use($id) { // Lấy  object có id=$id
+            return $cart->id == $id;
+        })->first();
+        Cart::update($item->rowId, $item->qty - 1);
+        $total=$item->price*$item->qty;
+        $qty=$item->qty;
+        $data=array($total,$qty,'1111111111111111111');
+        die (json_encode($data));
+
+
+    }
+    public function  checkout(){
+        $cart=Cart::content();
+
+return view('Page.checkout',['cart'=>$cart]);
+    }
+
+
 }
+
+

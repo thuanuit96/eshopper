@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Categories extends Migration
+class CreateSocialAccountsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class Categories extends Migration
      */
     public function up()
     {
-        Schema::create('Categories', function (Blueprint $table) {
-            $table->increments('Id');
-            $table->string('Name',50);
+        Schema::create('social_accounts', function (Blueprint $table) {
+            $table->integer('user_id');
+            $table->string('provider_user_id');
+            $table->string('provider');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class Categories extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Categories');
+        Schema::dropIfExists('social_accounts');
     }
 }

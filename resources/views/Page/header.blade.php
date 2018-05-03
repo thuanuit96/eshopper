@@ -28,7 +28,7 @@
                 </div>
                 <div class="col-sm-4">
                     @if(!Session::has('account'))
-                    <a href="https://www.facebook.com/  " class=" btn btn-info">Đăng nhập bằng Facebook</a>
+                    <a href="redirect/facebook" class=" btn btn-info">Đăng nhập bằng Facebook</a>
                     @endif
                 </div>
                 <div class="col-sm-4">
@@ -63,7 +63,8 @@
                             <li><a href="#"><i class="fa fa-user"></i> <span style="color: red">{{Session::get('account')}}</span></a></li>
                             @endif
                             <li><a href="#"><i class="fa fa-star"></i> Yêu thích</a></li>
-                            <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
+                            <li><a href="{{route('list-cart')}}"><i class="fa fa-shopping-cart"></i> Giỏ hàng <span id="cart_count" style="color: red"> {{Cart::count()}}</span>
+                                   </a></li>
                                 @if(Session::has('account'))
                                 <li><a href="{{route('logout')}}"><i class="fa fa-user"></i> Đăng xuất</a></li>
                                 @endif
