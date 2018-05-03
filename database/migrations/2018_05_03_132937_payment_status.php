@@ -27,7 +27,7 @@ class PaymentStatus extends Migration
             $table->increments('Id');
             $table->string('Name')->unsigned();
 
-
+            $table->timestamps();
 
 
         });

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Promotion extends Migration
+class Wishlist extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,18 @@ class Promotion extends Migration
      */
     public function up()
     {
-        Schema::create('Promotion',function (Blueprint $table){
+        Schema::create('Wishlist',function (Blueprint $table){
             $table->increments('Id');
-            $table->string('Name')->nullable();
+            $table->integer('UserId')->unsigned();
+            $table->integer('ProductId')->unsigned();
             $table->timestamps();
-
+            $table->foreign('ProductId')->references('Id')->on('Products');
+            $table->foreign('UserId')->references('Id')->on('Users');
 
 
 
         });
+
     }
 
     /**
@@ -31,6 +34,6 @@ class Promotion extends Migration
      */
     public function down()
     {
-
+        //
     }
 }
