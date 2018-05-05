@@ -4,7 +4,8 @@
         <input type="hidden" class="checkStoreId" value="81">
         <div class="singleCheckout">
             <div class="container">
-                <form action="" method="post" id="formCheckOut" class="grid1200">
+                <form action="{{route('postcheckout')}}" method="post" id="formCheckOut" class="grid1200">
+                    {!! csrf_field() !!}
                     <div class="grid-100">
                         <div class="formCheckout">
                             <div class="grid-100">
@@ -146,7 +147,11 @@
                                         <div class="b">
                                             <label>
                                                 <input type="radio" id="rdPaymentMethodCod" name="paymentMethod" class="validate[required]" checked="" value="1">
-                                                Thanh toán tại nhà                    </label>
+                                                Thanh toán khi nhận hàng
+                                            <label>
+                                                <input type="radio" id="rdPaymentMethodCod" name="paymentMethod" class="validate[required]"   value="2">
+                                                Thanh toán qua ngân lượng
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
@@ -172,22 +177,22 @@
                                             </div>
                                             @endforeach
                                         </div>
-                                        <a href="/cart" class="backShop">Quay về giỏ hàng</a>
+                                        <a href="list-cart" class="backShop">Quay về giỏ hàng</a>
                                     </div>
                                 </div>
                             </div>
                             <div id="column4" class="grid-25">
                                 <div class="infoCustomer">
                                     <div id="orderIf">
-                                        <p>Tiền hàng <span>1,447,000 đ</span></p>
+                                        <p>Tiền hàng <span>{{number_format(Cart::subtotal())}} đ</span></p>
                                         <p>Phí vận chuyển
                                             <span id="shipFee">0 đ</span>
                                         </p>
                                         <i class="notePay">(Ngoại thành/Ngoại tỉnh)
                                             sẽ thông báo ngay sau khi đặt hàng thành công</i>
                                         <div class="totalPays">
-                                            <p>Tổng cộng <span id="money" style="color: #ed1c24">1,447,000 đ</span></p>
-                                            <input type="hidden" id="getMn" value="1447000">
+                                            <p>Tổng cộng <span id="money" style="color: #ed1c24">{{Cart::subtotal()}} đ</span></p>
+                                            <input type="hidden" id="getMn" name="total" value="{{Cart::subtotal()}}">
                                             <input type="hidden" id="getShipFee" value="0">
                                             <label>
                                                 <span>Sử dụng mã giảm giá nếu có</span>

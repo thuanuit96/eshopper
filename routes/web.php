@@ -26,6 +26,8 @@ Route::get('contact', function () {
     return view('Page.contact');
 });
 Route::get('checkout','MainController@checkout')->name('checkout');
+Route::post('checkout','MainController@postcheckout')->name('postcheckout');
+
 Route::get('cart/{id}','MainController@cart')->name('cart');
 Route::get('list-cart','MainController@listcart')->name('list-cart');
 Route::post('cart_delete','MainController@cart_delete')->name('cart_delete');
@@ -43,5 +45,20 @@ Route::get('product', function () {
 Route::get('phpdom','DomController@test');
 Route::post('login','MainController@login')->name('login');
 Route::post('register','MainController@register')->name('register');
-Route::get('logout','MainController@logout');
+Route::get('logout','MainController@logout')->name('logout');
+Route::get('mail',function (){
 
+
+    return view('Page.mail');
+});
+Route::get('check_order',function (){
+
+
+    return view('Page.check_order');
+});
+
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

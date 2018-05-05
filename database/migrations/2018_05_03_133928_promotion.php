@@ -16,9 +16,9 @@ class Promotion extends Migration
         Schema::create('Promotion',function (Blueprint $table){
             $table->increments('Id');
             $table->string('Name')->nullable();
+            $table->integer('OrderId')->unsigned();
             $table->timestamps();
-
-
+            $table->foreign('OrderId')->references('Id')->on('Order');
 
 
         });

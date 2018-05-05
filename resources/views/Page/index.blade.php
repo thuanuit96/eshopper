@@ -15,7 +15,8 @@
     <link href="{{asset('css/price-range.css')}}" rel="stylesheet">
     <link href="{{asset('css/animate.css')}}" rel="stylesheet">
 	<link href="{{asset('css/main.css')}}" rel="stylesheet">
-	<link href="{{asset('css/responsive.css')}}" rel="stylesheet">
+
+    <link href="{{asset('css/responsive.css')}}" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="{{asset('js/html5shiv.js')}}"></script>
     <script src="{{asset('js/respond.min.js')}}"></script>
@@ -32,6 +33,7 @@
 @include('page.header')
 
 	@yield('slider')
+@yield('check_order')
 	@yield('home')
 	@yield('content')
 	@yield('cart')

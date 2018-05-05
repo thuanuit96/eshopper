@@ -17,7 +17,6 @@ class Controller extends BaseController
     {
         $category=Categories::all();
         $cart=Cart::content();
-        var_dump($cart);
         view()->share(['category'=>$category,'cart'=>$cart]);
 
 

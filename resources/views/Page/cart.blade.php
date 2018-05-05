@@ -233,7 +233,7 @@
                 <tr class="title lastTr .odd" style="text-align: left">
                     <td class="last" width="500">&nbsp;</td>
                     <td width="400" colspan="2"> <b style="color: #ed1c24;font-size: 16px">&nbsp;</b></td>
-                    <td width="400" colspan="2">Tổng cộng: <b style="color: #ed1c24;font-size: 16px">{{number_format(Cart::subtotal())}}đ</b></td>
+                    <td width="400" colspan="2">Tổng cộng: <b style="color: #ed1c24;font-size: 16px">{{Cart::subtotal()}}đ</b></td>
                 </tr>
                 </tbody>
             </table>

@@ -22,8 +22,10 @@ class Order extends Migration
             $table->string('Note')->nullable();
             $table->string('Payment_Method')->nullable();
             $table->string('Payment_Status')->nullable();
-            $table->string('Status')->nullable();
+            $table->string('Promo')->nullable();
+            $table->integer('Order_Status')->unsigned();
             $table->timestamps();
+
 
     });
     }

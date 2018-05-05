@@ -20,6 +20,7 @@ class Customers extends Migration
 //            $table->increments('Order_Quantity')->nullable(false)->change();
             $table->increments('Id');
             $table->string('Name')->nullable();
+            $table->string('Email')->nullable();
             $table->string('Address')->nullable();
             $table->string('PhoneNumber')->nullable();
             $table->timestamps();
