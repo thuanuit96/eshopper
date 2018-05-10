@@ -16,7 +16,10 @@ class Order extends Migration
         Schema::create('Order',function (Blueprint $table){
             $table->increments('Id');
             $table->string('UserId')->nullable();
-            $table->string('CustomerId')->nullable();
+            $table->string('Name')->nullable();
+            $table->string('Email')->nullable();
+            $table->string('Address')->nullable();
+            $table->string('PhoneNumber')->nullable();
             $table->date('Order_date')->nullable();
             $table->float('Total')->nullable();
             $table->string('Note')->nullable();

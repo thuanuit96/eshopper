@@ -25,6 +25,10 @@ class OrderStatus extends Migration
 
 
         });
+        Schema::table('Products', function($table) {
+            $table->foreign('CategoryId')->references('Id')->on('Categories');
+            $table->foreign('BrandId')->references('Id')->on('Brands');
+        });
     }
 
 

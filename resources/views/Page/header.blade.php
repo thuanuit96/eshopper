@@ -86,7 +86,7 @@
                 <div class="shopping-cart" >
                     <a class="btn btn-block btn-default shopping-cart__icon" href="{{route('list-cart')}}">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="hidden-xs">Giỏ hàng</span>
-                        <span class="" id="cart_count">{{Cart::total()}}</span>
+                        <span class="" id="cart_count">{{Cart::count()}}</span>
                     </a>
                 </div>
             </div>
@@ -111,7 +111,7 @@
         <li><a href="#">Liên Hệ</a></li>
         <li><a href="#">Tra cứu đơn hàng</a></li>
         @if(Session::has('account'))
-            <li><a href="#"><i class="fa fa-user"></i> <span style="color: red">{{Session::get('account')}}</span></a></li>
+            <li><a href="#"><i class="fa fa-user"></i><strong style="color: red">{{Session::get('account')}}</strong></a></li>
         @endif
         @if(Session::has('account'))
             <li><a href="{{route('logout')}}"><i class="fa fa-user"></i> Đăng xuất</a></li>
@@ -128,7 +128,7 @@
                                 <h4 class="modal-title">Đăng nhập tài khoản</h4>
                             </div>
                             <div class="modal-body">
-                                <form action="{{route('login')}}" method="post">
+                                <form action="{{route('customLogin')}}" method="post">
                                     {!! csrf_field() !!}
                                     <div class="form-group">
                                         <input type="text" name="username" class="form-control" placeholder="Tên đăng nhập">
@@ -146,7 +146,7 @@
                                         <p class="separator text-center">
                                             <i>Hoặc đăng nhập với</i>
                                         </p>
-                                        <a class="btn btn-block btn-fb">
+                                        <a href="redirect/facebook" class="btn btn-block btn-fb">
                                             <i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook
                                         </a>
                                         <a class="btn btn-block btn-gplus signin-by-google-class">
@@ -176,7 +176,7 @@
                             </div>
                             <div class="modal-body">
                                 <div class="signup-form"><!--sign up form-->
-                                    <form action="{{route('register')}}" method="post">
+                                    <form action="{{route('customRegister')}}" method="post">
                                         {!! csrf_field() !!}
                                         <input type="text" name="username" placeholder="Tài khoản"/>
                                         <input type="email" name="email" placeholder="Địa chỉ email"/>

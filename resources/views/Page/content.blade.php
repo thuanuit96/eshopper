@@ -7,7 +7,7 @@
         @foreach($Products as $value)
         <div class="col-sm-4 col-md-3 col-xs-6">
             <div class="post-img">
-                <a href="#" tppabs="" class="img"><img src="{{asset('css/cart/1.2.09.1.05.021.217.01.20300049-01_thumb.jpg')}}"></a>
+                <a href="#" tppabs="" class="img"><img src="{{asset('css/cart/1.jpg')}}"></a>
                 <button type="button" onclick="addcart({{$value->Id}})" class="btn btn-fefault add-to-cart">
                     <i class="fa fa-shopping-cart"></i>
                     Add to cart
@@ -26,6 +26,235 @@
 
     </div>
 </div>
+    </div>
+    <div class="container">
+        <div class="block-fashion">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-6">
+                    <h3><span>Thời trang nam</span></h3>
+                    <ul>
+                        <li>
+                            <div class="detail">
+                                <div class="img-fasti">
+                                    <a href="sony-xperia-xa.htm" tppabs="http://htshop.esy.es/san-pham/sony-xperia-xa" class="img"><img src="{{asset('css/htshop/dienthoai.jpg')}}"  alt="Sony Xperia XA" title="Sony Xperia XA"></a>
+                                    <form action="" method="post">
+                                        <input type="hidden" name="add-to-cart" value="64">
+                                        <button class="add-icon"><i class="fa fa-cart-plus"></i></button>
+                                    </form>
+                                    <a class="v-icon" href="sony-xperia-xa.htm" tppabs="http://htshop.esy.es/san-pham/sony-xperia-xa"><i class="fa fa-search-plus"></i></a>
+                                </div>
+                                <div>
+                                    <h4><a href="sony-xperia-xa.htm" tppabs="http://htshop.esy.es/san-pham/sony-xperia-xa">Sony Xperia XA</a></h4>
+                                    <div class="score-callback" data-score="4" style="cursor: pointer;"><img alt="1" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="bad">&nbsp;<img alt="2" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="poor">&nbsp;<img alt="3" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="regular">&nbsp;<img alt="4" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="good">&nbsp;<img alt="5" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-off.png" title="gorgeous"><input name="score" type="hidden" value="4"></div>
+                                    <p><span class="price-pro"><span class="woocommerce-Price-amount amount">5.990.000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></span></p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="detail">
+                                <div class="img-fasti">
+                                    <a href="sony-xperia-xa.htm" tppabs="http://htshop.esy.es/san-pham/sony-xperia-xa" class="img"><img src="{{asset('css/htshop/dienthoai.jpg')}}"  alt="Sony Xperia XA" title="Sony Xperia XA"></a>
+                                    <form action="" method="post">
+                                        <input type="hidden" name="add-to-cart" value="64">
+                                        <button class="add-icon"><i class="fa fa-cart-plus"></i></button>
+                                    </form>
+                                    <a class="v-icon" href="sony-xperia-xa.htm" tppabs="http://htshop.esy.es/san-pham/sony-xperia-xa"><i class="fa fa-search-plus"></i></a>
+                                </div>
+                                <div>
+                                    <h4><a href="sony-xperia-xa.htm" tppabs="http://htshop.esy.es/san-pham/sony-xperia-xa">Sony Xperia XA</a></h4>
+                                    <div class="score-callback" data-score="4" style="cursor: pointer;"><img alt="1" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="bad">&nbsp;<img alt="2" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="poor">&nbsp;<img alt="3" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="regular">&nbsp;<img alt="4" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="good">&nbsp;<img alt="5" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-off.png" title="gorgeous"><input name="score" type="hidden" value="4"></div>
+                                    <p><span class="price-pro"><span class="woocommerce-Price-amount amount">5.990.000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></span></p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="detail">
+                                <div class="img-fasti">
+                                    <a href="sony-xperia-xa.htm" tppabs="http://htshop.esy.es/san-pham/sony-xperia-xa" class="img"><img src="{{asset('css/htshop/dienthoai.jpg')}}"  alt="Sony Xperia XA" title="Sony Xperia XA"></a>
+                                    <form action="" method="post">
+                                        <input type="hidden" name="add-to-cart" value="64">
+                                        <button class="add-icon"><i class="fa fa-cart-plus"></i></button>
+                                    </form>
+                                    <a class="v-icon" href="sony-xperia-xa.htm" tppabs="http://htshop.esy.es/san-pham/sony-xperia-xa"><i class="fa fa-search-plus"></i></a>
+                                </div>
+                                <div>
+                                    <h4><a href="sony-xperia-xa.htm" tppabs="http://htshop.esy.es/san-pham/sony-xperia-xa">Sony Xperia XA</a></h4>
+                                    <div class="score-callback" data-score="4" style="cursor: pointer;"><img alt="1" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="bad">&nbsp;<img alt="2" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="poor">&nbsp;<img alt="3" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="regular">&nbsp;<img alt="4" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="good">&nbsp;<img alt="5" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-off.png" title="gorgeous"><input name="score" type="hidden" value="4"></div>
+                                    <p><span class="price-pro"><span class="woocommerce-Price-amount amount">5.990.000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></span></p>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div class="col-md-4 col-sm-4 col-xs-6">
+                    <h3><span>Thời trang nữ</span></h3>
+                    <ul>
+                        <li>
+                            <div class="detail">
+                                <div class="img-fasti">
+                                    <a href="sony-xperia-xa.htm" tppabs="http://htshop.esy.es/san-pham/sony-xperia-xa" class="img"><img src="{{asset('css/htshop/dienthoai.jpg')}}"  alt="Sony Xperia XA" title="Sony Xperia XA"></a>
+                                    <form action="" method="post">
+                                        <input type="hidden" name="add-to-cart" value="64">
+                                        <button class="add-icon"><i class="fa fa-cart-plus"></i></button>
+                                    </form>
+                                    <a class="v-icon" href="sony-xperia-xa.htm" tppabs="http://htshop.esy.es/san-pham/sony-xperia-xa"><i class="fa fa-search-plus"></i></a>
+                                </div>
+                                <div>
+                                    <h4><a href="sony-xperia-xa.htm" tppabs="http://htshop.esy.es/san-pham/sony-xperia-xa">Sony Xperia XA</a></h4>
+                                    <div class="score-callback" data-score="4" style="cursor: pointer;"><img alt="1" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="bad">&nbsp;<img alt="2" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="poor">&nbsp;<img alt="3" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="regular">&nbsp;<img alt="4" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="good">&nbsp;<img alt="5" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-off.png" title="gorgeous"><input name="score" type="hidden" value="4"></div>
+                                    <p><span class="price-pro"><span class="woocommerce-Price-amount amount">5.990.000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></span></p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="detail">
+                                <div class="img-fasti">
+                                    <a href="sony-xperia-xa.htm" tppabs="http://htshop.esy.es/san-pham/sony-xperia-xa" class="img"><img src="{{asset('css/htshop/dienthoai.jpg')}}"  alt="Sony Xperia XA" title="Sony Xperia XA"></a>
+                                    <form action="" method="post">
+                                        <input type="hidden" name="add-to-cart" value="64">
+                                        <button class="add-icon"><i class="fa fa-cart-plus"></i></button>
+                                    </form>
+                                    <a class="v-icon" href="sony-xperia-xa.htm" tppabs="http://htshop.esy.es/san-pham/sony-xperia-xa"><i class="fa fa-search-plus"></i></a>
+                                </div>
+                                <div>
+                                    <h4><a href="sony-xperia-xa.htm" tppabs="http://htshop.esy.es/san-pham/sony-xperia-xa">Sony Xperia XA</a></h4>
+                                    <div class="score-callback" data-score="4" style="cursor: pointer;"><img alt="1" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="bad">&nbsp;<img alt="2" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="poor">&nbsp;<img alt="3" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="regular">&nbsp;<img alt="4" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="good">&nbsp;<img alt="5" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-off.png" title="gorgeous"><input name="score" type="hidden" value="4"></div>
+                                    <p><span class="price-pro"><span class="woocommerce-Price-amount amount">5.990.000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></span></p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="detail">
+                                <div class="img-fasti">
+                                    <a href="sony-xperia-xa.htm" tppabs="http://htshop.esy.es/san-pham/sony-xperia-xa" class="img"><img src="{{asset('css/htshop/dienthoai.jpg')}}"  alt="Sony Xperia XA" title="Sony Xperia XA"></a>
+                                    <form action="" method="post">
+                                        <input type="hidden" name="add-to-cart" value="64">
+                                        <button class="add-icon"><i class="fa fa-cart-plus"></i></button>
+                                    </form>
+                                    <a class="v-icon" href="sony-xperia-xa.htm" tppabs="http://htshop.esy.es/san-pham/sony-xperia-xa"><i class="fa fa-search-plus"></i></a>
+                                </div>
+                                <div>
+                                    <h4><a href="sony-xperia-xa.htm" tppabs="http://htshop.esy.es/san-pham/sony-xperia-xa">Sony Xperia XA</a></h4>
+                                    <div class="score-callback" data-score="4" style="cursor: pointer;"><img alt="1" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="bad">&nbsp;<img alt="2" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="poor">&nbsp;<img alt="3" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="regular">&nbsp;<img alt="4" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="good">&nbsp;<img alt="5" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-off.png" title="gorgeous"><input name="score" type="hidden" value="4"></div>
+                                    <p><span class="price-pro"><span class="woocommerce-Price-amount amount">5.990.000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></span></p>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div class="col-md-4 col-sm-4 col-xs-6">
+                    <h3><span>Phụ kiện</span></h3>
+                    <ul>
+                        <li>
+                            <div class="detail">
+                                <div class="img-fasti">
+                                    <a href="sony-xperia-xa.htm" tppabs="http://htshop.esy.es/san-pham/sony-xperia-xa" class="img"><img src="{{asset('css/htshop/dienthoai.jpg')}}"  alt="Sony Xperia XA" title="Sony Xperia XA"></a>
+                                    <form action="" method="post">
+                                        <input type="hidden" name="add-to-cart" value="64">
+                                        <button class="add-icon"><i class="fa fa-cart-plus"></i></button>
+                                    </form>
+                                    <a class="v-icon" href="sony-xperia-xa.htm" tppabs="http://htshop.esy.es/san-pham/sony-xperia-xa"><i class="fa fa-search-plus"></i></a>
+                                </div>
+                                <div>
+                                    <h4><a href="sony-xperia-xa.htm" tppabs="http://htshop.esy.es/san-pham/sony-xperia-xa">Sony Xperia XA</a></h4>
+                                    <div class="score-callback" data-score="4" style="cursor: pointer;"><img alt="1" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="bad">&nbsp;<img alt="2" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="poor">&nbsp;<img alt="3" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="regular">&nbsp;<img alt="4" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="good">&nbsp;<img alt="5" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-off.png" title="gorgeous"><input name="score" type="hidden" value="4"></div>
+                                    <p><span class="price-pro"><span class="woocommerce-Price-amount amount">5.990.000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></span></p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="detail">
+                                <div class="img-fasti">
+                                    <a href="sony-xperia-xa.htm" tppabs="http://htshop.esy.es/san-pham/sony-xperia-xa" class="img"><img src="{{asset('css/htshop/dienthoai.jpg')}}"  alt="Sony Xperia XA" title="Sony Xperia XA"></a>
+                                    <form action="" method="post">
+                                        <input type="hidden" name="add-to-cart" value="64">
+                                        <button class="add-icon"><i class="fa fa-cart-plus"></i></button>
+                                    </form>
+                                    <a class="v-icon" href="sony-xperia-xa.htm" tppabs="http://htshop.esy.es/san-pham/sony-xperia-xa"><i class="fa fa-search-plus"></i></a>
+                                </div>
+                                <div>
+                                    <h4><a href="sony-xperia-xa.htm" tppabs="http://htshop.esy.es/san-pham/sony-xperia-xa">Sony Xperia XA</a></h4>
+                                    <div class="score-callback" data-score="4" style="cursor: pointer;"><img alt="1" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="bad">&nbsp;<img alt="2" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="poor">&nbsp;<img alt="3" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="regular">&nbsp;<img alt="4" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="good">&nbsp;<img alt="5" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-off.png" title="gorgeous"><input name="score" type="hidden" value="4"></div>
+                                    <p><span class="price-pro"><span class="woocommerce-Price-amount amount">5.990.000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></span></p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="detail">
+                                <div class="img-fasti">
+                                    <a href="sony-xperia-xa.htm" tppabs="http://htshop.esy.es/san-pham/sony-xperia-xa" class="img"><img src="{{asset('css/htshop/dienthoai.jpg')}}"  alt="Sony Xperia XA" title="Sony Xperia XA"></a>
+                                    <form action="" method="post">
+                                        <input type="hidden" name="add-to-cart" value="64">
+                                        <button class="add-icon"><i class="fa fa-cart-plus"></i></button>
+                                    </form>
+                                    <a class="v-icon" href="sony-xperia-xa.htm" tppabs="http://htshop.esy.es/san-pham/sony-xperia-xa"><i class="fa fa-search-plus"></i></a>
+                                </div>
+                                <div>
+                                    <h4><a href="sony-xperia-xa.htm" tppabs="http://htshop.esy.es/san-pham/sony-xperia-xa">Sony Xperia XA</a></h4>
+                                    <div class="score-callback" data-score="4" style="cursor: pointer;"><img alt="1" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="bad">&nbsp;<img alt="2" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="poor">&nbsp;<img alt="3" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="regular">&nbsp;<img alt="4" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png" title="good">&nbsp;<img alt="5" src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-off.png" title="gorgeous"><input name="score" type="hidden" value="4"></div>
+                                    <p><span class="price-pro"><span class="woocommerce-Price-amount amount">5.990.000&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></span></p>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="block-news-h">
+            <h3><span>Tin tức</span></h3>
+            <div class="row">
+                <!-- Get post News Query -->
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="detai-new">
+                        <h4><a href="iphone-7-ra-mat-chong-nuoc-camera-kep-gia-tu-649-usd.html" tppabs="http://htshop.esy.es/iphone-7-ra-mat-chong-nuoc-camera-kep-gia-tu-649-usd.html">iPhone 7 ra mắt: Chống nước, camera kép, giá từ 649 USD</a></h4>
+                        <a href="iphone-7-ra-mat-chong-nuoc-camera-kep-gia-tu-649-usd.html" tppabs="http://htshop.esy.es/iphone-7-ra-mat-chong-nuoc-camera-kep-gia-tu-649-usd.html"><img src="thumbnail.php-src=http---htshop.esy.es-wp-content-uploads-2016-09-a1_1.jpg&amp;w=300&amp;h=200&amp;zc=1&amp;a=c.jpg" tppabs="http://htshop.esy.es/wp-content/themes/thientrieu/thumbnail.php?src=http%3A%2F%2Fhtshop.esy.es%2Fwp-content%2Fuploads%2F2016%2F09%2Fa1_1.jpg&amp;w=300&amp;h=200&amp;zc=1&amp;a=c" alt="iPhone 7 ra mắt: Chống nước, camera kép, giá từ 649 USD" title="iPhone 7 ra mắt: Chống nước, camera kép, giá từ 649 USD"></a>
+                        <p>
+                            Apple vừa chính thức trình làng thế hệ iPhone mới. Đúng như dự đoán trước đó, iPhone 7 đã có tính năng chống nước, nút Home mới và camera...								</p>
+                        <div class="hk-date"><span><i class="fa fa-calendar-minus-o" aria-hidden="true"></i> 09/04/2017</span></div>
+                        <a href="iphone-7-ra-mat-chong-nuoc-camera-kep-gia-tu-649-usd.html" tppabs="http://htshop.esy.es/iphone-7-ra-mat-chong-nuoc-camera-kep-gia-tu-649-usd.html" class="read-more">Xem thêm</a>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="detai-new">
+                        <h4><a href="thu-ve-la-chi-muon-mac-xinh-yeu-nhu-nay-thoi.html" tppabs="http://htshop.esy.es/thu-ve-la-chi-muon-mac-xinh-yeu-nhu-nay-thoi.html">Thu về là chỉ muốn mặc xinh yêu như thế này thôi…</a></h4>
+                        <a href="thu-ve-la-chi-muon-mac-xinh-yeu-nhu-nay-thoi.html" tppabs="http://htshop.esy.es/thu-ve-la-chi-muon-mac-xinh-yeu-nhu-nay-thoi.html"><img src="thumbnail.php-src=http---htshop.esy.es-wp-content-uploads-2016-09-img-4584-1473150837656.jpg&amp;w=300&amp;h=200&amp;zc=1&amp;a=c.jpg" tppabs="http://htshop.esy.es/wp-content/themes/thientrieu/thumbnail.php?src=http%3A%2F%2Fhtshop.esy.es%2Fwp-content%2Fuploads%2F2016%2F09%2Fimg-4584-1473150837656.jpg&amp;w=300&amp;h=200&amp;zc=1&amp;a=c" alt="Thu về là chỉ muốn mặc xinh yêu như thế này thôi…" title="Thu về là chỉ muốn mặc xinh yêu như thế này thôi…"></a>
+                        <p>
+                            Mùa thu, mùa của sự lãng mạn đã sang và giờ là lúc cực kỳ thích hợp để chúng ta điệu đà một chút với những chiếc áo, váy...								</p>
+                        <div class="hk-date"><span><i class="fa fa-calendar-minus-o" aria-hidden="true"></i> 07/02/2017</span></div>
+                        <a href="thu-ve-la-chi-muon-mac-xinh-yeu-nhu-nay-thoi.html" tppabs="http://htshop.esy.es/thu-ve-la-chi-muon-mac-xinh-yeu-nhu-nay-thoi.html" class="read-more">Xem thêm</a>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="detai-new">
+                        <h4><a href="laptop-xoay-gap-360-ve-viet-nam-gia-129-trieu-dong.html" tppabs="http://htshop.esy.es/laptop-xoay-gap-360-ve-viet-nam-gia-129-trieu-dong.html">Laptop xoay gập 360 độ về Việt Nam, giá 12,9 triệu đồng</a></h4>
+                        <a href="laptop-xoay-gap-360-ve-viet-nam-gia-129-trieu-dong.html" tppabs="http://htshop.esy.es/laptop-xoay-gap-360-ve-viet-nam-gia-129-trieu-dong.html"><img src="thumbnail.php-src=http---htshop.esy.es-wp-content-uploads-2016-09-3HP_Pavillion_X360_zing_2.jpg&amp;w=300&amp;h=200&amp;zc=1&amp;a=c.jpg" tppabs="http://htshop.esy.es/wp-content/themes/thientrieu/thumbnail.php?src=http%3A%2F%2Fhtshop.esy.es%2Fwp-content%2Fuploads%2F2016%2F09%2F3HP_Pavillion_X360_zing_2.jpg&amp;w=300&amp;h=200&amp;zc=1&amp;a=c" alt="Laptop xoay gập 360 độ về Việt Nam, giá 12,9 triệu đồng" title="Laptop xoay gập 360 độ về Việt Nam, giá 12,9 triệu đồng"></a>
+                        <p>
+                            HP Pavilion x360 có thiết kế đa dụng với khả năng gập mở ở nhiều tư thế khác nhau. Ngoài thiết kế ấn tượng, cấu hình tốt, dòng Pavilion...								</p>
+                        <div class="hk-date"><span><i class="fa fa-calendar-minus-o" aria-hidden="true"></i> 09/01/2017</span></div>
+                        <a href="laptop-xoay-gap-360-ve-viet-nam-gia-129-trieu-dong.html" tppabs="http://htshop.esy.es/laptop-xoay-gap-360-ve-viet-nam-gia-129-trieu-dong.html" class="read-more">Xem thêm</a>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="detai-new">
+                        <h4><a href="iphone-3g-hang-suu-tam-gia-50-trieu-tai-viet-nam.html" tppabs="http://htshop.esy.es/iphone-3g-hang-suu-tam-gia-50-trieu-tai-viet-nam.html">iPhone 3G hàng sưu tầm giá 50 triệu tại Việt Nam</a></h4>
+                        <a href="iphone-3g-hang-suu-tam-gia-50-trieu-tai-viet-nam.html" tppabs="http://htshop.esy.es/iphone-3g-hang-suu-tam-gia-50-trieu-tai-viet-nam.html"><img src="thumbnail.php-src=http---htshop.esy.es-wp-content-uploads-2016-09-iPhone3G3_1.jpg&amp;w=300&amp;h=200&amp;zc=1&amp;a=c.jpg" tppabs="http://htshop.esy.es/wp-content/themes/thientrieu/thumbnail.php?src=http%3A%2F%2Fhtshop.esy.es%2Fwp-content%2Fuploads%2F2016%2F09%2FiPhone3G3_1.jpg&amp;w=300&amp;h=200&amp;zc=1&amp;a=c" alt="iPhone 3G hàng sưu tầm giá 50 triệu tại Việt Nam" title="iPhone 3G hàng sưu tầm giá 50 triệu tại Việt Nam"></a>
+                        <p>
+                            2 chiếc iPhone 3G được đưa về Việt Nam là máy chưa kích hoạt, được chủ máy đấu giá trên eBay với giá lên đến 50 triệu đồng. 2...								</p>
+                        <div class="hk-date"><span><i class="fa fa-calendar-minus-o" aria-hidden="true"></i> 09/05/2016</span></div>
+                        <a href="iphone-3g-hang-suu-tam-gia-50-trieu-tai-viet-nam.html" tppabs="http://htshop.esy.es/iphone-3g-hang-suu-tam-gia-50-trieu-tai-viet-nam.html" class="read-more">Xem thêm</a>
+                    </div>
+                </div>
+                <!-- Get post News Query -->
+            </div>
+        </div>
     </div>
                     <script>
 

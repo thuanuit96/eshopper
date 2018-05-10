@@ -140,29 +140,19 @@ class MainController extends Controller
         return back();
 
     }
-    public function qty_up(Request $request){
-        $id=$request->product_id;
+    public function update(Request $request,$id){
+
         $cart = Cart::content(); //Lấy nội dung của giỏ hàng
         $item = Cart::search(function ($cart) use($id) { // Lấy  object có id=$id
             return $cart->id == $id;
         })->first();
-        Cart::update($item->rowId, $item->qty + 1);
-        echo $item->qty;
-    }
-    public function qty_down(Request $request){
-        $id=$request->product_id;
-        $cart = Cart::content(); //Lấy nội dung của giỏ hàng
-        $item = Cart::search(function ($cart) use($id) { // Lấy  object có id=$id
-            return $cart->id == $id;
-        })->first();
-        Cart::update($item->rowId, $item->qty - 1);
-        $total=$item->price*$item->qty;
-        $qty=$item->qty;
-        $data=array($total,$qty,'1111111111111111111');
-        die (json_encode($data));
-
+//        Cart::update($item->rowId, $item->qty + $request->qty);
+        Cart::update($item->rowId, $request->qty);
+        $result=array('price'=>$item->subtotal,'total_price'=>Cart::subtotal());
+        echo (json_encode($result));
 
     }
+
     public function  checkout(){
         $cart=Cart::content();
 
@@ -173,16 +163,11 @@ class MainController extends Controller
         if (!empty(Cart::content())) {
             $data = $req->all();
 //         dd($data);
-            $customer = new Customer();
-            $customer->Name = $data['customerName'];
-            $customer->Address = $data['customerAddress'];
-            $customer->PhoneNumber = $data['customerMobile'];
-            $customer->Email = $data['customerEmail'];
-            $customer->save();
-
-
             $order = new Order();
-            $order->CustomerId = $customer->id;
+            $order->Name = $data['customerName'];
+            $order->Address = $data['customerAddress'];
+            $order->PhoneNumber = $data['customerMobile'];
+            $order->Email = $data['customerEmail'];
             $order->Order_date = date('Y/m/d');
             $order->Total = $data['total'];
             $order->Note = $data['description'];
@@ -205,10 +190,11 @@ class MainController extends Controller
                 $order_detail->save();
 
 
-                return back();
+
             }
 
             $this->sendmail($data);
+            return back();
         }
 
         else return back();
@@ -217,7 +203,7 @@ class MainController extends Controller
     public function sendmail($input)
     {
         Mail::send('Page.mail', array('name'=>$input['customerName'],'email'=>$input["customerEmail"]), function($message){
-            $message->to('thuanuit96@gmail.com', 'Visitor')->subject('Visitor Feedback!');
+            $message->to('thuan7181996@gmail.com', 'Thông tin đặt hàng')->subject('Chào bạn! Dưới đây là thông tin đặt hàng của bạn');
         });
         Session::flash('flash_message', 'Send message successfully!');
 

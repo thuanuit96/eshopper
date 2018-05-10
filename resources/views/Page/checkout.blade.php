@@ -184,7 +184,7 @@
                             <div id="column4" class="grid-25">
                                 <div class="infoCustomer">
                                     <div id="orderIf">
-                                        <p>Tiền hàng <span>{{number_format(Cart::subtotal())}} đ</span></p>
+                                        <p>Tiền hàng <span>{{Cart::subtotal()}} đ</span></p>
                                         <p>Phí vận chuyển
                                             <span id="shipFee">0 đ</span>
                                         </p>

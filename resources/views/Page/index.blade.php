@@ -9,6 +9,12 @@
     <meta name="author" content="">
     <title>@yield('title')| ATShop</title>
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/htshop/common.css')}}" rel="stylesheet">
+    <link href="{{asset('css/htshop/slick.css')}}" rel="stylesheet">
+
+
+
+
     <link href="{{asset('css/cart/fi000001..css')}}" rel="stylesheet">
     <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/prettyPhoto.css')}}" rel="stylesheet">
@@ -41,6 +47,9 @@
 	@yield('checkout')
     @yield('contact')
 @yield('product')
+@yield('slider')
+
+
 
 @include('Page.footer')
     <script src="{{asset('js/jquery.js')}}"></script>
