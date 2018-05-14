@@ -46,32 +46,32 @@
 									</tr>
 								</thead>
 								<tbody>
-									@foreach($data as $row)
-										<tr>
-											<td>{!!$row->id!!}</td>
-											<td>{!!$row->user->name!!}</td>
-											<td>{!!$row->user->address!!}</td>
-											<td>{!!$row->user->phone!!}</td>
-											<td>{!!$row->user->email!!}</td>											
-											<td>{!!$row->created_at!!}</td>
-											<td>{!!$row->total!!} Vnd</td>
-											<td>
-												@if($row->status ==0)
-													<span style="color:#d35400;">Chưa xác nhận</span>
-												@else
-													<span style="color:#27ae60;"> Đã xác nhận</span>
-												@endif
-											</td>
-											<td>
-											    <a href="{!!url('admin/donhang/detail/'.$row->id)!!}" title="Chi tiết">Chi tiết  </a> &nbsp;
-											    <a href="{!!url('admin/donhang/del/'.$row->id)!!}"  title="Xóa" onclick="return xacnhan('Xóa danh mục này ?')"> Hủy bỏ</a>
-											</td>
-										</tr>
-									@endforeach								
+									{{--@foreach($data as $row)--}}
+										{{--<tr>--}}
+											{{--<td>{!!$row->id!!}</td>--}}
+											{{--<td>{!!$row->user->name!!}</td>--}}
+											{{--<td>{!!$row->user->address!!}</td>--}}
+											{{--<td>{!!$row->user->phone!!}</td>--}}
+											{{--<td>{!!$row->user->email!!}</td>											--}}
+											{{--<td>{!!$row->created_at!!}</td>--}}
+											{{--<td>{!!$row->total!!} Vnd</td>--}}
+											{{--<td>--}}
+												{{--@if($row->status ==0)--}}
+													{{--<span style="color:#d35400;">Chưa xác nhận</span>--}}
+												{{--@else--}}
+													{{--<span style="color:#27ae60;"> Đã xác nhận</span>--}}
+												{{--@endif--}}
+											{{--</td>--}}
+											{{--<td>--}}
+											    {{--<a href="{!!url('admin/donhang/detail/'.$row->id)!!}" title="Chi tiết">Chi tiết  </a> &nbsp;--}}
+											    {{--<a href="{!!url('admin/donhang/del/'.$row->id)!!}"  title="Xóa" onclick="return xacnhan('Xóa danh mục này ?')"> Hủy bỏ</a>--}}
+											{{--</td>--}}
+										{{--</tr>--}}
+									{{--@endforeach								--}}
 								</tbody>
 							</table>
 						</div>
-						{!! $data->render() !!}
+						{{--{!! $data->render() !!}--}}
 					</div>
 				</div>
 			</div>

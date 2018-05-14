@@ -79,7 +79,7 @@
                         </li>
                         <li class="slick-slide slick-active" aria-hidden="false" style="width: 292px;" data-slick-index="3">
                             <div class="post-img">
-                                <a href="lenovo-ideapad-100-pentium-n3540.htm" tppabs="http://htshop.esy.es/san-pham/lenovo-ideapad-100-pentium-n3540" class="img"><img src="{{asset('css/cart/1.jpg')}}" tppabs="http://htshop.esy.es/wp-content/themes/thientrieu/thumbnail.php?src=http%3A%2F%2Fhtshop.esy.es%2Fwp-content%2Fuploads%2F2016%2F09%2F1-3.jpg&amp;w=270&amp;h=300&amp;zc=1&amp;a=c" alt="Lenovo Ideapad 100 Pentium N3540" title="Lenovo Ideapad 100 Pentium N3540"></a>
+                                <a href="lenovo-ideapad-100-pentium-n3540.htm" tppabs="http://htshop.esy.es/san-pham/lenovo-ideapad-100-pentium-n3540" class="img"><img src="{{asset('product')}}" tppabs="http://htshop.esy.es/wp-content/themes/thientrieu/thumbnail.php?src=http%3A%2F%2Fhtshop.esy.es%2Fwp-content%2Fuploads%2F2016%2F09%2F1-3.jpg&amp;w=270&amp;h=300&amp;zc=1&amp;a=c" alt="Lenovo Ideapad 100 Pentium N3540" title="Lenovo Ideapad 100 Pentium N3540"></a>
                                 <form action="" method="post">
                                     <input type="hidden" name="add-to-cart" value="71">
                                     <button class="addc"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ</button>
@@ -113,8 +113,8 @@
                             {{--<div class="post-img">--}}
                                 {{--<a href="samsung-galaxy-j7-prime.htm" tppabs="http://htshop.esy.es/san-pham/samsung-galaxy-j7-prime" class="img"><img src="thumbnail.php-src=http---htshop.esy.es-wp-content-uploads-2016-09-636077136517601976_d2.jpg&amp;w=270&amp;h=300&amp;zc=1&amp;a=c.jpg" tppabs="http://htshop.esy.es/wp-content/themes/thientrieu/thumbnail.php?src=http%3A%2F%2Fhtshop.esy.es%2Fwp-content%2Fuploads%2F2016%2F09%2F636077136517601976_d2.jpg&amp;w=270&amp;h=300&amp;zc=1&amp;a=c" alt="Samsung Galaxy J7 Prime" title="Samsung Galaxy J7 Prime"></a>--}}
                                 {{--<form action="" method="post">--}}
-                                    {{--<input type="hidden" name="add-to-cart" value="57">--}}
-                                    {{--<button class="addc"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ</button>--}}
+                                    {{--<input type="hidden" name="add-to-product" value="57">--}}
+                                    {{--<button class="addc"><i class="fa fa-product-plus" aria-hidden="true"></i> Thêm vào giỏ</button>--}}
                                 {{--</form>--}}
                                 {{--<a class="viewm" href="samsung-galaxy-j7-prime.htm" tppabs="http://htshop.esy.es/san-pham/samsung-galaxy-j7-prime"><i class="fa fa-search-plus" aria-hidden="true"></i> Chi tiết</a>--}}
                             {{--</div>--}}
@@ -129,8 +129,8 @@
                             {{--<div class="post-img">--}}
                                 {{--<a href="dien-thoai-iphone-6s-64gb.htm" tppabs="http://htshop.esy.es/san-pham/dien-thoai-iphone-6s-64gb" class="img"><img src="thumbnail.php-src=http---htshop.esy.es-wp-content-uploads-2016-09-iphone.jpg&amp;w=270&amp;h=300&amp;zc=1&amp;a=c.jpg" tppabs="http://htshop.esy.es/wp-content/themes/thientrieu/thumbnail.php?src=http%3A%2F%2Fhtshop.esy.es%2Fwp-content%2Fuploads%2F2016%2F09%2Fiphone.jpg&amp;w=270&amp;h=300&amp;zc=1&amp;a=c" alt="Điện thoại Iphone 6s 64gb" title="Điện thoại Iphone 6s 64gb"></a>--}}
                                 {{--<form action="" method="post">--}}
-                                    {{--<input type="hidden" name="add-to-cart" value="43">--}}
-                                    {{--<button class="addc"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ</button>--}}
+                                    {{--<input type="hidden" name="add-to-product" value="43">--}}
+                                    {{--<button class="addc"><i class="fa fa-product-plus" aria-hidden="true"></i> Thêm vào giỏ</button>--}}
                                 {{--</form>--}}
                                 {{--<a class="viewm" href="dien-thoai-iphone-6s-64gb.htm" tppabs="http://htshop.esy.es/san-pham/dien-thoai-iphone-6s-64gb"><i class="fa fa-search-plus" aria-hidden="true"></i> Chi tiết</a>--}}
                             {{--</div>--}}

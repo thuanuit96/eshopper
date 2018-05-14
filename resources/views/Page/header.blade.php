@@ -84,7 +84,7 @@
                     </div>
                 </div>
                 <div class="shopping-cart" >
-                    <a class="btn btn-block btn-default shopping-cart__icon" href="{{route('list-cart')}}">
+                    <a class="btn btn-block btn-default shopping-cart__icon" href="{{route('product')}}">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="hidden-xs">Giỏ hàng</span>
                         <span class="" id="cart_count">{{Cart::count()}}</span>
                     </a>

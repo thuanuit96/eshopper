@@ -18,7 +18,7 @@
 								<div class="col-md-6">
 									<select name="sltCate" id="inputLoai" class="form-control">
 						      			<option value="0">- CHỌN MỘT THƯƠNG HIỆU --</option>
-						      			<?php MenuMulti($cat,0,$str='---| ',$loai); ?>   		
+
 						      		</select>
 									<script>
 									    document.getElementById("inputLoai").onchange = function() {
@@ -36,9 +36,9 @@
 								
 							</div>
 							<div class="col-md-2">
-								@if ($loai !='all')
-									<a href="{!!url('admin/sanpham/'.$loai.'/add')!!}" title=""><button type="button" class="btn btn-primary pull-right">Thêm Mới Sản Phẩm</button></a>
-								@endif
+								{{--@if ($loai !='all')--}}
+									{{--<a href="{!!url('admin/sanpham/'.$loai.'/add')!!}" title=""><button type="button" class="btn btn-primary pull-right">Thêm Mới Sản Phẩm</button></a>--}}
+								{{--@endif--}}
 							</div>
 						</div> 
 						
@@ -63,46 +63,49 @@
 							<table class="table table-hover">
 								<thead>
 									<tr>										
-										<th>ID</th>										
-										<th>Hình ảnh</th>
+										<th>ID</th>
 										<th>Tên sản phẩm</th>
-										<th>Tóm tắt chức năng</th>
-										<th>Thương hiệu</th>
+										<th>Mô tả</th>
+										<th>Màu sắc</th>
+										<th>Kích cỡ</th>
 										<th>Giá bán</th>
 										<th>Trạng thái</th>
+										<th>Hình ảnh</th>
 										<th>Action</th>
 									</tr>
 								</thead>
 								<tbody>
-									@foreach($data as $row)
+									@foreach($pro as $row)
 										<tr>
-											<td>{!!$row->id!!}</td>
-											<td> <img src="{!!url('uploads/products/'.$row->images)!!}" alt="iphone" width="50" height="40"></td>
-											<td>{!!$row->name!!}</td>
-											<td>{!!$row->intro!!}</td>
-											<td>{!!$row->category->name!!}</td>
-											<td>{!!$row->price!!} đ</td>
+											<td>{!!$row->Id!!}</td>
+											<td>{!!$row->Name!!}</td>
+											<td>{!!$row->Description!!}</td>
+											<td>{!!$row->Color!!}</td>
+											<td>{!!$row->Size!!}</td>
+											<td>{!!$row->Price!!}</td>
+											{{--<td>{!!$row->category->name!!}</td>--}}
 											<td>
-												@if($row->status ==1)
+												@if($row->IsSellOff ==1)
 													<span style="color:blue;">Còn hàng</span>
 												@else
 													Tạm hết hàng
 												@endif
 											</td>
+											<td> <img src="{!!url('uploads/products/'.$row->images)!!}" alt="iphone" width="50" height="40"></td>
 											<td>
-											    <a href="{!!url('admin/sanpham/mobile/edit/'.$row->id)!!}" title="Sửa"><span class="glyphicon glyphicon-edit">edit</span> </a>
+											    <a href="{!!url('admin/sanpham/edit/'.$row->Id)!!}" title="Sửa"><span class="glyphicon glyphicon-edit">edit</span> </a>
 											    <a href="{!!url('admin/sanpham/del/'.$row->id)!!}"  title="Xóa" onclick="return xacnhan('Xóa danh mục này ?')"><span class="glyphicon glyphicon-remove">remove</span> </a>
 											</td>
 										</tr>
-									@endforeach								
+									@endforeach
 								</tbody>
 							</table>
 						</div>
-						{!! $data->render() !!}
+						{!! $pro->render() !!}
 					</div>
 				</div>
 			</div>
 		</div><!--/.row-->		
 	</div>	<!--/.main-->
-<!-- =====================================main content - noi dung chinh trong chu -->
+
 @endsection
