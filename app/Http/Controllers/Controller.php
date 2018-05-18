@@ -16,8 +16,9 @@ class Controller extends BaseController
     public function __construct()
     {
         $category=Categories::all();
+        $subcategory=SubCategory::all();
         $cart=Cart::content();
-        view()->share(['category'=>$category,'cart'=>$cart]);
+        view()->share(['category'=>$category,'cart'=>$cart,'subcategory'=>$subcategory]);
 
 
     }

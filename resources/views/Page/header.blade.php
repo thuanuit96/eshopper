@@ -1,5 +1,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="{{asset('js/typeahead.bundle.js')}}"></script>
+
 <header class="site-header">
     @if (count($errors) > 0)
     <div class="alert alert-danger">
@@ -64,7 +66,7 @@
                     </button>
                 </div>
                 <div class="col-xs-7 col-sm-7 col-md-6 col-md-offset-1">
-                    <form class="search-box" method="get" action="/tim-kiem.html">
+                    <form class="search-box" method="get" action="">
                         <input type="text" class="search-keywords form-control" name="keyword" placeholder="Nhập tên hoặc mã sản phẩm..." value="">
                         <button type="submit" class="btn btn-ali"><i class="fa fa-search" aria-hidden="true"></i>
                         </button>
@@ -84,7 +86,7 @@
                     </div>
                 </div>
                 <div class="shopping-cart" >
-                    <a class="btn btn-block btn-default shopping-cart__icon" href="{{route('product')}}">
+                    <a class="btn btn-block btn-default shopping-cart__icon" href="{{route('list-cart')}}">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="hidden-xs">Giỏ hàng</span>
                         <span class="" id="cart_count">{{Cart::count()}}</span>
                     </a>
@@ -188,40 +190,6 @@
                                         </div>
                                     </form>
                                 </div><!--/sign up form-->
-                                {{--<div role="tabpanel" class="tab-pane active" id="sign-up">--}}
-                                    {{--<form method="post" action="http://alitaobao.vn/customer/register.html">--}}
-                                        {{--<div class="form-group">--}}
-                                            {{--<input type="text" class="form-control" name="CustomerRegisterForm[customer_username]" placeholder="Tên đăng nhập">--}}
-                                        {{--</div>--}}
-                                        {{--<div class="form-group">--}}
-                                            {{--<input type="password" class="form-control" name="CustomerRegisterForm[customer_password]" placeholder="Mật khẩu">--}}
-                                        {{--</div>--}}
-                                        {{--<div class="form-group">--}}
-                                            {{--<input type="password" class="form-control" name="CustomerRegisterForm[customer_password_confirmation]" placeholder="Xác nhận mật khẩu">--}}
-                                        {{--</div>--}}
-                                        {{--<div class="form-group">--}}
-                                            {{--<input type="email" class="form-control" name="CustomerRegisterForm[customer_email]" placeholder="Email">--}}
-                                        {{--</div>--}}
-                                        {{--<div class="form-group">--}}
-                                            {{--<input type="email" class="form-control" name="CustomerRegisterForm[customer_email_confirmation]" placeholder="Xác nhận email">--}}
-                                        {{--</div>--}}
-                                        {{--<div class="form-group">--}}
-                                            {{--<input type="text" class="form-control" name="CustomerRegisterForm[customer_fullname]" placeholder="Họ và tên">--}}
-                                        {{--</div>--}}
-                                        {{--<div class="form-group">--}}
-                                            {{--<input type="tel" class="form-control" name="CustomerRegisterForm[customer_phone]" placeholder="Số di động">--}}
-                                        {{--</div>--}}
-                                        {{--<div class="form-group">--}}
-                                            {{--<!----}}
-                                            {{--<img src="dist/images/captchaRegister.html.png" alt="" width="64" style="margin-bottom: 8px;">--}}
-                                            {{--<a href="#">Lấy code mới</a> -->--}}
-                                            {{--<img style="width:64px;margin-bottom:8px;" class="captcha-img" id="yw0" src="captchaRegister.html-v=5aed116b41578.png" tppabs="http://alitaobao.vn/customer/captchaRegister.html?v=5aed116b41578" alt=""><a id="yw0_button" href="/customer/captchaRegister.html?refresh=1"></a>                        <input type="text" class="form-control" name="CustomerRegisterForm[captcha]" placeholder="Mã xác nhận">--}}
-                                        {{--</div>--}}
-                                        {{--<div class="form-group">--}}
-                                            {{--<button type="submit" class="btn btn-block btn-warning text-uppercase"><strong>Đăng ký tài khoản</strong></button>--}}
-                                        {{--</div>--}}
-                                    {{--</form>--}}
-                                {{--</div>--}}
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
@@ -236,7 +204,49 @@
 
     </ul>
 </div><!--/.nav-collapse -->
+    <button class="aaa">aaaaaaaaa</button>
 </div>
+
+<script>
+
+
+
+
+        var engine = new Bloodhound({
+            remote: {
+                url: 'product/find?q=%QUERY%',
+                wildcard: '%QUERY%'
+            },
+            datumTokenizer: Bloodhound.tokenizers.whitespace('q'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace
+        });
+
+        $(".search-keywords").typeahead({
+            hint: true,
+            highlight: true,
+            minLength: 1
+        }, {
+            source: engine.ttAdapter(),
+            name: 'product',
+            templates: {
+                empty: [
+                    '<div class="list-group search-results-dropdown"><div class="list-group-item">Không có kết quả phù hợp.</div></div>'
+                ],
+                header: [
+                    '<div class="list-group search-results-dropdown">'
+                ],
+                suggestion: function (data) {
+                    return '<a href="find/' + data.id + '" class="list-group-item">' + data.name + '</a>'
+                },
+                display: function(data) {
+                    return data.name}
+            }
+        });
+
+</script>
+
+
+
 <style>
     .main-menu{
         background: #2b2a79;
@@ -261,85 +271,6 @@
         text-decoration: none !important;
     }
 
-    /* line 16, ../scss/app.scss */
-    .price {
-        color: #c40000;
-    }
-
-    /* line 20, ../scss/app.scss */
-    .price-lg {
-        color: #c40000;
-        font-size: 16px;
-    }
-
-    /* line 25, ../scss/app.scss */
-    .border-grey, .product-filter, .product-list .product, .supplier, .related-product,
-    .prd-category, .product-hot, .product-intro, .prd-choose__attrs, .prd-choose__attrs .choose-attrs .choose-color ul li .item .image, .prd-choose__attrs .choose-attrs .choose-property .obj-image .image, .prd-wrap, .login-box, .user-control .shop-wish-list .item, .order-payment .payment-method {
-        border: 1px solid #ddd;
-    }
-
-    /* line 29, ../scss/app.scss */
-    .text-dark {
-        color: #333;
-    }
-
-    /* line 33, ../scss/app.scss */
-    .text-line-through {
-        text-decoration: line-through;
-    }
-
-    /* line 37, ../scss/app.scss */
-    .cont-padd, .supplier .supplier-info, .supplier .supplier-footer, .related-product .content,
-    .prd-category .content, .product-hot .prd-hot__list .item, .prd-choose__attrs .total-price, .user-control .shop-wish-list .item, .order-payment .payment-method .wallet-balance, .order-payment .payment-method .payment-method__content, .cart-table .cart-header, .cart-table .cart-item, .cart-table .cart-total, .order-payment .cart-table .cart-item .media {
-        padding: 8px;
-    }
-
-    /* line 41, ../scss/app.scss */
-    .no-padd {
-        padding: 0 !important;
-    }
-
-    /* line 45, ../scss/app.scss */
-    .alert, .well {
-        padding: 10px;
-        border-radius: 0;
-    }
-
-    /* line 50, ../scss/app.scss */
-    .message-error {
-        display: block;
-        margin-top: 5px;
-        margin-bottom: 10px;
-        color: #a94442;
-    }
-
-    /* line 57, ../scss/app.scss */
-    .form-control, .btn {
-        border-radius: 0;
-    }
-
-    /* line 61, ../scss/app.scss */
-    .input-group-addon {
-        border-radius: 0;
-    }
-
-    /* line 65, ../scss/app.scss */
-    .margin-bottom__10, .masthead .search-box, .top-category .zone-cat, .box-user .box-uer__control ul li, .best-seller .best-seller__list li, .crumbs-bar, .supplier, .related-product,
-    .prd-category, .product-intro .prd-info .prd-trade__info, .prd-choose__attrs .total-price .item, .list-link, .user-control .shop-wish-list .item .media-object {
-        margin-bottom: 10px;
-    }
-
-    /* line 69, ../scss/app.scss */
-    .margin-bottom__20, .box-collection .box-collection__item, .selector, .product-filter, .aside-bar, .product-intro, .product-intro .prd-gallery .prd-slider .img-primary, .prd-choose__attrs, .prd-wrap, .login-box .login-w, .order, .order-payment .payment-method, .order-payment .payment-method .payment-method__content .pay-btn, .cart-table {
-        margin-bottom: 20px;
-    }
-
-    /* line 73, ../scss/app.scss */
-    .margin-bottom__30, .floor-market {
-        margin-bottom: 30px;
-    }
-
-    /* line 77, ../scss/app.scss */
     input[type="checkbox"] {
         margin-top: 2px;
     }
@@ -369,17 +300,6 @@
         background-color: #aaa;
     }
 
-    /* line 104, ../scss/app.scss */
-    .img-wrap {
-        position: relative;
-        overflow: hidden;
-        display: inline-block;
-        width: 100%;
-        height: 0;
-        padding-top: 100%;
-        background-color: #efefef;
-    }
-    /* line 113, ../scss/app.scss */
     .img-wrap img {
         position: absolute;
         top: 0;
@@ -2735,3 +2655,4 @@
         border: 1px solid #db402c;
     }
 </style>
+

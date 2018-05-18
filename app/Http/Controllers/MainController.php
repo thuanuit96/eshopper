@@ -17,10 +17,6 @@ use App\Order;
 use Mail;
 
 
-
-
-
-
 use Hash;
 
 
@@ -96,17 +92,19 @@ class MainController extends Controller
     }
     public  function  getproducts()
     {
-        $products=Products::paginate(8);
+        $products=Products::paginate(4);
 
         return view('Page.Home',['Products'=>$products]);
     }
 
-    public  function  getproduct_detail($id)
+    public  function  getproduct_detail(Request $rq)
     {
+       $id=$rq->id;
         $product_detail=Products::find($id);
-
-
-        return view('Page.product_detail',['product_detail'=>$product_detail]);
+        $subcate_id=$product_detail->SubCategoryId;
+        $relate_pro=SubCategory::find($subcate_id)->products;
+//        dd($relate_pro);
+        return view('Page.product_detail',['product_detail'=>$product_detail,'relate_pro'=>$relate_pro]);
     }
     public  function  cart($id){
 
@@ -178,7 +176,6 @@ class MainController extends Controller
             $order->Payment_Status = 'Chưa Thanh Toán';
             $order->Order_Status = 1;
             $order->Total = $data['total'];
-            $order->Promo = $data['couponCode'];
             $order->save();
             foreach (Cart::content() as $item) {
 

@@ -21,7 +21,7 @@ Route::get('content', function () {
 //Route::get('cart', function () {
 //    return view('Page.cart');
 //});
-Route::get('product_detail/{id}','MainController@getproduct_detail')->name('product_detail');
+Route::get('product_detail/{slug}','MainController@getproduct_detail')->name('product_detail');
 Route::get('contact', function () {
     return view('Page.contact');
 });
@@ -38,8 +38,8 @@ Route::get('/callback/{social}', 'SocialAuthController@callback');
 
 
 
-Route::get('product', function () {
-    return view('Page.product');
+Route::get('test', function () {
+    return view('Page.ht');
 });
 Route::get('phpdom','DomController@test');
 Route::post('customLogin','MainController@login')->name('customLogin');
@@ -55,23 +55,19 @@ Route::get('check_order',function (){
 
     return view('Page.check_order');
 });
-Route::get('ht',function (){
 
-
-    return view('Page.slider');
-});
 
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
     //Route::get('/admin', function (){
-    //    return view('back-end.home');
+    //    return view('Admin.home');
     //});
 Route::group(['prefix' => 'admin'], function() {
 
     Route::get('/home', function() {
-        return view('back-end.home');
+        return view('Admin.home');
     });
     // -------------------- quan ly danh muc----------------------
     Route::group(['prefix' => 'danhmuc'], function() {
@@ -86,8 +82,8 @@ Route::group(['prefix' => 'admin'], function() {
     });
     // -------------------- quan ly sản phẩm--------------------
     Route::group(['prefix' => '/sanpham'], function() {
-        Route::get('/{loai}/add',['as'        =>'getaddpro','uses' => 'ProductsController@getadd']);
-        Route::post('/{loai}/add',['as'       =>'postaddpro','uses' => 'ProductsController@postadd']);
+        Route::get('/add',['as'        =>'getaddpro','uses' => 'ProductsController@getadd']);
+        Route::post('/add',['as'       =>'postaddpro','uses' => 'ProductsController@postadd']);
 
         Route::get('/{loai}',['as'       =>'getpro','uses' => 'ProductsController@getlist']);
         Route::get('/del/{id}',['as'   =>'getdellpro','uses' => 'ProductsController@getdel'])->where('id','[0-9]+');

@@ -9,18 +9,29 @@
     <meta name="author" content="">
     <title>@yield('title')| ATShop</title>
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{asset('css/htshop/common.css')}}" rel="stylesheet">
     <link href="{{asset('css/htshop/slick.css')}}" rel="stylesheet">
 
-
+    <link rel="stylesheet" type="text/css" href="{{asset('slider/engine1/style.css')}}" />
+    <script type="text/javascript" src="{{asset('slider/engine1/jquery.js')}}"></script>
 
 
     <link href="{{asset('css/cart/fi000001..css')}}" rel="stylesheet">
+    <link href="{{asset('css/htshop/common.css')}}" rel="stylesheet">
+    <link href="{{asset('css/htshop/click.css')}}" rel="stylesheet">
+    <link href="{{asset('css/htshop/format.css')}}" rel="stylesheet">
+
+
+
     <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/prettyPhoto.css')}}" rel="stylesheet">
     <link href="{{asset('css/price-range.css')}}" rel="stylesheet">
     <link href="{{asset('css/animate.css')}}" rel="stylesheet">
 	<link href="{{asset('css/main.css')}}" rel="stylesheet">
+    <script src="{{asset('css/htshop/wprmenu.js-ver=4.6.js')}}"></script>
+    <script src="{{asset('css/htshop/wprmenu.js-ver=4.6.js')}}"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+
 
     <link href="{{asset('css/responsive.css')}}" rel="stylesheet">
     <!--[if lt IE 9]>
@@ -37,8 +48,8 @@
 
 <body>
 @include('page.header')
+@yield('slider')
 
-	@yield('slider')
 @yield('check_order')
 	@yield('home')
 	@yield('content')
@@ -47,17 +58,18 @@
 	@yield('checkout')
     @yield('contact')
 @yield('product')
-@yield('slider')
 
 
 
 @include('Page.footer')
-    <script src="{{asset('js/jquery.js')}}"></script>
+
 	<script src="{{asset('js/bootstrap.min.js')}}"></script>
 	<script src="{{asset('js/jquery.scrollUp.min.js')}}"></script>
 	<script src="{{asset('js/price-range.js')}}"></script>
     <script src="{{asset('js/jquery.prettyPhoto.js')}}"></script>
     <script src="{{asset('js/main.js')}}"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
 
 </body>
 </html>
