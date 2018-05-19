@@ -137,3 +137,4 @@ Route::group(['prefix' => 'admin'], function() {
 
         // ---------------van de khac ----------------------
 });
+Route::get('find/{id}','SearchController@search');

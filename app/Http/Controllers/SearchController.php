@@ -14,4 +14,12 @@ class SearchController extends Controller
         $product = Products::where('Name', 'like', '%' . $request->get('q') . '%')->get();
         return response()->json($product,200,['Content-type'=> 'application/json; charset=utf-8'], JSON_UNESCAPED_UNICODE);
     }
+    public  function  search($id){
+
+
+
+        $product = Products::findorfail($id);
+        dd($product);
+
+    }
 }
