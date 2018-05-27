@@ -14,7 +14,10 @@ use App\Customer;
 use Session;
 use Cart;
 use App\Order;
+use App\News;
+
 use Mail;
+use DB;
 
 
 use Hash;
@@ -93,8 +96,26 @@ class MainController extends Controller
     public  function  getproducts()
     {
         $products=Products::paginate(4);
+        $men_pro=DB::table('Categories')
+            ->join('SubCategory', 'Categories.Id', '=', 'SubCategory.CategoryId')
+            ->join('Products', 'SubCategory.Id', '=', 'Products.SubCategoryId')
+            ->where('Categories.Id', '=', 1 )
+            ->paginate(3);
+        $women_pro=DB::table('Categories')
+            ->join('SubCategory', 'Categories.Id', '=', 'SubCategory.CategoryId')
+            ->join('Products', 'SubCategory.Id', '=', 'Products.SubCategoryId')
+            ->where('Categories.Id', '=', 2 )
+            ->paginate(3);
+        $pk =DB::table('Categories')
+            ->join('SubCategory', 'Categories.Id', '=', 'SubCategory.CategoryId')
+            ->join('Products', 'SubCategory.Id', '=', 'Products.SubCategoryId')
+            ->where('Categories.Id', '=', 3 )
+            ->paginate(3);
+        //Tin tức
+        $news=News::paginate(4);
+         $data=['Products'=>$products,'men_pro'=>$men_pro,'women_pro'=>$women_pro,'pk'=>$pk,'news'=>$news];
 
-        return view('Page.Home',['Products'=>$products]);
+        return view('Page.Home',$data);
     }
 
     public  function  getproduct_detail(Request $rq)
@@ -205,6 +226,7 @@ class MainController extends Controller
         Session::flash('flash_message', 'Send message successfully!');
 
     }
+
 
 }
 

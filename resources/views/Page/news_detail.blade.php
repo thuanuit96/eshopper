@@ -45,20 +45,7 @@
                                 <p>Nhờ vào camera kép, iPhone 7 Plus cũng sẽ nhận biết và phân tích được độ sâu trường ảnh, từ đó đưa ra các thuật toán xử lý để mang đến hiệu ứng “xoá phông” tương tự máy ảnh DSLR.</p>
                                 <p><strong>Cấu hình khủng, m</strong><strong>àn hình và tai nghe mới</strong></p>
                                 <p>Trên iPhone 7, Apple cũng cải thiện chất lượng hiển thị bằng cách đưa ra khái niệm “Retina HD”, với màn hình sáng hơn 25%, dải màu rộng hơn theo chuẩn điện ảnh và cũng hỗ trợ 3D Touch. Đây là nâng cấp cần thiết khi các đối thủ đã tiến lên độ phân giải 4K.</p>
-                                <table class="video" align="center">
-                                    <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="inner-video">
-                                                <figure class="video">
-                                                    <iframe id="video30696" class="autoplay" src="index.html#http://img.v3.news.zdn.vn/w660/Uploaded/ynssi/2016_09_07/iPhone_7_zing_1.jpg,zing,http://stream.news.zdn.vn/971c3eeeccb6b5b806b4f01830157d8b/57d1d8ff/2016_09_08/tinnd/Video_trai_nghiem_iPhone_7_dau_tien_tai_Viet_Nam_hd720__mp4.mp4,http://api.adtimaserver.vn/zad/videoad?zid=267866779927658906&amp;vs=pageid%3D476%3Bcate%3Dcong-nghe%3Bpostid%3D679900,false,false,Dùng thử iPhone 7 đầu tiên ở Việt Nam,video30696" tppabs="http://stc.v3.news.zing.vn/videojs/v1.6_6/index.html#http://img.v3.news.zdn.vn/w660/Uploaded/ynssi/2016_09_07/iPhone_7_zing_1.jpg,zing,http://stream.news.zdn.vn/971c3eeeccb6b5b806b4f01830157d8b/57d1d8ff/2016_09_08/tinnd/Video_trai_nghiem_iPhone_7_dau_tien_tai_Viet_Nam_hd720__mp4.mp4,http://api.adtimaserver.vn/zad/videoad?zid=267866779927658906&amp;vs=pageid%3D476%3Bcate%3Dcong-nghe%3Bpostid%3D679900,false,false,Dùng thử iPhone 7 đầu tiên ở Việt Nam,video30696" width="300" height="150" frameborder="0" scrolling="no" allowfullscreen="allowfullscreen" data-mce-fragment="1"></iframe><br>
-                                                    <figcaption><strong>Dùng thử iPhone 7 đầu tiên ở Việt Nam</strong>: Video trải nghiệm nhanh iPhone ở Việt Nam</figcaption>
-                                                </figure>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+
                                 <p>Ngoài hình ảnh, Apple cũng nâng cấp hệ thống âm thanh trên iPhone mới. Loa kép cho âm thanh vòm stereo, và tai nghe Earpods mới mang đến một chất lượng âm thanh ở tầm cao mới. Ngoài ra, người dùng cũng có thể mua các loại tai nghe của bên thứ ba dùng chân cắm lightning để phù hợp với gu nghe nhạc của bản thân.</p>
                                 <p>Nếu không thích tai nghe Earpods có dây, người dùng có thể mua tai nghe AirPods không dây từ Apple để dùng với iPhone 7 hoặc 7 Plus. Tai nghe này có thể dùng như một headset để nghe nhận cuộc gọi khi lái xe, hoặc nghe nhạc như tai nghe thông thường. Pin của phụ kiện này có thể cung cấp thời gian hoạt động lên đến 24 tiếng.</p>
                                 <p>Về cấu hình, iPhone 7 sở hữu chip A10 Fusion với 3,3 tỷ transitor, nhanh hơn 40% so với chip A9, gấp đôi A8 nhưng tiết kiệm điện hơn 1/5 so với trước. Sức mạnh xử lý đồ hoạ gấp 240 lần so với iPhone đời đầu. Apple cho biết sức mạnh của con chip này có thể mang đến trải nghiệm chơi game như trên hệ máy console PS4 hay Xbox. Pin của máy cho thời gian hoạt động dài hơn 2 tiếng so với iPhone 6S.</p>

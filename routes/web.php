@@ -18,9 +18,6 @@ Route::get('slider', function () {
 Route::get('content', function () {
     return view('Page.content');
 });
-//Route::get('cart', function () {
-//    return view('Page.cart');
-//});
 Route::get('product_detail/{slug}','MainController@getproduct_detail')->name('product_detail');
 Route::get('contact', function () {
     return view('Page.contact');
@@ -34,13 +31,6 @@ Route::post('cart_delete','MainController@cart_delete')->name('cart_delete');
 Route::get('update/{id}','MainController@update');
 Route::get('/redirect/{social}', 'SocialAuthController@redirect');
 Route::get('/callback/{social}', 'SocialAuthController@callback');
-
-
-
-
-Route::get('test', function () {
-    return view('Page.ht');
-});
 Route::get('phpdom','DomController@test');
 Route::post('customLogin','MainController@login')->name('customLogin');
 Route::post('customRegister','MainController@register')->name('customRegister');
@@ -143,7 +133,7 @@ Route::get('/auth/facebook/callback', 'SocialAuthController@handleProviderCallba
 Route::get('women', function (){
     return view('Page.Women.women');
 });
-Route::get('news', function (){
-   return view('Page.news');
-});
+Route::get('Tin-tuc/{slug}', function (){
+   return view('Page.news_detail');
+})->name('Tin-tuc');
 

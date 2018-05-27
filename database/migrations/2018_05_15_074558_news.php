@@ -19,7 +19,12 @@ class News extends Migration
             $table->string('Slug');
             $table->string('Author');
              $table->string('Intro');
-            $table->string('Content');
+            $table->longText('Content1');
+            $table->longText('Content2');
+
+            $table->longText('Content3');
+
+
             $table->string('Images');
 
             $table->timestamps();
