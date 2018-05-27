@@ -9,31 +9,20 @@
     <meta name="author" content="">
     <title>@yield('title')| ATShop</title>
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{asset('css/htshop/slick.css')}}" rel="stylesheet">
-
     <link rel="stylesheet" type="text/css" href="{{asset('slider/engine1/style.css')}}" />
     <script type="text/javascript" src="{{asset('slider/engine1/jquery.js')}}"></script>
-
-
-    <link href="{{asset('css/cart/fi000001..css')}}" rel="stylesheet">
+    <link href="{{asset('css/cart/custom.css')}}" rel="stylesheet">
     <link href="{{asset('css/htshop/common.css')}}" rel="stylesheet">
-    <link href="{{asset('css/htshop/click.css')}}" rel="stylesheet">
     <link href="{{asset('css/htshop/format.css')}}" rel="stylesheet">
-
-
-
     <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/prettyPhoto.css')}}" rel="stylesheet">
     <link href="{{asset('css/price-range.css')}}" rel="stylesheet">
     <link href="{{asset('css/animate.css')}}" rel="stylesheet">
 	<link href="{{asset('css/main.css')}}" rel="stylesheet">
-    <script src="{{asset('css/htshop/wprmenu.js-ver=4.6.js')}}"></script>
-    <script src="{{asset('css/htshop/wprmenu.js-ver=4.6.js')}}"></script>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+    <script src="{{asset('js/jquery.elevatezoom.js')}}"></script>
 
-
-    <link href="{{asset('css/responsive.css')}}" rel="stylesheet">
+        <link href="{{asset('css/responsive.css')}}" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="{{asset('js/html5shiv.js')}}"></script>
     <script src="{{asset('js/respond.min.js')}}"></script>
@@ -52,7 +41,10 @@
 
 @yield('check_order')
 	@yield('home')
+@yield('news')
 	@yield('content')
+@yield('women')
+@yield('shirt')
 	@yield('cart')
 	@yield('product_detail')
 	@yield('checkout')
@@ -64,6 +56,9 @@
 @include('Page.footer')
 
 	<script src="{{asset('js/bootstrap.min.js')}}"></script>
+<script src="{{asset('css/cart/style.js')}}"></script>
+
+
 	<script src="{{asset('js/jquery.scrollUp.min.js')}}"></script>
 	<script src="{{asset('js/price-range.js')}}"></script>
     <script src="{{asset('js/jquery.prettyPhoto.js')}}"></script>

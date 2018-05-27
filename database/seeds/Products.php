@@ -11,11 +11,15 @@ class Products extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 20; $i++) {
             DB::table('Products')->insert([
                 'Name' => 'Áo khoác mùa hè hà nội ' . rand(1, 100),
-                'Price' => rand(1, 100),
-                'color' => 'red'
+                'Price' => rand(100000,500000 ),
+                'Slug' => 'ao-khoac-mua-he-ha-noi'. rand(1, 100),
+                'Code'=>'SP'.rand(100, 1000),
+                'Status'=>'Còn hàng',
+                'SubCategoryId'=>1,
+                'Image1'=>'1.2.17.2.05.001.217.23.10600007-01_thumb.jpg'
 
             ]);
         }

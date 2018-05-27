@@ -151,6 +151,7 @@
                                             <label>
                                                 <input type="radio" id="rdPaymentMethodCod" name="paymentMethod" class="validate[required]"   value="2">
                                                 Thanh toán qua ngân lượng
+                                                <a target="_blank" href="https://www.nganluong.vn/button_payment.php?receiver=(Email chính tài khoản nhận tiền)&product_name=(Mã đơn đặt hàng)&price=(Tổng giá trị)&return_url=(URL thanh toán thành công)&comments=(Ghi chú về đơn hàng)"><img src="https://www.nganluong.vn/css/newhome/img/button/pay-lg.png"border="0" /></a>
                                             </label>
                                         </div>
                                     </div>

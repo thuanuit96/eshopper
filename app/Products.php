@@ -22,6 +22,15 @@ class Products extends Model
     public function subcategory()
     {
         return $this->belongsTo('App\SubCategory','SubCategoryId');
+
     }
 
+    public function color()
+    {
+        return $this->hasMany('App\product_colors','product_id','Id');
+    }
+
+    public function size(){
+        return $this->hasMany('App\product_sizes','product_id','Id');
+    }
 }

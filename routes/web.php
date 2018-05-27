@@ -138,3 +138,12 @@ Route::group(['prefix' => 'admin'], function() {
         // ---------------van de khac ----------------------
 });
 Route::get('find/{id}','SearchController@search');
+Route::get('/auth/facebook', 'SocialAuthController@redirectToProvider');
+Route::get('/auth/facebook/callback', 'SocialAuthController@handleProviderCallback');
+Route::get('women', function (){
+    return view('Page.Women.women');
+});
+Route::get('news', function (){
+   return view('Page.news');
+});
+

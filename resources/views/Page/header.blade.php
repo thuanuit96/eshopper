@@ -99,16 +99,39 @@
 <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
     <ul class="nav navbar-nav main-menu">
         <li class="active"><a href="#">Trang Chủ</a></li>
-        <li><a href="#">Thời Trang Nam</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Thời Trang nam<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Áo</a></li>
+                <li><a href="#">Quần</a></li>
+                <li><a href="#">Váy</a></li>
+                <li><a href="#">Denim</a></li>
+
+            </ul>
+
+
+        </li>
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Thời Trang Nữ<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Plugins 1</a></li>
-                <li><a href="#">Plugins 2</a></li>
-                <li><a href="#">Plugins 3</a></li>
+                <li><a href="#">Áo</a></li>
+                <li><a href="#">Quần</a></li>
+                <li><a href="#">Váy</a></li>
+                <li><a href="#">Denim</a></li>
             </ul>
         </li>
-        <li><a href="#">Phụ Kiện</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Phụ kiện<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Balo</a></li>
+                <li><a href="#">Giày</a></li>
+                <li><a href="#">Mũ</a></li>
+                <li><a href="#">Móc khóa</a></li>
+                <li><a href="#">Đồ len</a></li>
+                <li><a href="#">Tất</a></li>
+                <li><a href="#">Thắt lưng</a></li>
+
+            </ul>
         <li><a href="#">Giới Thiệu</a></li>
         <li><a href="#">Liên Hệ</a></li>
         <li><a href="#">Tra cứu đơn hàng</a></li>
@@ -148,7 +171,7 @@
                                         <p class="separator text-center">
                                             <i>Hoặc đăng nhập với</i>
                                         </p>
-                                        <a href="redirect/facebook" class="btn btn-block btn-fb">
+                                        <a href="{{ URL::to('auth/facebook') }}" class="btn btn-block btn-fb">
                                             <i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook
                                         </a>
                                         <a class="btn btn-block btn-gplus signin-by-google-class">
@@ -179,6 +202,8 @@
                             <div class="modal-body">
                                 <div class="signup-form"><!--sign up form-->
                                     <form action="{{route('customRegister')}}" method="post">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
                                         {!! csrf_field() !!}
                                         <input type="text" name="username" placeholder="Tài khoản"/>
                                         <input type="email" name="email" placeholder="Địa chỉ email"/>
@@ -257,6 +282,10 @@
 
 
 <style>
+    .nav>li>a:hover{
+        background: #5150b7;
+        transition: all .3s;
+    }
     span.twitter-typeahead .tt-menu,
     span.twitter-typeahead .tt-dropdown-menu {
         cursor: pointer;

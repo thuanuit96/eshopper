@@ -1,206 +1,356 @@
 @extends('page.index')
 @section('product_detail')
-<section>
-    <base href="http://eshopper.dev/">
-    {{--<div class="container">
-    <div class="grid-100">
-    <div class="breadcrumb_view">
-    <ul class="breadcrumbs">
-    <li>--}}
-                        {{--<a href="/">Trang chủ</a></li><li>--}}
 
-                        {{--<a class="72061" href="/ao-pc72061.html">Chi tiết sản phẩm</a></li><li>--}}
-                    {{--</li>--}}
-    <div class="container">
-        <div class="row">
-           @include('page.menu')
+    <div class="main">
+        <input type="hidden" class="storeId" value="81">
+        <div class="container">
+            <div class="grid-100">
+                <div class="breadcrumb_view">
+                    <ul class="breadcrumbs">
+                        <li>
+                            <a href="/">Trang chủ</a>
+                        </li>
+                        <li>
+                            <a class="72060" href="/nam-pc72060.html">NAM</a>
+                        </li>
+                        <li>
+                            <a class="158841" href="/denim-pc158841.html">Denim</a>
+                        </li>
+                    </ul>
+                    <span class="clearfix menuActive" data-rel="view"></span>
+                </div>
+            </div>
+        </div>
+        <div class="detailsProducts">
+            <div class="container">
+                <div class="grid-75">
+                    <div class="detailsmainProduct" id="filter">
+                        <div id="productDetail">
+                            <div class="" id="imgZoom">
+                                <div id="zoomer">
+                                    <img id="zoom_09" src="small/image1.png" data-zoom-image="large/image1.jpg"/>
 
-            <div class="col-sm-9 padding-right">
-
-                <div class="product-details"><!--product-details-->
-                    <div class="col-sm-5">
-                        <div class="view-product">
-                            <img src="{{asset('images/product/'.$product_detail->Image1)}}" alt="" />
-                            <h3>ZOOM</h3>
-                        </div>
-                        <div id="similar-product" class="carousel slide" data-ride="carousel">
-
-                            <!-- Wrapper for slides -->
-                            <div class="carousel-inner">
-                                <div class="item active">
-                                    <a href=""><img src="{{asset('images/product/'.$product_detail->Image2)}}" width="50%" height="50%  " alt=""></a>
-
-                                    <a href=""><img src="{{asset('images/product/'.$product_detail->Image3)}}" width="50%" height="50%  " alt=""></a>
-
-                                    <a href=""><img src="{{asset('images/product/'.$product_detail->Image1)}}" width="50%" height="50%  " alt=""></a>
-
+                                    <img id="zoom_01" width="100%" class="cloudzoom" src="{{asset('/images/product/'.$product_detail->Image1)}}" data-zoom-image="{{asset('/images/product/'.$product_detail->Image1)}}">
                                 </div>
-                                <div class="item">
-                                    <a href=""><img src="{{asset('images/product/'.$product_detail->Image2)}}" width="50%" height="50%  " alt=""></a>
-
-                                    <a href=""><img src="{{asset('images/product/'.$product_detail->Image3)}}" width="50%" height="50%  " alt=""></a>
-
-                                    <a href=""><img src="{{asset('images/product/'.$product_detail->Image1)}}" width="50%" height="50%  " alt=""></a>
-                                </div>
-                                <div class="item">
-                                    <a href=""><img src="{{asset('images/product/'.$product_detail->Image2)}}" width="50%" height="50%  " alt=""></a>
-
-                                    <a href=""><img src="{{asset('images/product/'.$product_detail->Image3)}}" width="50%" height="50%  " alt=""></a>
-
-                                    <a href=""><img src="{{asset('images/product/'.$product_detail->Image1)}}" width="50%" height="50%  " alt=""></a>
-                                </div>
-
-                            </div>
-
-                            <!-- Controls -->
-                            <a class="left item-control" href="#similar-product" data-slide="prev">
-                                <i class="fa fa-angle-left"></i>
-                            </a>
-                            <a class="right item-control" href="#similar-product" data-slide="next">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </div>
-
-                    </div>
-                    <div class="col-sm-7">
-
-                        <div class="" id="productInfo">
-                            <h1 class="dttitleProduct">{!!$product_detail->Name !!}</h1>
-                            <div class="colL">
-                                <span style="position: relative;top: 2px;">Mã sản phẩm:</span>
-                            </div>
-                            <div class="colL-1">1.2.02.1.02.019.118.01.11000002</div>
-                            <div class="clear"></div>
-                            <div class="tableDetails">
-                                <div class="colorProduct">
-                                    <div class="colL">
-                                        <span style="position: relative;top: 2px;">Màu sắc</span>
+                                <div id="zoomSlide">
+                                    <a href="#" id="prevSlideZ" class="" style="display: block;"></a>
+                                    <a href="#" id="nextSlideZ" class="" style="display: block;"></a>
+                                    <p class="brBottomz"></p>
+                                    <div class="caroufredsel_wrapper" style="display: block; text-align: start; float: none; position: relative; top: auto; right: auto; bottom: auto; left: auto; z-index: auto; width: 339px; height: 72px; margin: 0px; overflow: hidden;">
+                                        <ul id="listImgZoom_2" style="text-align: left; float: none; position: absolute; top: 0px; right: auto; bottom: auto; left: 6px; margin: 0px; width: 1323px; height: 72px;">
+                                            <li data-src="">
+                                                <img class="cloudzoom-gallery" src="//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_01_thumb_294x440.jpg" data-cloudzoom="useZoom: '.cloudzoom', image: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_01_thumb_294x440.jpg', zoomImage: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_01_401x600.jpg'">
+                                            </li>
+                                            <li data-src="">
+                                                <img class="cloudzoom-gallery" src="//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_02_thumb_294x441.jpg" data-cloudzoom="useZoom: '.cloudzoom', image: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_02_thumb_294x441.jpg', zoomImage: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_02_400x600.jpg'">
+                                            </li>
+                                            <li data-src="//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_03_thumb_294x440.jpg">
+                                                <img class="cloudzoom-gallery" src="//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_03_thumb_294x440.jpg" data-cloudzoom="useZoom: '.cloudzoom', image: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_03_thumb_294x440.jpg', zoomImage: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_03_401x600.jpg'">
+                                            </li>
+                                            <li data-src="//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_04_thumb_294x440.jpg" style="margin-right: 10px;">
+                                                <img class="cloudzoom-gallery" src="//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_04_thumb_294x440.jpg" data-cloudzoom="useZoom: '.cloudzoom', image: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_04_thumb_294x440.jpg', zoomImage: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_04_401x600.jpg'">
+                                            </li>
+                                            <li data-src="//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_1060003305_thumb_294x440.jpg">
+                                                <img class="cloudzoom-gallery" src="//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_1060003305_thumb_294x440.jpg" data-cloudzoom="useZoom: '.cloudzoom', image: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_1060003305_thumb_294x440.jpg', zoomImage: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_1060003305_401x600.jpg'">
+                                            </li>
+                                            <li data-src="//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_06_thumb_294x440.jpg">
+                                                <img class="cloudzoom-gallery" src="//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_06_thumb_294x440.jpg" data-cloudzoom="useZoom: '.cloudzoom', image: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_06_thumb_294x440.jpg', zoomImage: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_06_401x600.jpg'">
+                                            </li>
+                                        </ul>
                                     </div>
-                                    <div class="colL-1">
-                                        <div class="attr">
-                                            <p class="color req" column="i4">
-                                                <a rel="nofollow" href="#" style="background-color: #FFD800" title="Vàng"></a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="optionSize">
-                                    <div class="colL">
-                                        <span style="position: relative;top: 2px;">Size: </span>
-                                    </div>
-                                    <div class="colL-1">
-                                        <p class="size req" column="i5">
-                                            <a rel="nofollow" value="81" href="javascript:void(0)" class="active">L</a>
-                                        </p>
-                                    </div>
-                                    <div class="clear"></div>
-                                </div>
-                            </div>
-                            <div class="price">
-                                <p style="font-weight:bold;">
-                                    <span>{{$product_detail->Price}} VNĐ </span>
-                                </p>
-                            </div>
-                            <div class="attr">
-                                <br>
-                                <div class="qualityAddcart">
-                                    <p class="qty"><span>Qty</span><i id="psQtt" max="1" val="1">1</i><i id="psQttUp">+</i><i id="psQttDown">-</i></p>
-                                    <button id="addToCart" psid="7011954" selid="7011954" title="Vui lòng chọn màu sắc hoặc kích cỡ!" class="btn unsel" ck="0">Mua ngay</button>
                                 </div>
                                 <span class="clearfix"></span>
-                                <br>
                             </div>
-                            <div class="policy active">
-                                <label><i class="fa fa-caret-down"></i>&nbsp; Chi tiết sản phẩm</label>
-                                <p style="">
-                                    <span class="brandView">Xuất xứ: Thương hiệu Bò sữa</span>
-                                </p>
+                            <div class="" id="productInfo">
+                                <h1 class="dttitleProduct">{!! $product_detail->Name !!}</h1>
+                                <div class="colL">
+                                    <span style="position: relative;top: 2px;">Mã sản phẩm:</span>
+                                </div>
+                                <div class="colL-1">{!! $product_detail->Code !!}</div>
+                                <div class="clear"></div>
+                                <div class="tableDetails">
+                                    <div class="colorProduct">
+                                        <div class="colL">
+                                            <span style="position: relative;top: 2px;">Màu sắc</span>
+                                        </div>
+                                        <div class="colL-1">
+                                            <div class="attr">
+                                                <p class="color req" column="i4">
+                                                    <a  href="#" class="cloudzoom-gallery active" value="31" title="Xanh da trời" data-src="" style="background-color: #4B98D5"></a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="optionSize">
+                                        <div class="colL">
+                                            <span style="position: relative;top: 2px;">Size: </span>
+                                        </div>
+                                        <div class="colL-1">
+                                            <p class="size req" column="i5">
+                                                @foreach($product_detail->size as $row)
+
+                                                <a rel="" value="87" href="" class="" qtt="37" selid="7293296" data-price="649000">{!! $row->name !!}</a>
+                                                @endforeach
+
+
+                                            </p>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                                <div class="price">
+                                    <p style="font-weight:bold;">
+                                        <span>{!! $product_detail->Price !!} VNĐ </span>
+                                    </p>
+                                </div>
+                                <div class="attr">
+                                    <br>
+                                    <div class="qualityAddcart">
+                                        <p class="qty"><span>Qty</span><i id="psQtt" max="1" val="1">1</i><i id="psQttUp">+</i><i id="psQttDown">-</i></p>
+                                        <button id="addToCart" psid="7293295" selid="7293295" title="Vui lòng chọn màu sắc hoặc kích cỡ!" class="btn unsel" ck="0">Mua ngay</button>
+                                    </div>
+                                    <span class="clearfix"></span>
+                                    <br>
+                                </div>
+                                <div class="policy active">
+                                    <label><i class="fa fa-caret-down"></i>&nbsp; Chi tiết sản phẩm</label>
+                                    <p>
+                                        <span class="brandView">Xuất xứ: Thương hiệu Bò sữa</span>
+                                    </p>
+                                </div>
+                                <div class="policy active">
+                                    <label><i class="fa fa-caret-down"></i>&nbsp; Mua hàng trực tiếp tại cửa hàng</label>
+                                    <p><span>2 Phạm Minh Đức, Ngô Quyền, TP. Hải Phòng (<b class="success-pro">còn hàng</b>)</span><span>133 Thái Hà, Phường Trung Liệt,Q.Đống Đa, Hà Nội (<b class="success-pro">còn hàng</b>)</span><span>BS 93 Nguyễn Chí Thanh, Phường Láng Thượng (<b class="success-pro">còn hàng</b>)</span><span>135 Nguyễn Văn Cừ,Phường Ngọc Lâm,Quận Long Biên, Hà Nội (<b class="success-pro">còn hàng</b>)</span></p>
+                                </div>
+                                <div class="policy">
+                                    <label><i class="fa fa-caret-right"></i>&nbsp; Giao hàng và trả lại hàng</label>
+                                    <p style="display: none"></p>
+                                    <p><span>Đổi hàng trong vòng 72h</span> <span>Phí vận chuyển nội thành Hà Nội: 20.000&nbsp;</span><span>Phí vận chuyển ngoại thành/ngoại tỉnh: tùy thuộc vào địa điểm</span> <span>Thanh toán&nbsp;khi nhận hàng</span></p>
+                                    <p></p>
+                                </div>
+                                <div id="sizeTb" style="border-top: 1px solid #DDD;padding: 10px 0px;color: #777">
+                                    <label>
+                                        <i class="fa fa-caret-right"></i>
+                                        &nbsp; Tải bảng size</label>
+                                    <p id="dialogContent" style="display: none">
+                                        <img style="max-width: 100%" src="//cdn.nhanh.vn/cdn/store/81/bn/sb_1483514660_605.png">
+                                    </p>
+                                </div>
+                                <div class="connectSocial">
+                                    <ul class="add-to-links">
+                                        <li>
+                                            <a class="setFav" rel="7293295" href="javascript:void(0)"><i class="fa fa-heart-o"></i><span>Sản phẩm yêu thích</span></a>
+                                        </li>
+                                        <div class="clear"></div>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="policy active">
-                                <label><i class="fa fa-caret-down"></i>&nbsp; Mua hàng trực tiếp tại cửa hàng</label>
-                                <p><span>133 Thái Hà, Phường Trung Liệt,Q.Đống Đa, Hà Nội (<b class="success-pro">còn hàng</b>)</span><span>BS 93 Nguyễn Chí Thanh, Phường Láng Thượng
-         (<b class="danger-pro">sắp hết hàng</b>)</span>
-                                </p>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="maintabContent">
+                            <ul id="tabDetailspro">
+                                <li id="tab_link-01_01" class="litabDetails parrentTab">
+                                    <a href="#">Mô tả sản phẩm</a>
+                                </li>
+                                <div class="clear"></div>
+                            </ul>
+                            <div class="tabContent">
+                                <div class="_tab-01 tab_link-01_01">
+                                    <div class="contentTab"></div>
+                                </div>
                             </div>
-                            <div class="policy">
-                                <label><i class="fa fa-caret-right"></i>&nbsp; Giao hàng và trả lại hàng</label>
-                                <p style="display: none"></p>
-                                <p><span>Đổi hàng trong vòng 72h</span> <span>Phí vận chuyển nội thành Hà Nội: 20.000&nbsp;</span><span>Phí vận chuyển ngoại thành/ngoại tỉnh: tùy thuộc vào địa điểm</span> <span>Thanh toán&nbsp;khi nhận hàng</span></p>
-                                <p></p>
+                            <br>
+                            <div class="fb-like fb_iframe_widget" data-href="http://bosua.vn/product/7293295" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true" fb-xfbml-state="rendered" fb-iframe-plugin-query="action=like&amp;app_id=&amp;container_width=2&amp;href=http%3A%2F%2Fbosua.vn%2Fproduct%2F7293295&amp;layout=button_count&amp;locale=vi_VN&amp;sdk=joey&amp;share=true&amp;show_faces=true"><span style="vertical-align: bottom; width: 122px; height: 20px;"><iframe name="f11f22ba9c103d8" width="1000px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" title="fb:like Facebook Social Plugin" src="https://www.facebook.com/v2.12/plugins/like.php?action=like&amp;app_id=&amp;channel=http%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2FRQ7NiRXMcYA.js%3Fversion%3D42%23cb%3Dfab47f4c6e31a%26domain%3Dbosua.vn%26origin%3Dhttp%253A%252F%252Fbosua.vn%252Ff21bffc82d1de1%26relation%3Dparent.parent&amp;container_width=2&amp;href=http%3A%2F%2Fbosua.vn%2Fproduct%2F7293295&amp;layout=button_count&amp;locale=vi_VN&amp;sdk=joey&amp;share=true&amp;show_faces=true" style="border: none; visibility: visible; width: 122px; height: 20px;" class=""></iframe></span></div>
+                            <div class="google-like">
+                                <div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 32px; height: 20px;"><iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 32px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" width="100%" id="I0_1527078123685" name="I0_1527078123685" src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&amp;size=medium&amp;annotation=none&amp;origin=http%3A%2F%2Fbosua.vn&amp;url=http%3A%2F%2Fbosua.vn%2Fproduct%2F7293295&amp;gsrc=3p&amp;ic=1&amp;jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.vi.997mSnhiNJs.O%2Fm%3D__features__%2Fam%3DQQE%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCPmVgCnYb7QaTxiF7I5sILreCm3lQ#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&amp;id=I0_1527078123685&amp;_gfid=I0_1527078123685&amp;parent=http%3A%2F%2Fbosua.vn&amp;pfname=&amp;rpctoken=11559546" data-gapiattached="true" title="G+"></iframe></div>
+                                <div id="___plus_0" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 67px; height: 20px;"><iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 67px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" width="100%" id="I1_1527078123693" name="I1_1527078123693" src="https://apis.google.com/u/0/se/0/_/+1/sharebutton?plusShare=true&amp;usegapi=1&amp;action=share&amp;annotation=bubble&amp;origin=http%3A%2F%2Fbosua.vn&amp;url=http%3A%2F%2Fbosua.vn%2Fproduct%2F7293295&amp;gsrc=3p&amp;ic=1&amp;jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.vi.997mSnhiNJs.O%2Fm%3D__features__%2Fam%3DQQE%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCPmVgCnYb7QaTxiF7I5sILreCm3lQ#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&amp;id=I1_1527078123693&amp;_gfid=I1_1527078123693&amp;parent=http%3A%2F%2Fbosua.vn&amp;pfname=&amp;rpctoken=35851556" data-gapiattached="true" title="G+"></iframe></div>
+                                <script type="text/javascript">(function() {
+                                        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                                        po.src = 'https://apis.google.com/js/platform.js';
+                                        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+                                    })();
+                                </script>
                             </div>
-                            <div id="sizeTb" style="border-top: 1px solid #DDD;padding: 10px 0px;color: #777">
-                                <label>
-                                    <i class="fa fa-caret-right"></i>
-                                    &nbsp; Tải bảng size</label>
-                                <p id="dialogContent" style="display: none">
-                                    <img style="max-width: 100%" src="sb_1483514660_605.png" tppabs="http://cdn.nhanh.vn/cdn/store/81/bn/sb_1483514660_605.png">
-                                </p>
-                            </div>
-                            <div class="connectSocial">
-                                <ul class="add-to-links">
+                            <br>
+                            <div class="fb-comments fb_iframe_widget fb_iframe_widget_fluid" style="width:100% !important;" data-href="http://bosua.vn/product/7293295" data-width="100%" data-numposts="5" data-colorscheme="light" fb-xfbml-state="rendered"><span style="height: 178px;"><iframe id="f2eb8a19503d4b" name="f194dcda3dd72e8" scrolling="no" title="Facebook Social Plugin" class="fb_ltr" src="https://www.facebook.com/plugins/comments.php?api_key=&amp;channel_url=http%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2FRQ7NiRXMcYA.js%3Fversion%3D42%23cb%3Df3669a05dc7ba1c%26domain%3Dbosua.vn%26origin%3Dhttp%253A%252F%252Fbosua.vn%252Ff21bffc82d1de1%26relation%3Dparent.parent&amp;colorscheme=light&amp;href=http%3A%2F%2Fbosua.vn%2Fproduct%2F7293295&amp;locale=vi_VN&amp;numposts=5&amp;sdk=joey&amp;skin=light&amp;version=v2.12&amp;width=100%25" style="border: none; overflow: hidden; height: 178px; width: 100%;"></iframe></span></div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-25" id="catSideBar">
+                    <div id="catSideBar">
+                        <div class="sidebarSingle">
+                            <h2 class="titleSingle">Danh mục</h2>
+                            <div class="productSingle">
+                                <ul>
                                     <li>
-                                        <a class="setFav" rel="7011954" href="javascript:void(0)"><i class="fa fa-heart-o"></i><span>Sản phẩm yêu thích</span></a>
+                                        <a href="/nu-pc72058.html">NỮ</a>
+                                        <ul>
+                                            <li><a href="/ao-pc72061.html">Áo</a></li>
+                                            <li><a href="/quan-pc72064.html">Quần</a></li>
+                                            <li><a href="/vay-pc72066.html">Váy</a></li>
+                                            <li><a href="/denim-pc158840.html">Denim</a></li>
+                                        </ul>
                                     </li>
-                                    <div class="clear"></div>
+                                    <li>
+                                        <a href="/nam-pc72060.html">NAM</a>
+                                        <ul>
+                                            <li><a href="/ao-pc72062.html">Áo</a></li>
+                                            <li><a href="/quan-pc72065.html">Quần</a></li>
+                                            <li><a href="/denim-pc158841.html">Denim</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="/phu-kien-pc72071.html">PHỤ KIỆN</a>
+                                        <ul>
+                                            <li><a href="/balo-pc72110.html">Balo</a></li>
+                                            <li><a href="/giay-pc72111.html">Giầy</a></li>
+                                            <li><a href="/mu-snapbacksnapfit-pc72112.html">Mũ snapback/snapfit</a></li>
+                                            <li><a href="/moc-khoa-pc72113.html">Móc khóa</a></li>
+                                            <li><a href="/do-len-pc72114.html">Đồ len</a></li>
+                                            <li><a href="/tat-pc72116.html">Tất </a></li>
+                                            <li><a href="/that-lung-pc72117.html">Thắt Lưng</a></li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                </div><!--/product-details-->
-                <div class="recommended_items"><!--recommended_items-->
-                    <h2 class="title text-center" style="color:red  ">Sản phẩm tương tự</h2>
-
-                    <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="item active">
-                                @foreach($relate_pro as $row)
-                                <div class="col-sm-4">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="{{asset('images/product/'.$row->Image1)}}" alt="{{$row->Name}}" />
-                                                <h2>{{$row->Price}}</h2>
-                                                <p>{{$row->Name}}</p>
-                                                <input type="hidden" value="{{$row->Id}}">
-                                                <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                            </div>
-                                        </div>
+                </div>
+                <div class="grid-100">
+                    <div class="featureProduct">
+                        <h2 class="titleProduct1"><span>SẢN PHẨM MIX MATCH<span></span></span></h2>
+                        <div class="listFeatureproduct">
+                            <div class="itemsProduct" data-id="7293146" data-storeid="81">
+                                <div class="imgBor">
+                                    <a class="borImgs" href="/ao-thun-ngan-tay-nam-dang-rong-in-slogan-tong-hop.-basic-den-p7293146.html"><img src="//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_02_2_02_025_118_01_10200002_04_thumb_294x440.jpg" alt="Áo thun ngắn tay nam dáng rộng in slogan tổng hợp. Basic Đen"></a>
+                                </div>
+                                <div class="toolProduct">
+                                    <div class="itemsQF">
+                                        <a class="addToCart2" cartnumber="1" psid="7293146" selid="7293146" href="javascript:void(0)">Giỏ hàng</a><a class="setFav" rel="7293146" href="javascript:void(0)">Yêu thích</a>
                                     </div>
                                 </div>
-                                    @endforeach
-
+                                <h3 class="titleProduct">
+                                    <a href="/ao-thun-ngan-tay-nam-dang-rong-in-slogan-tong-hop.-basic-den-p7293146.html">Áo thun ngắn tay nam dáng rộng in slogan tổng hợp. Basic Đen</a>
+                                </h3>
+                                <p class="mPrice">
+                                    <strong style="">399,000 VNĐ</strong>
+                                </p>
                             </div>
-                            <div class="item">
-                                @foreach($relate_pro as $row)
-                                <div class="col-sm-4">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <img src="{{asset('images/product/'.$row->Image1)}}" alt="{{$row->Name}}" />
-                                                <h2>{{$row->Price}}</h2>
-                                                <p>{{$row->Name}}</p>
-                                                <input type="hidden" value="{{$row->Id}}">
-                                                <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                            </div>
-                                        </div>
+                            <div class="itemsProduct" data-id="7225256" data-storeid="81">
+                                <div class="imgBor">
+                                    <a class="borImgs" href="/giay-sneakers-phoi-da-lo-phoi-da-lon-trang-p7225256.html"><img src="//cdn.nhanh.vn/cdn/store/81/ps/20180505/dsc_4428_600x899_thumb_294x441.jpg" alt="Giày sneakers phối da lỗ phối da lộn trắng"></a>
+                                </div>
+                                <div class="toolProduct">
+                                    <div class="itemsQF">
+                                        <a class="addToCart2" cartnumber="1" psid="7225256" selid="7225256" href="javascript:void(0)">Giỏ hàng</a><a class="setFav" rel="7225256" href="javascript:void(0)">Yêu thích</a>
                                     </div>
                                 </div>
-                                    @endforeach
-
+                                <h3 class="titleProduct">
+                                    <a href="/giay-sneakers-phoi-da-lo-phoi-da-lon-trang-p7225256.html">Giày sneakers phối da lỗ phối da lộn trắng</a>
+                                </h3>
+                                <p class="mPrice">
+                                    <strong style="">649,000 VNĐ</strong>
+                                </p>
                             </div>
+                            <div class="clear"></div>
                         </div>
-                        <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
-                            <i class="fa fa-angle-left"></i>
-                        </a>
-                        <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
-                            <i class="fa fa-angle-right"></i>
-                        </a>
                     </div>
-                </div><!--/recommended_items-->
-
+                    <div class="featureProduct">
+                        <h2 class="titleProduct1"><span>SẢN PHẨM TƯƠNG TỰ<span></span></span></h2>
+                        <div class="listFeatureproduct">
+                            <div class="itemsProduct" data-id="7137458" data-storeid="81">
+                                <div class="imgBor">
+                                    <a class="borImgs" href="/jeans-nam-dang-slim-dap-tui-hop-cao-rach-va-gau-xoa-.-trend-den-p7137458.html"><img src="//cdn.nhanh.vn/cdn/store/81/ps/20180502/1_2_21_2_06_009_118_01_10200002_01_thumb_294x441.jpg" alt="Jeans nam dáng slim đáp túi hộp cào rách và gấu xỏa . Trend đen"></a>
+                                </div>
+                                <div class="toolProduct">
+                                    <div class="itemsQF">
+                                        <a class="addToCart2" cartnumber="1" psid="7137458" selid="7137458" href="javascript:void(0)">Giỏ hàng</a><a class="setFav" rel="7137458" href="javascript:void(0)">Yêu thích</a>
+                                    </div>
+                                </div>
+                                <h3 class="titleProduct">
+                                    <a href="/jeans-nam-dang-slim-dap-tui-hop-cao-rach-va-gau-xoa-.-trend-den-p7137458.html">Jeans nam dáng slim đáp túi hộp cào rách và gấu xỏa . Trend đen</a>
+                                </h3>
+                                <p class="mPrice">
+                                    <strong style="">649,000 VNĐ</strong>
+                                </p>
+                            </div>
+                            <div class="itemsProduct" data-id="7137453" data-storeid="81">
+                                <div class="imgBor">
+                                    <a class="borImgs" href="/jeans-nam-dang-om-theu-graphic-bosua-tui-trai-than-sau.-basic-xanh-denim-nhat-p7137453.html"><img src="//cdn.nhanh.vn/cdn/store/81/ps/20180502/1_2_21_2_05_001_118_02_10600034_01_thumb_294x441.jpg" alt="Jeans nam dáng ôm thêu graphic Bosua túi trái thân sau. Basic xanh denim nhạt"></a>
+                                </div>
+                                <div class="toolProduct">
+                                    <div class="itemsQF">
+                                        <a class="addToCart2" cartnumber="1" psid="7137453" selid="7137453" href="javascript:void(0)">Giỏ hàng</a><a class="setFav" rel="7137453" href="javascript:void(0)">Yêu thích</a>
+                                    </div>
+                                </div>
+                                <h3 class="titleProduct">
+                                    <a href="/jeans-nam-dang-om-theu-graphic-bosua-tui-trai-than-sau.-basic-xanh-denim-nhat-p7137453.html">Jeans nam dáng ôm thêu graphic Bosua túi trái thân sau. Basic xanh denim nhạt</a>
+                                </h3>
+                                <p class="mPrice">
+                                    <strong style="">649,000 VNĐ</strong>
+                                </p>
+                            </div>
+                            <div class="itemsProduct" data-id="7137447" data-storeid="81">
+                                <div class="imgBor">
+                                    <a class="borImgs" href="/so-mi-denim-dai-tay-nam-dang-oversize-phoi-day-tracktape-in-typographic-bs09.-trend-navy-p7137447.html"><img src="//cdn.nhanh.vn/cdn/store/81/ps/20180502/1_2_17_2_06_005_118_23_10600034_02_thumb_294x441.jpg" alt="Sơ mi denim dài tay nam dáng oversize phối dây tracktape in typographic BS09. Trend navy"></a>
+                                </div>
+                                <div class="toolProduct">
+                                    <div class="itemsQF">
+                                        <a class="addToCart2" cartnumber="1" psid="7137447" selid="7137447" href="javascript:void(0)">Giỏ hàng</a><a class="setFav" rel="7137447" href="javascript:void(0)">Yêu thích</a>
+                                    </div>
+                                </div>
+                                <h3 class="titleProduct">
+                                    <a href="/so-mi-denim-dai-tay-nam-dang-oversize-phoi-day-tracktape-in-typographic-bs09.-trend-navy-p7137447.html">Sơ mi denim dài tay nam dáng oversize phối dây tracktape in typographic BS09. Trend navy</a>
+                                </h3>
+                                <p class="mPrice">
+                                    <strong style="">599,000 VNĐ</strong>
+                                </p>
+                            </div>
+                            <div class="itemsProduct" data-id="7012470" data-storeid="81">
+                                <div class="imgBor">
+                                    <a class="borImgs" href="/so-mi-denim-dai-tay-nam-phoi-tui-nguc-dang-suong.-basic-xanh-da-troi-nhat-p7012470.html"><img src="//cdn.nhanh.vn/cdn/store/81/ps/20180418/1_2_17_2_05_001_118_01_10600036_01_thumb_294x441.jpg" alt="Sơ mi denim dài tay nam phối túi ngực dáng suông. Basic xanh da trời nhạt"></a>
+                                </div>
+                                <div class="toolProduct">
+                                    <div class="itemsQF">
+                                        <a class="addToCart2" cartnumber="1" psid="7012470" selid="7012470" href="javascript:void(0)">Giỏ hàng</a><a class="setFav" rel="7012470" href="javascript:void(0)">Yêu thích</a>
+                                    </div>
+                                </div>
+                                <h3 class="titleProduct">
+                                    <a href="/so-mi-denim-dai-tay-nam-phoi-tui-nguc-dang-suong.-basic-xanh-da-troi-nhat-p7012470.html">Sơ mi denim dài tay nam phối túi ngực dáng suông. Basic xanh da trời nhạt</a>
+                                </h3>
+                                <p class="mPrice">
+                                    <strong style="">549,000 VNĐ</strong>
+                                </p>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <div class="clear"></div>
         </div>
+
+        <script>
+            $("#zoom_01").elevateZoom({
+                zoomWindowFadeIn: 500,
+                zoomWindowFadeOut: 500,
+                lensFadeIn: 500,
+                lensFadeOut: 500
+            });
+        </script>
+        <script type="text/javascript" src="/min/?f=s99L2pzL3RyYW5zbGF0ZS92aS12bi5qcywvanMvanF1ZXJ5L2pxdWVyeS5taW4uanMsL2pzL2xpYi5qcywvdHAvVDAwMjUvanMvanF1/ZXJ5LWEuanMsL3RwL1QwMDI1L2pzL2NlbnR1cmlvbi5qcywvdHAvVDAwMjUvanMvanF1ZXJ5LmVhc2luZy4xLjMuanMsL3RwL1Qw/MDI1L2pzL2pxdWVyeS5mbGV4c2xpZGVyLmpzLC9qcy9qcXVlcnkvc2xpbXNjcm9sbC5taW4uanMsL2pzL2pxdWVyeS9qcXVlcnkt/dWktMS4xMC4zLmN1c3RvbS5taW4uanMsL2pzL2pxdWVyeS9qcXVlcnkuY2Fyb3VGcmVkU2VsLTYuMi4xLXBhY2tlZC5qcywvanMv/anF1ZXJ5L2ZhbmN5Ym94LTIuMS41L3NvdXJjZS9qcXVlcnkuZmFuY3lib3gucGFjay5qcywvanMvanF1ZXJ5L2pxdWVyeS5sYXp5/bG9hZC5taW4uanMsL2pzL2pxdWVyeS9qcXVlcnkubnVtYmVyLm1pbi5qcywvdHAvVDAwMjUvanMvc3RvcmVzLzgxbWFpbi5qc192/NDc=/"></script><script type="text/javascript" src="/min/?f=s99L2pzL2pxdWVyeS9jbG91ZHpvb20vY2xvdWR6b29tLmpzX3YwMQ==/"></script> <script type="text/javascript" src="/min/?f=s99L3RwL1QwMDI1L2pzL3N0b3Jlcy9wdmlldzgxLmpzX3YwMw==/"></script>
+        <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.12&appId=&autoLogAppEvents=1';
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+
+
+        </script>
+
     </div>
-</section>
 @endsection
