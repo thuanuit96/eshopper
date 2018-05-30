@@ -70,14 +70,36 @@
 				      			<label for="input-id">Giá </label>
 				      			<input type="number" name="txtprice" id="inputtxtpacket" value="{{$pro->Price}}" class="form-control" >
 				      		</div>
+                            <?php $i=1; ?>
+							@foreach($pro->size as $value)
 							<div class="form-group">
-								<label for="input-id">Kích cỡ </label>
-								<input type="number" name="txtsize" id="inputtxtpacket" value="{{$pro->Size}}" class="form-control" >
+								<label for="input-id">Kích cỡ {{$i}}</label>
+								<select class="form-control" name="sltsize{{$i}}" id="sltsize{{$i}}">
+									<option value="S">S</option>
+									{{--<option value="{{$value->name}}}"selected>{{$value->name}}</option>--}}
+									<option value="L">L</option>
+									<option value="M">M</option>
+									<option value="XL">XL</option>
+
+
+								</select>
 							</div>
+								<?php $i=$i+1 ?>
+							@endforeach
+                            <?php $j=1; ?>
+							@foreach($pro->color as $value)
 							<div class="form-group">
 								<label for="input-id">Màu sắc </label>
-								<input type="text" name="txtcolor" id="inputtxtpacket" value="{{$pro->Color}}" class="form-control" >
+								<select class="form-control" name="sltcolor{{$i}}" id="sltcolor{{$j}}">
+									<option value="Đỏ">Đỏ</option>
+									<option value="Vàng">Vàng</option>
+									<option value="Xanh">Xanh</option>
+									<option value="Trắng">Trắng</option>
+								</select>
+
 							</div>
+                                <?php $j=$j++ ?>
+							@endforeach
 							<div class="form-group">
 								<label for="input-id">Mô tả </label>
 							<textarea name="txtdescription" id="inputTxtre_Intro" class="form-control"  rows="2">{!! isset($pro->Description) ? $pro->Description :'null' !!}</textarea>
@@ -93,7 +115,7 @@
 							</script>
 							<div class="form-group">
 								<label for="input-id">Khuyễn mãi</label>
-								<input type="text" name="txtdiscount" id="inputTxtname" class="form-control" value="{{$pro->Discount}}"  required="required">
+								<input type="number" name="txtdiscount" id="inputTxtname" class="form-control" value="{{$pro->Discount}}" placeholder="Nhập lượng % khuyến mãi">
 							</div>
 							<div class="form-group">
 								<label for="input-id">Trạng thái</label>
@@ -160,9 +182,11 @@
 				})
             })
 
-
+            $('#sltsize1').onchange(function (){
+                // conssole.log($(this).val());
+                alert('aa');
+            })
         })
+
 	</script>
-	{{$pro->subcategory->get_category->Id}}
-	{{$pro->subcategory->CategoryId}}
 @endsection

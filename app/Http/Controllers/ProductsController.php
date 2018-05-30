@@ -7,6 +7,8 @@ use App\Products;
 use App\Categories;
 use App\SubCategory;
 use DateTime,File,Input,DB;
+use App\product_colors;
+use App\product_sizes;
 
 
 class ProductsController extends Controller
@@ -99,19 +101,29 @@ class ProductsController extends Controller
         $pro = Products::find($id);
         if($pro->Image3){
             $file_path = public_path('images/product/').$pro->Image3;
-            unlink($file_path);
+            if (file_exists($file_path))
+            {
+                unlink($file_path);
+            }
+
         }
 
         if($pro->Image2) {
             $file_path = public_path('images/product/') . $pro->Image2;
-            unlink($file_path);
+            if (file_exists($file_path))
+            {
+                unlink($file_path);
+            }
         }
         if($pro->Image1) {
-            $file_path = public_path('images/product/') . $pro->Image1;
-            unlink($file_path);
+            $file_path = public_path('images/product/'. $pro->Image1) ;
+            if (file_exists($file_path))
+            {
+                unlink($file_path);
+            }
         }
         $pro->delete();
-        return redirect('admin/sanpham/all')
+        return back()
             ->with(['flash_level'=>'result_msg','flash_massage'=>'Xóa thành công']);
     }
     public function getedit($id)
@@ -137,10 +149,8 @@ class ProductsController extends Controller
 
         $pro = Products::find($rq->txtid);
         $pro->Name=$rq->txtname;
-        $pro->slug = str_slug($rq->txtname,'-');
+        $pro->Slug = str_slug($rq->txtname,'-');
         $pro->Price = $rq->txtprice;
-        $pro->Size = $rq->txtsize;
-        $pro->Color = $rq->txtcolor;
         $pro->Description = $rq->txtdescription;
         $pro->Discount = $rq->txtdiscount;
         $pro->Status = $rq->txtstatus;
@@ -190,11 +200,24 @@ class ProductsController extends Controller
             $pro->Image3 = $filename;
             $rq->file('txtimg3')->move('images/product/',$filename);
         }
+    $size=DB::table('Products')
+    ->join('product_sizes', 'Products.Id', '=', 'product_sizes.product_id')
+    ->where('product_id', '=',$rq->txtid)->get();
+
+        $i=1;
+       foreach ($size as $value){
+           $s1=product_sizes::findorfail($value->id);
+           $s1->name=$rq->input('sltsize'.$i);
+          $s1->save();
+
+      $i++;
+
+       }
 
         $pro->save();
-
 
         return redirect('admin/sanpham/all')
             ->with(['flash_level'=>'result_msg','flash_massage'=>' Đã lưu !']);
     }
+
 }

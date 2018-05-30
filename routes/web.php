@@ -22,8 +22,8 @@ Route::get('product_detail/{slug}','MainController@getproduct_detail')->name('pr
 Route::get('contact', function () {
     return view('Page.contact');
 });
-Route::get('checkout','MainController@checkout')->name('checkout');
-Route::post('checkout','MainController@postcheckout')->name('postcheckout');
+Route::get('checkout','CheckoutController@checkout')->name('checkout');
+Route::post('checkout','CheckoutController@postcheckout')->name('postcheckout');
 
 Route::get('cart/{id}','MainController@cart')->name('cart');
 Route::get('list-cart','MainController@listcart')->name('list-cart');
@@ -31,7 +31,6 @@ Route::post('cart_delete','MainController@cart_delete')->name('cart_delete');
 Route::get('update/{id}','MainController@update');
 Route::get('/redirect/{social}', 'SocialAuthController@redirect');
 Route::get('/callback/{social}', 'SocialAuthController@callback');
-Route::get('phpdom','DomController@test');
 Route::post('customLogin','MainController@login')->name('customLogin');
 Route::post('customRegister','MainController@register')->name('customRegister');
 Route::get('logout','MainController@logout')->name('logout');
@@ -55,6 +54,9 @@ Route::get('/home', 'HomeController@index')->name('home');
     //    return view('Admin.home');
     //});
 Route::group(['prefix' => 'admin'], function() {
+    Route::get('login', ['as' => 'getLogin', 'uses' => 'Admin\AdminLoginController@getLogin']);
+    Route::post('login', ['as' => 'postLogin', 'uses' => 'Admin\AdminLoginController@postLogin']);
+    Route::get('/logout', ['as' => 'getLogout', 'uses' => 'Admin\AdminLoginController@getLogout']);
 
     Route::get('/home', function() {
         return view('Admin.home');
@@ -81,12 +83,12 @@ Route::group(['prefix' => 'admin'], function() {
         Route::get('/edit/{id}',['as'  =>'geteditpro','uses' => 'ProductsController@getedit'])->where('id','[0-9]+');
         Route::post('edit/{id}',['as' =>'posteditpro','uses' => 'ProductsController@postedit'])->where('id','[0-9]+');
     });
-    // -------------------- quan ly danh muc-----------------------------
+    // -------------------- quan ly tin tuc-----------------------------
     Route::group(['prefix' => '/news'], function() {
+        Route::get('/',['as'       =>'getnews','uses' => 'NewsController@getlist']);
         Route::get('/add',['as'        =>'getaddnews','uses' => 'NewsController@getadd']);
         Route::post('/add',['as'       =>'postaddnews','uses' => 'NewsController@postadd']);
 
-        Route::get('/',['as'       =>'getnews','uses' => 'NewsController@getlist']);
         Route::get('/del/{id}',['as'   =>'getdellnews','uses' => 'NewsController@getdel'])->where('id','[0-9]+');
 
         Route::get('/edit/{id}',['as'  =>'geteditnews','uses' => 'NewsController@getedit'])->where('id','[0-9]+');
@@ -95,11 +97,11 @@ Route::group(['prefix' => 'admin'], function() {
     // -------------------- quan ly đơn đặt hàng--------------------
     Route::group(['prefix' => '/donhang'], function() {;
 
-        Route::get('',['as'       =>'getpro','uses' => 'OrdersController@getlist']);
-        Route::get('/del/{id}',['as'   =>'getdeloder','uses' => 'OdersController@getdel'])->where('id','[0-9]+');
+        Route::get('',['as'       =>'getorder','uses' => 'OrdersController@getlist']);
+        Route::get('/del/{id}',['as'   =>'getdelorder','uses' => 'OrdersController@getdel'])->where('id','[0-9]+');
 
-        Route::get('/detail/{id}',['as'  =>'getdetail','uses' => 'OdersController@getdetail'])->where('id','[0-9]+');
-        Route::post('/detail/{id}',['as' =>'postdetail','uses' => 'OdersController@postdetail'])->where('id','[0-9]+');
+        Route::get('detail/{id}',['as'  =>'getdetail','uses' => 'OrdersController@getdetail'])->where('id','[0-9]+');
+        Route::post('/detail/{id}',['as' =>'postdetail','uses' => 'OrdersController@postdetail'])->where('id','[0-9]+');
     });
     // -------------------- quan ly thong tin khach hang--------------------
     Route::group(['prefix' => '/khachhang'], function() {;

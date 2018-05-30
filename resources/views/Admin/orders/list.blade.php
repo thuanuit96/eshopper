@@ -38,15 +38,15 @@
 										<th>Tên k/h</th>
 										<th>Địa chỉ</th>
 										<th>Điện thoại</th>
-										<th class="email" style="width: 10%;">Email</th>
+										<th class="email">Email</th>
 										<th>Ngày đặt</th>
 										<th>Thành tiền</th>
 										<th>H/t thanh toán</th>
-
-
+										<th> Thanh toán</th>
 										<th>Ghi chú</th>
 
 										<th>Trạng thái</th>
+										<th>Xác nhận</th>
 										<th>Action</th>
 									</tr>
 								</thead>
@@ -58,26 +58,22 @@
 											<td>{!!$row->Address!!}</td>
 											<td>{!!$row->PhoneNumber!!}</td>
 											<td>{!!$row->Email!!}</td>
-
 											<td>{!!$row->Order_date!!}</td>
-
-
-											<td>{!!$row->Total!!} Vnd</td>
+											<td><span style="color: red;font-weight: bold">{!!$row->Total!!}</span> Vnd</td>
 											<td>{!! $row->Payment_Method !!}</td>
-											<td>{!! $row->Note !!}</td>
-
 											<td>{!! $row->Payment_Status !!}</td>
-
-											{{--<td>--}}
-												{{--@if($row->status ==0)--}}
-													{{--<span style="color:#d35400;">Chưa xác nhận</span>--}}
-												{{--@else--}}
-													{{--<span style="color:#27ae60;"> Đã xác nhận</span>--}}
-												{{--@endif--}}
-											{{--</td>--}}
+											<td>{!! $row->Note !!}</td>
+											<td>{!! $row->Payment_Status !!}</td>
 											<td>
-											    <a href="{!!url('admin/donhang/detail/'.$row->id)!!}" title="Chi tiết">Chi tiết  </a> &nbsp;
-											    <a href="{!!url('admin/donhang/del/'.$row->id)!!}"  title="Xóa" onclick="return xacnhan('Xóa danh mục này ?')"> Hủy bỏ</a>
+												@if($row->Confirm =='Chưa xác nhận')
+													<span style="color:#d35400;">Chưa xác nhận</span>
+												@else
+													<span style="color:#27ae60;"> Đã xác nhận</span>
+												@endif
+											</td>
+											<td>
+											    <a href="{!!url('admin/donhang/detail/'.$row->Id)!!}" title="Chi tiết">Chi tiết  </a> &nbsp;
+											    <a href="{!!url('admin/donhang/del/'.$row->Id)!!}"  title="Hủy đơn hàng" onclick="return xacnhan('Xóa danh mục này ?')"> Hủy</a>
 											</td>
 										</tr>
 									@endforeach

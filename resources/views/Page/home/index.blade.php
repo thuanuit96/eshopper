@@ -13,7 +13,6 @@
     {{--<link href="{{asset('css/cart/custom.css')}}" rel="stylesheet">--}}
     <link href="{{asset('css/htshop/common.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
-    <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
     <script src="{{asset('js/jquery.elevatezoom.js')}}"></script>
     <link href="{{asset('css/responsive.css')}}" rel="stylesheet">

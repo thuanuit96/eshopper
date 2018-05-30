@@ -16,6 +16,7 @@ class Promotion extends Migration
         Schema::create('Promotion',function (Blueprint $table){
             $table->increments('Id');
             $table->string('Code')->nullable();
+            $table->string('Value')->nullable();
             $table->timestamps();
 
 

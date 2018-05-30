@@ -1,5 +1,6 @@
 @extends('Admin.layouts.master')
 @section('content')
+	<span class="glyphicon glyphicon-search"></span>
 <!-- main content - noi dung chinh trong chu -->
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
 		<div class="row">
@@ -35,6 +36,7 @@
 					</div>
 					@if (count($errors) > 0)
 					    <div class="alert alert-danger">
+							<a class="close" data-dismiss="alert" href="#">x</a>
 					        <ul>
 					            @foreach ($errors->all() as $error)
 					                <li>{{ $error }}</li>
@@ -67,17 +69,28 @@
 								<tbody>
 									@foreach($pro as $row)
 										<tr>
+
 											<td>{!!$row->Id!!}</td>
 											<td>{!!$row->Name!!}</td>
 											<td>{!!$row->Description!!}</td>
-											<td>{!!$row->Color!!}</td>
-											<td>{!!$row->Size!!}</td>
-											<td>{!!$row->Price!!}</td>
+
+												<td>
+													@foreach($row->color as $row1)
+													{!!$row1->name!!}.
+
+													@endforeach
+												</td>
+											<td>
+											@foreach($row->size as $row1)
+												{!!$row1->name!!},
+											@endforeach
+											</td>
+											<td>{!!$row->Price!!}&nbsp;VND</td>
 											{{--<td>{!!$row->category->name!!}</td>--}}
 											<td>
 												{!!$row->Status!!}</td>
 
-											<td> <img src="{!!url('images/product/'.$row->Image1)!!}" alt="iphone" width="50" height="40"></td>
+											<td> <img src="{!!url('images/product/'.$row->Image1)!!}" alt="{!!$row->Name!!}" width="50" height="40"></td>
 											<td>
 											    <a href="{!!url('admin/sanpham/edit/'.$row->Id)!!}" title="Sửa"><span class="glyphicon glyphicon-edit">edit</span> </a>
 											    <a href="{!!url('admin/sanpham/del/'.$row->Id)!!}"  title="Xóa" onclick="return xacnhan('Xóa danh mục này ?')"><span class="glyphicon glyphicon-remove">remove</span> </a>

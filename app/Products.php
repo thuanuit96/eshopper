@@ -32,5 +32,7 @@ class Products extends Model
 
     public function size(){
         return $this->hasMany('App\product_sizes','product_id','Id');
+
     }
+
 }

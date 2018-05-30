@@ -15,18 +15,14 @@ class News extends Migration
     {
         Schema::create('News',function (Blueprint $table){
             $table->increments('Id');
-            $table->string('Title');
-            $table->string('Slug');
-            $table->string('Author');
-             $table->string('Intro');
-            $table->longText('Content1');
-            $table->longText('Content2');
-
-            $table->longText('Content3');
-
-
-            $table->string('Images');
-
+            $table->string('Title')->nullable();
+            $table->string('Slug')->nullable();
+            $table->string('Author')->nullable();
+             $table->string('Intro')->nullable();
+            $table->longText('Content')->nullable();
+            $table->string('Status')->nullable();
+            $table->integer('user_id')->nullable();
+            $table->string('Images')->nullable();
             $table->timestamps();
 
         });

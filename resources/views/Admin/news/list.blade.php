@@ -47,10 +47,10 @@
 								<tbody>
 								@foreach($data as $row)
 									<tr>
-										<td>{!!$row->id!!}</td>
-										<td> <img src="{!!url('uploads/news/'.$row->images)!!}" alt="" width="40" height="40"> </td>
-										<td>{!!$row->title!!}</td>
-										<td><small>{!!$row->intro!!}</small></td>
+										<td>{!!$row->Id!!}</td>
+										<td> <img src="{!!url('images/news/'.$row->Images)!!}" alt="" width="40" height="40"> </td>
+										<td>{!!$row->Title!!}</td>
+										<td><small>{!!$row->Intro!!}</small></td>
 										<td style="width: 90px;">
 											@if($row->status==1)
 											Hiển thị
@@ -59,8 +59,8 @@
 											@endif
 										</td>
 										<td style="width: 120px;">
-										    <a href="{!!url('admin/news/edit/'.$row->id)!!}" title="Sửa"><span class="glyphicon glyphicon-edit">edit</span> </a>
-										    <a href="{!!url('admin/news/del/'.$row->id)!!}"  title="Xóa" onclick="return xacnhan('Xóa danh mục này ?')"><span class="glyphicon glyphicon-remove">remove</span> </a>
+										    <a href="{!!url('admin/news/edit/'.$row->Id)!!}" title="Sửa"><span class="glyphicon glyphicon-edit">edit</span> </a>
+										    <a href="{!!url('admin/news/del/'.$row->Id)!!}"  title="Xóa" onclick="return xacnhan('Xóa danh mục này ?')"><span class="glyphicon glyphicon-remove">remove</span> </a>
 										</td>
 									</tr>	
 								@endforeach								

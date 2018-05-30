@@ -13,15 +13,15 @@ class OrderDetail extends Migration
      */
     public function up()
     {
-        Schema::create('OrderDetail',function (Blueprint $table){
+        Schema::create('Order_Detail',function (Blueprint $table){
             $table->increments('Id');
             $table->integer('OrderId')->unsigned();
-            $table->integer('ProductID')->unsigned();
+            $table->integer('ProductId')->unsigned();
             $table->float('Quantity')->nullable();
             $table->float('Unit_Price')->nullable();
             $table->timestamps();
-            $table->foreign('OrderId')->references('Id')->on('Order');
-            $table->foreign('ProductId')->references('Id')->on('Products');
+            $table->foreign('OrderId')->references('Id')->on('Order')->onDelete('cascade');
+            $table->foreign('ProductId')->references('Id')->on('Products')->onDelete('cascade');
 
 
 

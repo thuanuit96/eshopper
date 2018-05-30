@@ -33,7 +33,7 @@
 									<thead>
 										<tr>
 											<th>ID</th>
-											<th> Họ-tên khách hàng</th>
+											<th> Họ tên khách hàng</th>
 											<th>Địa chỉ</th>
 											<th>Điện thoại</th>
 											<th>Ngày đặt</th>
@@ -42,12 +42,12 @@
 									</thead>
 									<tbody>
 										<tr>
-											<td>{!!$oder->id!!}</td>
-											<td>{!!$oder->user->name!!}</td>
-											<td>{!!$oder->user->address!!}</td>
-											<td>{!!$oder->user->phone!!}</td>
-											<td>{!!$oder->created_at!!}</td>
-											<td>{!! number_format($oder->total) !!} Vnđ</td>
+											<td>{!!$order->Id!!}</td>
+											<td>{!!$order->Name!!}</td>
+											<td>{!!$order->Address!!}</td>
+											<td>{!!$order->PhoneNumber!!}</td>
+											<td>{!!$order->created_at!!}</td>
+											<td>{!! number_format(floatval($order->Total),3) !!} Vnđ</td>
 										</tr>
 									</tbody>
 								</table>
@@ -60,10 +60,9 @@
 								<table class="table table-hover">
 									<thead>
 										<tr>										
-											<th>ID</th>										
+											<th>Mã sp</th>
 											<th>Hình ảnh</th>
 											<th>Tên sản phẩm</th>
-											<th>Tóm tắt chức năng</th>
 											<th> Số lượng </th>
 											<th>Giá bán</th>
 											<th>Trạng thái</th>
@@ -71,26 +70,25 @@
 										</tr>
 									</thead>
 									<tbody>
-										@foreach($data as $row)
+										@foreach($order_detail as $row)
 											<tr>
-												<td>{!!$row->id!!}</td>
-												<td> <img src="{!!url('uploads/products/'.$row->images)!!}" alt="iphone" width="50" height="40"></td>
-												<td>{!!$row->name!!}</td>
-												<td>{!!$row->intro!!}</td>
-												<td>{!!$row->qty!!} </td>
-												<td>{!! number_format($row->price) !!} Vnđ</td>
+												<td>{!!$row->Code!!}</td>
+												<td> <img src="{!!asset('images/product/'.$row->Image1)!!}" alt="iphone" width="50" height="40"></td>
+												<td>{!!$row->Name!!}</td>
+												<td>{!!$row->Quantity	!!} </td>
+												<td>{!! number_format($row->Price) !!} Vnđ</td>
 												<td>
-													@if($row->status ==1)
+													@if($row->Status =='Còn hàng')
 														<span style="color:blue;">Còn hàng</span>
 													@else
 														<span style="color:#27ae60;"> Tạm hết</span>
 													@endif
 												</td>
 												<td>
-												    <a href="{!!url('')!!}"  title="Xóa" onclick="return xacnhan('Xóa danh mục này ?')"><span class="glyphicon glyphicon-remove">remove</span> </a>
+													<a href="{!!url('admin/sanpham/del/'.$row->Id)!!}"  title="Xóa" onclick="return xacnhan('Xóa danh mục này ?')"><span class="glyphicon glyphicon-remove">remove</span> </a>
 												</td>
 											</tr>
-										@endforeach								
+										@endforeach
 									</tbody>
 								</table>
 							</div>

@@ -27,7 +27,6 @@ class Products extends Migration
             $table->string('Image2')->nullable();
             $table->string('Image3')->nullable();
             $table->integer('SubCategoryId')->unsigned()->nullable();
-            $table->integer('CustomerId')->unsigned()->nullable();
             $table->timestamps();
 
 

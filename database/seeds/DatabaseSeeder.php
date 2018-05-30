@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
         $this->call(SubCategories::class);
         $this->call(Products::class);
                 $this->call(news::class);
+        $this->call(staff::class);
+
 
 
 

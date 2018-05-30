@@ -21,11 +21,12 @@ class Order extends Migration
             $table->string('Address')->nullable();
             $table->string('PhoneNumber')->nullable();
             $table->date('Order_date')->nullable();
-            $table->float('Total')->nullable();
+            $table->string('Total')->nullable();
             $table->string('Note')->nullable();
+            $table->string('Confirm')->nullable();
             $table->string('Payment_Method')->nullable();
             $table->string('Payment_Status')->nullable();
-            $table->integer('Order_Status')->unsigned();
+            $table->string('Status')->nullable();
             $table->timestamps();
 
 
