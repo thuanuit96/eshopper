@@ -32,6 +32,7 @@ class MainController extends Controller
          'name'=>$request->username,
          'password'=>$request->password,
      ];
+
      if(Auth::attempt($data)){
 
          Session::put('account',Auth::user()->name);

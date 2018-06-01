@@ -18,13 +18,14 @@ class Staff extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('code');
-            $table->string('email');
+            $table->string('email')->unique();;
             $table->string('password');
             $table->string('phone');
             $table->string('sex');
             $table->string('birthday');
             $table->string('address');
             $table->integer('level')->default(0);
+            $table->rememberToken();
             $table->timestamps();
 
         });

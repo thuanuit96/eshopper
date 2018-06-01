@@ -21,6 +21,7 @@
 					@if (count($errors) > 0)
 				    	<div class="alert alert-danger">
 					        <ul>
+								<a class="close" data-dismiss="alert" href="#">x</a>
 					            @foreach ($errors->all() as $error)
 					                <li>{{ $error }}</li>
 					            @endforeach

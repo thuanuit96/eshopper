@@ -18,7 +18,6 @@
                                         <label>
                                             Họ và tên: *
                                             <div class="form-validation-field-0formError parentFormformCheckOut formError" style="opacity: 0.87; position: absolute; top: 72px; left: 189px; margin-top: -35px;">
-                                                <div class="formErrorContent">* Trường này bắt buộc<br></div>
                                                 <div class="formErrorArrow">
                                                     <div class="line10">
                                                         <!-- -->

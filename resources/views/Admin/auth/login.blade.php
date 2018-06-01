@@ -7,6 +7,13 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Đăng nhập Admin</div>
                 <div class="panel-body">
+                    @if(Session::has('status'))
+                        <div class="alert alert-block alert-error">
+                            <div class="alert alert-danger">
+                            <a class="close" data-dismiss="alert" href="#">x</a>
+                            {{Session::get('status')}}
+                        </div>
+                    @endif
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('admin/login') }}">
                         {{ csrf_field() }}
 

@@ -11,11 +11,12 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel-heading">
-					Danh sách đơn đặt hàng						
+					Danh sách nhân viên
 				</div>
 				<div class="panel panel-default">					
 					@if (count($errors) > 0)
 					    <div class="alert alert-danger">
+							<a class="close" data-dismiss="alert" href="#">x</a>
 					        <ul>
 					            @foreach ($errors->all() as $error)
 					                <li>{{ $error }}</li>
@@ -49,7 +50,7 @@
 											<td>{!!$row->name!!}</td>
 											<td>{!!$row->email!!}</td>
 											<td>
-												@if($row->level ==100)
+												@if($row->level ==1)
 													<span style="color:#d35400;">Quản trị hệ thống</span>
 												@else
 													<span style="color:#27ae60;">Quản trị viên</span>

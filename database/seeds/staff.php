@@ -15,7 +15,7 @@ class staff extends Seeder
             'name' => 'admin',
             'code'=>'admin001',
             'email'=>'thuanuit96@gmail.com',
-            'password'=>bcrypt(123456),
+            'password'=>bcrypt('123456'),
             'phone'=>'0973962984',
             'sex'=>'name',
             'birthday'=>'06/01/1996',

@@ -11,12 +11,9 @@ class AdminLoginController extends Controller
 {
     public function getLogin()
     {
-        if (Auth::check()) {
-            // nếu đăng nhập thàng công thì
-            return redirect('admin/home');
-        } else {
-            return view('admin.auth.login');
-        }
+//
+        return view('admin.auth.login');
+
 
     }
     public function postLogin(LoginRequest $request)
@@ -24,9 +21,9 @@ class AdminLoginController extends Controller
         $login = [
             'email' => $request->email,
             'password' => $request->password,
-            'level' => 1,
         ];
-        if (Auth::attempt($login)) {
+
+        if (Auth::guard('admins')->attempt($login)) {
             return redirect('admin/home');
         } else {
             return redirect()->back()->with('status', 'Email hoặc Password không chính xác');
@@ -34,7 +31,7 @@ class AdminLoginController extends Controller
     }
     public function getLogout()
     {
-        Auth::logout();
+        Auth::guard('admins')->logout();
         return redirect()->route('getLogin');
     }
 }

@@ -1,5 +1,12 @@
 @extends('Admin.layouts.master')
 @section('content')
+	<?php
+          $order = DB::table('order')->count('*');
+          $order_new = DB::table('order')->where('Confirm','Chưa xác nhận')->count('*');
+          $mem = DB::table('users')->count('*');
+          $pro = DB::table('products')->count('*');
+          ?>
+
     <!-- main content - noi dung chinh trong chu -->
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
 		<div class="row">
@@ -22,7 +29,8 @@
 							<svg class="glyph stroked app-window-with-content"><use xlink:href="#stroked-app-window-with-content"/></svg>
 						</div>
 						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">order</div>
+							<div class="large">{!!$order!!}</div>
+
 							<div class="text-muted"> tổng đơn hàng</div>
 						</div>
 					</div>
@@ -35,7 +43,7 @@
 							<svg class="glyph stroked app-window-with-content"><use xlink:href="#stroked-app-window-with-content"/></svg>
 						</div>
 						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">order_new</div>
+							<div class="large">{!! $order_new	 !!}</div>
 							<div class="text-muted"> Đơn hàng mới</div>
 						</div>
 					</div>
@@ -48,7 +56,7 @@
 							<svg class="glyph stroked bag"><use xlink:href="#stroked-bag"/></svg>
 						</div>
 						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">SSan pham</div>
+							<div class="large">{!! $pro !!}</div>
 							<div class="text-muted">Sản phẩm</div>
 						</div>
 					</div>
@@ -61,7 +69,7 @@
 							<svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg>
 						</div>
 						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">mem</div>
+							<div class="large">{!! $mem !!}</div>
 							<div class="text-muted">Khách hàng</div>
 						</div>
 					</div>
@@ -123,7 +131,7 @@
 								
 		<div class="row">
 			<div class="col-md-8">
-				<small>Coppyright 2016</small>
+				<small>Coppyright 2018</small>
 			</div><!--/.col-->
 		</div><!--/.row-->
 	</div>	<!--/.main-->

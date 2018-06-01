@@ -53,89 +53,94 @@ Route::get('/home', 'HomeController@index')->name('home');
     //Route::get('/admin', function (){
     //    return view('Admin.home');
     //});
-Route::group(['prefix' => 'admin'], function() {
-    Route::get('login', ['as' => 'getLogin', 'uses' => 'Admin\AdminLoginController@getLogin']);
-    Route::post('login', ['as' => 'postLogin', 'uses' => 'Admin\AdminLoginController@postLogin']);
-    Route::get('/logout', ['as' => 'getLogout', 'uses' => 'Admin\AdminLoginController@getLogout']);
+Route::get('admin/login', ['as' => 'getLogin', 'uses' => 'Admin\AdminLoginController@getLogin']);
+Route::post('admin/login', ['as' => 'postLogin', 'uses' => 'Admin\AdminLoginController@postLogin']);
+Route::get('admin/logout', ['as' => 'getLogout', 'uses' => 'Admin\AdminLoginController@getLogout']);
 
-    Route::get('/home', function() {
-        return view('Admin.home');
-    });
-    // -------------------- quan ly danh muc----------------------
-    Route::group(['prefix' => 'danhmuc'], function() {
-        Route::get('add',['as'        =>'getaddcat','uses' => 'CategoryController@getadd']);
-        Route::post('add',['as'       =>'postaddcat','uses' => 'CategoryController@postadd']);
+    Route::group(['prefix' => 'admin','middleware'=>'admin'], function () {
 
-        Route::get('/',['as'       =>'getcat','uses' => 'CategoryController@getlist']);
-        Route::get('del/{id}',['as'   =>'getdellcat','uses' => 'CategoryController@getdel'])->where('id','[0-9]+');
 
-        Route::get('edit/{id}',['as'  =>'geteditcat','uses' => 'CategoryController@getedit'])->where('id','[0-9]+');
-        Route::post('edit/{id}',['as' =>'posteditcat','uses' => 'CategoryController@postedit'])->where('id','[0-9]+');
-    });
-    // -------------------- quan ly sản phẩm--------------------
-    Route::group(['prefix' => '/sanpham'], function() {
-        Route::get('/add',['as'        =>'getaddpro','uses' => 'ProductsController@getadd']);
-        Route::post('/add',['as'       =>'postaddpro','uses' => 'ProductsController@postadd']);
+        Route::get('/home', function () {
+            return view('Admin.home');
+        });
+        // -------------------- quan ly danh muc----------------------
+        Route::group(['prefix' => 'danhmuc'], function () {
+            Route::get('add', ['as' => 'getaddcat', 'uses' => 'CategoryController@getadd']);
+            Route::post('add', ['as' => 'postaddcat', 'uses' => 'CategoryController@postadd']);
 
-        Route::get('/{loai}',['as'       =>'getpro','uses' => 'ProductsController@getlist']);
-        Route::get('/del/{id}',['as'   =>'getdellpro','uses' => 'ProductsController@getdel'])->where('id','[0-9]+');
+            Route::get('/', ['as' => 'getcat', 'uses' => 'CategoryController@getlist']);
+            Route::get('del/{id}', ['as' => 'getdellcat', 'uses' => 'CategoryController@getdel'])->where('id', '[0-9]+');
 
-        Route::get('/edit/{id}',['as'  =>'geteditpro','uses' => 'ProductsController@getedit'])->where('id','[0-9]+');
-        Route::post('edit/{id}',['as' =>'posteditpro','uses' => 'ProductsController@postedit'])->where('id','[0-9]+');
-    });
-    // -------------------- quan ly tin tuc-----------------------------
-    Route::group(['prefix' => '/news'], function() {
-        Route::get('/',['as'       =>'getnews','uses' => 'NewsController@getlist']);
-        Route::get('/add',['as'        =>'getaddnews','uses' => 'NewsController@getadd']);
-        Route::post('/add',['as'       =>'postaddnews','uses' => 'NewsController@postadd']);
+            Route::get('edit/{id}', ['as' => 'geteditcat', 'uses' => 'CategoryController@getedit'])->where('id', '[0-9]+');
+            Route::post('edit/{id}', ['as' => 'posteditcat', 'uses' => 'CategoryController@postedit'])->where('id', '[0-9]+');
+        });
+        // -------------------- quan ly sản phẩm--------------------
+        Route::group(['prefix' => '/sanpham'], function () {
+            Route::get('/add', ['as' => 'getaddpro', 'uses' => 'ProductsController@getadd']);
+            Route::post('/add', ['as' => 'postaddpro', 'uses' => 'ProductsController@postadd']);
 
-        Route::get('/del/{id}',['as'   =>'getdellnews','uses' => 'NewsController@getdel'])->where('id','[0-9]+');
+            Route::get('/{loai}', ['as' => 'getpro', 'uses' => 'ProductsController@getlist']);
+            Route::get('/del/{id}', ['as' => 'getdellpro', 'uses' => 'ProductsController@getdel'])->where('id', '[0-9]+');
 
-        Route::get('/edit/{id}',['as'  =>'geteditnews','uses' => 'NewsController@getedit'])->where('id','[0-9]+');
-        Route::post('/edit/{id}',['as' =>'posteditnews','uses' => 'NewsController@postedit'])->where('id','[0-9]+');
-    });
-    // -------------------- quan ly đơn đặt hàng--------------------
-    Route::group(['prefix' => '/donhang'], function() {;
+            Route::get('/edit/{id}', ['as' => 'geteditpro', 'uses' => 'ProductsController@getedit'])->where('id', '[0-9]+');
+            Route::post('edit/{id}', ['as' => 'posteditpro', 'uses' => 'ProductsController@postedit'])->where('id', '[0-9]+');
+        });
+        // -------------------- quan ly tin tuc-----------------------------
+        Route::group(['prefix' => '/news'], function () {
+            Route::get('/', ['as' => 'getnews', 'uses' => 'NewsController@getlist']);
+            Route::get('/add', ['as' => 'getaddnews', 'uses' => 'NewsController@getadd']);
+            Route::post('/add', ['as' => 'postaddnews', 'uses' => 'NewsController@postadd']);
 
-        Route::get('',['as'       =>'getorder','uses' => 'OrdersController@getlist']);
-        Route::get('/del/{id}',['as'   =>'getdelorder','uses' => 'OrdersController@getdel'])->where('id','[0-9]+');
+            Route::get('/del/{id}', ['as' => 'getdellnews', 'uses' => 'NewsController@getdel'])->where('id', '[0-9]+');
 
-        Route::get('detail/{id}',['as'  =>'getdetail','uses' => 'OrdersController@getdetail'])->where('id','[0-9]+');
-        Route::post('/detail/{id}',['as' =>'postdetail','uses' => 'OrdersController@postdetail'])->where('id','[0-9]+');
-    });
-    // -------------------- quan ly thong tin khach hang--------------------
-    Route::group(['prefix' => '/khachhang'], function() {;
+            Route::get('/edit/{id}', ['as' => 'geteditnews', 'uses' => 'NewsController@getedit'])->where('id', '[0-9]+');
+            Route::post('/edit/{id}', ['as' => 'posteditnews', 'uses' => 'NewsController@postedit'])->where('id', '[0-9]+');
+        });
+        // -------------------- quan ly đơn đặt hàng--------------------
+        Route::group(['prefix' => '/donhang'], function () {
+            ;
 
-        Route::get('',['as'       =>'getmem','uses' => 'UsersController@getlist']);
-        Route::get('/del/{id}',['as'   =>'getdelmem','uses' => 'UsersController@getdel'])->where('id','[0-9]+');
+            Route::get('', ['as' => 'getorder', 'uses' => 'OrdersController@getlist']);
+            Route::get('/del/{id}', ['as' => 'getdelorder', 'uses' => 'OrdersController@getdel'])->where('id', '[0-9]+');
 
-        Route::get('/edit/{id}',['as'  =>'geteditmem','uses' => 'UsersController@getedit'])->where('id','[0-9]+');
-        Route::post('/edit/{id}',['as' =>'posteditmem','uses' => 'UsersController@postedit'])->where('id','[0-9]+');
-    });
-    // -------------------- quan ly thong nhan vien--------------------
-    Route::group(['prefix' => '/nhanvien'], function() {;
+            Route::get('detail/{id}', ['as' => 'getdetail', 'uses' => 'OrdersController@getdetail'])->where('id', '[0-9]+');
+            Route::post('/detail/{id}', ['as' => 'postdetail', 'uses' => 'OrdersController@postdetail'])->where('id', '[0-9]+');
+        });
+        // -------------------- quan ly thong tin khach hang--------------------
+        Route::group(['prefix' => '/khachhang'], function () {
+            ;
 
-        Route::get('',['as'       =>'getnv','uses' => 'Admin_usersController@getlist']);
-        Route::get('/del/{id}',['as'   =>'getdelnv','uses' => 'Admin_usersController@getdel'])->where('id','[0-9]+');
+            Route::get('', ['as' => 'getmem', 'uses' => 'UsersController@getlist']);
+            Route::get('/del/{id}', ['as' => 'getdelmem', 'uses' => 'UsersController@getdel'])->where('id', '[0-9]+');
 
-        Route::get('/edit/{id}',['as'  =>'geteditnv','uses' => 'Admin_usersController@getedit'])->where('id','[0-9]+');
-        Route::post('/edit/{id}',['as' =>'posteditnv','uses' => 'Admin_usersController@postedit'])->where('id','[0-9]+');
-    });
-    Route::group(['prefix' => '/ajax'], function() {
+            Route::get('/edit/{id}', ['as' => 'geteditmem', 'uses' => 'UsersController@getedit'])->where('id', '[0-9]+');
+            Route::post('/edit/{id}', ['as' => 'posteditmem', 'uses' => 'UsersController@postedit'])->where('id', '[0-9]+');
+        });
+        // -------------------- quan ly thong nhan vien--------------------
+        Route::group(['prefix' => '/nhanvien'], function () {
+            ;
 
-        Route::get('ajax_subcategory','AjaxController@getsubcategory');
+            Route::get('', ['as' => 'getnv', 'uses' => 'StaffController@getlist']);
+            Route::get('/del/{id}', ['as' => 'getdelnv', 'uses' => 'Admin_usersController@getdel'])->where('id', '[0-9]+');
 
-    });
+            Route::get('/edit/{id}', ['as' => 'geteditnv', 'uses' => 'Admin_usersController@getedit'])->where('id', '[0-9]+');
+            Route::post('/edit/{id}', ['as' => 'posteditnv', 'uses' => 'Admin_usersController@postedit'])->where('id', '[0-9]+');
+        });
+        Route::group(['prefix' => '/ajax'], function () {
+
+            Route::get('ajax_subcategory', 'AjaxController@getsubcategory');
+
+        });
 
         // ---------------van de khac ----------------------
-});
-Route::get('find/{id}','SearchController@search');
-Route::get('/auth/facebook', 'SocialAuthController@redirectToProvider');
-Route::get('/auth/facebook/callback', 'SocialAuthController@handleProviderCallback');
-Route::get('women', function (){
-    return view('Page.Women.women');
-});
-Route::get('Tin-tuc/{slug}', function (){
-   return view('Page.news_detail');
-})->name('Tin-tuc');
+    });
+    Route::get('find/{id}', 'SearchController@search');
+    Route::get('/auth/facebook', 'SocialAuthController@redirectToProvider');
+    Route::get('/auth/facebook/callback', 'SocialAuthController@handleProviderCallback');
+    Route::get('women', function () {
+        return view('Page.Women.women');
+    });
+    Route::get('Tin-tuc/{slug}', function () {
+        return view('Page.news_detail');
+    })->name('Tin-tuc');
 

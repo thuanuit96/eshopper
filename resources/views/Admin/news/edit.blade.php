@@ -20,7 +20,9 @@
 					<div class="panel-body" style="background-color: #ecf0f1; color:#27ae60;">
 					@if (count($errors) > 0)
 				    	<div class="alert alert-danger">
+							<a class="close" data-dismiss="alert" href="#">x</a>
 					        <ul>
+								<a class="close" data-dismiss="alert" href="#">x</a>
 					            @foreach ($errors->all() as $error)
 					                <li>{{ $error }}</li>
 					            @endforeach
@@ -28,6 +30,7 @@
 				    </div>
 				    @elseif (Session()->has('flash_level'))
 				    	<div class="alert alert-success">
+							<a class="close" data-dismiss="alert" href="#">x</a>
 					        <ul>
 					            {!! Session::get('flash_massage') !!}	
 					        </ul>
