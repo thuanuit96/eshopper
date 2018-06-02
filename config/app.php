@@ -148,6 +148,8 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Nexmo\Laravel\NexmoServiceProvider::class,
+
 
 
 

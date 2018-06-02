@@ -1,8 +1,7 @@
 @extends('page.index')
 @section('product_detail')
-
     <div class="main">
-        <input type="hidden" class="storeId" value="81">
+
         <div class="container">
             <div class="grid-100">
                 <div class="breadcrumb_view">
@@ -28,8 +27,6 @@
                         <div id="productDetail">
                             <div class="" id="imgZoom">
                                 <div id="zoomer">
-                                    <img id="zoom_09" src="small/image1.png" data-zoom-image="large/image1.jpg"/>
-
                                     <img id="zoom_01" width="100%" class="cloudzoom" src="{{asset('/images/product/'.$product_detail->Image1)}}" data-zoom-image="{{asset('/images/product/'.$product_detail->Image1)}}">
                                 </div>
                                 <div id="zoomSlide">
@@ -218,120 +215,110 @@
                         </div>
                     </div>
                 </div>
-                <div class="grid-100">
-                    <div class="featureProduct">
-                        <h2 class="titleProduct1"><span>SẢN PHẨM MIX MATCH<span></span></span></h2>
-                        <div class="listFeatureproduct">
-                            <div class="itemsProduct" data-id="7293146" data-storeid="81">
-                                <div class="imgBor">
-                                    <a class="borImgs" href="/ao-thun-ngan-tay-nam-dang-rong-in-slogan-tong-hop.-basic-den-p7293146.html"><img src="//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_02_2_02_025_118_01_10200002_04_thumb_294x440.jpg" alt="Áo thun ngắn tay nam dáng rộng in slogan tổng hợp. Basic Đen"></a>
-                                </div>
-                                <div class="toolProduct">
-                                    <div class="itemsQF">
-                                        <a class="addToCart2" cartnumber="1" psid="7293146" selid="7293146" href="javascript:void(0)">Giỏ hàng</a><a class="setFav" rel="7293146" href="javascript:void(0)">Yêu thích</a>
-                                    </div>
-                                </div>
-                                <h3 class="titleProduct">
-                                    <a href="/ao-thun-ngan-tay-nam-dang-rong-in-slogan-tong-hop.-basic-den-p7293146.html">Áo thun ngắn tay nam dáng rộng in slogan tổng hợp. Basic Đen</a>
-                                </h3>
-                                <p class="mPrice">
-                                    <strong style="">399,000 VNĐ</strong>
-                                </p>
-                            </div>
-                            <div class="itemsProduct" data-id="7225256" data-storeid="81">
-                                <div class="imgBor">
-                                    <a class="borImgs" href="/giay-sneakers-phoi-da-lo-phoi-da-lon-trang-p7225256.html"><img src="//cdn.nhanh.vn/cdn/store/81/ps/20180505/dsc_4428_600x899_thumb_294x441.jpg" alt="Giày sneakers phối da lỗ phối da lộn trắng"></a>
-                                </div>
-                                <div class="toolProduct">
-                                    <div class="itemsQF">
-                                        <a class="addToCart2" cartnumber="1" psid="7225256" selid="7225256" href="javascript:void(0)">Giỏ hàng</a><a class="setFav" rel="7225256" href="javascript:void(0)">Yêu thích</a>
-                                    </div>
-                                </div>
-                                <h3 class="titleProduct">
-                                    <a href="/giay-sneakers-phoi-da-lo-phoi-da-lon-trang-p7225256.html">Giày sneakers phối da lỗ phối da lộn trắng</a>
-                                </h3>
-                                <p class="mPrice">
-                                    <strong style="">649,000 VNĐ</strong>
-                                </p>
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                    </div>
-                    <div class="featureProduct">
-                        <h2 class="titleProduct1"><span>SẢN PHẨM TƯƠNG TỰ<span></span></span></h2>
-                        <div class="listFeatureproduct">
-                            <div class="itemsProduct" data-id="7137458" data-storeid="81">
-                                <div class="imgBor">
-                                    <a class="borImgs" href="/jeans-nam-dang-slim-dap-tui-hop-cao-rach-va-gau-xoa-.-trend-den-p7137458.html"><img src="//cdn.nhanh.vn/cdn/store/81/ps/20180502/1_2_21_2_06_009_118_01_10200002_01_thumb_294x441.jpg" alt="Jeans nam dáng slim đáp túi hộp cào rách và gấu xỏa . Trend đen"></a>
-                                </div>
-                                <div class="toolProduct">
-                                    <div class="itemsQF">
-                                        <a class="addToCart2" cartnumber="1" psid="7137458" selid="7137458" href="javascript:void(0)">Giỏ hàng</a><a class="setFav" rel="7137458" href="javascript:void(0)">Yêu thích</a>
-                                    </div>
-                                </div>
-                                <h3 class="titleProduct">
-                                    <a href="/jeans-nam-dang-slim-dap-tui-hop-cao-rach-va-gau-xoa-.-trend-den-p7137458.html">Jeans nam dáng slim đáp túi hộp cào rách và gấu xỏa . Trend đen</a>
-                                </h3>
-                                <p class="mPrice">
-                                    <strong style="">649,000 VNĐ</strong>
-                                </p>
-                            </div>
-                            <div class="itemsProduct" data-id="7137453" data-storeid="81">
-                                <div class="imgBor">
-                                    <a class="borImgs" href="/jeans-nam-dang-om-theu-graphic-bosua-tui-trai-than-sau.-basic-xanh-denim-nhat-p7137453.html"><img src="//cdn.nhanh.vn/cdn/store/81/ps/20180502/1_2_21_2_05_001_118_02_10600034_01_thumb_294x441.jpg" alt="Jeans nam dáng ôm thêu graphic Bosua túi trái thân sau. Basic xanh denim nhạt"></a>
-                                </div>
-                                <div class="toolProduct">
-                                    <div class="itemsQF">
-                                        <a class="addToCart2" cartnumber="1" psid="7137453" selid="7137453" href="javascript:void(0)">Giỏ hàng</a><a class="setFav" rel="7137453" href="javascript:void(0)">Yêu thích</a>
-                                    </div>
-                                </div>
-                                <h3 class="titleProduct">
-                                    <a href="/jeans-nam-dang-om-theu-graphic-bosua-tui-trai-than-sau.-basic-xanh-denim-nhat-p7137453.html">Jeans nam dáng ôm thêu graphic Bosua túi trái thân sau. Basic xanh denim nhạt</a>
-                                </h3>
-                                <p class="mPrice">
-                                    <strong style="">649,000 VNĐ</strong>
-                                </p>
-                            </div>
-                            <div class="itemsProduct" data-id="7137447" data-storeid="81">
-                                <div class="imgBor">
-                                    <a class="borImgs" href="/so-mi-denim-dai-tay-nam-dang-oversize-phoi-day-tracktape-in-typographic-bs09.-trend-navy-p7137447.html"><img src="//cdn.nhanh.vn/cdn/store/81/ps/20180502/1_2_17_2_06_005_118_23_10600034_02_thumb_294x441.jpg" alt="Sơ mi denim dài tay nam dáng oversize phối dây tracktape in typographic BS09. Trend navy"></a>
-                                </div>
-                                <div class="toolProduct">
-                                    <div class="itemsQF">
-                                        <a class="addToCart2" cartnumber="1" psid="7137447" selid="7137447" href="javascript:void(0)">Giỏ hàng</a><a class="setFav" rel="7137447" href="javascript:void(0)">Yêu thích</a>
-                                    </div>
-                                </div>
-                                <h3 class="titleProduct">
-                                    <a href="/so-mi-denim-dai-tay-nam-dang-oversize-phoi-day-tracktape-in-typographic-bs09.-trend-navy-p7137447.html">Sơ mi denim dài tay nam dáng oversize phối dây tracktape in typographic BS09. Trend navy</a>
-                                </h3>
-                                <p class="mPrice">
-                                    <strong style="">599,000 VNĐ</strong>
-                                </p>
-                            </div>
-                            <div class="itemsProduct" data-id="7012470" data-storeid="81">
-                                <div class="imgBor">
-                                    <a class="borImgs" href="/so-mi-denim-dai-tay-nam-phoi-tui-nguc-dang-suong.-basic-xanh-da-troi-nhat-p7012470.html"><img src="//cdn.nhanh.vn/cdn/store/81/ps/20180418/1_2_17_2_05_001_118_01_10600036_01_thumb_294x441.jpg" alt="Sơ mi denim dài tay nam phối túi ngực dáng suông. Basic xanh da trời nhạt"></a>
-                                </div>
-                                <div class="toolProduct">
-                                    <div class="itemsQF">
-                                        <a class="addToCart2" cartnumber="1" psid="7012470" selid="7012470" href="javascript:void(0)">Giỏ hàng</a><a class="setFav" rel="7012470" href="javascript:void(0)">Yêu thích</a>
-                                    </div>
-                                </div>
-                                <h3 class="titleProduct">
-                                    <a href="/so-mi-denim-dai-tay-nam-phoi-tui-nguc-dang-suong.-basic-xanh-da-troi-nhat-p7012470.html">Sơ mi denim dài tay nam phối túi ngực dáng suông. Basic xanh da trời nhạt</a>
-                                </h3>
-                                <p class="mPrice">
-                                    <strong style="">549,000 VNĐ</strong>
-                                </p>
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
             <div class="clear"></div>
         </div>
+        <div class="container" style="margin-bottom: 50px">
+            <h3><span style="margin-left: 45%">Sản phẩm tương tự</span></h3>
+            <div class="row">
+                <div class="box-pro">
+                    <div class="col-sm-4 col-md-3 col-xs-6" style="width: 292px;">
+                        <div class="post-img">
+                            <a href="http://eshopper.test/product_detail/ao-khoac-mua-he-ha-noi-68?id=1" class="img"><img src="http://eshopper.test/images/product/1527871912_1.2.17.2.05.006.217.01.10600027-01_thumb.jpg"></a>
 
+
+                            <button class="addc" onclick="addcart(1)">
+                                <i class="fa fa-cart-plus" aria-hidden="true">Mua ngay</i></button>
+                            <a class="viewm" href="http://eshopper.test/product_detail/ao-khoac-mua-he-ha-noi-68?id=1">
+                                <i class="fa fa-search-plus" aria-hidden="true"></i> Chi tiết</a>
+                        </div>
+                        <h4><a href="http://eshopper.test/product_detail/ao-khoac-mua-he-ha-noi-68?id=1">Áo khoác mùa hè hà nội 68</a></h4>
+                        <div class="score-callback" data-score="4" style="cursor: pointer;">
+                            <img alt="1" src="http://eshopper.test/images/product/icon-star.png" title="bad">
+                            <img alt="2" src="http://eshopper.test/images/product/icon-star.png" title="poor">
+                            <img alt="3" src="http://eshopper.test/images/product/icon-star.png" title="regular">
+                            <img alt="4" src="http://eshopper.test/images/product/icon-star.png" title="good">
+                            <img alt="5" src="http://eshopper.test/images/product/star-off.png" title="gorgeous">
+
+                        </div>
+                        <p><span class="price-pro"><span class="woocommerce-Price-amount amount">258082&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></span></p>
+                    </div>
+                </div>
+                <div class="box-pro">
+                    <div class="col-sm-4 col-md-3 col-xs-6" style="width: 292px;">
+                        <div class="post-img">
+                            <a href="http://eshopper.test/product_detail/ao-khoac-mua-he-ha-noi-98?id=2" class="img"><img src="http://eshopper.test/images/product/1527875163_1_2_02_1_06_003_118_01_10100002_01_thumb_294x441.jpg"></a>
+
+
+                            <button class="addc" onclick="addcart(2)">
+                                <i class="fa fa-cart-plus" aria-hidden="true">Mua ngay</i></button>
+                            <a class="viewm" href="http://eshopper.test/product_detail/ao-khoac-mua-he-ha-noi-98?id=2">
+                                <i class="fa fa-search-plus" aria-hidden="true"></i> Chi tiết</a>
+                        </div>
+                        <h4><a href="http://eshopper.test/product_detail/ao-khoac-mua-he-ha-noi-98?id=2">Áo khoác mùa hè hà nội 98</a></h4>
+                        <div class="score-callback" data-score="4" style="cursor: pointer;">
+                            <img alt="1" src="http://eshopper.test/images/product/icon-star.png" title="bad">
+                            <img alt="2" src="http://eshopper.test/images/product/icon-star.png" title="poor">
+                            <img alt="3" src="http://eshopper.test/images/product/icon-star.png" title="regular">
+                            <img alt="4" src="http://eshopper.test/images/product/icon-star.png" title="good">
+                            <img alt="5" src="http://eshopper.test/images/product/star-off.png" title="gorgeous">
+
+                        </div>
+                        <p><span class="price-pro"><span class="woocommerce-Price-amount amount">328388&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></span></p>
+                    </div>
+                </div>
+                <div class="box-pro">
+                    <div class="col-sm-4 col-md-3 col-xs-6" style="width: 292px;">
+                        <div class="post-img">
+                            <a href="http://eshopper.test/product_detail/ao-khoac-mua-he-ha-noi-88?id=3" class="img"><img src="http://eshopper.test/images/product/1527875178_1_2_16_1_05_001_118_01_10200002_01_thumb_294x441.jpg"></a>
+
+
+                            <button class="addc" onclick="addcart(3)">
+                                <i class="fa fa-cart-plus" aria-hidden="true">Mua ngay</i></button>
+                            <a class="viewm" href="http://eshopper.test/product_detail/ao-khoac-mua-he-ha-noi-88?id=3">
+                                <i class="fa fa-search-plus" aria-hidden="true"></i> Chi tiết</a>
+                        </div>
+                        <h4><a href="http://eshopper.test/product_detail/ao-khoac-mua-he-ha-noi-88?id=3">Áo khoác mùa hè hà nội 88</a></h4>
+                        <div class="score-callback" data-score="4" style="cursor: pointer;">
+                            <img alt="1" src="http://eshopper.test/images/product/icon-star.png" title="bad">
+                            <img alt="2" src="http://eshopper.test/images/product/icon-star.png" title="poor">
+                            <img alt="3" src="http://eshopper.test/images/product/icon-star.png" title="regular">
+                            <img alt="4" src="http://eshopper.test/images/product/icon-star.png" title="good">
+                            <img alt="5" src="http://eshopper.test/images/product/star-off.png" title="gorgeous">
+
+                        </div>
+                        <p><span class="price-pro"><span class="woocommerce-Price-amount amount">177646&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></span></p>
+                    </div>
+                </div>
+                <div class="box-pro">
+                    <div class="col-sm-4 col-md-3 col-xs-6" style="width: 292px;">
+                        <div class="post-img">
+                            <a href="http://eshopper.test/product_detail/ao-khoac-mua-he-ha-noi-80?id=4" class="img"><img src="http://eshopper.test/images/product/1527875194_1_2_03_1_05_002_118_02_10100002_01_thumb_294x441.jpg"></a>
+
+
+                            <button class="addc" onclick="addcart(4)">
+                                <i class="fa fa-cart-plus" aria-hidden="true">Mua ngay</i></button>
+                            <a class="viewm" href="http://eshopper.test/product_detail/ao-khoac-mua-he-ha-noi-80?id=4">
+                                <i class="fa fa-search-plus" aria-hidden="true"></i> Chi tiết</a>
+                        </div>
+                        <h4><a href="http://eshopper.test/product_detail/ao-khoac-mua-he-ha-noi-80?id=4">Áo khoác mùa hè hà nội 80</a></h4>
+                        <div class="score-callback" data-score="4" style="cursor: pointer;">
+                            <img alt="1" src="http://eshopper.test/images/product/icon-star.png" title="bad">
+                            <img alt="2" src="http://eshopper.test/images/product/icon-star.png" title="poor">
+                            <img alt="3" src="http://eshopper.test/images/product/icon-star.png" title="regular">
+                            <img alt="4" src="http://eshopper.test/images/product/icon-star.png" title="good">
+                            <img alt="5" src="http://eshopper.test/images/product/star-off.png" title="gorgeous">
+
+                        </div>
+                        <p><span class="price-pro"><span class="woocommerce-Price-amount amount">203028&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></span></p>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
         <script>
             $("#zoom_01").elevateZoom({
                 zoomWindowFadeIn: 500,
@@ -353,4 +340,5 @@
         </script>
 
     </div>
+
 @endsection

@@ -1,8 +1,9 @@
 @section('title')
 Trang chủ
 @endsection
-@extends('Page.home.index')
+@extends('Page.index')
 @section('home')
 @include('Page.slider')
 @include('Page.content')
+
 @endsection

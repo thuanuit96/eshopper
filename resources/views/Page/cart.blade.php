@@ -136,8 +136,8 @@
                 </tbody>
             </table>
             <div class="cartNavigator">
-                <a href="{{route('checkout')}}" class="btnCheckOut btnRed">Tiến hành thanh toán</a>
-                <a href="#" class="buyMore btnGreen">Mua thêm sản phẩm khác</a>
+                <a href="{{route('checkout')}}" class="btnCheckOut btnRed" style="width: 200px;float:right">Tiến hành thanh toán</a>
+                <a href="#" class="buyMore btnGreen " style="width: 200px">Mua thêm sản phẩm khác</a>
                 <span class="clearfix"></span>
             </div>
             <br><br>

@@ -1,5 +1,11 @@
 @extends('Page.index')
+
 @section('checkout')
+    <header>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </header>
+
+
     <div class="main">
         <input type="hidden" class="checkStoreId" value="81">
         <div class="singleCheckout">
@@ -17,50 +23,16 @@
                                     <div class="purchaseInfo">
                                         <label>
                                             Họ và tên: *
-                                            <div class="form-validation-field-0formError parentFormformCheckOut formError" style="opacity: 0.87; position: absolute; top: 72px; left: 189px; margin-top: -35px;">
-                                                <div class="formErrorArrow">
-                                                    <div class="line10">
-                                                        <!-- -->
-                                                    </div>
-                                                    <div class="line9">
-                                                        <!-- -->
-                                                    </div>
-                                                    <div class="line8">
-                                                        <!-- -->
-                                                    </div>
-                                                    <div class="line7">
-                                                        <!-- -->
-                                                    </div>
-                                                    <div class="line6">
-                                                        <!-- -->
-                                                    </div>
-                                                    <div class="line5">
-                                                        <!-- -->
-                                                    </div>
-                                                    <div class="line4">
-                                                        <!-- -->
-                                                    </div>
-                                                    <div class="line3">
-                                                        <!-- -->
-                                                    </div>
-                                                    <div class="line2">
-                                                        <!-- -->
-                                                    </div>
-                                                    <div class="line1">
-                                                        <!-- -->
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <input type="text" name="customerName" class="validate[required] input customerName" value="" id="form-validation-field-0">
+                                            <input type="text" name="customerName" class="validate[required] input customerName" value="" id="form-validation-field-0" required>
                                         </label>
                                         <label>Điện thoại: *
-                                            <input type="text" name="customerMobile" class="validate[required,custom[phone]] input customerMobile" value="">
+                                            <input type="text" name="customerMobile" class="validate[required,custom[phone]] input customerMobile" value="" required>
                                         </label><label>Email: *
-                                            <input type="text" name="customerEmail" class="validate[required,custom[email]] input customerEmail" value="">
+                                            <input type="email" name="customerEmail" class="validate[required,custom[email]] input customerEmail" value="" required style=" display:block;width:80%;padding:5px;border:1px solid #ccc;margin:5px 0">
                                         </label>
                                         <label>
                                             Tỉnh/ Thành phố: *
-                                            <select id="cityId" name="customerCityId" class="validate[required] input">
+                                            <select id="cityId" name="customerCityId" class="validate[required] input" required>
                                                 <option value="">Chọn Tỉnh/ thành phố</option>
                                                 <option value="2">Hà Nội</option>
                                                 <option value="3">Hồ Chí Minh</option>
@@ -129,11 +101,11 @@
                                         </label>
                                         <label>
                                             Quận/ Huyện: *
-                                            <select id="districtId" name="customerDistrictId" class="validate[required] input">
+                                            <select id="districtId" name="customerDistrictId" class="validate[required] input" required>
                                                 <option value="">Chọn Quận/ Huyện</option>
                                             </select>
                                         </label>
-                                        <label>Địa chỉ: *<textarea name="customerAddress" class="validate[required] input customerAddress"></textarea></label>
+                                        <label>Địa chỉ: *<textarea name="customerAddress" class="validate[required] input customerAddress" required></textarea></label>
                                     </div>
                                 </div>
                             </div>
@@ -214,76 +186,7 @@
                 </form>
             </div>
         </div>
-        <div style="display: none">
-            <div id="progressbar" style="width:150px;text-align: center;margin: 0px auto;">
-                <img src="/tp/cucre/img/loading.gif">
-                <p style="font-weight:bold;">Đang xử lý...</p>
-            </div>
-        </div>
-        <script>dataLayer.push({
-                'transactionTotal': 1447000,
-                'transactionProducts': [
-                    {
-                        'sku': '6356160',
-                        'name': 'Jeans nam dáng bó cào rách phối hình in graphic BS Dreamer thân sau. Trend xanh da trời nhạt 30',
-                        'price': '649000',
-                        'quantity': '1'
-                    },
-                    {
-                        'sku': '6601461',
-                        'name': 'Áo phông nam in graphic Võ Sĩ. Graphic. Play trắng S',
-                        'price': '399000',
-                        'quantity': '1'
-                    },
-                    {
-                        'sku': '6763694',
-                        'name': 'Chân váy nữ xếp ly kẻ caro. Basic đen kẻ trắng S',
-                        'price': '399000',
-                        'quantity': '1'
-                    },
-                ]
-            });
-        </script> <script>fbq('track', 'InitiateCheckout');
-            fbq('track', 'AddPaymentInfo');
-            var products = [
-                {
-                    id: "6356160", // bắt buộc – unique user id
-                    categoryId: 158841,
-                    transactionId: "",
-                    price: "649,000", // bắt buộc – giá của sản phẩm
-                    quantity: 1, //
-                    name: "Jeans nam dáng bó cào rách phối hình in graphic BS Dreamer thân sau. Trend xanh da trời nhạt 30", // bắt buộc – tên sản phẩm
-                    brandName: "", // bắt buộc – tên hãng
-                    desc: "",
-                    imageUrl: "http://cdn.nhanh.vn/cdn/store/81/ps/20180210/1_2_21_2_06_008_118_01_10600034_01_thumb_294x441.jpg", // bắt buộc – full link
-                    link: "http://bosua.vn/jeans-nam-dang-bo-cao-rach-phoi-hinh-in-graphic-bs-dreamer-than-sau.-trend-xanh-da-troi-nhat-30-p6356160.html" // bắt buộc – full link
-                },
-                {
-                    id: "6601461", // bắt buộc – unique user id
-                    categoryId: 72095,
-                    transactionId: "",
-                    price: "399,000", // bắt buộc – giá của sản phẩm
-                    quantity: 1, //
-                    name: "Áo phông nam in graphic Võ Sĩ. Graphic. Play trắng S", // bắt buộc – tên sản phẩm
-                    brandName: "", // bắt buộc – tên hãng
-                    desc: "",
-                    imageUrl: "http://cdn.nhanh.vn/cdn/store/81/ps/20180316/1_2_02_2_02_045_118_01_10100002_01_thumb_294x440.jpg", // bắt buộc – full link
-                    link: "http://bosua.vn/ao-phong-nam-in-graphic-vo-si.-graphic.-play-trang-s-p6601461.html" // bắt buộc – full link
-                },
-                {
-                    id: "6763694", // bắt buộc – unique user id
-                    categoryId: 75731,
-                    transactionId: "",
-                    price: "399,000", // bắt buộc – giá của sản phẩm
-                    quantity: 1, //
-                    name: "Chân váy nữ xếp ly kẻ caro. Basic đen kẻ trắng S", // bắt buộc – tên sản phẩm
-                    brandName: "", // bắt buộc – tên hãng
-                    desc: "",
-                    imageUrl: "http://cdn.nhanh.vn/cdn/store/81/ps/20180402/1_2_25_1_05_003_118_02_10700023_01_thumb_294x441.jpg", // bắt buộc – full link
-                    link: "http://bosua.vn/chan-vay-nu-xep-ly-ke-caro.-basic-den-ke-trang-s-p6763694.html" // bắt buộc – full link
-                },
-            ];
-            ematics("log", "product", "checkout", products);
-        </script>
+
     </div>
+
 @stop

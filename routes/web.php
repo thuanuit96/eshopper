@@ -143,4 +143,22 @@ Route::get('admin/logout', ['as' => 'getLogout', 'uses' => 'Admin\AdminLoginCont
     Route::get('Tin-tuc/{slug}', function () {
         return view('Page.news_detail');
     })->name('Tin-tuc');
+Route::get('getaddress','AjaxController@address');
+Route::get('nexmo',function (){
+    $a="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+    $nexmoClient = new Nexmo\Client(new Nexmo\Client\Credentials\Basic('206f4f31', 'U4uT0rNbInTOK3ym'));
+    $message = $nexmoClient->message()->send([
+        'from' => '@leggetter',
+        'to' => 84931180021,
+        'text' => $a
+    ]);
+});
+//Route::get('/sms/send/{to}', function(\Nexmo\Client $nexmo, $to){
+//    $message = $nexmo->message()->send([
+//        'to' => $to,
+//        'from' => '@leggetter',
+//        'text' => 'Sending SMS from Laravel. Woohoo!'
+//    ]);
+//    Log::info('sent message: ' . $message['message-id']);
+//});
 

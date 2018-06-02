@@ -7,7 +7,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>@yield('title')| ATShop</title>
-    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('slider/engine1/style.css')}}" />
     <script type="text/javascript" src="{{asset('slider/engine1/jquery.js')}}"></script>
     {{--<link href="{{asset('css/cart/custom.css')}}" rel="stylesheet">--}}
@@ -21,11 +20,6 @@
     <script src="{{asset('js/respond.min.js')}}"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
     <![endif]-->
-    <link rel="shortcut icon" href="{{asset('images/ico/favicon.ico')}}">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('images/ico/apple-touch-icon-144-precomposed.png')}}">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{asset('images/ico/apple-touch-icon-114-precomposed.png')}}">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{asset('images/ico/apple-touch-icon-72-precomposed.png')}}">
-    <link rel="apple-touch-icon-precomposed" href="{{asset('images/ico/apple-touch-icon-57-precomposed.png')}}">
 </head><!--/head-->
 
 <body>

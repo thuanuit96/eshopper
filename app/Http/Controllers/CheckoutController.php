@@ -16,6 +16,7 @@ use App\SubCategory;
 use App\Customer;
 use Session;
 
+
 class CheckoutController extends Controller
 {
     public function  checkout(){

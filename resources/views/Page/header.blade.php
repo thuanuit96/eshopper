@@ -1,7 +1,5 @@
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="{{asset('js/typeahead.bundle.js')}}"></script>
-
 <header class="site-header">
     @if (count($errors) > 0)
     <div class="alert alert-danger">
@@ -165,7 +163,7 @@
                                         <button type="submit" class="btn btn-block btn-warning text-uppercase"><strong>Đăng nhập</strong></button>
                                     </div>
                                     <div class="form-group text-center">
-                                        <a href="le was not retrieved by Teleport Ultra, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Ultra\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://alitaobao.vn/customer/resetPassword.html%27" tppabs="http://alitaobao.vn/customer/resetPassword.html">Quên mật khẩu?</a>
+                                        <a href="">Quên mật khẩu?</a>
                                     </div>
                                     <div class="form-group text-muted">
                                         <p class="separator text-center">
@@ -200,21 +198,54 @@
                                 <h4 class="modal-title">Đăng ký tài khoản</h4>
                             </div>
                             <div class="modal-body">
-                                <div class="signup-form"><!--sign up form-->
-                                    <form action="{{route('customRegister')}}" method="post">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <form method="post" action="/customer/register.html">
+                                    <div class="form-group">
+                                        <label>Tên tài khoản</label>
+                                        <input type="text" class="form-control" name="CustomerRegisterForm[customer_username]" placeholder="Tên đăng nhập">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" name="CustomerRegisterForm[customer_password]" placeholder="Mật khẩu">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" name="CustomerRegisterForm[customer_password_confirmation]" placeholder="Xác nhận mật khẩu">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" name="CustomerRegisterForm[customer_email]" placeholder="Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" name="CustomerRegisterForm[customer_email_confirmation]" placeholder="Xác nhận email">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="CustomerRegisterForm[customer_fullname]" placeholder="Họ và tên">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="tel" class="form-control" name="CustomerRegisterForm[customer_phone]" placeholder="Số di động">
+                                    </div>
+                                    <div class="form-group">
+                                        <!--
+                                        <img src="dist/images/captchaRegister.html.png" alt="" width="64" style="margin-bottom: 8px;">
+                                        <a href="#">Lấy code mới</a> -->
+                                        <img style="width:64px;margin-bottom:8px;" class="captcha-img" id="yw0" src="/customer/captchaRegister.html?v=5b1266b3848c3" alt=""><a id="yw0_button" href="/customer/captchaRegister.html?refresh=1"></a>                        <input type="text" class="form-control" name="CustomerRegisterForm[captcha]" placeholder="Mã xác nhận">
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-block btn-warning text-uppercase"><strong>Đăng ký tài khoản</strong></button>
+                                    </div>
+                                </form>
+                                {{--<div class="signup-form"><!--sign up form-->--}}
+                                    {{--<form action="{{route('customRegister')}}" method="post">--}}
+                                        {{--<input type="hidden" name="_token" value="{{ csrf_token() }}">--}}
 
-                                        {!! csrf_field() !!}
-                                        <input type="text" name="username" placeholder="Tài khoản"/>
-                                        <input type="email" name="email" placeholder="Địa chỉ email"/>
-                                        <input type="password" name="password" placeholder="Mật khẩu"/>
-                                        <div>
-                                            <button  style="float: left;" type="submit" class="btn btn-default">Đăng ký</button>
+                                        {{--{!! csrf_field() !!}--}}
+                                        {{--<input type="text" name="username" placeholder="Tài khoản"/>--}}
+                                        {{--<input type="email" name="email" placeholder="Địa chỉ email"/>--}}
+                                        {{--<input type="password" name="password" placeholder="Mật khẩu"/>--}}
+                                        {{--<div>--}}
+                                            {{--<button  style="float: left;" type="submit" class="btn btn-default">Đăng ký</button>--}}
 
-                                            <button  style="float: left;margin-left: 10%!important;"  type="reset" class="btn btn-default">Nhập lại</button>
-                                        </div>
-                                    </form>
-                                </div><!--/sign up form-->
+                                            {{--<button  style="float: left;margin-left: 10%!important;"  type="reset" class="btn btn-default">Nhập lại</button>--}}
+                                        {{--</div>--}}
+                                    {{--</form>--}}
+                                {{--</div><!--/sign up form-->--}}
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
@@ -233,8 +264,6 @@
 </div>
 
 <script>
-
-
 
 
         var engine = new Bloodhound({
@@ -285,6 +314,9 @@
     .nav>li>a:hover{
         background: #5150b7;
         transition: all .3s;
+    }
+    .nav>li{
+        padding: 0px 10px;
     }
     span.twitter-typeahead .tt-menu,
     span.twitter-typeahead .tt-dropdown-menu {
