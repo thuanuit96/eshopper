@@ -128,20 +128,25 @@ class MainController extends Controller
 //        dd($relate_pro);
         return view('Page.product_detail',['product_detail'=>$product_detail,'relate_pro'=>$relate_pro]);
     }
-    public  function  cart($id){
+    public  function  addcart( Request $rq){
 
-        $product = Products::find($id);
+
+        $product = Products::find($rq->id);
+
+
         $cartInfo = [
-            'id' => $id,
+            'id' => $rq->id,
             'name' => $product->Name,
             'price' => $product->Price,
-            'qty' => '1'
+            'qty' => '1',
+            'options' => ['size' => $rq->size]
         ];
         Cart::add($cartInfo);
         $cart = Cart::content();
           echo Cart::count();
 
-//         return redirect()->back()->withInput(['cart'=>$cart]);
+
+
     }
     public  function  listcart(){
 

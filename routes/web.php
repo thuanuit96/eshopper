@@ -25,7 +25,7 @@ Route::get('contact', function () {
 Route::get('checkout','CheckoutController@checkout')->name('checkout');
 Route::post('checkout','CheckoutController@postcheckout')->name('postcheckout');
 
-Route::get('cart/{id}','MainController@cart')->name('cart');
+Route::get('addcart/{id}','MainController@addcart')->name('addcart');
 Route::get('list-cart','MainController@listcart')->name('list-cart');
 Route::post('cart_delete','MainController@cart_delete')->name('cart_delete');
 Route::get('update/{id}','MainController@update');

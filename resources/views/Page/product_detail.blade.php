@@ -1,5 +1,6 @@
 @extends('page.index')
 @section('product_detail')
+
     <div class="main">
 
         <div class="container">
@@ -59,7 +60,9 @@
                                 <span class="clearfix"></span>
                             </div>
                             <div class="" id="productInfo">
+
                                 <h1 class="dttitleProduct">{!! $product_detail->Name !!}</h1>
+                                <input type="hidden" id='product_id' value="{!! $product_detail->Id !!}">
                                 <div class="colL">
                                     <span style="position: relative;top: 2px;">Mã sản phẩm:</span>
                                 </div>
@@ -73,8 +76,10 @@
                                         <div class="colL-1">
                                             <div class="attr">
                                                 <p class="color req" column="i4">
-                                                    <a  href="#" class="cloudzoom-gallery active" value="31" title="Xanh da trời" data-src="" style="background-color: #4B98D5"></a>
-                                                </p>
+
+                                                    {{--@if($product_detail->Color==)--}}
+                                                    <a  href="#" class="cloudzoom-gallery active" value="31" title="Xanh da trời" style="background-color: #4B98D5"></a>
+                                                    {{--</p>--}}
                                             </div>
                                         </div>
                                         <div class="clear"></div>
@@ -86,11 +91,8 @@
                                         <div class="colL-1">
                                             <p class="size req" column="i5">
                                                 @foreach($product_detail->size as $row)
-
-                                                <a rel="" value="87" href="" class="" qtt="37" selid="7293296" data-price="649000">{!! $row->name !!}</a>
-                                                @endforeach
-
-
+                                                <a  class="active" href="#" rel="nofollow" size="{!! $row->name !!}">{!! $row->name !!}</a>
+                                                                                                @endforeach
                                             </p>
                                         </div>
                                         <div class="clear"></div>
@@ -104,8 +106,8 @@
                                 <div class="attr">
                                     <br>
                                     <div class="qualityAddcart">
-                                        <p class="qty"><span>Qty</span><i id="psQtt" max="1" val="1">1</i><i id="psQttUp">+</i><i id="psQttDown">-</i></p>
-                                        <button id="addToCart" psid="7293295" selid="7293295" title="Vui lòng chọn màu sắc hoặc kích cỡ!" class="btn unsel" ck="0">Mua ngay</button>
+                                        <p class="qty"><span>Qty</span><i id="psQtt" val="1" min="1">1</i><i id="psQttUp">+</i><i id="psQttDown">-</i></p>
+                                        <button id="addToCart" title="Vui lòng chọn màu sắc hoặc kích cỡ!" class="btn unsel" >Mua ngay</button>
                                     </div>
                                     <span class="clearfix"></span>
                                     <br>
@@ -326,6 +328,11 @@
                 lensFadeIn: 500,
                 lensFadeOut: 500
             });
+
+
+
+
+
         </script>
         <script type="text/javascript" src="/min/?f=s99L2pzL3RyYW5zbGF0ZS92aS12bi5qcywvanMvanF1ZXJ5L2pxdWVyeS5taW4uanMsL2pzL2xpYi5qcywvdHAvVDAwMjUvanMvanF1/ZXJ5LWEuanMsL3RwL1QwMDI1L2pzL2NlbnR1cmlvbi5qcywvdHAvVDAwMjUvanMvanF1ZXJ5LmVhc2luZy4xLjMuanMsL3RwL1Qw/MDI1L2pzL2pxdWVyeS5mbGV4c2xpZGVyLmpzLC9qcy9qcXVlcnkvc2xpbXNjcm9sbC5taW4uanMsL2pzL2pxdWVyeS9qcXVlcnkt/dWktMS4xMC4zLmN1c3RvbS5taW4uanMsL2pzL2pxdWVyeS9qcXVlcnkuY2Fyb3VGcmVkU2VsLTYuMi4xLXBhY2tlZC5qcywvanMv/anF1ZXJ5L2ZhbmN5Ym94LTIuMS41L3NvdXJjZS9qcXVlcnkuZmFuY3lib3gucGFjay5qcywvanMvanF1ZXJ5L2pxdWVyeS5sYXp5/bG9hZC5taW4uanMsL2pzL2pxdWVyeS9qcXVlcnkubnVtYmVyLm1pbi5qcywvdHAvVDAwMjUvanMvc3RvcmVzLzgxbWFpbi5qc192/NDc=/"></script><script type="text/javascript" src="/min/?f=s99L2pzL2pxdWVyeS9jbG91ZHpvb20vY2xvdWR6b29tLmpzX3YwMQ==/"></script> <script type="text/javascript" src="/min/?f=s99L3RwL1QwMDI1L2pzL3N0b3Jlcy9wdmlldzgxLmpzX3YwMw==/"></script>
         <script>(function(d, s, id) {
@@ -336,6 +343,54 @@
                 fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
 
+
+        </script>
+        <script>
+            var size='';
+            var id='';
+            var qty='';
+
+            $('#psQttUp').click(function () {
+                qty=$('#psQtt').html();
+                qty=parseInt(qty)+1;
+                console.log(qty);
+                $('#psQtt').html(qty);
+            })
+            $('#psQttDown').click(function () {
+                qty=$('#psQtt').html();
+                qty=parseInt(qty)-1;
+                console.log(qty);
+                $('#psQtt').html(qty);
+            })
+            $("a").click(function () {
+                size= $( this ).attr( "size");
+
+
+
+            })
+            var id=$("#product_id").val();
+            console.log('id',id);
+            $('#addToCart').click(function () {
+                if(size==''){
+                    alert('Vui lòng chọn kích cỡ')
+                }
+                if(size!=''){
+                $.ajax({
+                    type:'get',
+                    url:'<?php echo URL::to("addcart/id") ?>',
+                    data:{
+                        id:id,
+                        size:size
+                    },
+
+                    success:function (result) {
+                        $("#cart_count").html(result);
+
+                    }
+                })
+               }
+
+            })
 
         </script>
 

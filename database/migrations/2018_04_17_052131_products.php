@@ -21,6 +21,8 @@ class Products extends Migration
             $table->string('Description')->nullable();
             $table->float('Price')->nullable();
             $table->string('Discount')->nullable();
+            $table->string('Color')->nullable();
+
             $table->string('Status')->nullable();
             $table->string('Slug')->nullable();
             $table->string('Image1')->nullable();

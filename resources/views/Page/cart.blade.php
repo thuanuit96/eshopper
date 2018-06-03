@@ -70,6 +70,8 @@
                 <tbody>
                 <tr class="title .odd">
                     <td width="500">Sản phẩm</td>
+                    <td width="200">Kích cỡ</td>
+
                     <td width="200">Đơn giá</td>
                     <td width="200">Số lượng</td>
                     <td width="200">Thành tiền</td>
@@ -84,6 +86,12 @@
                         </a>
                         <p class="nameProductcart"><a href="">{{$item->name}}</a></p>
                         <br>
+                    </td>
+
+                    <td width="200">
+                        <p style="font-weight: bold">
+                            {{ $item->options->size}}
+                        </p>
                     </td>
                     <td width="200">
                         <p style="font-weight: bold">

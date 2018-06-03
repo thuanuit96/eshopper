@@ -1,7 +1,7 @@
 
 <script>
+
 function addcart(id) {
-// var product_id=$("#product_id_+").val();
 console.log(id);
 $.ajax({
 url: "cart/" + id,

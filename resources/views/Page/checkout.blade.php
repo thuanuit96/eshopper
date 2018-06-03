@@ -1,10 +1,6 @@
 @extends('Page.index')
 
 @section('checkout')
-    <header>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    </header>
-
 
     <div class="main">
         <input type="hidden" class="checkStoreId" value="81">

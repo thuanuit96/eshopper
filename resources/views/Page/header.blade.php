@@ -200,32 +200,25 @@
                             <div class="modal-body">
                                 <form method="post" action="/customer/register.html">
                                     <div class="form-group">
-                                        <label>Tên tài khoản</label>
-                                        <input type="text" class="form-control" name="CustomerRegisterForm[customer_username]" placeholder="Tên đăng nhập">
+                                        <label style="font-size: 15px;">Tên đăng nhập</label>
+                                        <input type="text" class="form-control" name="username" placeholder="Tên đăng nhập">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" name="CustomerRegisterForm[customer_password]" placeholder="Mật khẩu">
+                                        <label style="font-size: 15px;">Mật khẩu</label>
+                                        <input type="password" class="form-control" name="password" placeholder="Mật khẩu">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" name="CustomerRegisterForm[customer_password_confirmation]" placeholder="Xác nhận mật khẩu">
+                                        <label style="font-size: 15px;">Địa chỉ <email></email></label>
+                                        <input type="email" class="form-control" name="email" placeholder="Email">
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" class="form-control" name="CustomerRegisterForm[customer_email]" placeholder="Email">
+                                        <label style="font-size: 15px;">Họ tên</label>
+
+                                        <input type="text" class="form-control" name="fullname" placeholder="Họ và tên">
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" class="form-control" name="CustomerRegisterForm[customer_email_confirmation]" placeholder="Xác nhận email">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="CustomerRegisterForm[customer_fullname]" placeholder="Họ và tên">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="tel" class="form-control" name="CustomerRegisterForm[customer_phone]" placeholder="Số di động">
-                                    </div>
-                                    <div class="form-group">
-                                        <!--
-                                        <img src="dist/images/captchaRegister.html.png" alt="" width="64" style="margin-bottom: 8px;">
-                                        <a href="#">Lấy code mới</a> -->
-                                        <img style="width:64px;margin-bottom:8px;" class="captcha-img" id="yw0" src="/customer/captchaRegister.html?v=5b1266b3848c3" alt=""><a id="yw0_button" href="/customer/captchaRegister.html?refresh=1"></a>                        <input type="text" class="form-control" name="CustomerRegisterForm[captcha]" placeholder="Mã xác nhận">
+                                        <label style="font-size: 15px;">Số điện thoại</label>
+                                        <input type="tel" class="form-control" name="phone" placeholder="Số di động">
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-block btn-warning text-uppercase"><strong>Đăng ký tài khoản</strong></button>
