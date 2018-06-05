@@ -1,25 +1,4 @@
 
-<script>
-
-function addcart(id) {
-console.log(id);
-$.ajax({
-url: "cart/" + id,
-type: 'GET',
-data: {},
-success: function (result) {
-
-$("#cart_count").html(result);
-
-
-}
-});
-
-
-}
-
-
-</script>
     <div id="wrapper">
 
     <!-- end header -->

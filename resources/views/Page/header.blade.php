@@ -97,39 +97,20 @@
 <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
     <ul class="nav navbar-nav main-menu">
         <li class="active"><a href="#">Trang Chủ</a></li>
+        @foreach($category as $cat)
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Thời Trang nam<span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{$cat->Name}}<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Áo</a></li>
-                <li><a href="#">Quần</a></li>
-                <li><a href="#">Váy</a></li>
-                <li><a href="#">Denim</a></li>
+                @foreach($cat->get_subcategory as $subcat)
+
+                <li><a href="{{route('danh-muc',['name'=>$subcat->Name,'id'=>$subcat->Id])}}">{!!$subcat->Name !!}</a></li>
+                    @endforeach
 
             </ul>
 
 
         </li>
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Thời Trang Nữ<span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Áo</a></li>
-                <li><a href="#">Quần</a></li>
-                <li><a href="#">Váy</a></li>
-                <li><a href="#">Denim</a></li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Phụ kiện<span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Balo</a></li>
-                <li><a href="#">Giày</a></li>
-                <li><a href="#">Mũ</a></li>
-                <li><a href="#">Móc khóa</a></li>
-                <li><a href="#">Đồ len</a></li>
-                <li><a href="#">Tất</a></li>
-                <li><a href="#">Thắt lưng</a></li>
-
-            </ul>
+        @endforeach
         <li><a href="#">Giới Thiệu</a></li>
         <li><a href="#">Liên Hệ</a></li>
         <li><a href="#">Tra cứu đơn hàng</a></li>

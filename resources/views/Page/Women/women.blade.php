@@ -1,4 +1,3 @@
-
 @extends('Page.index')
 @section('women')
     <div class="main" style="margin-top: 50px">
@@ -12,7 +11,7 @@
                             <a href="/">Trang chủ</a>
                         </li>
                         <li>
-                            <a class="72058" href="/nu-pc72058.html">NỮ</a>
+                            <a class="72058" href="/nu-pc72058.html">{!! $dm->Name !!}</a>
                         </li>
                     </ul>
                     <span class="clearfix"></span>
@@ -27,40 +26,56 @@
                             <h3 class="titleSingle">Danh mục</h3>
                             <div class="productSingle productDemo">
                                 <ul>
+                                    @foreach($category as $cat)
                                     <li>
-                                        <a href="ao-pc72061.html" tppabs="http://bosua.vn/ao-pc72061.html">
-                                            Áo                                        </a>
+                                        <a href="javascript:void(0)">{!!$cat->Name  !!}</a>
                                         <ul>
-                                            <li><a href="ao-sat-nach-pc72072.html" tppabs="http://bosua.vn/ao-sat-nach-pc72072.html">Áo sát nách</a></li>
-                                            <li><a href="ao-thun-pc72073.html" tppabs="http://bosua.vn/ao-thun-pc72073.html">Áo thun</a></li>
-                                            <li><a href="ao-dai-tay-hoodies-pc72074.html" tppabs="http://bosua.vn/ao-dai-tay-hoodies-pc72074.html">Áo dài tay - Hoodies</a></li>
-                                            <li><a href="so-mi-pc72075.html" tppabs="http://bosua.vn/so-mi-pc72075.html">Sơ mi</a></li>
-                                            <li><a href="ao-len-pc72076.html" tppabs="http://bosua.vn/ao-len-pc72076.html">Áo len</a></li>
-                                            <li><a href="ao-khoac-pc75663.html" tppabs="http://bosua.vn/ao-khoac-pc75663.html">Áo khoác</a></li>
+                                            @foreach($cat->get_subcategory as $subcat)
+                                                <li><a href="{{route('danh-muc',['name'=>$subcat->Name,'id'=>$subcat->Id])}}">{!!$subcat->Name !!}</a></li>
+
+                                            @endforeach
                                         </ul>
                                     </li>
-                                    <li>
-                                        <a href="quan-pc72064.html" tppabs="http://bosua.vn/quan-pc72064.html">
-                                            Quần                                        </a>
-                                        <ul>
-                                            <li><a href="quan-vay-pc72081.html" tppabs="http://bosua.vn/quan-vay-pc72081.html">Quần váy</a></li>
-                                            <li><a href="quan-shorts-pc72082.html" tppabs="http://bosua.vn/quan-shorts-pc72082.html">Quần shorts</a></li>
-                                            <li><a href="quan-dai-pc72084.html" tppabs="http://bosua.vn/quan-dai-pc72084.html">Quần dài</a></li>
-                                            <li><a href="jogger-pc72086.html" tppabs="http://bosua.vn/jogger-pc72086.html">Jogger</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="vay-pc72066.html" tppabs="http://bosua.vn/vay-pc72066.html">
-                                            Váy                                        </a>
-                                        <ul>
-                                            <li><a href="vay-dam-pc72088.html" tppabs="http://bosua.vn/vay-dam-pc72088.html">Váy/ Đầm</a></li>
-                                            <li><a href="chan-vay-pc75731.html" tppabs="http://bosua.vn/chan-vay-pc75731.html">Chân Váy</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="denim-pc158840.html" tppabs="http://bosua.vn/denim-pc158840.html">
-                                            Denim                                        </a>
-                                    </li>
+                                        @endforeach
+
+                                </ul>
+                            </div>
+                            <h3 class="titleSingle" style="margin-top: 10px">Màu sắc</h3>
+                            <div class="productSingle productDemo req-filter">
+                                <ul>
+                                    @foreach($colors as $value)
+                                        <a rel="nofollow" class="shop99_deamonLink" href="" title="{{$value->title}}" style="display:inline-block;background:{{$value->style}};border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px">
+                                        </a>
+                                    @endforeach
+                                    <a rel="nofollow" class="shop99_deamonLink" href="" title="Trắng" style="display:inline-block;background:#FFFFFF;border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px">
+                                    </a>
+                                    <a rel="nofollow" class="shop99_deamonLink" href="" title="Be" style="display:inline-block;background:#FFF2CC;border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px">
+                                    </a>
+                                    <a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i4=8" title="Đỏ Boocdo" style="display:inline-block;background:#990100;border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px"></a>
+                                    <a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i4=9" title="Đỏ" style="display:inline-block;background:#ED0000;border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px"></a>
+                                    <a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i4=11" title="Cam" style="display:inline-block;background:#FF8800;border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px"></a>
+                                    <a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i4=14" title="Vàng" style="display:inline-block;background:#FFD800;border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px"></a>
+                                    <a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i4=15" title="Vàng mù tạt" style="display:inline-block;background:#CA9726;border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px"></a>
+                                    <a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i4=16" title="Hồng đào" style="display:inline-block;background:#F5A573;border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px"></a>
+                                    <a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i4=17" title="Hồng phơn phớt" style="display:inline-block;background:#FEBED5;border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px"></a>
+                                    <a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i4=18" title="Hồng" style="display:inline-block;background:#ee6aa7;border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px"></a>
+                                    <a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i4=23" title="Xanh nõn" style="display:inline-block;background:#CDE83B;border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px"></a>
+                                    <a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i4=25" title="Xanh lá cây" style="display:inline-block;background:#00af33;border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px"></a>
+                                    <a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i4=26" title="Xanh rêu" style="display:inline-block;background:#294333;border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px"></a><a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i4=27" title="Xanh navy" style="display:inline-block;background:#003388;border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px"></a><a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i4=28" title="Xanh indigo" style="display:inline-block;background:#0000FF;border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px"></a><a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i4=29" title="Xanh cổ vịt" style="display:inline-block;background:#15485C;border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px"></a>
+                                    <a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i4=541" title="Đỏ cam" style="display:inline-block;background:#ff3301;border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px"></a>
+                                    <a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i4=30" title="Xanh ngọc" style="display:inline-block;background:#4FBBB5;border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px"></a><a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i4=31" title="Xanh da trời" style="display:inline-block;background:#4B98D5;border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px"></a>
+                                    <a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i4=32" title="Xanh da trời nhạt" style="display:inline-block;background:#96D2E9;border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px"></a>
+                                    <a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i4=33" title="Xám nhạt" style="display:inline-block;background:#B7B7B7;border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px"></a>
+                                    <a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i4=34" title="Xám" style="display:inline-block;background:#666666;border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px"></a>
+                                    <a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i4=35" title="Đen" style="display:inline-block;background:#000000;border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px"></a>
+                                    <a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i4=111" title="Kẻ sọc" style="display:inline-block;border:1px solid #fff;line-height: 1.3;position: relative; color: black; bottom: 11px;padding: 0;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0;">Kẻ sọc</a><a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i4=128" title="Ghi" style="display:inline-block;background:#dddddd;border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px"></a>
+                                    <a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i4=133" title="Đen tàn" style="display:inline-block;border:1px solid #fff;line-height: 1.3;position: relative; color: black; bottom: 11px;padding: 0;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0;">Đen tàn</a><a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i4=143" title="Đỏ mận tàn" style="display:inline-block;background:#8B0000;border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px"></a>
+                                </ul>
+                            </div>
+                            <h3 class="titleSingle" style="margin-top: 10px">Kích cỡ</h3>
+                            <div class="productSingle productDemo req-filter size">
+                                <ul>
+                                    <a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i5=78" style="color: black; display:inline-block;box-shadow: 0 0 0 1px #b8b8b8;min-width:38px;margin:5px 4px 5px 0;text-align:center;padding:2px 5px;border:none;">XS</a><a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i5=459" style="color: black; display:inline-block;box-shadow: 0 0 0 1px #b8b8b8;min-width:38px;margin:5px 4px 5px 0;text-align:center;padding:2px 5px;border:none;">2XL</a><a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i5=79" style="color: black; display:inline-block;box-shadow: 0 0 0 1px #b8b8b8;min-width:38px;margin:5px 4px 5px 0;text-align:center;padding:2px 5px;border:none;">S</a><a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i5=80" style="color: black; display:inline-block;box-shadow: 0 0 0 1px #b8b8b8;min-width:38px;margin:5px 4px 5px 0;text-align:center;padding:2px 5px;border:none;">M</a><a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i5=81" style="color: black; display:inline-block;box-shadow: 0 0 0 1px #b8b8b8;min-width:38px;margin:5px 4px 5px 0;text-align:center;padding:2px 5px;border:none;">L</a><a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i5=82" style="color: black; display:inline-block;box-shadow: 0 0 0 1px #b8b8b8;min-width:38px;margin:5px 4px 5px 0;text-align:center;padding:2px 5px;border:none;">XL</a>
                                 </ul>
                             </div>
                         </div>
@@ -73,12 +88,13 @@
                                 <label>
                                     Sắp xếp theo
                                     <select class="input filterMore">
-                                        <option selected="" value="/nu-pc72058.html?">Bỏ lọc</option>
-                                        <option value="/nu-pc72058.html?show=priceAsc">Giá tăng dần</option>
-                                        <option value="/nu-pc72058.html?show=priceDesc">Giá giảm dần</option>
-                                        <option value="/nu-pc72058.html?show=discount">Sale</option>
+                                        <option  value="">Bỏ lọc</option>
+                                        <option  value="{{$dm->Id}}">Giá tăng dần</option>
+                                        <option value="{{$dm->Id}}">Giá giảm dần</option>
+                                        <option value="{{$dm->Id}}">Sale</option>
                                     </select>
                                 </label>
+
                             </div>
                         </div>
                         <div class="viewsProduct">
@@ -91,232 +107,65 @@
                         <div class="clear"></div>
                     </div>
                     <div class="listProductcategory">
-                        <div class="box-pro">
-                            <div class="col-sm-4 col-md-3 col-xs-6">
-                                <div class="post-img">
-                                    <a href="#" tppabs="" class="img"><img src="{{asset('css/cart/1.jpg')}}"></a>
-                                    <button class="addc" onclick="addcart()"><i class="fa fa-cart-plus"
-                                                                                aria-hidden="true"></i>&nbsp;Mua
-                                        ngay
-                                    </button>
-                                    <a class="viewm" href="#"
-                                       tppabs="http://htshop.esy.es/san-pham/laptop-asus-x403sa-n3700"><i
-                                                class="fa fa-search-plus" aria-hidden="true"></i> Chi tiết</a>
+                        @foreach($pro as $value)
+                            <div class="box-pro">
+                                <div class="col-sm-4 col-md-4 col-xs-6">
+                                    <div class="post-img">
+                                        <a href="{{route('product_detail',['slug'=>$value->Slug,'id'=>$value->Id])}}" class="img"><img src="{{asset                                     ('images/product/'.$value->Image1)}}"></a>
+
+                                        </button>
+                                        <button class="addc" onclick="addcart({{$value->Id}})">
+                                            <i class="fa fa-cart-plus" aria-hidden="true">Mua ngay</i></button>
+                                        <a class="viewm" href="{{route('product_detail',['slug'=>$value->Slug,'id'=>$value->Id])}}">
+                                            <i class="fa fa-search-plus" aria-hidden="true"></i> Chi tiết</a>
+                                    </div>
+                                    <p><a href="{{route('product_detail',['slug'=>$value->Slug,'id'=>$value->Id])}}">{{$value->Name}}</a></p>
+                                    <div class="score-callback" data-score="4" style="cursor: pointer;">
+                                        <img alt="1" src="{{asset('images/product/icon-star.png')}}" title="bad">
+                                        <img alt="2" src="{{asset('images/product/icon-star.png')}}" title="poor">
+                                        <img alt="3" src="{{asset('images/product/icon-star.png')}}" title="regular">
+                                        <img alt="4" src="{{asset('images/product/icon-star.png')}}" title="good">
+                                        <img alt="5" src="{{asset('images/product/star-off.png')}}" title="gorgeous">
+
+                                    </div>
+                                    <p><span class="price-pro"><span class="woocommerce-Price-amount amount">{{$value->Price}}&nbsp;<span
+                                                        class="woocommerce-Price-currencySymbol">₫</span></span></span></p>
                                 </div>
-                                <h4><a href="laptop-asus-x403sa-n3700.htm">aaaaaaaaaaaaaaaaaaaaaaaaaaa</a></h4>
-                                <div class="score-callback" data-score="4" style="cursor: pointer;"><img alt="1"
-                                                                                                         src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png"
-                                                                                                         title="bad">&nbsp;<img
-                                            alt="2"
-                                            src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png"
-                                            title="poor">&nbsp;<img alt="3"
-                                                                    src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png"
-                                                                    title="regular">&nbsp;<img alt="4"
-                                                                                               src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png"
-                                                                                               title="good">&nbsp;<img alt="5"
-                                                                                                                       src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-off.png"
-                                                                                                                       title="gorgeous"><input
-                                            name="score" type="hidden" value="4"></div>
-                                <p><span class="price-pro"><span class="woocommerce-Price-amount amount">43434343&nbsp;<span
-                                                    class="woocommerce-Price-currencySymbol">₫</span></span></span></p>
                             </div>
-                        </div>
-                        <div class="box-pro">
-                            <div class="col-sm-4 col-md-3 col-xs-6">
-                                <div class="post-img">
-                                    <a href="#" tppabs="" class="img"><img src="{{asset('css/cart/1.jpg')}}"></a>
-                                    <button class="addc" onclick="addcart()"><i class="fa fa-cart-plus"
-                                                                                aria-hidden="true"></i>&nbsp;Mua
-                                        ngay
-                                    </button>
-                                    <a class="viewm" href="#"
-                                       tppabs="http://htshop.esy.es/san-pham/laptop-asus-x403sa-n3700"><i
-                                                class="fa fa-search-plus" aria-hidden="true"></i> Chi tiết</a>
-                                </div>
-                                <h4><a href="laptop-asus-x403sa-n3700.htm">aaaaaaaaaaaaaaaaaaaaaaaaaaa</a></h4>
-                                <div class="score-callback" data-score="4" style="cursor: pointer;"><img alt="1"
-                                                                                                         src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png"
-                                                                                                         title="bad">&nbsp;<img
-                                            alt="2"
-                                            src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png"
-                                            title="poor">&nbsp;<img alt="3"
-                                                                    src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png"
-                                                                    title="regular">&nbsp;<img alt="4"
-                                                                                               src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png"
-                                                                                               title="good">&nbsp;<img alt="5"
-                                                                                                                       src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-off.png"
-                                                                                                                       title="gorgeous"><input
-                                            name="score" type="hidden" value="4"></div>
-                                <p><span class="price-pro"><span class="woocommerce-Price-amount amount">43434343&nbsp;<span
-                                                    class="woocommerce-Price-currencySymbol">₫</span></span></span></p>
-                            </div>
-                        </div>
-                        <div class="box-pro">
-                            <div class="col-sm-4 col-md-3 col-xs-6">
-                                <div class="post-img">
-                                    <a href="#" tppabs="" class="img"><img src="{{asset('css/cart/1.jpg')}}"></a>
-                                    <button class="addc" onclick="addcart()"><i class="fa fa-cart-plus"
-                                                                                aria-hidden="true"></i>&nbsp;Mua
-                                        ngay
-                                    </button>
-                                    <a class="viewm" href="#"
-                                       tppabs="http://htshop.esy.es/san-pham/laptop-asus-x403sa-n3700"><i
-                                                class="fa fa-search-plus" aria-hidden="true"></i> Chi tiết</a>
-                                </div>
-                                <h4><a href="laptop-asus-x403sa-n3700.htm">aaaaaaaaaaaaaaaaaaaaaaaaaaa</a></h4>
-                                <div class="score-callback" data-score="4" style="cursor: pointer;"><img alt="1"
-                                                                                                         src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png"
-                                                                                                         title="bad">&nbsp;<img
-                                            alt="2"
-                                            src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png"
-                                            title="poor">&nbsp;<img alt="3"
-                                                                    src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png"
-                                                                    title="regular">&nbsp;<img alt="4"
-                                                                                               src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png"
-                                                                                               title="good">&nbsp;<img alt="5"
-                                                                                                                       src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-off.png"
-                                                                                                                       title="gorgeous"><input
-                                            name="score" type="hidden" value="4"></div>
-                                <p><span class="price-pro"><span class="woocommerce-Price-amount amount">43434343&nbsp;<span
-                                                    class="woocommerce-Price-currencySymbol">₫</span></span></span></p>
-                            </div>
-                        </div>
-                        <div class="box-pro">
-                            <div class="col-sm-4 col-md-3 col-xs-6">
-                                <div class="post-img">
-                                    <a href="#" tppabs="" class="img"><img src="{{asset('css/cart/1.jpg')}}"></a>
-                                    <button class="addc" onclick="addcart()"><i class="fa fa-cart-plus"
-                                                                                aria-hidden="true"></i>&nbsp;Mua
-                                        ngay
-                                    </button>
-                                    <a class="viewm" href="#"
-                                       tppabs="http://htshop.esy.es/san-pham/laptop-asus-x403sa-n3700"><i
-                                                class="fa fa-search-plus" aria-hidden="true"></i> Chi tiết</a>
-                                </div>
-                                <h4><a href="laptop-asus-x403sa-n3700.htm">aaaaaaaaaaaaaaaaaaaaaaaaaaa</a></h4>
-                                <div class="score-callback" data-score="4" style="cursor: pointer;"><img alt="1"
-                                                                                                         src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png"
-                                                                                                         title="bad">&nbsp;<img
-                                            alt="2"
-                                            src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png"
-                                            title="poor">&nbsp;<img alt="3"
-                                                                    src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png"
-                                                                    title="regular">&nbsp;<img alt="4"
-                                                                                               src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png"
-                                                                                               title="good">&nbsp;<img alt="5"
-                                                                                                                       src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-off.png"
-                                                                                                                       title="gorgeous"><input
-                                            name="score" type="hidden" value="4"></div>
-                                <p><span class="price-pro"><span class="woocommerce-Price-amount amount">43434343&nbsp;<span
-                                                    class="woocommerce-Price-currencySymbol">₫</span></span></span></p>
-                            </div>
-                        </div>
-                        <div class="box-pro">
-                            <div class="col-sm-4 col-md-3 col-xs-6">
-                                <div class="post-img">
-                                    <a href="#" tppabs="" class="img"><img src="{{asset('css/cart/1.jpg')}}"></a>
-                                    <button class="addc" onclick="addcart()"><i class="fa fa-cart-plus"
-                                                                                aria-hidden="true"></i>&nbsp;Mua
-                                        ngay
-                                    </button>
-                                    <a class="viewm" href="#"
-                                       tppabs="http://htshop.esy.es/san-pham/laptop-asus-x403sa-n3700"><i
-                                                class="fa fa-search-plus" aria-hidden="true"></i> Chi tiết</a>
-                                </div>
-                                <h4><a href="laptop-asus-x403sa-n3700.htm">aaaaaaaaaaaaaaaaaaaaaaaaaaa</a></h4>
-                                <div class="score-callback" data-score="4" style="cursor: pointer;"><img alt="1"
-                                                                                                         src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png"
-                                                                                                         title="bad">&nbsp;<img
-                                            alt="2"
-                                            src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png"
-                                            title="poor">&nbsp;<img alt="3"
-                                                                    src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png"
-                                                                    title="regular">&nbsp;<img alt="4"
-                                                                                               src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-on.png"
-                                                                                               title="good">&nbsp;<img alt="5"
-                                                                                                                       src="http://htshop.esy.es/wp-content/themes/thientrieu//images/front/star-off.png"
-                                                                                                                       title="gorgeous"><input
-                                            name="score" type="hidden" value="4"></div>
-                                <p><span class="price-pro"><span class="woocommerce-Price-amount amount">43434343&nbsp;<span
-                                                    class="woocommerce-Price-currencySymbol">₫</span></span></span></p>
-                            </div>
-                        </div>
+                        @endforeach
+
                         <span class="clearfix"></span>
-                    </div>
-                    <div class="pagesTop1">
-                        <div class="pagesTop">
-                            <div class="paginator"><span class="labelPages">1 - 12 / 315</span><span class="titlePages">&nbsp;&nbsp;Trang: </span><span class="currentPage">1</span><a rel="nofollow" href="javascript:if(confirm(%27http://bosua.vn/nu-pc72058.html?page=2  \n\nThis file was not retrieved by Teleport Ultra, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?%27))window.location=%27http://bosua.vn/nu-pc72058.html?page=2%27" tppabs="http://bosua.vn/nu-pc72058.html?page=2">2</a><a rel="nofollow" href="javascript:if(confirm(%27http://bosua.vn/nu-pc72058.html?page=3  \n\nThis file was not retrieved by Teleport Ultra, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?%27))window.location=%27http://bosua.vn/nu-pc72058.html?page=3%27" tppabs="http://bosua.vn/nu-pc72058.html?page=3">3</a><a rel="nofollow" href="javascript:if(confirm(%27http://bosua.vn/nu-pc72058.html?page=4  \n\nThis file was not retrieved by Teleport Ultra, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?%27))window.location=%27http://bosua.vn/nu-pc72058.html?page=4%27" tppabs="http://bosua.vn/nu-pc72058.html?page=4">4</a><a rel="nofollow" href="javascript:if(confirm(%27http://bosua.vn/nu-pc72058.html?page=5  \n\nThis file was not retrieved by Teleport Ultra, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?%27))window.location=%27http://bosua.vn/nu-pc72058.html?page=5%27" tppabs="http://bosua.vn/nu-pc72058.html?page=5">5</a><a rel="nofollow" href="javascript:if(confirm(%27http://bosua.vn/nu-pc72058.html?page=6  \n\nThis file was not retrieved by Teleport Ultra, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?%27))window.location=%27http://bosua.vn/nu-pc72058.html?page=6%27" tppabs="http://bosua.vn/nu-pc72058.html?page=6">6</a><a rel="nofollow" href="javascript:if(confirm(%27http://bosua.vn/nu-pc72058.html?page=7  \n\nThis file was not retrieved by Teleport Ultra, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?%27))window.location=%27http://bosua.vn/nu-pc72058.html?page=7%27" tppabs="http://bosua.vn/nu-pc72058.html?page=7">7</a><a rel="nofollow" href="javascript:if(confirm(%27http://bosua.vn/nu-pc72058.html?page=8  \n\nThis file was not retrieved by Teleport Ultra, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?%27))window.location=%27http://bosua.vn/nu-pc72058.html?page=8%27" tppabs="http://bosua.vn/nu-pc72058.html?page=8">8</a><a rel="nofollow" href="javascript:if(confirm(%27http://bosua.vn/nu-pc72058.html?page=9  \n\nThis file was not retrieved by Teleport Ultra, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?%27))window.location=%27http://bosua.vn/nu-pc72058.html?page=9%27" tppabs="http://bosua.vn/nu-pc72058.html?page=9">9</a><a rel="nofollow" href="javascript:if(confirm(%27http://bosua.vn/nu-pc72058.html?page=10  \n\nThis file was not retrieved by Teleport Ultra, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?%27))window.location=%27http://bosua.vn/nu-pc72058.html?page=10%27" tppabs="http://bosua.vn/nu-pc72058.html?page=10">10</a><a rel="nofollow" class="paging-next ico" href="javascript:if(confirm(%27http://bosua.vn/nu-pc72058.html?page=2  \n\nThis file was not retrieved by Teleport Ultra, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?%27))window.location=%27http://bosua.vn/nu-pc72058.html?page=2%27" tppabs="http://bosua.vn/nu-pc72058.html?page=2"></a><a rel="nofollow" class="paging-last" title="Trang cuối" href="javascript:if(confirm(%27http://bosua.vn/nu-pc72058.html?page=27  \n\nThis file was not retrieved by Teleport Ultra, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?%27))window.location=%27http://bosua.vn/nu-pc72058.html?page=27%27" tppabs="http://bosua.vn/nu-pc72058.html?page=27"></a></div>
-                        </div>
                     </div>
                 </div>
                 <div class="clear"></div>
                 <div id="append"></div>
             </div>
         </div>
-        <script>dataLayer.push({
-                'Products-list': [
-                    {
-                        'sku': '7025871',
-                        'name': 'Áo phông ngắn tay nữ dáng suông vai rơi phối bèo in typographic Rise and Shine. Trend đen',
-                        'price': '399000',
-                    },
-                    {
-                        'sku': '7025867',
-                        'name': 'Áo phông ngắn tay nữ dáng crop thêu graphic 35. Basic camo vàng xanh',
-                        'price': '299000',
-                    },
-                    {
-                        'sku': '7011952',
-                        'name': 'Áo phông ngắn tay nữ dáng crop in graphic họa tiết Bò Sữa xương chéo. Graphic hồng',
-                        'price': '399000',
-                    },
-                    {
-                        'sku': '7025917',
-                        'name': 'Sơ mi dài tay nữ dáng crop cổ chui phối dây nơ bo gấu. Blackline rêu nhạt',
-                        'price': '549000',
-                    },
-                    {
-                        'sku': '7011954',
-                        'name': 'Áo phông ngắn tay nữ in graphic Đầu Gấu Đây. Graphic. Bu Char. Bu Stickers vàng',
-                        'price': '399000',
-                    },
-                    {
-                        'sku': '7025897',
-                        'name': 'Shorts nữ dáng chữ A xếp ly phối nơ buộc. Trend đen',
-                        'price': '449000',
-                    },
-                    {
-                        'sku': '7012061',
-                        'name': 'Áo phông ngắn tay nữ dáng rộng in graphic Đưa tình yêu đây. Graphic. Bu Char. Bu Stickers hồng nhạt',
-                        'price': '399000',
-                    },
-                    {
-                        'sku': '7012064',
-                        'name': 'Áo phông ngắn tay nam xắn gấu tay in graphic Chiếm em đi. Graphic. Bu Char. Bu Stickers xanh lá cây',
-                        'price': '449000',
-                    },
-                    {
-                        'sku': '7012065',
-                        'name': 'Áo phông ngắn tay nữ dáng overtee in typographic Glitch Outline. Graphic. Sixth Sense camo ghi đen',
-                        'price': '449000',
-                    },
-                    {
-                        'sku': '7025875',
-                        'name': 'Shorts mom jeans nữ cào rách gấu xỏa phối khóa tim hai bên sườn. Blackline đen',
-                        'price': '499000',
-                    },
-                    {
-                        'sku': '7025905',
-                        'name': 'Váy sát nách nữ dáng suông in graphic thân trước buộc nơ sau lưng. Trend đen',
-                        'price': '549000',
-                    },
-                    {
-                        'sku': '7012169',
-                        'name': 'Áo phông ngắn tay nữ in graphic Đưa tình yêu đây. Graphic. Bu Char. Bu Stickers ghi nhạt',
-                        'price': '399000',
-                    },
-                ]
-            });
-        </script>
     </div>
-    @stop
+    <script>
+        $( document ).ready(function() {
+             $(".filterMore").on("change",function () {
+                 var id=$(this).val();
+                 $('option').attr("selected","selected");
+                 var id=$(this).val();
+                 console.log(id);
+                 $.ajax(
+                     {
+                         url: '<?php echo URL::to("danh-muc/ten") ?>',
+                         type: 'get',
+                         data: {
+                             id: id,
+
+                         },
+                         dataType:'json',
+                         success: function (result) {
+                             console.log(result);
+                         }
+                     } );
+
+        })
+        });
+
+
+    </script>
+@stop

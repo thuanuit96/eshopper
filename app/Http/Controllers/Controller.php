@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\Categories;
+use App\product_colors;
 use App\SubCategory;
 use Cart;
-
+use App\product_sizes;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -16,9 +17,11 @@ class Controller extends BaseController
     public function __construct()
     {
         $category=Categories::all();
+
         $subcategory=SubCategory::all();
         $cart=Cart::content();
-        view()->share(['category'=>$category,'cart'=>$cart,'subcategory'=>$subcategory]);
+        $color=product_colors::all();
+        view()->share(['category'=>$category,'cart'=>$cart,'subcategory'=>$subcategory,'colors'=>$color]);
 
 
     }

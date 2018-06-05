@@ -139,7 +139,7 @@ Route::get('admin/logout', ['as' => 'getLogout', 'uses' => 'Admin\AdminLoginCont
     Route::get('/auth/facebook/callback', 'SocialAuthController@handleProviderCallback');
     Route::get('women', function () {
         return view('Page.Women.women');
-    });
+    })->name('women1');
     Route::get('Tin-tuc/{slug}', function () {
         return view('Page.news_detail');
     })->name('Tin-tuc');
@@ -153,12 +153,9 @@ Route::get('nexmo',function (){
         'text' => $a
     ]);
 });
-//Route::get('/sms/send/{to}', function(\Nexmo\Client $nexmo, $to){
-//    $message = $nexmo->message()->send([
-//        'to' => $to,
-//        'from' => '@leggetter',
-//        'text' => 'Sending SMS from Laravel. Woohoo!'
-//    ]);
-//    Log::info('sent message: ' . $message['message-id']);
-//});
+//Loại sản phẩm
+Route::get('danh-muc/{slug}','MainController@danhmuc')->name('danh-muc');
+Route::get('mau-sac/','MainController@mau-sac')->name('mau-sac');
+
+
 

@@ -91,8 +91,9 @@
                                         <div class="colL-1">
                                             <p class="size req" column="i5">
                                                 @foreach($product_detail->size as $row)
-                                                <a  class="active" href="#" rel="nofollow" size="{!! $row->name !!}">{!! $row->name !!}</a>
-                                                                                                @endforeach
+                                                <a class="size" href="javascript:void(0)" rel="nofollow" size="{!! $row->name !!}">{!! $row->name !!}</a>
+                                                @endforeach
+                                                
                                             </p>
                                         </div>
                                         <div class="clear"></div>
@@ -107,7 +108,7 @@
                                     <br>
                                     <div class="qualityAddcart">
                                         <p class="qty"><span>Qty</span><i id="psQtt" val="1" min="1">1</i><i id="psQttUp">+</i><i id="psQttDown">-</i></p>
-                                        <button id="addToCart" title="Vui lòng chọn màu sắc hoặc kích cỡ!" class="btn unsel" >Mua ngay</button>
+                                        <a href="{{route('list-cart')}}"> <button   id="addToCart" title="Vui lòng chọn màu sắc hoặc kích cỡ!" class="btn unsel" >Mua ngay</button></a>
                                     </div>
                                     <span class="clearfix"></span>
                                     <br>
@@ -346,6 +347,9 @@
 
         </script>
         <script>
+            $(".size").click(function () {
+                $(this).attr("color","red");
+            })
             var size='';
             var id='';
             var qty='';
