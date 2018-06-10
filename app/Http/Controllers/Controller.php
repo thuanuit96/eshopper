@@ -21,7 +21,9 @@ class Controller extends BaseController
         $subcategory=SubCategory::all();
         $cart=Cart::content();
         $color=product_colors::all();
-        view()->share(['category'=>$category,'cart'=>$cart,'subcategory'=>$subcategory,'colors'=>$color]);
+        $sizes=product_sizes::select('name')->distinct()->get();
+
+        view()->share(['category'=>$category,'cart'=>$cart,'subcategory'=>$subcategory,'colors'=>$color,'sizes'=>$sizes]);
 
 
     }

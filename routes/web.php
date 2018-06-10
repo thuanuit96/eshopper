@@ -130,19 +130,17 @@ Route::get('admin/logout', ['as' => 'getLogout', 'uses' => 'Admin\AdminLoginCont
 
             Route::get('ajax_subcategory', 'AjaxController@getsubcategory');
 
+
+
         });
 
         // ---------------van de khac ----------------------
     });
-    Route::get('find/{id}', 'SearchController@search');
+    Route::get('find', 'SearchController@search')->name('find');
     Route::get('/auth/facebook', 'SocialAuthController@redirectToProvider');
     Route::get('/auth/facebook/callback', 'SocialAuthController@handleProviderCallback');
-    Route::get('women', function () {
-        return view('Page.Women.women');
-    })->name('women1');
-    Route::get('Tin-tuc/{slug}', function () {
-        return view('Page.news_detail');
-    })->name('Tin-tuc');
+
+    Route::get('Tin-tuc/{slug}','MainController@news_detail')->name('Tin-tuc');
 Route::get('getaddress','AjaxController@address');
 Route::get('nexmo',function (){
     $a="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
@@ -155,7 +153,11 @@ Route::get('nexmo',function (){
 });
 //Loại sản phẩm
 Route::get('danh-muc/{slug}','MainController@danhmuc')->name('danh-muc');
-Route::get('mau-sac/','MainController@mau-sac')->name('mau-sac');
+Route::get('mau-sac','MainController@color')->name('mau-sac');
+Route::get('kich-co','MainController@size')->name('kich-co');
 
-
+Route::get('filter', 'MainController@filter');
+Route::get('test','MainController@filter');
+Route::get('search/autocomplete', 'SearchController@autocomplete');
+Route::get('timkiem','SearchController@index');
 

@@ -107,35 +107,18 @@
                             <h2 class="titleSingle">Danh mục</h2>
                             <div class="productSingle">
                                 <ul>
-                                    <li>
-                                        <a href="/nu-pc72058.html">NỮ</a>
-                                        <ul>
-                                            <li><a href="/ao-pc72061.html">Áo</a></li>
-                                            <li><a href="/quan-pc72064.html">Quần</a></li>
-                                            <li><a href="/vay-pc72066.html">Váy</a></li>
-                                            <li><a href="/denim-pc158840.html">Denim</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="/nam-pc72060.html">NAM</a>
-                                        <ul>
-                                            <li><a href="/ao-pc72062.html">Áo</a></li>
-                                            <li><a href="/quan-pc72065.html">Quần</a></li>
-                                            <li><a href="/denim-pc158841.html">Denim</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="/phu-kien-pc72071.html">PHỤ KIỆN</a>
-                                        <ul>
-                                            <li><a href="/balo-pc72110.html">Balo</a></li>
-                                            <li><a href="/giay-pc72111.html">Giầy</a></li>
-                                            <li><a href="/mu-snapbacksnapfit-pc72112.html">Mũ snapback/snapfit</a></li>
-                                            <li><a href="/moc-khoa-pc72113.html">Móc khóa</a></li>
-                                            <li><a href="/do-len-pc72114.html">Đồ len</a></li>
-                                            <li><a href="/tat-pc72116.html">Tất </a></li>
-                                            <li><a href="/that-lung-pc72117.html">Thắt Lưng</a></li>
-                                        </ul>
-                                    </li>
+                                    @foreach($category as $cat)
+                                        <li>
+                                            <a href="javascript:void(0)">{!!$cat->Name  !!}</a>
+                                            <ul>
+                                                @foreach($cat->get_subcategory as $subcat)
+                                                    <li><a href="{{route('danh-muc',['name'=>$subcat->Name,'id'=>$subcat->Id])}}">{!!$subcat->Name !!}</a></li>
+
+                                                @endforeach
+                                            </ul>
+                                        </li>
+                                    @endforeach
+
                                 </ul>
                             </div>
                         </div>

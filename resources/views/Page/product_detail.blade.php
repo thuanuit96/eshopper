@@ -16,15 +16,25 @@
                         <li>
                             <a class="158841" href="/denim-pc158841.html">Denim</a>
                         </li>
+                        <div class="alert alert-success msgajax">
+
+                            <p>                            <a style="color: red;font-weight: bold;font-size: 20px" class="close" data-dismiss="alert" href="javascript:window.location.href=window.location.href">x</a>
+                            </p>
+                            <strong>Thành công </strong> Sản phẩm đã được thêm vào giỏ hàng<br>
+                            <a href="">Xem giỏ hàng</a>
+                        </div>
                     </ul>
                     <span class="clearfix menuActive" data-rel="view"></span>
                 </div>
             </div>
         </div>
         <div class="detailsProducts">
+
             <div class="container">
                 <div class="grid-75">
+
                     <div class="detailsmainProduct" id="filter">
+
                         <div id="productDetail">
                             <div class="" id="imgZoom">
                                 <div id="zoomer">
@@ -59,6 +69,8 @@
                                 </div>
                                 <span class="clearfix"></span>
                             </div>
+
+
                             <div class="" id="productInfo">
 
                                 <h1 class="dttitleProduct">{!! $product_detail->Name !!}</h1>
@@ -108,7 +120,7 @@
                                     <br>
                                     <div class="qualityAddcart">
                                         <p class="qty"><span>Qty</span><i id="psQtt" val="1" min="1">1</i><i id="psQttUp">+</i><i id="psQttDown">-</i></p>
-                                        <a href="{{route('list-cart')}}"> <button   id="addToCart" title="Vui lòng chọn màu sắc hoặc kích cỡ!" class="btn unsel" >Mua ngay</button></a>
+                                     <button   id="addToCart" title="Vui lòng chọn màu sắc hoặc kích cỡ!" class="btn unsel" >Mua ngay</button>
                                     </div>
                                     <span class="clearfix"></span>
                                     <br>
@@ -276,7 +288,6 @@
                         <div class="post-img">
                             <a href="http://eshopper.test/product_detail/ao-khoac-mua-he-ha-noi-88?id=3" class="img"><img src="http://eshopper.test/images/product/1527875178_1_2_16_1_05_001_118_01_10200002_01_thumb_294x441.jpg"></a>
 
-
                             <button class="addc" onclick="addcart(3)">
                                 <i class="fa fa-cart-plus" aria-hidden="true">Mua ngay</i></button>
                             <a class="viewm" href="http://eshopper.test/product_detail/ao-khoac-mua-he-ha-noi-88?id=3">
@@ -321,6 +332,38 @@
 
 
             </div>
+
+            <div class="modal"><!-- Place at bottom of page --></div>
+        <style>
+            .msgajax{
+                display: none;
+            }
+            .modal {
+                display:    none;
+                position:   fixed;
+                z-index:    1000;
+                top:        0;
+                left:       0;
+                height:     100%;
+                width:      100%;
+                background: rgba( 255, 255, 255, .8 )
+                url('http://i.stack.imgur.com/FhHRx.gif')
+                50% 50%
+                no-repeat;
+            }
+
+            /* When the body has the loading class, we turn
+               the scrollbar off with overflow:hidden */
+            body.loading .modal {
+                overflow: hidden;
+            }
+
+            /* Anytime the body has the loading class, our
+               modal element will be visible */
+            body.loading .modal {
+                display: block;
+            }
+        </style>
         </div>
         <script>
             $("#zoom_01").elevateZoom({
@@ -347,12 +390,35 @@
 
         </script>
         <script>
+
+            $body = $("body");
+
+            $(document).on({
+                ajaxStart: function() { $body.addClass("loading");    },
+                ajaxStop: function() { $body.removeClass("loading"); }
+            });
+            var $loading = $('#loading').hide();
+            $(document)
+                .ajaxStart(function () {
+                    ajaxLoadingTimeout = setTimeout(function () {
+                        $loading.show();
+                    })
+
+                })
+                .ajaxStop(function () {
+                    $loading.hide();
+                });
             $(".size").click(function () {
-                $(this).attr("color","red");
+
+                $(this).addClass('active').siblings('.active').removeClass('active');
+
+
+
+
             })
             var size='';
             var id='';
-            var qty='';
+            var qty=$('#psQtt').html();
 
             $('#psQttUp').click(function () {
                 qty=$('#psQtt').html();
@@ -362,12 +428,16 @@
             })
             $('#psQttDown').click(function () {
                 qty=$('#psQtt').html();
-                qty=parseInt(qty)-1;
-                console.log(qty);
-                $('#psQtt').html(qty);
+                if(parseInt(qty)>0){
+                    qty=parseInt(qty)-1;
+                    console.log(qty);
+                    $('#psQtt').html(qty);
+                }
+
             })
             $("a").click(function () {
                 size= $( this ).attr( "size");
+                console.log('size',size);
 
 
 
@@ -384,11 +454,14 @@
                     url:'<?php echo URL::to("addcart/id") ?>',
                     data:{
                         id:id,
-                        size:size
+                        size:size,
+                        qty:qty
                     },
 
                     success:function (result) {
+
                         $("#cart_count").html(result);
+                        $(".msgajax").css({"position":" fixed","display":"block",'left':'42%','bottom':'54%','z-index':'999'});
 
                     }
                 })

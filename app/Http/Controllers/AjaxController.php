@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\SubCategory;
 use vendor\GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
-require_once url('vendor/autoload.php');
 
 
 
@@ -35,10 +34,10 @@ $res = $client->get('https://thongtindoanhnghiep.co/api/city');
        }
 
    }
-   public  function  nexmo(){
 
-       $nexmoClient = new Nexmo\Client(new Nexmo\Client\Credentials\Basic('key', 'secret'));
-   }
+public  function  filter(Request $rq){
 
+
+}
 
 }

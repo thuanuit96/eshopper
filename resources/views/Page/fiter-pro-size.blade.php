@@ -1,5 +1,5 @@
 @extends('Page.index')
-@section('women')
+@section('fiter-pro')
     <div class="main" style="margin-top: 50px">
         <h1 class="hidden">NỮ</h1>
         <span class="clearfix menuActive" data-rel="1"></span>
@@ -27,16 +27,16 @@
                             <div class="productSingle productDemo">
                                 <ul>
                                     @foreach($category as $cat)
-                                    <li>
-                                        <a href="javascript:void(0)">{!!$cat->Name  !!}</a>
-                                        <ul>
-                                            @foreach($cat->get_subcategory as $subcat)
-                                                <li><a href="{{route('danh-muc',['name'=>$subcat->Name,'id'=>$subcat->Id])}}">{!!$subcat->Name !!}</a></li>
+                                        <li>
+                                            <a href="javascript:void(0)">{!!$cat->Name  !!}</a>
+                                            <ul>
+                                                @foreach($cat->get_subcategory as $subcat)
+                                                    <li><a href="{{route('danh-muc',['name'=>$subcat->Name,'id'=>$subcat->Id])}}">{!!$subcat->Name !!}</a></li>
 
-                                            @endforeach
-                                        </ul>
-                                    </li>
-                                        @endforeach
+                                                @endforeach
+                                            </ul>
+                                        </li>
+                                    @endforeach
 
                                 </ul>
                             </div>
@@ -44,7 +44,7 @@
                             <div class="productSingle productDemo req-filter">
                                 <ul>
                                     @foreach($colors as $value)
-                                        <a rel="nofollow" class="shop99_deamonLink" href="" title="{{$value->title}}" style="display:inline-block;background:{{$value->style}};border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px">
+                                        <a  href="{{route('mau-sac',['id'=>$value->id,'sub_id'=>$subcat->Id])}}" class="shop99_deamonLink"  title="{{$value->title}}" style="display:inline-block;background:{{$value->style}};border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px">
                                         </a>
                                     @endforeach
                                     <a rel="nofollow" class="shop99_deamonLink" href="" title="Trắng" style="display:inline-block;background:#FFFFFF;border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px">
@@ -74,8 +74,11 @@
                             </div>
                             <h3 class="titleSingle" style="margin-top: 10px">Kích cỡ</h3>
                             <div class="productSingle productDemo req-filter size">
+
                                 <ul>
-                                    <a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i5=78" style="color: black; display:inline-block;box-shadow: 0 0 0 1px #b8b8b8;min-width:38px;margin:5px 4px 5px 0;text-align:center;padding:2px 5px;border:none;">XS</a><a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i5=459" style="color: black; display:inline-block;box-shadow: 0 0 0 1px #b8b8b8;min-width:38px;margin:5px 4px 5px 0;text-align:center;padding:2px 5px;border:none;">2XL</a><a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i5=79" style="color: black; display:inline-block;box-shadow: 0 0 0 1px #b8b8b8;min-width:38px;margin:5px 4px 5px 0;text-align:center;padding:2px 5px;border:none;">S</a><a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i5=80" style="color: black; display:inline-block;box-shadow: 0 0 0 1px #b8b8b8;min-width:38px;margin:5px 4px 5px 0;text-align:center;padding:2px 5px;border:none;">M</a><a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i5=81" style="color: black; display:inline-block;box-shadow: 0 0 0 1px #b8b8b8;min-width:38px;margin:5px 4px 5px 0;text-align:center;padding:2px 5px;border:none;">L</a><a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i5=82" style="color: black; display:inline-block;box-shadow: 0 0 0 1px #b8b8b8;min-width:38px;margin:5px 4px 5px 0;text-align:center;padding:2px 5px;border:none;">XL</a>
+                                    @foreach($sizes as $values)
+                                        <a class="shop99_deamonLink" href="{{route('kich-co',['size'=>$values->name,'sub_id'=>$subcat->Id])}}" style="color: black; display:inline-block;box-shadow: 0 0 0 1px #b8b8b8;min-width:38px;margin:5px 4px 5px 0;text-align:center;padding:2px 5px;border:none;">{!! $values->name!!}</a>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -88,10 +91,10 @@
                                 <label>
                                     Sắp xếp theo
                                     <select class="input filterMore">
-                                        <option  value="">Bỏ lọc</option>
-                                        <option  value="{{$dm->Id}}">Giá tăng dần</option>
-                                        <option value="{{$dm->Id}}">Giá giảm dần</option>
-                                        <option value="{{$dm->Id}}">Sale</option>
+                                        <option name="un-filter" value="">Bỏ lọc</option>
+                                        <option name="price-up" value="{{$dm->Id}}">Giá tăng dần</option>
+                                        <option name="price-down" value="{{$dm->Id}}">Giá giảm dần</option>
+                                        <option nam="sale" value="{{$dm->Id}}">Sale</option>
                                     </select>
                                 </label>
 
@@ -107,6 +110,7 @@
                         <div class="clear"></div>
                     </div>
                     <div class="listProductcategory">
+                        @foreach($data as $pro)
                         @foreach($pro as $value)
                             <div class="box-pro">
                                 <div class="col-sm-4 col-md-4 col-xs-6">
@@ -115,7 +119,7 @@
 
                                         </button>
                                         <button class="addc" onclick="addcart({{$value->Id}})">
-                                            <i class="fa fa-cart-plus" aria-hidden="true">Mua ngay</i></button>
+                                            <i class="fa fa-cart-plus" aria-hidden="true">yêu thích</i></button>
                                         <a class="viewm" href="{{route('product_detail',['slug'=>$value->Slug,'id'=>$value->Id])}}">
                                             <i class="fa fa-search-plus" aria-hidden="true"></i> Chi tiết</a>
                                     </div>
@@ -133,6 +137,7 @@
                                 </div>
                             </div>
                         @endforeach
+                        @endforeach
 
                         <span class="clearfix"></span>
                     </div>
@@ -144,26 +149,36 @@
     </div>
     <script>
         $( document ).ready(function() {
-             $(".filterMore").on("change",function () {
-                 var id=$(this).val();
-                 $('option').attr("selected","selected");
-                 var id=$(this).val();
-                 console.log(id);
-                 $.ajax(
-                     {
-                         url: '<?php echo URL::to("danh-muc/ten") ?>',
-                         type: 'get',
-                         data: {
-                             id: id,
+            $(".filterMore").on("change",function () {
+                // var id=$(this).val();
+                // $('option').attr("selected","selected");
+                var name=$(this).find('option:selected').attr("name");
+                console.log('name',name);
+                var id=$(this).val();
+                console.log(id);
+                $.ajax(
+                    {
+                        url: '<?php echo URL::to("filter") ?>',
+                        type: 'get',
+                        data: {
+                            "_token": "{{ csrf_token() }}",
+                            id_subcategory: id,
+                            name:name,
 
-                         },
-                         dataType:'json',
-                         success: function (result) {
-                             console.log(result);
-                         }
-                     } );
 
-        })
+                        },
+                        datatype:"html",
+                        success: function (result) {
+                            console.log(result);
+                            $('.listProductcategory').html(result);
+
+                        },
+                        error: function(e) {
+                            alert('Error' + e);
+                        }
+                    } );
+
+            })
         });
 
 

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Orderdetail;
+use App\product_colors;
 use App\Product_detail;
+use App\product_sizes;
 use App\Products;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,13 +31,11 @@ class MainController extends Controller
     {
 
         $data = [
-            'name' => $request->username,
+            'username' => $request->username,
             'password' => $request->password,
         ];
-
         if (Auth::attempt($data)) {
-
-            Session::put('account', Auth::user()->name);
+            Session::put('account', Auth::user()->username);
             return redirect()->back();
 
         } else {
@@ -77,6 +77,7 @@ class MainController extends Controller
             ['min' => 'Mật khẩu ít nhất 6 ký tự']);
 
         $data = $request->all();
+
 //        $validator = $this->validator($data)->validate();
 //        var_dump($validator);
 //        if ($validator && $validator->fails()) {
@@ -86,14 +87,21 @@ class MainController extends Controller
 //        }
         $password = $data['password'];
         $user = new User();
-        $user->name = $data['username'];
-        $user->Email = $data['email'];
+        $user->username = $data['username'];
+        $user->email = $data['email'];
+        $user->fullname = $data['fullname'];
+        $user->phone = $data['phone'];
+        $user->provider = 'null';
+        $user->provider_id = 'null';
+
+
         $user->password = bcrypt($password);
+        $user->remember_token = $data['_token'];
         $user->save();
 //
 //        Session::flash('message', 'User registered, please check your email!');
         Session::flash('alert', 'alert-success');
-        return redirect()->back();
+        return redirect()->back()->with(['flash_level'=>'result_msg','flash_massage'=>' Đăng ký thành công' ]);
 
     }
 
@@ -143,7 +151,7 @@ class MainController extends Controller
             'id' => $rq->id,
             'name' => $product->Name,
             'price' => $product->Price,
-            'qty' => '1',
+            'qty' => $rq->qty,
             'options' => ['size' => $rq->size]
         ];
         Cart::add($cartInfo);
@@ -196,18 +204,67 @@ class MainController extends Controller
         $pro = Products::where('SubcategoryId', '=', $id)->get();
 //    die (json_encode($pro));
 
-        return view('Page.Women.women', ['dm' => $dm, 'pro' => $pro]);
+        return view('Page.pro_subcategory', ['dm' => $dm, 'pro' => $pro]);
 
     }
-    public function mausac(Request $rq)
+    public function color(Request $rq)
     {
-        $id = $rq->id;
-        $dm = SubCategory::findorfail($id);
-        $pro = Products::where('SubcategoryId', '=', $id)->get();
-//    die (json_encode($pro));
 
-        return view('Page.Women.women', ['dm' => $dm, 'pro' => $pro]);
+        $id = $rq->id;
+        $dm = SubCategory::findorfail($rq->sub_id);
+        $color = product_colors::findorfail($id);
+        $pro_id=$color->product_id;
+        $pro=Products::where('Id','=',$pro_id)->get();
+//        $pro = Products::where('SubcategoryId', '=', $id)->get();
+////    die (json_encode($pro));
+// dd($pro);
+//
+        return view('Page.fiter-pro', ['pro' => $pro,'dm' => $dm]);
+//        return back()->with('pro_color',$pro_color);
 
     }
+    public function size(Request $rq)
+    {
+        $dm = SubCategory::findorfail($rq->sub_id);
+        $sizes=product_sizes::where('name','=',$rq->size)->get();
+        $data=array();
+        $i=0;
+        foreach ($sizes as $vl){
+            $pro_id=$vl->product_id;
+           $pro=Products::where('Id','=',$pro_id)->get();
+             $data[$i]=$pro;
+             $i++;
+
+        }
+        return view('Page.fiter-pro-size', ['data' => $data,'dm' => $dm]);
+
+    }
+    public  function  news_detail(){
+        return view('Page.news_detail');
+    }
+ public  function  filter(Request $rq){
+        $id_sucategory=$rq->id_subcategory;
+        $key=$rq->name;
+     switch ($key) {
+         case 'un-filter':
+             $pro = Products::where('SubcategoryId','=',$id_sucategory)->get();
+             return view('Page.box-pro',['pro'=>$pro]);
+
+             break;
+         case 'price-up':
+             $pro = Products::where('SubcategoryId','=',$id_sucategory)->orderBy('Price', 'asc')->get();
+             return view('Page.box-pro',['pro'=>$pro]);
+             break;
+         case 'price-down':
+             $pro = Products::where('SubcategoryId','=',$id_sucategory)->orderByDesc('Price')->get();
+             return view('Page.box-pro',['pro'=>$pro]);
+             break;
+         case 'sale':
+             $pro = Products::where('SubcategoryId','=',$id_sucategory)->where('Discount','!=','Null')->get();
+             return view('Page.box-pro',['pro'=>$pro]);
+             break;
+     }
+
+ }
 }
 

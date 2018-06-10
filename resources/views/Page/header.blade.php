@@ -1,7 +1,6 @@
 
-<script src="{{asset('js/typeahead.bundle.js')}}"></script>
 <header class="site-header">
-    @if (count($errors) > 0)
+@if (count($errors) > 0)
     <div class="alert alert-danger">
     <ul>
     @foreach ($errors->all() as $error)
@@ -10,12 +9,15 @@
     </ul>
     </div>
     @endif
-    @if(Session::has('alert'))
-    <div class="alert alert-success" style="width: 20%">
-    {{Session::get('alert')}}
-    </div>
+       @if (Session()->has('flash_level'))
+        <div class="alert alert-success" style="text-align: center">
+            <ul>
+                <a class="close" data-dismiss="alert" href="#">x</a>
 
-    @endif
+                {!! Session::get('flash_massage') !!}
+            </ul>
+        </div>
+        @endif
     <div class="menu-utility hidden-xs">
         <div class="container">
             <ul class="account-sign-status nav navbar-nav navbar-left">
@@ -23,11 +25,11 @@
                     <span>Xin chào, Quý khách hàng!</span>
                 </li>
                 <li class="account-signin">
-                    <a href="/customer/login.html"><i class="fa fa-sign-in" aria-hidden="true"></i> Đăng
+                    <a href=""><i class="fa fa-sign-in" aria-hidden="true"></i> Đăng
                         nhập</a>
                 </li>
                 <li class="account-signup">
-                    <a href="/customer/register.html"><i class="fa fa-user" aria-hidden="true"></i>
+                    <a href=""><i class="fa fa-user" aria-hidden="true"></i>
                         Đăng ký</a>
                 </li>
             </ul>
@@ -64,7 +66,8 @@
                     </button>
                 </div>
                 <div class="col-xs-7 col-sm-7 col-md-6 col-md-offset-1">
-                    <form class="search-box" method="get" action="">
+                    <form class="search-box" method="get" action="{{route('find')}}">
+                        {!! csrf_field() !!}
                         <input type="text" class="search-keywords form-control" name="keyword" placeholder="Nhập tên hoặc mã sản phẩm..." value="">
                         <button type="submit" class="btn btn-ali"><i class="fa fa-search" aria-hidden="true"></i>
                         </button>
@@ -115,10 +118,19 @@
         <li><a href="#">Liên Hệ</a></li>
         <li><a href="#">Tra cứu đơn hàng</a></li>
         @if(Session::has('account'))
-            <li><a href="#"><i class="fa fa-user"></i><strong style="color: red">{{Session::get('account')}}</strong></a></li>
+            {{--<li><a href="#"><i class="fa fa-user"></i><strong style="color: red;overflow: hidden">{{Session::get('account')}}</strong></a></li>--}}
         @endif
         @if(Session::has('account'))
-            <li><a href="{{route('logout')}}"><i class="fa fa-user"></i> Đăng xuất</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><span style="color:#fff;font-weight: bold">{{Session::get('account')}}</span><span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+
+
+                    <li><a href="{{route('logout')}}"><i class="fa fa-user"></i> Đăng xuất</a></li>
+
+
+                </ul>
+
         @endif
         @if(!Session::has('account'))
             <li><a href="#" data-toggle="modal" data-target="#login" ><i class="fa fa-lock"></i> Đăng nhập</a>
@@ -179,27 +191,29 @@
                                 <h4 class="modal-title">Đăng ký tài khoản</h4>
                             </div>
                             <div class="modal-body">
-                                <form method="post" action="/customer/register.html">
+                                <form method="post" action="{{route('customRegister')}}">
+                                    {!! csrf_field() !!}
+
                                     <div class="form-group">
                                         <label style="font-size: 15px;">Tên đăng nhập</label>
-                                        <input type="text" class="form-control" name="username" placeholder="Tên đăng nhập">
+                                        <input required type="text" class="form-control" name="username" placeholder="Tên đăng nhập">
                                     </div>
                                     <div class="form-group">
                                         <label style="font-size: 15px;">Mật khẩu</label>
-                                        <input type="password" class="form-control" name="password" placeholder="Mật khẩu">
+                                        <input  required type="password" class="form-control" name="password" placeholder="Mật khẩu">
                                     </div>
                                     <div class="form-group">
                                         <label style="font-size: 15px;">Địa chỉ <email></email></label>
-                                        <input type="email" class="form-control" name="email" placeholder="Email">
+                                        <input required type="email" class="form-control" name="email" placeholder="Email">
                                     </div>
                                     <div class="form-group">
                                         <label style="font-size: 15px;">Họ tên</label>
 
-                                        <input type="text" class="form-control" name="fullname" placeholder="Họ và tên">
+                                        <input required type="text" class="form-control" name="fullname" placeholder="Họ và tên">
                                     </div>
                                     <div class="form-group">
                                         <label style="font-size: 15px;">Số điện thoại</label>
-                                        <input type="tel" class="form-control" name="phone" placeholder="Số di động">
+                                        <input required type="tel" class="form-control" name="phone" placeholder="Số di động">
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-block btn-warning text-uppercase"><strong>Đăng ký tài khoản</strong></button>
@@ -240,35 +254,33 @@
 <script>
 
 
-        var engine = new Bloodhound({
-            remote: {
-                url: 'api/product/find?q=%QUERY%',
-                wildcard: '%QUERY%'
-            },
-            datumTokenizer: Bloodhound.tokenizers.whitespace('Name'),
-            queryTokenizer: Bloodhound.tokenizers.whitespace
-        });
+         var engine = new Bloodhound({
+             remote: {
+                 url:'<?php echo URL::to("api/product/find?q=%QUERY%") ?>',
+                 wildcard: '%QUERY%'
+             },
+             datumTokenizer: Bloodhound.tokenizers.whitespace('Name'),
+             queryTokenizer: Bloodhound.tokenizers.whitespace
+         });
 
         $(".search-keywords").typeahead({
             hint: true,
             highlight: true,
             minLength: 1
         }, {
-            source: engine.ttAdapter(),
-            name: 'product',
+            source:engine.ttAdapter(),
+            name: 'engine',
+            displayKey: 'id',
             templates: {
-                empty: [
-                    // '<div class="list-group search-results-dropdown"><div class="list-group-item">Không có kết quả phù hợp.</div></div>'
-                ],
-                header: [
-                    // '<div class="list-group search-results-dropdown">'
-                ],
                 suggestion: function (data) {
+                    var url = '{{ route("find", ["Id"=>"id"]) }}';
 
-                    return '<a href="find/' + data.Id + '" class="list-group-item">' + data.Name + '</a>'
+                    url = url.replace('id',data.Id);
+                    return '<a href="'+url+'" class="list-group-item ">' + data.Name+'</a>';
 
-                },
 
+
+                }
             }
         });
 

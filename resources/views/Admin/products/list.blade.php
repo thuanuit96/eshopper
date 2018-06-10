@@ -46,7 +46,9 @@
 					    @elseif (Session()->has('flash_level'))
 					    	<div class="alert alert-success">
 						        <ul>
-						            {!! Session::get('flash_massage') !!}	
+									<a class="close" data-dismiss="alert" href="#">x</a>
+
+									{!! Session::get('flash_massage') !!}
 						        </ul>
 						    </div>
 						@endif

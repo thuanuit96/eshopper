@@ -23,17 +23,20 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     {{--<script src="{{asset('js/jquery.elevatezoom.js')}}"></script>--}}
+    <script src="{{asset('js/typeahead.bundle.js')}}"></script>
+
 
 </head><!--/head-->
 
 <body>
     @include('page.header')
     @yield('slider')
+    @yield('search')
     @yield('check_order')
     @yield('home')
     @yield('news')
     @yield('content')
-    @yield('women')
+    @yield('fiter-pro')
     @yield('shirt')
     @yield('cart')
     @yield('product_detail')
@@ -41,6 +44,7 @@
     @yield('contact')
     @yield('product')
      @include('Page.footer')
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
         {{--<script src="{{asset('css/cart/style.js')}}"></script>--}}
