@@ -2,26 +2,26 @@
 @section('cart')
     <script>
 
-        var frm = $('#Form1');
-
-        frm.submit(function (e) {
-
-            e.preventDefault();
-
-            $.ajax({
-                type: frm.attr('method'),
-                url: frm.attr('action'),
-                data: frm.serialize(),
-                success: function (data) {
-                    console.log('Submission was successful.');
-                    console.log(data);
-                },
-                error: function (data) {
-                    console.log('An error occurred.');
-                    console.log(data);
-                },
-            });
-        });
+        // var frm = $('#Form1');
+        //
+        // frm.submit(function (e) {
+        //
+        //     e.preventDefault();
+        //
+        //     $.ajax({
+        //         type: frm.attr('method'),
+        //         url: frm.attr('action'),
+        //         data: frm.serialize(),
+        //         success: function (data) {
+        //             console.log('Submission was successful.');
+        //             console.log(data);
+        //         },
+        //         error: function (data) {
+        //             console.log('An error occurred.');
+        //             console.log(data);
+        //         },
+        //     });
+        // });
 
         $(document).ready(function() {
             <?php for ($i=1;$i<30;$i++){?>
@@ -71,7 +71,7 @@
                 <tr class="title .odd">
                     <td width="500">Sản phẩm</td>
                     <td width="200">Kích cỡ</td>
-
+                    <td width="200">Màu sắc</td>
                     <td width="200">Đơn giá</td>
                     <td width="200">Số lượng</td>
                     <td width="200">Thành tiền</td>
@@ -91,6 +91,11 @@
                     <td width="200">
                         <p style="font-weight: bold">
                             {{ $item->options->size}}
+                        </p>
+                    </td>
+                    <td width="200">
+                        <p style="font-weight: bold">
+                            {{ $item->options->color}}
                         </p>
                     </td>
                     <td width="200">
@@ -145,11 +150,61 @@
             </table>
             <div class="cartNavigator">
                 <a href="{{route('checkout')}}" class="btnCheckOut btnRed" style="width: 200px;float:right">Tiến hành thanh toán</a>
-                <a href="#" class="buyMore btnGreen " style="width: 200px">Mua thêm sản phẩm khác</a>
+                <a href="/" class="buyMore btnGreen ">Mua thêm sản phẩm khác</a>
                 <span class="clearfix"></span>
             </div>
             <br><br>
         </div>
     </div>
 </div>
+    <div class="modal1"><!-- Place at bottom of page --></div>
+    <style>
+        .msgajax{
+            display: none;
+        }
+        .modal1 {
+            display:    none;
+            position:   fixed;
+            z-index:    1000;
+            top:        0;
+            left:       0;
+            height:     100%;
+            width:      100%;
+            background: rgba( 255, 255, 255, .8 )
+            url('http://i.stack.imgur.com/FhHRx.gif')
+            50% 50%
+            no-repeat;
+        }
+
+        /* When the body has the loading class, we turn
+           the scrollbar off with overflow:hidden */
+        body.loading .modal1 {
+            overflow: hidden;
+        }
+
+        /* Anytime the body has the loading class, our
+           modal element will be visible */
+        body.loading .modal1 {
+            display: block;
+        }
+    </style>
+    <script>
+        $body = $("body");
+
+        $(document).on({
+            ajaxStart: function() { $body.addClass("loading");    },
+            ajaxStop: function() { $body.removeClass("loading"); }
+        });
+        var $loading = $('#loading').hide();
+        $(document)
+            .ajaxStart(function () {
+                ajaxLoadingTimeout = setTimeout(function () {
+                    $loading.show();
+                })
+
+            })
+            .ajaxStop(function () {
+                $loading.hide();
+            });
+    </script>
 @stop

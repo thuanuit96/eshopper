@@ -23,6 +23,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     {{--<script src="{{asset('js/jquery.elevatezoom.js')}}"></script>--}}
+    <script src="{{asset('js/custom.js')}}"></script>
+
     <script src="{{asset('js/typeahead.bundle.js')}}"></script>
 
 
@@ -31,6 +33,7 @@
 <body>
     @include('page.header')
     @yield('slider')
+    @yield('wishlist')
     @yield('search')
     @yield('check_order')
     @yield('home')

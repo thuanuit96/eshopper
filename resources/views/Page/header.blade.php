@@ -37,8 +37,8 @@
                 <li class="dropdown">
                     <a href="#"><i class="fa fa-heart" aria-hidden="true"></i> Yêu thích</a>
                     <ul class="dropdown-content">
-                        <li><a href="/favourite/viewItem.html" title="Sản phẩm yêu thích" rel="nofollow">Sản phẩm yêu thích</a></li>
-                        <li><a href="/favourite/viewShop.html" title="Shop yêu thích" rel="nofollow">Shop yêu thích</a></li>
+                        <li><a href="{{route('danh-sach-yeu-thich')}}" title="Sản phẩm yêu thích" rel="nofollow">Sản phẩm yêu thích</a></li>
+                        <li><a href="#" title="Shop yêu thích" rel="nofollow">Shop yêu thích</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">

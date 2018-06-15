@@ -132,10 +132,13 @@ Route::get('admin/logout', ['as' => 'getLogout', 'uses' => 'Admin\AdminLoginCont
 
 
 
+
+
         });
 
         // ---------------van de khac ----------------------
     });
+Route::get('district', 'AjaxController@getdistrict');
     Route::get('find', 'SearchController@search')->name('find');
     Route::get('/auth/facebook', 'SocialAuthController@redirectToProvider');
     Route::get('/auth/facebook/callback', 'SocialAuthController@handleProviderCallback');
@@ -143,12 +146,12 @@ Route::get('admin/logout', ['as' => 'getLogout', 'uses' => 'Admin\AdminLoginCont
     Route::get('Tin-tuc/{slug}','MainController@news_detail')->name('Tin-tuc');
 Route::get('getaddress','AjaxController@address');
 Route::get('nexmo',function (){
-    $a="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+    $text="Ban da dat hang thanh cong ! moi thâc mac vui long lien he 05003556789";
     $nexmoClient = new Nexmo\Client(new Nexmo\Client\Credentials\Basic('206f4f31', 'U4uT0rNbInTOK3ym'));
     $message = $nexmoClient->message()->send([
         'from' => '@leggetter',
-        'to' => 84931180021,
-        'text' => $a
+        'to' => 84973962984,
+        'text' => $text
     ]);
 });
 //Loại sản phẩm
@@ -160,4 +163,10 @@ Route::get('filter', 'MainController@filter');
 Route::get('test','MainController@filter');
 Route::get('search/autocomplete', 'SearchController@autocomplete');
 Route::get('timkiem','SearchController@index');
+Route::get('yeu-thich','wishlistcontroller@create');
+
+Route::get('danh-sach-yeu-thich','wishlistcontroller@index')->name('danh-sach-yeu-thich');
+Route::get('xoadanhsach/{id}','wishlistcontroller@delete');
+
+
 

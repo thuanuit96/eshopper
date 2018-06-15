@@ -25,18 +25,35 @@ class AjaxController extends Controller
 $client = new \GuzzleHttp\Client();
 $res = $client->get('https://thongtindoanhnghiep.co/api/city');
 //       'application/json; charset=utf8';
-       $data=json_decode($res->getBody());
-//       dd($data);
-       foreach ($data as $vl){
+       $data=json_decode($res->getBody(),true);
+
+ foreach ($data as $vl){
+
+     foreach ((array)$vl as $vl1)
+     {
+     }
+
+ }
 
 
-          echo $vl['ID'];
-       }
 
    }
 
-public  function  filter(Request $rq){
+public  function getdistrict(Request $rq){
+    $id=$rq->id;
+    $client = new \GuzzleHttp\Client();
+    $res = $client->get('https://thongtindoanhnghiep.co/api/city/2/district');
+//  'application/json; charset=utf8';
+    $data=json_decode($res->getBody());
+    foreach ($data as $vl){
 
+             echo "<option value='$vl->Title'>$vl->Title</option>";
+
+//            echo "<option". value=".$vl['Title']>".$vl['Title']."</option>";
+
+
+
+    }
 
 }
 

@@ -18,16 +18,11 @@ class Products extends Migration
             $table->increments('Id');
             $table->string('Name')->nullable();
             $table->string('Code')->nullable();
+            $table->integer('Color')->unsigned()->nullable();
             $table->string('Description')->nullable();
             $table->float('Price')->nullable();
-            $table->string('Discount')->nullable();
-            $table->string('Color')->nullable();
-
-            $table->string('Status')->nullable();
             $table->string('Slug')->nullable();
-            $table->string('Image1')->nullable();
-            $table->string('Image2')->nullable();
-            $table->string('Image3')->nullable();
+            $table->string('Image')->nullable();
             $table->integer('SubCategoryId')->unsigned()->nullable();
             $table->timestamps();
 

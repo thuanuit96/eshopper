@@ -87,10 +87,10 @@
 								<?php $i=$i+1 ?>
 							@endforeach
                             <?php $j=1; ?>
-							@foreach($pro->color as $value)
+
 							<div class="form-group">
 								<label for="input-id">Màu sắc </label>
-								<select class="form-control" name="sltcolor{{$i}}" id="sltcolor{{$j}}">
+								<select class="form-control" name="sltcolor" id="sltcolor">
 									<option value="Đỏ">Đỏ</option>
 									<option value="Vàng">Vàng</option>
 									<option value="Xanh">Xanh</option>
@@ -98,8 +98,7 @@
 								</select>
 
 							</div>
-                                <?php $j=$j++ ?>
-							@endforeach
+
 							<div class="form-group">
 								<label for="input-id">Mô tả </label>
 							<textarea name="txtdescription" id="inputTxtre_Intro" class="form-control"  rows="2">{!! isset($pro->Description) ? $pro->Description :'null' !!}</textarea>

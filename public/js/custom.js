@@ -30,3 +30,73 @@ $( document ).ready(function() {
 
     })
 });
+function wishlist(id_pro){
+    console.log(id_pro);
+    $.ajax({
+        type:'get',
+        url:'<?php echo URL::to('yeu-thich')?>',
+        data:{
+            id_pro:id_pro
+        },
+
+        success:function (data) {
+            console.log(data);
+            if(data=="thanh cong"){
+                $.alert({
+                    title: 'Thành công',
+                    content: 'Đã thêm vào danh sách yêu thích',
+                });
+
+            }
+            else if(data=="that bai")
+            {
+                $.alert({
+                    title: 'Thất bại',
+                    content: 'Sản phẩm đã tồn tại trong danh sách yêu thích',
+                });
+            }
+            else {
+                $.alert({
+                    title: 'Thất bại',
+                    content: 'Bạn cần đăng nhập để thực hiện chức năng này',
+                });
+            }
+
+        }
+    })
+}
+function wishlist(id_pro){
+    console.log(id_pro);
+    $.ajax({
+        type:'get',
+        url:'<?php echo URL::to('yeu-thich')?>',
+        data:{
+            id_pro:id_pro
+        },
+
+        success:function (data) {
+            console.log(data);
+            if(data=="thanh cong"){
+                $.alert({
+                    title: 'Thành công',
+                    content: 'Đã thêm vào danh sách yêu thích',
+                });
+
+            }
+            else if(data=="that bai")
+            {
+                $.alert({
+                    title: 'Thất bại',
+                    content: 'Sản phẩm đã tồn tại trong danh sách yêu thích',
+                });
+            }
+            else {
+                $.alert({
+                    title: 'Thất bại',
+                    content: 'Bạn cần đăng nhập để thực hiện chức năng này',
+                });
+            }
+
+        }
+    })
+}

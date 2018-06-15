@@ -17,9 +17,8 @@ class Products extends Seeder
                 'Price' => rand(100000,500000 ),
                 'Slug' => 'ao-khoac-mua-he-ha-noi'. rand(1, 100),
                 'Code'=>'SP'.rand(100, 1000),
-                'Status'=>'Còn hàng',
                 'SubCategoryId'=>1,
-                'Image1'=>'1.2.17.2.05.001.217.23.10600007-01_thumb.jpg'
+                'Image'=>'1.2.17.2.05.001.217.23.10600007-01_thumb.jpg'
 
             ]);
         }

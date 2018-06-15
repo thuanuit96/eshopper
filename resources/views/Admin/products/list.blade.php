@@ -76,12 +76,9 @@
 											<td>{!!$row->Name!!}</td>
 											<td>{!!$row->Description!!}</td>
 
-												<td>
-													@foreach($row->color as $row1)
-													{!!$row1->name!!}.
 
-													@endforeach
-												</td>
+											<td>{!!$row->Color!!}</td>
+
 											<td>
 											@foreach($row->size as $row1)
 												{!!$row1->name!!},

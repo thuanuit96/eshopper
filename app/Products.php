@@ -24,7 +24,9 @@ class Products extends Model
         return $this->belongsTo('App\SubCategory','SubCategoryId');
 
     }
-
+public  function pro_detail(){
+    return $this->hasMany('App\product_detail','product_id','Id');
+}
     public function color()
     {
         return $this->hasOne('App\product_colors','product_id','Id');

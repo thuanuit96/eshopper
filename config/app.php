@@ -151,6 +151,7 @@ return [
         Nexmo\Laravel\NexmoServiceProvider::class,
         Elasticquent\ElasticquentServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Bhavinjr\Wishlist\Providers\WishlistServiceProvider::class,
 
 
 
@@ -222,6 +223,8 @@ return [
         'Es' => Elasticquent\ElasticquentElasticsearchFacade::class,
         'Form' => 'Collective\Html\FormFacade',
         'Html' => 'Collective\Html\HtmlFacade',
+        "Wishlist"=> "Bhavinjr\Wishlist\Facades\Wishlist",
+
 
 
 

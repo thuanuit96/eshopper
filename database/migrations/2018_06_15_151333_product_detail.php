@@ -1,0 +1,45 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class ProductDetail extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::Create('Product_detail',function (Blueprint $table)
+        {
+            $table->increments('id');
+            $table->string('size')->nullable();
+            $table->float('quantity')->nullable();
+            $table->string('status')->nullable();
+            $table->integer('product_id')->unsigned();
+            $table->foreign('product_id')->references('Id')->on('Products')->onDelete('cascade');
+            $table->string('image1')->nullable();
+            $table->string('image2')->nullable();
+            $table->string('image3')->nullable();
+            $table->timestamps();
+
+        });
+//        Schema::table('product_colors', function($table)
+//        {
+//            $table->foreign('pro_detail_id')->references('id')->on('Product_detail');
+//        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+
+    }
+}

@@ -18,10 +18,10 @@
                         </li>
                         <div class="alert alert-success msgajax">
 
-                            <p>                            <a style="color: red;font-weight: bold;font-size: 20px" class="close" data-dismiss="alert" href="javascript:window.location.href=window.location.href">x</a>
+                            <p> <a style="color: red;font-weight: bold;font-size: 20px" class="close" data-dismiss="alert" href="javascript:window.location.href=window.location.href">x</a>
                             </p>
                             <strong>Thành công </strong> Sản phẩm đã được thêm vào giỏ hàng<br>
-                            <a href="">Xem giỏ hàng</a>
+                            <a href="{{route('list-cart')}}">Xem giỏ hàng</a>
                         </div>
                     </ul>
                     <span class="clearfix menuActive" data-rel="view"></span>
@@ -38,7 +38,7 @@
                         <div id="productDetail">
                             <div class="" id="imgZoom">
                                 <div id="zoomer">
-                                    <img id="zoom_01" width="100%" class="cloudzoom" src="{{asset('/images/product/'.$product_detail->Image1)}}" data-zoom-image="{{asset('/images/product/'.$product_detail->Image1)}}">
+                                    <img id="zoom_01" width="100%" class="cloudzoom" src="{{asset('/images/product/'.$pro->Image)}}" data-zoom-image="{{asset('/images/product/'.$pro->Image)}}">
                                 </div>
                                 <div id="zoomSlide">
                                     <a href="#" id="prevSlideZ" class="" style="display: block;"></a>
@@ -69,16 +69,12 @@
                                 </div>
                                 <span class="clearfix"></span>
                             </div>
-
-
                             <div class="" id="productInfo">
-
-                                <h1 class="dttitleProduct">{!! $product_detail->Name !!}</h1>
-                                <input type="hidden" id='product_id' value="{!! $product_detail->Id !!}">
+                                <h1 class="dttitleProduct">{!! $pro->Name !!}</h1>
                                 <div class="colL">
                                     <span style="position: relative;top: 2px;">Mã sản phẩm:</span>
                                 </div>
-                                <div class="colL-1">{!! $product_detail->Code !!}</div>
+                                <div class="colL-1">{!! $pro->Code !!}</div>
                                 <div class="clear"></div>
                                 <div class="tableDetails">
                                     <div class="colorProduct">
@@ -87,11 +83,9 @@
                                         </div>
                                         <div class="colL-1">
                                             <div class="attr">
-                                                <p class="color req" column="i4">
-
-                                                    {{--@if($product_detail->Color==)--}}
-                                                    <a  href="#" class="cloudzoom-gallery active" value="31" title="Xanh da trời" style="background-color: #4B98D5"></a>
-                                                    {{--</p>--}}
+                                                <p class="color req">
+                                                    <a  id="color" href="javascript:void(0)"  class="cloudzoom-gallery active" color="{!! $pro->color->name !!}" title="{{$pro->color->title}}" style="background-color: {{$pro->color->style}}"></a>
+                                                    </p>
                                             </div>
                                         </div>
                                         <div class="clear"></div>
@@ -102,8 +96,8 @@
                                         </div>
                                         <div class="colL-1">
                                             <p class="size req" column="i5">
-                                                @foreach($product_detail->size as $row)
-                                                <a class="size" href="javascript:void(0)" rel="nofollow" size="{!! $row->name !!}">{!! $row->name !!}</a>
+                                                @foreach($product_detail as $row)
+                                                    <a class="size" id_pro_detail="{!! $row->id !!}" href="javascript:void(0)" rel="nofollow" size="{!! $row->size !!}">{!! $row->size !!}</a>
                                                 @endforeach
                                                 
                                             </p>
@@ -113,7 +107,7 @@
                                 </div>
                                 <div class="price">
                                     <p style="font-weight:bold;">
-                                        <span>{!! $product_detail->Price !!} VNĐ </span>
+                                        <span>{!! $pro->Price !!} VNĐ </span>
                                     </p>
                                 </div>
                                 <div class="attr">
@@ -152,7 +146,7 @@
                                 <div class="connectSocial">
                                     <ul class="add-to-links">
                                         <li>
-                                            <a class="setFav" rel="7293295" href="javascript:void(0)"><i class="fa fa-heart-o"></i><span>Sản phẩm yêu thích</span></a>
+                                            <a class="setFav" href="javascript:void(0)"><i class="fa fa-heart-o"></i><span>Sản phẩm yêu thích</span></a>
                                         </li>
                                         <div class="clear"></div>
                                     </ul>
@@ -173,7 +167,7 @@
                                 </div>
                             </div>
                             <br>
-                            <div class="fb-like fb_iframe_widget" data-href="http://bosua.vn/product/7293295" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true" fb-xfbml-state="rendered" fb-iframe-plugin-query="action=like&amp;app_id=&amp;container_width=2&amp;href=http%3A%2F%2Fbosua.vn%2Fproduct%2F7293295&amp;layout=button_count&amp;locale=vi_VN&amp;sdk=joey&amp;share=true&amp;show_faces=true"><span style="vertical-align: bottom; width: 122px; height: 20px;"><iframe name="f11f22ba9c103d8" width="1000px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" title="fb:like Facebook Social Plugin" src="https://www.facebook.com/v2.12/plugins/like.php?action=like&amp;app_id=&amp;channel=http%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2FRQ7NiRXMcYA.js%3Fversion%3D42%23cb%3Dfab47f4c6e31a%26domain%3Dbosua.vn%26origin%3Dhttp%253A%252F%252Fbosua.vn%252Ff21bffc82d1de1%26relation%3Dparent.parent&amp;container_width=2&amp;href=http%3A%2F%2Fbosua.vn%2Fproduct%2F7293295&amp;layout=button_count&amp;locale=vi_VN&amp;sdk=joey&amp;share=true&amp;show_faces=true" style="border: none; visibility: visible; width: 122px; height: 20px;" class=""></iframe></span></div>
+                            <div class="fb-like fb_iframe_widget" data-href="" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true" fb-xfbml-state="rendered" fb-iframe-plugin-query="action=like&amp;app_id=&amp;container_width=2&amp;href=http%3A%2F%2Fbosua.vn%2Fproduct%2F7293295&amp;layout=button_count&amp;locale=vi_VN&amp;sdk=joey&amp;share=true&amp;show_faces=true"><span style="vertical-align: bottom; width: 122px; height: 20px;"><iframe name="f11f22ba9c103d8" width="1000px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" title="fb:like Facebook Social Plugin" src="https://www.facebook.com/v2.12/plugins/like.php?action=like&amp;app_id=&amp;channel=http%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2FRQ7NiRXMcYA.js%3Fversion%3D42%23cb%3Dfab47f4c6e31a%26domain%3Dbosua.vn%26origin%3Dhttp%253A%252F%252Fbosua.vn%252Ff21bffc82d1de1%26relation%3Dparent.parent&amp;container_width=2&amp;href=http%3A%2F%2Fbosua.vn%2Fproduct%2F7293295&amp;layout=button_count&amp;locale=vi_VN&amp;sdk=joey&amp;share=true&amp;show_faces=true" style="border: none; visibility: visible; width: 122px; height: 20px;" class=""></iframe></span></div>
                             <div class="google-like">
                                 <div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 32px; height: 20px;"><iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 32px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" width="100%" id="I0_1527078123685" name="I0_1527078123685" src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&amp;size=medium&amp;annotation=none&amp;origin=http%3A%2F%2Fbosua.vn&amp;url=http%3A%2F%2Fbosua.vn%2Fproduct%2F7293295&amp;gsrc=3p&amp;ic=1&amp;jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.vi.997mSnhiNJs.O%2Fm%3D__features__%2Fam%3DQQE%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCPmVgCnYb7QaTxiF7I5sILreCm3lQ#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&amp;id=I0_1527078123685&amp;_gfid=I0_1527078123685&amp;parent=http%3A%2F%2Fbosua.vn&amp;pfname=&amp;rpctoken=11559546" data-gapiattached="true" title="G+"></iframe></div>
                                 <div id="___plus_0" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 67px; height: 20px;"><iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 67px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" width="100%" id="I1_1527078123693" name="I1_1527078123693" src="https://apis.google.com/u/0/se/0/_/+1/sharebutton?plusShare=true&amp;usegapi=1&amp;action=share&amp;annotation=bubble&amp;origin=http%3A%2F%2Fbosua.vn&amp;url=http%3A%2F%2Fbosua.vn%2Fproduct%2F7293295&amp;gsrc=3p&amp;ic=1&amp;jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.vi.997mSnhiNJs.O%2Fm%3D__features__%2Fam%3DQQE%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCPmVgCnYb7QaTxiF7I5sILreCm3lQ#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&amp;id=I1_1527078123693&amp;_gfid=I1_1527078123693&amp;parent=http%3A%2F%2Fbosua.vn&amp;pfname=&amp;rpctoken=35851556" data-gapiattached="true" title="G+"></iframe></div>
@@ -194,37 +188,20 @@
                     <div id="catSideBar">
                         <div class="sidebarSingle">
                             <h2 class="titleSingle">Danh mục</h2>
-                            <div class="productSingle">
+                            <div class="productSingle productDemo">
                                 <ul>
-                                    <li>
-                                        <a href="/nu-pc72058.html">NỮ</a>
-                                        <ul>
-                                            <li><a href="/ao-pc72061.html">Áo</a></li>
-                                            <li><a href="/quan-pc72064.html">Quần</a></li>
-                                            <li><a href="/vay-pc72066.html">Váy</a></li>
-                                            <li><a href="/denim-pc158840.html">Denim</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="/nam-pc72060.html">NAM</a>
-                                        <ul>
-                                            <li><a href="/ao-pc72062.html">Áo</a></li>
-                                            <li><a href="/quan-pc72065.html">Quần</a></li>
-                                            <li><a href="/denim-pc158841.html">Denim</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="/phu-kien-pc72071.html">PHỤ KIỆN</a>
-                                        <ul>
-                                            <li><a href="/balo-pc72110.html">Balo</a></li>
-                                            <li><a href="/giay-pc72111.html">Giầy</a></li>
-                                            <li><a href="/mu-snapbacksnapfit-pc72112.html">Mũ snapback/snapfit</a></li>
-                                            <li><a href="/moc-khoa-pc72113.html">Móc khóa</a></li>
-                                            <li><a href="/do-len-pc72114.html">Đồ len</a></li>
-                                            <li><a href="/tat-pc72116.html">Tất </a></li>
-                                            <li><a href="/that-lung-pc72117.html">Thắt Lưng</a></li>
-                                        </ul>
-                                    </li>
+                                    @foreach($category as $cat)
+                                        <li>
+                                            <a href="javascript:void(0)">{!!$cat->Name  !!}</a>
+                                            <ul>
+                                                @foreach($cat->get_subcategory as $subcat)
+                                                    <li><a href="{{route('danh-muc',['name'=>$subcat->Name,'id'=>$subcat->Id])}}">{!!$subcat->Name !!}</a></li>
+
+                                                @endforeach
+                                            </ul>
+                                        </li>
+                                    @endforeach
+
                                 </ul>
                             </div>
                         </div>
@@ -416,6 +393,7 @@
 
 
             })
+            var color='';
             var size='';
             var id='';
             var qty=$('#psQtt').html();
@@ -442,6 +420,18 @@
 
 
             })
+            $("a").click(function () {
+                id_pro_detail= $( this ).attr( "id_pro_detail");
+                console.log('id_pro_detail',id_pro_detail);
+
+
+
+            })
+
+                color= $('#color').attr( "color");
+                console.log('color',color);
+
+
             var id=$("#product_id").val();
             console.log('id',id);
             $('#addToCart').click(function () {
@@ -453,9 +443,10 @@
                     type:'get',
                     url:'<?php echo URL::to("addcart/id") ?>',
                     data:{
-                        id:id,
+                        id:id_pro_detail,
                         size:size,
-                        qty:qty
+                        qty:qty,
+                        color:color,
                     },
 
                     success:function (result) {

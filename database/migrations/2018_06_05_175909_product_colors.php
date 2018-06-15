@@ -20,7 +20,7 @@ class ProductColors extends Migration
             $table->string('title');
             $table->string('style');
             $table->integer('product_id')->unsigned();
-            $table->foreign('product_id')->references('Id')->on('Products');
+            $table->foreign('product_id')->references('id')->on('Products');
             $table->timestamps();
 
         });
@@ -33,6 +33,7 @@ class ProductColors extends Migration
      */
     public function down()
     {
-        //
+
+
     }
 }

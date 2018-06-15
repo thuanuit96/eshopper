@@ -133,26 +133,27 @@ class MainController extends Controller
     public function getproduct_detail(Request $rq)
     {
         $id = $rq->id;
-        $product_detail = Products::find($id);
-        $subcate_id = $product_detail->SubCategoryId;
+        $product = Products::find($id);
+        $subcate_id = $product->SubCategoryId;
+        $pro_detail= $product->pro_detail;
         $relate_pro = SubCategory::find($subcate_id)->products;
 //        dd($relate_pro);
-        return view('Page.product_detail', ['product_detail' => $product_detail, 'relate_pro' => $relate_pro]);
+        return view('Page.product_detail', ['pro'=>$product,'product_detail' => $pro_detail, 'relate_pro' => $relate_pro]);
     }
 
     public function addcart(Request $rq)
     {
 
 
-        $product = Products::find($rq->id);
-
+        $product_detail = Product_detail::find($rq->id);
+        $product=$product_detail->product;
 
         $cartInfo = [
             'id' => $rq->id,
             'name' => $product->Name,
             'price' => $product->Price,
             'qty' => $rq->qty,
-            'options' => ['size' => $rq->size]
+            'options' => ['color'=>$rq->color,'size' => $rq->size]
         ];
         Cart::add($cartInfo);
         $cart = Cart::content();

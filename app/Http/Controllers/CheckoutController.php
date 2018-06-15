@@ -15,22 +15,31 @@ use App\Categories;
 use App\SubCategory;
 use App\Customer;
 use Session;
+use vendor\GuzzleHttp\Client;
+use Nexmo;
+
+use GuzzleHttp\Exception\RequestException;
 
 
 class CheckoutController extends Controller
 {
     public function  checkout(){
+        $client = new \GuzzleHttp\Client();
+        $res = $client->get('https://thongtindoanhnghiep.co/api/city');
+//       'application/json; charset=utf8';
+        $data=json_decode($res->getBody(),true);
         $cart=Cart::content();
 
-        return view('Page.checkout',['cart'=>$cart]);
+        return view('Page.checkout',['cart'=>$cart,'address'=>$data]);
     }
     public function  postcheckout(Request $req)
     {
         if (!empty(Cart::content())) {
+
             $data = $req->all();
             $order = new Order();
             $order->Name = $data['customerName'];
-            $order->Address = $data['customerAddress'];
+            $order->Address = $data['customerAddress'].'-'.$data['customerDistrictId'].'-Tỉnh '.$data['customerCityId'];
             $order->PhoneNumber = $data['customerMobile'];
             $order->Email = $data['customerEmail'];
             $order->Order_date = date('Y/m/d');
@@ -61,12 +70,21 @@ class CheckoutController extends Controller
             }
 
             Cart::destroy();
+            $this->sendsms();
             return back()->with('alert','Đặt hàng thành công !Vui lòng kiêm tra thông tin đặt hàng của bạn qua email');
         }
 
         else return back();
     }
-
+public  function sendsms (){
+    $text="Ban da dat hang thanh cong ! moi thâc mac vui long lien he 05003556789";
+    $nexmoClient = new Nexmo\Client(new Nexmo\Client\Credentials\Basic('206f4f31', 'U4uT0rNbInTOK3ym'));
+    $message = $nexmoClient->message()->send([
+        'from' => '@leggetter',
+        'to' => 84973962984,
+        'text' => $text
+    ]);
+    }
     public function sendmail($input)
     {   $mail=$input["customerEmail"];
 

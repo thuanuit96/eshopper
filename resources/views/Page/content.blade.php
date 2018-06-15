@@ -50,11 +50,9 @@
                     <div class="box-pro">
                     <div class="col-sm-4 col-md-3 col-xs-6" style="width: 292px;">
                     <div class="post-img">
-                    <a href="{{route('product_detail',['slug'=>$value->Slug,'id'=>$value->Id])}}" class="img"><img src="{{asset                                     ('images/product/'.$value->Image1)}}"></a>
-
-                    </button>
-                    <button class="addc" onclick="addcart({{$value->Id}})">
-                    <i class="fa fa-cart-plus" aria-hidden="true">Mua ngay</i></button>
+                    <a href="{{route('product_detail',['slug'=>$value->Slug,'id'=>$value->Id])}}" class="img"><img src="{{asset('images/product/'.$value->Image)}}"></a>
+                    <button class="addc" onclick="wishlist({{$value->Id}})"><i class="fa fa-heart" aria-hidden="true">Yêu thích</i></button>
+                        <input type="hidden" class="pro_id" value="{{$value->Id}}">
                     <a class="viewm" href="{{route('product_detail',['slug'=>$value->Slug,'id'=>$value->Id])}}">
                     <i class="fa fa-search-plus" aria-hidden="true"></i> Chi tiết</a>
                     </div>
@@ -90,11 +88,11 @@
                         <div class="box-pro">
                             <div class="col-sm-4 col-md-3 col-xs-6" style="width: 292px;">
                                 <div class="post-img">
-                                    <a href="{{route('product_detail',['slug'=>$value->Slug,'id'=>$value->Id])}}" class="img"><img src="{{asset                                     ('images/product/'.$value->Image1)}}"></a>
+                                    <a href="{{route('product_detail',['slug'=>$value->Slug,'id'=>$value->Id])}}" class="img"><img src="{{asset('images/product/'.$value->Image)}}"></a>
 
                                     </button>
                                     <button class="addc" onclick="addcart({{$value->Id}})">
-                                        <i class="fa fa-cart-plus" aria-hidden="true">Mua ngay</i></button>
+                                        <i class="fa fa-heart" aria-hidden="true">Yêu thích</i></button>
                                     <a class="viewm" href="{{route('product_detail',['slug'=>$value->Slug,'id'=>$value->Id])}}">
                                         <i class="fa fa-search-plus" aria-hidden="true"></i> Chi tiết</a>
                                 </div>
@@ -132,7 +130,7 @@
                             <div class="detail">
                             <div class="img-fasti">
                             <a href="{{route('product_detail',['slug'=>$value->Slug,'id'=>$value->Id])}}" class="img">
-                            <img src="{{asset('images/product/'.$value->Image1)}}" alt="{{$value->Slug}}" title="{{$value->Name}}">
+                            <img src="{{asset('images/product/'.$value->Image)}}" alt="{{$value->Slug}}" title="{{$value->Name}}">
                             </a>
 
                             <button class="add-icon" onclick="addcart({{$value->Id}})"><i class="fa fa-cart-plus"></i></button>
@@ -170,7 +168,7 @@
                             <div class="detail">
                             <div class="img-fasti">
                             <a href="{{route('product_detail',['slug'=>$value->Slug,'id'=>$value->Id])}}" class="img">
-                            <img src="{{asset('images/product/'.$value->Image1)}}" alt="{{$value->Slug}}" title="{{$value->Name}}">
+                            <img src="{{asset('images/product/'.$value->Image)}}" alt="{{$value->Slug}}" title="{{$value->Name}}">
                             </a>
 
                             <button class="add-icon" onclick="addcart({{$value->Id}})"><i class="fa fa-cart-plus"></i></button>
@@ -207,7 +205,7 @@
                             <div class="detail">
                             <div class="img-fasti">
                             <a href="{{route('product_detail',['slug'=>$value->Slug,'id'=>$value->Id])}}" class="img">
-                            <img src="{{asset('images/product/'.$value->Image1)}}" alt="{{$value->Slug}}" title="{{$value->Name}}">
+                            <img src="{{asset('images/product/'.$value->Image)}}" alt="{{$value->Slug}}" title="{{$value->Name}}">
                             </a>
 
                             <button class="add-icon" onclick="addcart({{$value->Id}})"><i class="fa fa-cart-plus"></i></button>
@@ -274,12 +272,43 @@
 <script type="text/javascript">
 
 
-    $(".addc").click(() => {
-        $.alert({
-            title: 'Thành công',
-            content: 'Sản phẩm đã được thêm vào giỏ hàng',
-        });
-    })
+    function wishlist(id_pro){
+        console.log(id_pro);
+        $.ajax({
+            type:'get',
+            url:'<?php echo URL::to('yeu-thich')?>',
+            data:{
+                id_pro:id_pro
+            },
+
+            success:function (data) {
+                console.log(data);
+                if(data=="thanh cong"){
+                    $.alert({
+                        title: 'Thành công',
+                        content: 'Đã thêm vào danh sách yêu thích',
+                    });
+
+                }
+                else if(data=="that bai")
+                {
+                    $.alert({
+                        title: 'Thất bại',
+                        content: 'Sản phẩm đã tồn tại trong danh sách yêu thích',
+                    });
+                }
+                else {
+                    $.alert({
+                        title: 'Thất bại',
+                        content: 'Bạn cần đăng nhập để thực hiện chức năng này',
+                    });
+                }
+
+            }
+        })
+    }
+
+
 
 
 </script>
