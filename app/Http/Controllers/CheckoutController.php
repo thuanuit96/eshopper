@@ -59,7 +59,7 @@ class CheckoutController extends Controller
 
                 $order_detail = new Orderdetail();
                 $order_detail->OrderId = $order->Id;
-                $order_detail->ProductId = $item->id;
+                $order_detail->pro_id = $item->id;
                 $order_detail->Quantity = $item->qty;
                 $order_detail->Unit_Price = $item->price;
                 $order_detail->save();

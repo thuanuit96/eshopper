@@ -19,10 +19,12 @@ class ProductColors extends Migration
             $table->string('name');
             $table->string('title');
             $table->string('style');
-            $table->integer('product_id')->unsigned();
-            $table->foreign('product_id')->references('id')->on('Products');
             $table->timestamps();
 
+        });
+        Schema::table('Products', function($table)
+        {
+            $table->foreign('id_color')->references('id')->on('product_colors');
         });
     }
 

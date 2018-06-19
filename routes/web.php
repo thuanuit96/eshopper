@@ -78,12 +78,20 @@ Route::get('admin/logout', ['as' => 'getLogout', 'uses' => 'Admin\AdminLoginCont
         Route::group(['prefix' => '/sanpham'], function () {
             Route::get('/add', ['as' => 'getaddpro', 'uses' => 'ProductsController@getadd']);
             Route::post('/add', ['as' => 'postaddpro', 'uses' => 'ProductsController@postadd']);
+            Route::get('/detail/{id}', ['as' => 'detail', 'uses' => 'ProductsController@detail']);
+
 
             Route::get('/{loai}', ['as' => 'getpro', 'uses' => 'ProductsController@getlist']);
             Route::get('/del/{id}', ['as' => 'getdellpro', 'uses' => 'ProductsController@getdel'])->where('id', '[0-9]+');
 
             Route::get('/edit/{id}', ['as' => 'geteditpro', 'uses' => 'ProductsController@getedit'])->where('id', '[0-9]+');
-            Route::post('edit/{id}', ['as' => 'posteditpro', 'uses' => 'ProductsController@postedit'])->where('id', '[0-9]+');
+            Route::post('edit',['as' => 'posteditpro', 'uses' => 'ProductsController@postedit'])->where('id', '[0-9]+');
+            Route::post('editdetail',['as' => 'editdetail', 'uses' => 'ProductsController@edit_pro_detail'])->where('id', '[0-9]+');
+            Route::post('adddetail',['as' => 'editdetail', 'uses' => 'ProductsController@add_pro_detail'])->where('id', '[0-9]+');
+
+            Route::get('deldetail/{id}',['as' => 'deldetail', 'uses' => 'ProductsController@dell_detail'])->where('id', '[0-9]+');
+
+
         });
         // -------------------- quan ly tin tuc-----------------------------
         Route::group(['prefix' => '/news'], function () {
@@ -118,13 +126,14 @@ Route::get('admin/logout', ['as' => 'getLogout', 'uses' => 'Admin\AdminLoginCont
         });
         // -------------------- quan ly thong nhan vien--------------------
         Route::group(['prefix' => '/nhanvien'], function () {
-            ;
+
+            Route::get('thongtin', ['as' => 'thongtinnv', 'uses' => 'StaffController@thongtinnv']);
 
             Route::get('', ['as' => 'getnv', 'uses' => 'StaffController@getlist']);
-            Route::get('/del/{id}', ['as' => 'getdelnv', 'uses' => 'Admin_usersController@getdel'])->where('id', '[0-9]+');
+            Route::post('/add', ['as' => 'addnv', 'uses' => 'StaffController@staff_add']);
 
-            Route::get('/edit/{id}', ['as' => 'geteditnv', 'uses' => 'Admin_usersController@getedit'])->where('id', '[0-9]+');
-            Route::post('/edit/{id}', ['as' => 'posteditnv', 'uses' => 'Admin_usersController@postedit'])->where('id', '[0-9]+');
+            Route::get('/del/{id}', ['as' => 'getdelnv', 'uses' => 'StaffController@getdel'])->where('id', '[0-9]+');
+            Route::post('/edit', ['as' => 'posteditnv', 'uses' => 'StaffController@staff_edit'])->where('id', '[0-9]+');
         });
         Route::group(['prefix' => '/ajax'], function () {
 
@@ -167,6 +176,10 @@ Route::get('yeu-thich','wishlistcontroller@create');
 
 Route::get('danh-sach-yeu-thich','wishlistcontroller@index')->name('danh-sach-yeu-thich');
 Route::get('xoadanhsach/{id}','wishlistcontroller@delete');
+Route::get('getcoupon','AjaxController@getcoupon');
+Route::get('tai-khoan/doi-mat-khau','MainController@changepassword');
+
+
 
 
 

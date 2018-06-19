@@ -111,8 +111,8 @@
                         {{ number_format($item->subtotal)}}
                     </td>
                     <td  width="200" class="cart_delete">
-                        <a class="removeCartItem" href="" data-toggle="modal" data-target="#delete-modal" data-id=""><i style="font-size: 14px" class="fa fa-trash-o"></i>Xóa</a>
-                        <div class="modal fade" id="delete-modal" role="dialog">
+                        <a class="removeCartItem" href="" data-toggle="modal" data-target="#delete-modal_<?=$i?>" data-id=""><i style="font-size: 14px" class="fa fa-trash-o"></i>Xóa</a>
+                        <div class="modal fade" id="delete-modal_<?=$i?>" role="dialog">
                             <div class="modal-dialog">
                                 <!-- Modal content-->
                                 <div class="modal-content">
@@ -127,7 +127,7 @@
                                         <form action="{{route('cart_delete')}}" method="post" id="#Form1">
                                             {!! csrf_field() !!}
                                             <input type="hidden" name="product_id" id="product_id" value="{{$item->id}}">
-                                            <button type="submit" class="btn btn-default" onclick="cart_delete({{$item->id}})">Yes</button>
+                                            <button type="submit" class="btn btn-default">Yes</button>
                                             <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
                                         </form>
 

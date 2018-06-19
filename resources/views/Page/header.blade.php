@@ -10,7 +10,7 @@
     </div>
     @endif
        @if (Session()->has('flash_level'))
-        <div class="alert alert-success" style="text-align: center">
+        <div class="alert alert-success" style="text-align: center;width: 300px;margin: 10px 40%;position: absolute;z-index: 999">
             <ul>
                 <a class="close" data-dismiss="alert" href="#">x</a>
 
@@ -18,43 +18,154 @@
             </ul>
         </div>
         @endif
-    <div class="menu-utility hidden-xs">
+
+    <div class="header-top">
         <div class="container">
-            <ul class="account-sign-status nav navbar-nav navbar-left">
-                <li class="account-welcome">
-                    <span>Xin chào, Quý khách hàng!</span>
-                </li>
-                <li class="account-signin">
-                    <a href=""><i class="fa fa-sign-in" aria-hidden="true"></i> Đăng
-                        nhập</a>
-                </li>
-                <li class="account-signup">
-                    <a href=""><i class="fa fa-user" aria-hidden="true"></i>
-                        Đăng ký</a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav top-nav pull-right">
+            <p class="pull-left">
+            @if(Session::has('account'))
                 <li class="dropdown">
-                    <a href="#"><i class="fa fa-heart" aria-hidden="true"></i> Yêu thích</a>
-                    <ul class="dropdown-content">
-                        <li><a href="{{route('danh-sach-yeu-thich')}}" title="Sản phẩm yêu thích" rel="nofollow">Sản phẩm yêu thích</a></li>
-                        <li><a href="#" title="Shop yêu thích" rel="nofollow">Shop yêu thích</a></li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        Xin chào
+                        <i class="fa fa-user"></i>&nbsp;&nbsp;
+                        <span style="color:red ;font-weight: bold">{{Session::get('account')}}</span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li style="float: none"><a href="#"> Thông tin tài khoản</a></li>
+                        <li style="float: none"><a href="{{route('logout')}}"> Đăng xuất</a></li>
+
                     </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#"><i class="fa fa-phone" aria-hidden="true"></i> Hotline</a>
-                    <ul class="dropdown-content">
-                        <li>(024-3) 511.33.33</li>
-                        <li>(028-6) 290.66.58</li>
-                        <li>01229.103.888</li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="/page/view/3"><i class="fa fa-life-ring" aria-hidden="true"></i> Hướng dẫn</a>
-                </li>
-            </ul>
-        </div> <!-- /Container -->
-    </div> <!-- /Menu Utility -->
+
+                 @else
+
+                    <i style="color: black" class="fas fa-hand-holding-heart"></i>&nbsp;&nbsp;Xin chào quý khách hàng!</p>
+            @endif
+            <div class="pull-right">
+                <ul>
+                    <li>
+                        <i class="icon-lock fa fa-phone"></i>
+                        <a href="">&nbsp; HOTLINE</a></li>
+                    @if(!Session::has('account'))
+
+
+                        <li>
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <a href="#"  data-toggle="modal" data-target="#dangky">&nbsp; ĐĂNG KÝ</a></li>
+                    <div id="dangky" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Đăng ký tài khoản</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="post" action="{{route('customRegister')}}">
+                                        {!! csrf_field() !!}
+
+                                        <div class="form-group">
+                                            <label style="font-size: 15px;">Tên đăng nhập</label>
+                                            <input required type="text" class="form-control" name="username" placeholder="Tên đăng nhập">
+                                        </div>
+                                        <div class="form-group">
+                                            <label style="font-size: 15px;">Mật khẩu</label>
+                                            <input  required type="password" class="form-control" name="password" placeholder="Mật khẩu">
+                                        </div>
+                                        <div class="form-group">
+                                            <label style="font-size: 15px;">Địa chỉ <email></email></label>
+                                            <input required type="email" class="form-control" name="email" placeholder="Email">
+                                        </div>
+                                        <div class="form-group">
+                                            <label style="font-size: 15px;">Họ tên</label>
+
+                                            <input required type="text" class="form-control" name="fullname" placeholder="Họ và tên">
+                                        </div>
+                                        <div class="form-group">
+                                            <label style="font-size: 15px;">Số điện thoại</label>
+                                            <input required type="tel" class="form-control" name="phone" placeholder="Số di động">
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-block btn-warning text-uppercase"><strong>Đăng ký tài khoản</strong></button>
+                                        </div>
+                                    </form>
+                                    {{--<div class="signup-form"><!--sign up form-->--}}
+                                    {{--<form action="{{route('customRegister')}}" method="post">--}}
+                                    {{--<input type="hidden" name="_token" value="{{ csrf_token() }}">--}}
+
+                                    {{--{!! csrf_field() !!}--}}
+                                    {{--<input type="text" name="username" placeholder="Tài khoản"/>--}}
+                                    {{--<input type="email" name="email" placeholder="Địa chỉ email"/>--}}
+                                    {{--<input type="password" name="password" placeholder="Mật khẩu"/>--}}
+                                    {{--<div>--}}
+                                    {{--<button  style="float: left;" type="submit" class="btn btn-default">Đăng ký</button>--}}
+
+                                    {{--<button  style="float: left;margin-left: 10%!important;"  type="reset" class="btn btn-default">Nhập lại</button>--}}
+                                    {{--</div>--}}
+                                    {{--</form>--}}
+                                    {{--</div><!--/sign up form-->--}}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <li>
+                        <i class="icon-lock fa fa-sign-in"></i>
+                        <a href="#" data-toggle="modal" data-target="#login">&nbsp; ĐĂNG NHẬP</a></li>
+                    <div id="login" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Đăng nhập tài khoản</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="{{route('customLogin')}}" method="post">
+                                        {!! csrf_field() !!}
+                                        <div class="form-group">
+                                            <input type="text" name="username" class="form-control" placeholder="Tên đăng nhập">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" name="password" class="form-control" placeholder="Mật khẩu">
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-block btn-warning text-uppercase"><strong>Đăng nhập</strong></button>
+                                        </div>
+                                        <div class="form-group text-center">
+                                            <a href="">Quên mật khẩu?</a>
+                                        </div>
+                                        <div class="form-group text-muted">
+                                            <p class="separator text-center">
+                                                <i>Hoặc đăng nhập với</i>
+                                            </p>
+                                            <a href="{{ URL::to('auth/facebook') }}" class="btn btn-block btn-fb">
+                                                <i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook
+                                            </a>
+                                            <a class="btn btn-block btn-gplus signin-by-google-class">
+                                                <i class="fa fa-google-plus-square" aria-hidden="true"></i> Google+
+                                            </a>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <li>
+
+                    @endif
+                        <a href="{{route('danh-sach-yeu-thich')}}" title="Sản phẩm yêu thích"> <i class="icon-lock fa fa-heart"></i>&nbsp; YÊU THÍCH</a></li>
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
     <div class="masthead">
         <div class="container">
             <div class="row">
@@ -110,8 +221,6 @@
                     @endforeach
 
             </ul>
-
-
         </li>
         @endforeach
         <li><a href="#">Giới Thiệu</a></li>
@@ -120,127 +229,16 @@
         @if(Session::has('account'))
             {{--<li><a href="#"><i class="fa fa-user"></i><strong style="color: red;overflow: hidden">{{Session::get('account')}}</strong></a></li>--}}
         @endif
-        @if(Session::has('account'))
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><span style="color:#fff;font-weight: bold">{{Session::get('account')}}</span><span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
 
-
-                    <li><a href="{{route('logout')}}"><i class="fa fa-user"></i> Đăng xuất</a></li>
-
-
-                </ul>
-
-        @endif
         @if(!Session::has('account'))
             <li><a href="#" data-toggle="modal" data-target="#login" ><i class="fa fa-lock"></i> Đăng nhập</a>
 
-                <div id="login" class="modal fade" role="dialog">
-                    <div class="modal-dialog">
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Đăng nhập tài khoản</h4>
-                            </div>
-                            <div class="modal-body">
-                                <form action="{{route('customLogin')}}" method="post">
-                                    {!! csrf_field() !!}
-                                    <div class="form-group">
-                                        <input type="text" name="username" class="form-control" placeholder="Tên đăng nhập">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" name="password" class="form-control" placeholder="Mật khẩu">
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-block btn-warning text-uppercase"><strong>Đăng nhập</strong></button>
-                                    </div>
-                                    <div class="form-group text-center">
-                                        <a href="">Quên mật khẩu?</a>
-                                    </div>
-                                    <div class="form-group text-muted">
-                                        <p class="separator text-center">
-                                            <i>Hoặc đăng nhập với</i>
-                                        </p>
-                                        <a href="{{ URL::to('auth/facebook') }}" class="btn btn-block btn-fb">
-                                            <i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook
-                                        </a>
-                                        <a class="btn btn-block btn-gplus signin-by-google-class">
-                                            <i class="fa fa-google-plus-square" aria-hidden="true"></i> Google+
-                                        </a>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
 
 
             </li>
             <li><a href="#" data-toggle="modal" data-target="#dangky"><i class="fa fa-lock"></i> Đăng Ký</a>
-                <div id="dangky" class="modal fade" role="dialog">
-                    <div class="modal-dialog">
 
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Đăng ký tài khoản</h4>
-                            </div>
-                            <div class="modal-body">
-                                <form method="post" action="{{route('customRegister')}}">
-                                    {!! csrf_field() !!}
-
-                                    <div class="form-group">
-                                        <label style="font-size: 15px;">Tên đăng nhập</label>
-                                        <input required type="text" class="form-control" name="username" placeholder="Tên đăng nhập">
-                                    </div>
-                                    <div class="form-group">
-                                        <label style="font-size: 15px;">Mật khẩu</label>
-                                        <input  required type="password" class="form-control" name="password" placeholder="Mật khẩu">
-                                    </div>
-                                    <div class="form-group">
-                                        <label style="font-size: 15px;">Địa chỉ <email></email></label>
-                                        <input required type="email" class="form-control" name="email" placeholder="Email">
-                                    </div>
-                                    <div class="form-group">
-                                        <label style="font-size: 15px;">Họ tên</label>
-
-                                        <input required type="text" class="form-control" name="fullname" placeholder="Họ và tên">
-                                    </div>
-                                    <div class="form-group">
-                                        <label style="font-size: 15px;">Số điện thoại</label>
-                                        <input required type="tel" class="form-control" name="phone" placeholder="Số di động">
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-block btn-warning text-uppercase"><strong>Đăng ký tài khoản</strong></button>
-                                    </div>
-                                </form>
-                                {{--<div class="signup-form"><!--sign up form-->--}}
-                                    {{--<form action="{{route('customRegister')}}" method="post">--}}
-                                        {{--<input type="hidden" name="_token" value="{{ csrf_token() }}">--}}
-
-                                        {{--{!! csrf_field() !!}--}}
-                                        {{--<input type="text" name="username" placeholder="Tài khoản"/>--}}
-                                        {{--<input type="email" name="email" placeholder="Địa chỉ email"/>--}}
-                                        {{--<input type="password" name="password" placeholder="Mật khẩu"/>--}}
-                                        {{--<div>--}}
-                                            {{--<button  style="float: left;" type="submit" class="btn btn-default">Đăng ký</button>--}}
-
-                                            {{--<button  style="float: left;margin-left: 10%!important;"  type="reset" class="btn btn-default">Nhập lại</button>--}}
-                                        {{--</div>--}}
-                                    {{--</form>--}}
-                                {{--</div><!--/sign up form-->--}}
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
             </li>
             @endif

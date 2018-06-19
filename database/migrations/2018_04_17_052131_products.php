@@ -18,7 +18,7 @@ class Products extends Migration
             $table->increments('Id');
             $table->string('Name')->nullable();
             $table->string('Code')->nullable();
-            $table->integer('Color')->unsigned()->nullable();
+            $table->integer('id_color')->unsigned()->nullable();
             $table->string('Description')->nullable();
             $table->float('Price')->nullable();
             $table->string('Slug')->nullable();

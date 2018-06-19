@@ -91,10 +91,10 @@
                                 <label>
                                     Sắp xếp theo
                                     <select class="input filterMore">
-                                        <option name="un-filter" value="">Bỏ lọc</option>
+                                        <option name="un-filter" value="{{$dm->Id}}">Bỏ lọc</option>
                                         <option name="price-up" value="{{$dm->Id}}">Giá tăng dần</option>
-                                        <option name="price-down" value="{{$dm->Id}}">Giá giảm dần</option>
-                                        <option nam="sale" value="{{$dm->Id}}">Sale</option>
+                                        <option name="price-down"value="{{$dm->Id}}">Giá giảm dần</option>
+                                        <option name="sale"value="{{$dm->Id}}">Sale</option>
                                     </select>
                                 </label>
 

@@ -254,18 +254,27 @@
                             <div id="column4" class="grid-25">
                                 <div class="infoCustomer">
                                     <div id="orderIf">
-                                        <p>Tiền hàng <span>{{Cart::subtotal()}} đ</span></p>
+                                        <p>Tiền hàng <span>{{Cart::subtotal()}} VND </span></p>
                                         <p>Phí vận chuyển
                                             <span id="shipFee">0 đ</span>
                                         </p>
                                         <i class="notePay">(Ngoại thành/Ngoại tỉnh)
                                             sẽ thông báo ngay sau khi đặt hàng thành công</i>
                                         <div class="totalPays">
-                                            <p>Tổng cộng <span id="money" style="color: #ed1c24">{{Cart::subtotal()}} đ</span></p>
+                                            <p>Tổng cộng <span id="money" style="color: #ed1c24">{{Cart::subtotal()}} </span>VND</p>
                                             <input type="hidden" id="getMn" name="total" value="{{Cart::subtotal()}}">
                                             <input type="hidden" id="getShipFee" value="0">
                                             <label>
                                                 <span>Sử dụng mã giảm giá nếu có</span>
+                                                <div class="alert alert-success thanhcong" style="display: none">
+                                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                    <strong>Success!</strong> Sử dụng mã giảm giá thành công
+                                                </div>
+                                                <div class="alert alert-warning thatbai" style="display: none">
+                                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+
+                                                    <strong>Warning!</strong> Mã giảm giá không hợp lệ or đã được sử dụng
+                                                </div>
                                                 <input id="coupon" type="text" name="couponCode" class="input" placeholder="Mã giảm giá">
                                                 <button type="button" id="getCoupon" class="btnGray">Sử dụng</button>
                                                 <p id="txtCode"></p>
@@ -287,6 +296,34 @@
 
     </div>
     <script>
+        $('#getCoupon').click(function () {
+            var name = $("#coupon").val();
+
+            console.log('Ten coupon',name);
+            $.ajax({
+                type:'get',
+                url:'<?php echo URL::to('getcoupon')?>',
+                data:{
+                    name:name,
+                },
+
+                success:function (data) {
+                    if(data=='thatbai'){
+                        $('.thatbai').css("display","inline-block");
+                    }
+                    else
+                    {
+                        $('.thanhcong').css("display","inline-block");
+                        $('#money').html(data);
+                        $('#getMn').val(data);
+
+
+
+                    }
+
+                }
+            })
+        })
         $('#cityId').on('change',function () {
             var id = $('option:selected', this).attr('Id_province');
 

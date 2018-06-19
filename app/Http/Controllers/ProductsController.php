@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Product_detail;
 use Illuminate\Http\Request;
 use App\Products;
 use App\Categories;
@@ -23,27 +24,23 @@ class ProductsController extends Controller
         } else {
             $pro = Products::paginate(10);
             $cat= Categories::all();
-            return view('Admin.products.list',['pro'=>$pro,'cat'=>$cat,'loai'=>0]);
+            $color=product_colors::all();
+
+            return view('Admin.products.list',['pro'=>$pro,'cat'=>$cat,'loai'=>0,'color'=>$color]);
         }
 
     }
-    public function getadd()
-    {
 
-         return view('Admin.products.add');
-    }
     public function postadd(Request $rq)
     {
         $pro = new Products();
+        $pro->Name=$rq->txtname;
         $pro->slug = str_slug($rq->txtname,'-');
         $pro->Price = $rq->txtprice;
-        $pro->Size = $rq->txtsize;
-        $pro->Color = $rq->txtcolor;
+        $pro->id_color = $rq->sltcolor;
         $pro->Description = $rq->txtdescription;
-        $pro->Discount = $rq->txtdiscount;
-        $pro->Status = $rq->txtstatus;
         $pro->SubCategoryId= $rq->sltsubcate;
-        $file_path = public_path('images/product/').$pro->Image1;
+        $file_path = public_path('images/product/').$pro->Image;
         if ($rq->hasFile('txtimg1')) {
             if($pro->Image1){
                 if (file_exists($file_path))
@@ -54,40 +51,10 @@ class ProductsController extends Controller
 
             $f = $rq->file('txtimg1')->getClientOriginalName();
             $filename = time().'_'.$f;
-            $pro->Image1 = $filename;
+            $pro->Image = $filename;
             $rq->file('txtimg1')->move('images/product/',$filename);
         }
 
-        $file_path = public_path('images/product/').$pro->Image2;
-
-        if ($rq->hasFile('txtimg2')) {
-            if($pro->Image2){
-                if (file_exists($file_path))
-                {
-                    unlink($file_path);
-                }
-            }
-
-            $f = $rq->file('txtimg2')->getClientOriginalName();
-            $filename = time().'_'.$f;
-            $pro->Image2 = $filename;
-            $rq->file('txtimg2')->move('images/product/',$filename);
-        }
-        $file_path = public_path('images/product/').$pro->Image3;
-
-        if ($rq->hasFile('txtimg3')) {
-            if($pro->Image3){
-                if (file_exists($file_path))
-                {
-                    unlink($file_path);
-                }
-            }
-
-            $f = $rq->file('txtimg3')->getClientOriginalName();
-            $filename = time().'_'.$f;
-            $pro->Image3 = $filename;
-            $rq->file('txtimg3')->move('images/product/',$filename);
-        }
 
         $pro->save();
         return redirect('admin/sanpham/all')
@@ -143,81 +110,184 @@ class ProductsController extends Controller
 //        }
 
     }
-    public function postedit(Request $rq,$id)
+    public function postedit(Request $rq)
 
     {
 
-        $pro = Products::find($rq->txtid);
+        $pro = Products::find($rq->pro_id);
         $pro->Name=$rq->txtname;
-        $pro->Slug = str_slug($rq->txtname,'-');
+        $pro->slug = str_slug($rq->txtname,'-');
         $pro->Price = $rq->txtprice;
+        $pro->id_color = $rq->sltcolor;
         $pro->Description = $rq->txtdescription;
-        $pro->Discount = $rq->txtdiscount;
-        $pro->Status = $rq->txtstatus;
         $pro->SubCategoryId= $rq->sltsubcate;
-        $file_path = public_path('images/product/').$pro->Image1;
+        $file_path = public_path('images/product/').$pro->Image;
         if ($rq->hasFile('txtimg1')) {
             if($pro->Image1){
-                    if (file_exists($file_path))
-            {
-                unlink($file_path);
-            }}
+                if (file_exists($file_path))
+                {
+                    unlink($file_path);
+                }}
 
 
             $f = $rq->file('txtimg1')->getClientOriginalName();
             $filename = time().'_'.$f;
-            $pro->Image1 = $filename;
+            $pro->Image = $filename;
             $rq->file('txtimg1')->move('images/product/',$filename);
         }
 
-        $file_path = public_path('images/product/').$pro->Image2;
-
-        if ($rq->hasFile('txtimg2')) {
-            if($pro->Image2){
-                if (file_exists($file_path))
-                {
-                    unlink($file_path);
-                }
-            }
-
-            $f = $rq->file('txtimg2')->getClientOriginalName();
-            $filename = time().'_'.$f;
-            $pro->Image2 = $filename;
-            $rq->file('txtimg2')->move('images/product/',$filename);
-        }
-        $file_path = public_path('images/product/').$pro->Image3;
-
-        if ($rq->hasFile('txtimg3')) {
-            if($pro->Image3){
-                if (file_exists($file_path))
-                {
-                    unlink($file_path);
-                }
-            }
-
-            $f = $rq->file('txtimg3')->getClientOriginalName();
-            $filename = time().'_'.$f;
-            $pro->Image3 = $filename;
-            $rq->file('txtimg3')->move('images/product/',$filename);
-        }
-    $size=DB::table('Products')
-    ->join('product_sizes', 'Products.Id', '=', 'product_sizes.product_id')
-    ->where('product_id', '=',$rq->txtid)->get();
-
-        $i=1;
-       foreach ($size as $value){
-           $s1=product_sizes::findorfail($value->id);
-           $s1->name=$rq->input('sltsize'.$i);
-          $s1->save();
-
-      $i++;
-
-       }
 
         $pro->save();
 
         return redirect('admin/sanpham/all')
             ->with(['flash_level'=>'result_msg','flash_massage'=>' Đã lưu !']);
     }
+ public  function  detail($id){
 
+    $pro= Products::findorfail($id);
+$pro_detail=$pro->pro_detail;
+        return view('Admin.products.detail',['pro_detail'=>$pro_detail,'pro'=>$pro]);
+ }
+ public  function edit_pro_detail(Request $rq){
+     $this->validate($rq, [
+         'sltsize' => 'required|string|max:255|unique:product_detail,size,NULL,id,product_id,'.$rq->pro_id,
+     ],
+         ['sltsize.unique' => 'Kích cỡ bạn sửa đã tồn tại']);
+     $pro_detail = Product_detail::find($rq->pro_detail_id);
+     $pro_detail->size=$rq->sltsize;
+     $pro_detail->quantity = $rq->txtquantity;
+     $pro_detail->status = $rq->txtstatus;
+     $file_path = public_path('images/product/').$pro_detail->image1;
+     if ($rq->hasFile('txtimg1')) {
+         if($pro_detail->image1){
+             if (file_exists($file_path))
+             {
+                 unlink($file_path);
+             }}
+
+
+         $f = $rq->file('txtimg1')->getClientOriginalName();
+         $filename = time().'_'.$f;
+         $pro_detail->image1 = $filename;
+         $rq->file('txtimg1')->move('images/product/',$filename);
+     }
+     $file_path = public_path('images/product/').$pro_detail->image2;
+     if ($rq->hasFile('txtimg2')) {
+         if($pro_detail->image1){
+             if (file_exists($file_path))
+             {
+                 unlink($file_path);
+             }}
+
+
+         $f = $rq->file('txtimg2')->getClientOriginalName();
+         $filename = time().'_'.$f;
+         $pro_detail->image1 = $filename;
+         $rq->file('txtimg2')->move('images/product/',$filename);
+     }
+     $file_path = public_path('images/product/').$pro_detail->image3;
+     if ($rq->hasFile('txtimg3')) {
+         if($pro_detail->image3){
+             if (file_exists($file_path))
+             {
+                 unlink($file_path);
+             }}
+
+
+         $f = $rq->file('txtimg1')->getClientOriginalName();
+         $filename = time().'_'.$f;
+         $pro_detail->image1 = $filename;
+         $rq->file('txtimg3')->move('images/product/',$filename);
+     }
+     $pro_detail->save();
+     return redirect()->back()
+         ->with(['flash_level'=>'result_msg','flash_massage'=>' Sửa thành công !']);
+
+ }
+ public  function  dell_detail($id){
+     $pro = Product_detail::find($id);
+     if($pro->image3){
+         $file_path = public_path('images/product/').$pro->image3;
+         if (file_exists($file_path))
+         {
+             unlink($file_path);
+         }
+
+     }
+
+     if($pro->image2) {
+         $file_path = public_path('images/product/') . $pro->image2;
+         if (file_exists($file_path))
+         {
+             unlink($file_path);
+         }
+     }
+     if($pro->image1) {
+         $file_path = public_path('images/product/'. $pro->image1) ;
+         if (file_exists($file_path))
+         {
+             unlink($file_path);
+         }
+     }
+     $pro->delete();
+     return back()
+         ->with(['flash_level'=>'result_msg','flash_massage'=>'Xóa thành công']);
+ }
+    public  function add_pro_detail(Request $rq){
+        $this->validate($rq, [
+            'sltsize' => 'required|string|max:255|unique:product_detail,size,NULL,id,product_id,'.$rq->pro_id,
+        ],
+            ['sltsize.unique' => 'Kích cỡ bạn thêm đã tồn tại']);
+        $pro_detail = new Product_detail();
+        $pro_detail->product_id=$rq->pro_id;
+        $pro_detail->size=$rq->sltsize;
+        $pro_detail->quantity = $rq->txtquantity;
+        $pro_detail->status = $rq->txtstatus;
+        $file_path = public_path('images/product/').$pro_detail->image1;
+        if ($rq->hasFile('txtimg1')) {
+            if($pro_detail->image1){
+                if (file_exists($file_path))
+                {
+                    unlink($file_path);
+                }}
+
+
+            $f = $rq->file('txtimg1')->getClientOriginalName();
+            $filename = time().'_'.$f;
+            $pro_detail->image1 = $filename;
+            $rq->file('txtimg1')->move('images/product/',$filename);
+        }
+        $file_path = public_path('images/product/').$pro_detail->image2;
+        if ($rq->hasFile('txtimg2')) {
+            if($pro_detail->image1){
+                if (file_exists($file_path))
+                {
+                    unlink($file_path);
+                }}
+
+
+            $f = $rq->file('txtimg2')->getClientOriginalName();
+            $filename = time().'_'.$f;
+            $pro_detail->image1 = $filename;
+            $rq->file('txtimg2')->move('images/product/',$filename);
+        }
+        $file_path = public_path('images/product/').$pro_detail->image3;
+        if ($rq->hasFile('txtimg3')) {
+            if($pro_detail->image3){
+                if (file_exists($file_path))
+                {
+                    unlink($file_path);
+                }}
+
+
+            $f = $rq->file('txtimg1')->getClientOriginalName();
+            $filename = time().'_'.$f;
+            $pro_detail->image1 = $filename;
+            $rq->file('txtimg3')->move('images/product/',$filename);
+        }
+        $pro_detail->save();
+        return redirect()->back()
+            ->with(['flash_level'=>'result_msg','flash_massage'=>' Thêm thành công thành công !']);
+
+    }
 }

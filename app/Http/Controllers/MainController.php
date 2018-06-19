@@ -100,7 +100,6 @@ class MainController extends Controller
         $user->save();
 //
 //        Session::flash('message', 'User registered, please check your email!');
-        Session::flash('alert', 'alert-success');
         return redirect()->back()->with(['flash_level'=>'result_msg','flash_massage'=>' Đăng ký thành công' ]);
 
     }
@@ -213,9 +212,8 @@ class MainController extends Controller
 
         $id = $rq->id;
         $dm = SubCategory::findorfail($rq->sub_id);
-        $color = product_colors::findorfail($id);
-        $pro_id=$color->product_id;
-        $pro=Products::where('Id','=',$pro_id)->get();
+
+        $pro=Products::where('id_color','=',$id)->get();
 //        $pro = Products::where('SubcategoryId', '=', $id)->get();
 ////    die (json_encode($pro));
 // dd($pro);
@@ -266,6 +264,10 @@ class MainController extends Controller
              break;
      }
 
+ }
+ public  function  changepassword()
+ {
+     return view('Page.account.changepassword');
  }
 }
 

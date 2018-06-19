@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+use Cart;
 
 use Illuminate\Http\Request;
 use App\SubCategory;
+use DB;
+use App\promotion;
 use vendor\GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 
@@ -42,7 +45,7 @@ $res = $client->get('https://thongtindoanhnghiep.co/api/city');
 public  function getdistrict(Request $rq){
     $id=$rq->id;
     $client = new \GuzzleHttp\Client();
-    $res = $client->get('https://thongtindoanhnghiep.co/api/city/2/district');
+    $res = $client->get('https://thongtindoanhnghiep.co/api/city/'.$id.'/district');
 //  'application/json; charset=utf8';
     $data=json_decode($res->getBody());
     foreach ($data as $vl){
@@ -54,6 +57,37 @@ public  function getdistrict(Request $rq){
 
 
     }
+
+}
+public  function getcoupon(Request $rq){
+   $promo= DB::table('promotion')->where('Code',$rq->name)->get();
+    $string_number = Cart::subtotal();
+//    var_dump($string_number);
+// NOTE: You don't really have to use floatval() here, it's just to prove that it's a legitimate float value.
+    $number = floatval(str_replace(',', '', str_replace('.', '.',  Cart::subtotal())));
+
+// At this point, $number is a "natural" float.
+
+//  var_dump($number);
+//  $number=$number-50000;
+
+//
+
+    if(count($promo)>0){
+        foreach ($promo as $vl){
+           $tongtien=$number-(float)$vl->Value;
+                $promotion=promotion::findorfail($vl->Id);
+                $promotion->delete();
+
+        }
+         echo number_format($tongtien);
+    }
+    else
+    {
+        echo 'thatbai';
+    }
+
+
 
 }
 

@@ -68,9 +68,9 @@
 											<th>Mã sp</th>
 											<th>Hình ảnh</th>
 											<th>Tên sản phẩm</th>
+											<th> Kích cỡ </th>
 											<th> Số lượng </th>
 											<th>Giá bán</th>
-											<th>Trạng thái</th>
 											<th>Action</th>
 										</tr>
 									</thead>
@@ -78,17 +78,12 @@
 										@foreach($order_detail as $row)
 											<tr>
 												<td>{!!$row->Code!!}</td>
-												<td> <img src="{!!asset('images/product/'.$row->Image1)!!}" alt="iphone" width="50" height="40"></td>
+												<td> <img src="{!!asset('images/product/'.$row->Image)!!}" alt="" width="50" height="40"></td>
 												<td>{!!$row->Name!!}</td>
+												<td>{!!$row->size!!}</td>
+
 												<td>{!!$row->Quantity	!!} </td>
 												<td>{!! number_format($row->Price) !!} Vnđ</td>
-												<td>
-													@if($row->Status =='Còn hàng')
-														<span style="color:blue;">Còn hàng</span>
-													@else
-														<span style="color:#27ae60;"> Tạm hết</span>
-													@endif
-												</td>
 												<td>
 													<a href="{!!url('admin/sanpham/del/'.$row->Id)!!}"  title="Xóa" onclick="return xacnhan('Xóa danh mục này ?')"><span class="glyphicon glyphicon-remove">remove</span> </a>
 												</td>

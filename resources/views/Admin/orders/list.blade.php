@@ -44,8 +44,6 @@
 										<th>H/t thanh toán</th>
 										<th> Thanh toán</th>
 										<th>Ghi chú</th>
-
-										<th>Trạng thái</th>
 										<th>Xác nhận</th>
 										<th>Action</th>
 									</tr>
@@ -63,7 +61,6 @@
 											<td>{!! $row->Payment_Method !!}</td>
 											<td>{!! $row->Payment_Status !!}</td>
 											<td>{!! $row->Note !!}</td>
-											<td>{!! $row->Payment_Status !!}</td>
 											<td>
 												@if($row->Confirm =='Chưa xác nhận')
 													<span style="color:#d35400;">Chưa xác nhận</span>

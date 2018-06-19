@@ -30,11 +30,12 @@
 
 </head><!--/head-->
 
-<body>
+<body style="background: aliceblue">
     @include('page.header')
     @yield('slider')
     @yield('wishlist')
     @yield('search')
+    @yield('changepassword')
     @yield('check_order')
     @yield('home')
     @yield('news')

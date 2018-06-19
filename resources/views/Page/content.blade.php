@@ -49,7 +49,7 @@
                     @foreach($Products as $value)
                     <div class="box-pro">
                     <div class="col-sm-4 col-md-3 col-xs-6" style="width: 292px;">
-                    <div class="post-img">
+                    <div class="post-img" style="height: 340px">
                     <a href="{{route('product_detail',['slug'=>$value->Slug,'id'=>$value->Id])}}" class="img"><img src="{{asset('images/product/'.$value->Image)}}"></a>
                     <button class="addc" onclick="wishlist({{$value->Id}})"><i class="fa fa-heart" aria-hidden="true">Yêu thích</i></button>
                         <input type="hidden" class="pro_id" value="{{$value->Id}}">
@@ -87,12 +87,10 @@
                     @foreach($Products as $value)
                         <div class="box-pro">
                             <div class="col-sm-4 col-md-3 col-xs-6" style="width: 292px;">
-                                <div class="post-img">
+                                <div class="post-img" style="height: 340px">
                                     <a href="{{route('product_detail',['slug'=>$value->Slug,'id'=>$value->Id])}}" class="img"><img src="{{asset('images/product/'.$value->Image)}}"></a>
-
-                                    </button>
-                                    <button class="addc" onclick="addcart({{$value->Id}})">
-                                        <i class="fa fa-heart" aria-hidden="true">Yêu thích</i></button>
+                                    <button class="addc" onclick="wishlist({{$value->Id}})"><i class="fa fa-heart" aria-hidden="true">Yêu thích</i></button>
+                                    <input type="hidden" class="pro_id" value="{{$value->Id}}">
                                     <a class="viewm" href="{{route('product_detail',['slug'=>$value->Slug,'id'=>$value->Id])}}">
                                         <i class="fa fa-search-plus" aria-hidden="true"></i> Chi tiết</a>
                                 </div>
@@ -110,6 +108,7 @@
                             </div>
                         </div>
                     @endforeach
+
                     {{--<div class="" style="margin: 0px 50%">--}}
                         {{ $Products->render() }}
 
@@ -269,46 +268,3 @@
     <!-- end footer -->
 </div>
 <!-- end wrapper -->
-<script type="text/javascript">
-
-
-    function wishlist(id_pro){
-        console.log(id_pro);
-        $.ajax({
-            type:'get',
-            url:'<?php echo URL::to('yeu-thich')?>',
-            data:{
-                id_pro:id_pro
-            },
-
-            success:function (data) {
-                console.log(data);
-                if(data=="thanh cong"){
-                    $.alert({
-                        title: 'Thành công',
-                        content: 'Đã thêm vào danh sách yêu thích',
-                    });
-
-                }
-                else if(data=="that bai")
-                {
-                    $.alert({
-                        title: 'Thất bại',
-                        content: 'Sản phẩm đã tồn tại trong danh sách yêu thích',
-                    });
-                }
-                else {
-                    $.alert({
-                        title: 'Thất bại',
-                        content: 'Bạn cần đăng nhập để thực hiện chức năng này',
-                    });
-                }
-
-            }
-        })
-    }
-
-
-
-
-</script>

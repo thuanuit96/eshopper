@@ -76,6 +76,7 @@
                             <div class="form-group">
                                 <label for="input-id">Mô tả </label>
                                 <textarea name="txtdescription" id="inputTxtre_Intro" class="form-control"  rows="2"></textarea>
+                            </div>
                                 <div class="form-group">
                                     <script type="text/javascript">
                                         var editor = CKEDITOR.replace('txtre_Intro',{
@@ -86,6 +87,7 @@
                                             filebrowserFlashUploadUrl : '../../../../plugin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash',
                                         });
                                     </script>
+                                </div>
                                     <div class="form-group">
                                         <label for="input-id">Khuyễn mãi</label>
                                         <input type="text" name="txtdiscount" id="inputTxtname" class="form-control" value=""  required="required">

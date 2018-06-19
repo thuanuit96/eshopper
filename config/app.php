@@ -152,6 +152,8 @@ return [
         Elasticquent\ElasticquentServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Bhavinjr\Wishlist\Providers\WishlistServiceProvider::class,
+        Kryptonit3\Counter\CounterServiceProvider::class,
+
 
 
 
@@ -224,6 +226,8 @@ return [
         'Form' => 'Collective\Html\FormFacade',
         'Html' => 'Collective\Html\HtmlFacade',
         "Wishlist"=> "Bhavinjr\Wishlist\Facades\Wishlist",
+        'Counter' => Kryptonit3\Counter\Facades\CounterFacade::class,
+
 
 
 

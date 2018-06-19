@@ -29,7 +29,7 @@ public  function pro_detail(){
 }
     public function color()
     {
-        return $this->hasOne('App\product_colors','product_id','Id');
+        return $this->belongsTo('App\product_colors','id_color','id');
     }
 
     public function size(){

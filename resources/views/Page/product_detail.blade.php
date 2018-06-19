@@ -69,7 +69,9 @@
                                 </div>
                                 <span class="clearfix"></span>
                             </div>
+                            {{ Counter::showAndCount('product', $pro->Id) }}
                             <div class="" id="productInfo">
+
                                 <h1 class="dttitleProduct">{!! $pro->Name !!}</h1>
                                 <div class="colL">
                                     <span style="position: relative;top: 2px;">Mã sản phẩm:</span>
@@ -214,99 +216,30 @@
         <div class="container" style="margin-bottom: 50px">
             <h3><span style="margin-left: 45%">Sản phẩm tương tự</span></h3>
             <div class="row">
-                <div class="box-pro">
-                    <div class="col-sm-4 col-md-3 col-xs-6" style="width: 292px;">
-                        <div class="post-img">
-                            <a href="http://eshopper.test/product_detail/ao-khoac-mua-he-ha-noi-68?id=1" class="img"><img src="http://eshopper.test/images/product/1527871912_1.2.17.2.05.006.217.01.10600027-01_thumb.jpg"></a>
+                @foreach($relate_pro as $value)
+                    <div class="box-pro">
+                        <div class="col-sm-4 col-md-3 col-xs-6" style="width: 292px;">
+                            <div class="post-img" style="height: 340px">
+                                <a href="{{route('product_detail',['slug'=>$value->Slug,'id'=>$value->Id])}}" class="img"><img src="{{asset('images/product/'.$value->Image)}}"></a>
+                                <button class="addc" onclick="wishlist({{$value->Id}})"><i class="fa fa-heart" aria-hidden="true">Yêu thích</i></button>
+                                <input type="hidden" class="pro_id" value="{{$value->Id}}">
+                                <a class="viewm" href="{{route('product_detail',['slug'=>$value->Slug,'id'=>$value->Id])}}">
+                                    <i class="fa fa-search-plus" aria-hidden="true"></i> Chi tiết</a>
+                            </div>
+                            <h4><a href="{{route('product_detail',['slug'=>$value->Slug,'id'=>$value->Id])}}">{{$value->Name}}</a></h4>
+                            <div class="score-callback" data-score="4" style="cursor: pointer;">
+                                <img alt="1" src="{{asset('images/product/icon-star.png')}}" title="bad">
+                                <img alt="2" src="{{asset('images/product/icon-star.png')}}" title="poor">
+                                <img alt="3" src="{{asset('images/product/icon-star.png')}}" title="regular">
+                                <img alt="4" src="{{asset('images/product/icon-star.png')}}" title="good">
+                                <img alt="5" src="{{asset('images/product/star-off.png')}}" title="gorgeous">
 
-
-                            <button class="addc" onclick="addcart(1)">
-                                <i class="fa fa-cart-plus" aria-hidden="true">Mua ngay</i></button>
-                            <a class="viewm" href="http://eshopper.test/product_detail/ao-khoac-mua-he-ha-noi-68?id=1">
-                                <i class="fa fa-search-plus" aria-hidden="true"></i> Chi tiết</a>
+                            </div>
+                            <p><span class="price-pro"><span class="woocommerce-Price-amount amount">{{$value->Price}}&nbsp;<span
+                                                class="woocommerce-Price-currencySymbol">₫</span></span></span></p>
                         </div>
-                        <h4><a href="http://eshopper.test/product_detail/ao-khoac-mua-he-ha-noi-68?id=1">Áo khoác mùa hè hà nội 68</a></h4>
-                        <div class="score-callback" data-score="4" style="cursor: pointer;">
-                            <img alt="1" src="http://eshopper.test/images/product/icon-star.png" title="bad">
-                            <img alt="2" src="http://eshopper.test/images/product/icon-star.png" title="poor">
-                            <img alt="3" src="http://eshopper.test/images/product/icon-star.png" title="regular">
-                            <img alt="4" src="http://eshopper.test/images/product/icon-star.png" title="good">
-                            <img alt="5" src="http://eshopper.test/images/product/star-off.png" title="gorgeous">
-
-                        </div>
-                        <p><span class="price-pro"><span class="woocommerce-Price-amount amount">258082&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></span></p>
                     </div>
-                </div>
-                <div class="box-pro">
-                    <div class="col-sm-4 col-md-3 col-xs-6" style="width: 292px;">
-                        <div class="post-img">
-                            <a href="http://eshopper.test/product_detail/ao-khoac-mua-he-ha-noi-98?id=2" class="img"><img src="http://eshopper.test/images/product/1527875163_1_2_02_1_06_003_118_01_10100002_01_thumb_294x441.jpg"></a>
-
-
-                            <button class="addc" onclick="addcart(2)">
-                                <i class="fa fa-cart-plus" aria-hidden="true">Mua ngay</i></button>
-                            <a class="viewm" href="http://eshopper.test/product_detail/ao-khoac-mua-he-ha-noi-98?id=2">
-                                <i class="fa fa-search-plus" aria-hidden="true"></i> Chi tiết</a>
-                        </div>
-                        <h4><a href="http://eshopper.test/product_detail/ao-khoac-mua-he-ha-noi-98?id=2">Áo khoác mùa hè hà nội 98</a></h4>
-                        <div class="score-callback" data-score="4" style="cursor: pointer;">
-                            <img alt="1" src="http://eshopper.test/images/product/icon-star.png" title="bad">
-                            <img alt="2" src="http://eshopper.test/images/product/icon-star.png" title="poor">
-                            <img alt="3" src="http://eshopper.test/images/product/icon-star.png" title="regular">
-                            <img alt="4" src="http://eshopper.test/images/product/icon-star.png" title="good">
-                            <img alt="5" src="http://eshopper.test/images/product/star-off.png" title="gorgeous">
-
-                        </div>
-                        <p><span class="price-pro"><span class="woocommerce-Price-amount amount">328388&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></span></p>
-                    </div>
-                </div>
-                <div class="box-pro">
-                    <div class="col-sm-4 col-md-3 col-xs-6" style="width: 292px;">
-                        <div class="post-img">
-                            <a href="http://eshopper.test/product_detail/ao-khoac-mua-he-ha-noi-88?id=3" class="img"><img src="http://eshopper.test/images/product/1527875178_1_2_16_1_05_001_118_01_10200002_01_thumb_294x441.jpg"></a>
-
-                            <button class="addc" onclick="addcart(3)">
-                                <i class="fa fa-cart-plus" aria-hidden="true">Mua ngay</i></button>
-                            <a class="viewm" href="http://eshopper.test/product_detail/ao-khoac-mua-he-ha-noi-88?id=3">
-                                <i class="fa fa-search-plus" aria-hidden="true"></i> Chi tiết</a>
-                        </div>
-                        <h4><a href="http://eshopper.test/product_detail/ao-khoac-mua-he-ha-noi-88?id=3">Áo khoác mùa hè hà nội 88</a></h4>
-                        <div class="score-callback" data-score="4" style="cursor: pointer;">
-                            <img alt="1" src="http://eshopper.test/images/product/icon-star.png" title="bad">
-                            <img alt="2" src="http://eshopper.test/images/product/icon-star.png" title="poor">
-                            <img alt="3" src="http://eshopper.test/images/product/icon-star.png" title="regular">
-                            <img alt="4" src="http://eshopper.test/images/product/icon-star.png" title="good">
-                            <img alt="5" src="http://eshopper.test/images/product/star-off.png" title="gorgeous">
-
-                        </div>
-                        <p><span class="price-pro"><span class="woocommerce-Price-amount amount">177646&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></span></p>
-                    </div>
-                </div>
-                <div class="box-pro">
-                    <div class="col-sm-4 col-md-3 col-xs-6" style="width: 292px;">
-                        <div class="post-img">
-                            <a href="http://eshopper.test/product_detail/ao-khoac-mua-he-ha-noi-80?id=4" class="img"><img src="http://eshopper.test/images/product/1527875194_1_2_03_1_05_002_118_02_10100002_01_thumb_294x441.jpg"></a>
-
-
-                            <button class="addc" onclick="addcart(4)">
-                                <i class="fa fa-cart-plus" aria-hidden="true">Mua ngay</i></button>
-                            <a class="viewm" href="http://eshopper.test/product_detail/ao-khoac-mua-he-ha-noi-80?id=4">
-                                <i class="fa fa-search-plus" aria-hidden="true"></i> Chi tiết</a>
-                        </div>
-                        <h4><a href="http://eshopper.test/product_detail/ao-khoac-mua-he-ha-noi-80?id=4">Áo khoác mùa hè hà nội 80</a></h4>
-                        <div class="score-callback" data-score="4" style="cursor: pointer;">
-                            <img alt="1" src="http://eshopper.test/images/product/icon-star.png" title="bad">
-                            <img alt="2" src="http://eshopper.test/images/product/icon-star.png" title="poor">
-                            <img alt="3" src="http://eshopper.test/images/product/icon-star.png" title="regular">
-                            <img alt="4" src="http://eshopper.test/images/product/icon-star.png" title="good">
-                            <img alt="5" src="http://eshopper.test/images/product/star-off.png" title="gorgeous">
-
-                        </div>
-                        <p><span class="price-pro"><span class="woocommerce-Price-amount amount">203028&nbsp;<span class="woocommerce-Price-currencySymbol">₫</span></span></span></p>
-                    </div>
-                </div>
-
-
+                @endforeach
 
             </div>
 

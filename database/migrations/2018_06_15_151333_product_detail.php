@@ -27,10 +27,11 @@ class ProductDetail extends Migration
             $table->timestamps();
 
         });
-//        Schema::table('product_colors', function($table)
-//        {
-//            $table->foreign('pro_detail_id')->references('id')->on('Product_detail');
-//        });
+        Schema::table('Order_Detail', function($table)
+        {
+            $table->foreign('pro_id')->references('id')->on('Product_detail')->onDelete('cascade');
+
+        });
     }
 
     /**
