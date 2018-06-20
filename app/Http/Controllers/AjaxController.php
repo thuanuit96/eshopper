@@ -90,5 +90,10 @@ public  function getcoupon(Request $rq){
 
 
 }
+public  function loaisanpham(Request $rq){
+    $cat_id=$rq->id;
+    $subcategory=SubCategory::where('CategoryId',$cat_id)->get();
+       return view('Admin.category.loaisanpham',['data'=>$subcategory]);
+}
 
 }

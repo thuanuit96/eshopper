@@ -1,5 +1,7 @@
 
-
+.addc{
+    padding: 0;
+}
 .buttonCheckout{
     display:inline-block !important;
     float:right;

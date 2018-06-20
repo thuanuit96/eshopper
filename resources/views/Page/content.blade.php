@@ -132,7 +132,7 @@
                             <img src="{{asset('images/product/'.$value->Image)}}" alt="{{$value->Slug}}" title="{{$value->Name}}">
                             </a>
 
-                            <button class="add-icon" onclick="addcart({{$value->Id}})"><i class="fa fa-cart-plus"></i></button>
+                            <button class="add-icon" onclick="wishlist({{$value->Id}})"><i class="fa fa-heart" aria-hidden="true"></i></button>
                             <a class="v-icon" href="sony-xperia-xa.htm"><i
                             class="fa fa-search-plus"></i>
                             </a>
@@ -170,7 +170,7 @@
                             <img src="{{asset('images/product/'.$value->Image)}}" alt="{{$value->Slug}}" title="{{$value->Name}}">
                             </a>
 
-                            <button class="add-icon" onclick="addcart({{$value->Id}})"><i class="fa fa-cart-plus"></i></button>
+                                <button class="add-icon" onclick="wishlist({{$value->Id}})"><i class="fa fa-heart" aria-hidden="true"></i></button>
                             <a class="v-icon" href="sony-xperia-xa.htm"><i
                             class="fa fa-search-plus"></i>
                             </a>
@@ -207,7 +207,7 @@
                             <img src="{{asset('images/product/'.$value->Image)}}" alt="{{$value->Slug}}" title="{{$value->Name}}">
                             </a>
 
-                            <button class="add-icon" onclick="addcart({{$value->Id}})"><i class="fa fa-cart-plus"></i></button>
+                                <button class="add-icon" onclick="wishlist({{$value->Id}})"><i class="fa fa-heart" aria-hidden="true"></i></button>
                             <a class="v-icon" href="sony-xperia-xa.htm"><i
                             class="fa fa-search-plus"></i>
                             </a>
@@ -244,7 +244,7 @@
                 <div class="col-xs-12 col-sm-6 col-md-3">
                 <div class="detai-new">
                 <h4><a href="{{route('Tin-tuc',['slug'=>$value->Slug])}}">{!!$value->Title!!}</a></h4>
-                <a href="news_detail"><img style="max-height: 250px;min-width: 262px" src="{{asset('images/product/'.$value->Images)}}"           alt="{{$value->Slug}}" title="{!!$value->Title!!}">
+                <a href="news_detail"><img style="max-height: 250px;min-width: 262px" src="{{asset('images/product/'.$value->Images)}}"alt="{{$value->Slug}}" title="{!!$value->Title!!}">
                 </a>
                 <p>
                 {!! $value->Intro !!}...

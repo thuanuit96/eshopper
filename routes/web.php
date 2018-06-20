@@ -138,6 +138,8 @@ Route::get('admin/logout', ['as' => 'getLogout', 'uses' => 'Admin\AdminLoginCont
         Route::group(['prefix' => '/ajax'], function () {
 
             Route::get('ajax_subcategory', 'AjaxController@getsubcategory');
+            Route::get('loaisanpham', 'AjaxController@loaisanpham');
+
 
 
 
@@ -178,6 +180,11 @@ Route::get('danh-sach-yeu-thich','wishlistcontroller@index')->name('danh-sach-ye
 Route::get('xoadanhsach/{id}','wishlistcontroller@delete');
 Route::get('getcoupon','AjaxController@getcoupon');
 Route::get('tai-khoan/doi-mat-khau','MainController@changepassword');
+//reset password
+//    Route::get('password/reset/{token?}','Auth\ResetPasswordController@showResetForm    ');
+//Route::post('password/email','Auth\PasswordController@sendResetLinkEmail');
+//Route::post('password/reset','Auth\ResetPasswordController@reset');
+
 
 
 

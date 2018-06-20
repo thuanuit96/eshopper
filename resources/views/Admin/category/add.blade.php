@@ -37,18 +37,15 @@
 						<form action="" method="POST" role="form">
 				      		{{ csrf_field() }}
 				      		<div class="form-group">
-					      		<label for="input-id">Danh mục cha</label>
-					      		<select name="sltCate" id="inputSltCate" class="form-control">
-					      			<option value="0">- ROOT --</option>
-					      			<?php MenuMulti($data,0,$str='---| ',old('sltCate')); ?>   		
-					      		</select>
+					      		<label for="input-id">Danh mục </label>
+					      		<input type="text" name='txtCateName' class="form-control" required	>
 				      		</div>
 				      		<div class="form-group">
-				      			<label for="input-id">Tên danh mục</label>
-				      			<input type="text" name="txtCateName" id="inputTxtCateName" class="form-control" value="" required="required">
+				      			<label for="input-id">Loại sản phẩm</label>
+				      			<input type="text" name="txtloaisanpham" id="inputTxtCateName" class="form-control" value="" required="required">
 				      		</div>
 				      		<input type="submit" name="btnCateAdd" class="btn btn-primary" value="Thêm danh mục" class="button" />
-				      	</form>			      	
+				      	</form>
 					</div>
 				</div>
 			</div>

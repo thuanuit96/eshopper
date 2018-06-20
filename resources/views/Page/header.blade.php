@@ -226,22 +226,6 @@
         <li><a href="#">Giới Thiệu</a></li>
         <li><a href="#">Liên Hệ</a></li>
         <li><a href="#">Tra cứu đơn hàng</a></li>
-        @if(Session::has('account'))
-            {{--<li><a href="#"><i class="fa fa-user"></i><strong style="color: red;overflow: hidden">{{Session::get('account')}}</strong></a></li>--}}
-        @endif
-
-        @if(!Session::has('account'))
-            <li><a href="#" data-toggle="modal" data-target="#login" ><i class="fa fa-lock"></i> Đăng nhập</a>
-
-
-
-
-            </li>
-            <li><a href="#" data-toggle="modal" data-target="#dangky"><i class="fa fa-lock"></i> Đăng Ký</a>
-
-
-            </li>
-            @endif
             </a></li>
 
     </ul>

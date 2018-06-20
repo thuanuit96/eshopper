@@ -18,7 +18,7 @@ class Products extends Seeder
                 'Slug' => 'ao-khoac-mua-he-ha-noi'. rand(1, 100),
                 'Code'=>'SP'.rand(100, 1000),
                 'SubCategoryId'=>1,
-                'Image'=>'1.2.17.2.05.001.217.23.10600007-01_thumb.jpg'
+                'Image'=>'1529319872_1529319856_dsc_7670_thumb_294x441.jpg'
 
             ]);
         }

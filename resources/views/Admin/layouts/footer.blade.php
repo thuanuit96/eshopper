@@ -6,24 +6,25 @@
 	<script src="{!!url('Admin/js/easypiechart.js')!!}"></script>
 	<script src="{!!url('Admin/js/easypiechart-data.js')!!}"></script>
 	<script type='text/javascript' src='{!!url('js/script.js')!!}'></script>
-	{{--<script>--}}
-		{{--$('#calendar').datepicker({--}}
-		{{--});--}}
+	<script>
 
-		{{--!function ($) {--}}
-		    {{--$(document).on("click","ul.nav li.parent > a > span.icon", function(){          --}}
-		        {{--$(this).find('em:first').toggleClass("glyphicon-minus");      --}}
-		    {{--}); --}}
-		    {{--$(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");--}}
-		{{--}(window.jQuery);--}}
+		$('#calendar').datepicker({
+		});
 
-		{{--$(window).on('resize', function () {--}}
-		  {{--if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')--}}
-		{{--})--}}
-		{{--$(window).on('resize', function () {--}}
-		  {{--if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')--}}
-		{{--})--}}
-	{{--</script>	--}}
+		!function ($) {
+		    $(document).on("click","ul.nav li.parent > a > span.icon", function(){
+		        $(this).find('em:first').toggleClass("glyphicon-minus");
+		    });
+		    $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+		}(window.jQuery);
+
+		$(window).on('resize', function () {
+		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+		})
+		$(window).on('resize', function () {
+		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
+		})
+	</script>
 </body>
 
 </html>

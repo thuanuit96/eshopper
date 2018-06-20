@@ -18,7 +18,7 @@ class SubCategory extends Migration
             $table->increments('Id');
             $table->string('Name')->nullable();
             $table->integer('CategoryId')->unsigned();
-            $table->foreign('CategoryId')->references('Id')->on('Categories');
+            $table->foreign('CategoryId')->references('Id')->on('Categories')->onDelete('cascade');;
             $table->timestamps();
 
         }

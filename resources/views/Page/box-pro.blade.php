@@ -1,9 +1,9 @@
 @foreach($pro as $value)
     <div class="box-pro">
-        <div class="col-sm-4 col-md-3 col-xs-6" style="width: 292px;">
+        <div class="col-sm-4 col-md-3 col-xs-6" >
             <div class="post-img">
                 <a href="{{route('product_detail',['slug'=>$value->Slug,'id'=>$value->Id])}}" class="img"><img src="{{asset('images/product/'.$value->Image)}}"></a>
-                <button class="addc" onclick="wishlist({{$value->Id}})"><i class="fa fa-heart" aria-hidden="true">Yêu thích</i></button>
+                <button style="padding: 1px 13px;" class="addc" onclick="wishlist({{$value->Id}})"><i class="fa fa-heart" aria-hidden="true">Yêu thích</i></button>
                 <input type="hidden" class="pro_id" value="{{$value->Id}}">
                 <a class="viewm" href="{{route('product_detail',['slug'=>$value->Slug,'id'=>$value->Id])}}">
                     <i class="fa fa-search-plus" aria-hidden="true"></i> Chi tiết</a>

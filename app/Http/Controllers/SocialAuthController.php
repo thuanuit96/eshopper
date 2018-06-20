@@ -24,12 +24,11 @@ class SocialAuthController extends Controller
         // Các xử lý liên quan đến đăng nhập bằng mạng xã hội cũng đưa vào đây.
 //
         $user = Socialite::driver('facebook')->stateless()->user();
+            $authUser = $this->findOrCreateUser($user, $provider);
+       Auth::login($authUser, true);
 
-        $authUser = $this->findOrCreateUser($user, $provider);
-        Auth::login($authUser, true);
-        Session::put('account',Auth::user()->name);
-
-        return redirect('/');
+       Session::put('account',Auth::user()->username);
+      return redirect('/');
 
 
     }
@@ -41,9 +40,10 @@ class SocialAuthController extends Controller
             return $authUser;
         }
         return User::create([
-            'name'     => $user->name,
-            'email'    => $user->email,
-            'password'=>$user->name,
+            'username'=>$user->name,
+            'email'    =>$user->email,
+            'fullname' =>$user->name,
+            'password'=>$user->token,
             'provider' =>'facebook',
             'provider_id' => $user->id
         ]);
