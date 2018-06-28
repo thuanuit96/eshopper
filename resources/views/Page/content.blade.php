@@ -84,7 +84,7 @@
             <div class="block-product">
                 <h3><span>Sản phẩm mới</span></h3>
                 <div class="row">
-                    @foreach($Products as $value)
+                    @foreach($products_new as $value)
                         <div class="box-pro">
                             <div class="col-sm-4 col-md-3 col-xs-6" style="width: 292px;">
                                 <div class="post-img" style="height: 340px">

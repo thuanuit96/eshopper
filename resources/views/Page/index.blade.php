@@ -31,7 +31,7 @@
 </head><!--/head-->
 
 <body style="background: aliceblue">
-    @include('page.header')
+    @include('Page.header')
     @yield('slider')
     @yield('wishlist')
     @yield('search')

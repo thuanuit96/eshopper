@@ -9,6 +9,7 @@ use App\Products;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+
 use Illuminate\Support\Facades\Validator;
 use App\Categories;
 use App\SubCategory;
@@ -107,26 +108,28 @@ class MainController extends Controller
     public function getproducts()
     {
         $products = Products::paginate(4);
-        $men_pro = DB::table('Categories')
-            ->join('SubCategory', 'Categories.Id', '=', 'SubCategory.CategoryId')
-            ->join('Products', 'SubCategory.Id', '=', 'Products.SubCategoryId')
-            ->where('Categories.Id', '=', 1)
+        $products_new = Products::orderBy('updated_at', 'DESC')->paginate(4);
+
+        $men_pro = DB::table('categories')
+            ->join('subcategory', 'categories.Id', '=', 'subcategory.CategoryId')
+            ->join('products', 'subcategory.Id', '=', 'products.subcategoryId')
+            ->where('categories.Id', '=', 1)
             ->paginate(3);
-        $women_pro = DB::table('Categories')
-            ->join('SubCategory', 'Categories.Id', '=', 'SubCategory.CategoryId')
-            ->join('Products', 'SubCategory.Id', '=', 'Products.SubCategoryId')
-            ->where('Categories.Id', '=', 2)
+        $women_pro = DB::table('categories')
+            ->join('subcategory', 'categories.Id', '=', 'subcategory.CategoryId')
+            ->join('products', 'subcategory.Id', '=', 'products.SubCategoryId')
+            ->where('categories.Id', '=', 2)
             ->paginate(3);
-        $pk = DB::table('Categories')
-            ->join('SubCategory', 'Categories.Id', '=', 'SubCategory.CategoryId')
-            ->join('Products', 'SubCategory.Id', '=', 'Products.SubCategoryId')
-            ->where('Categories.Id', '=', 3)
+        $pk = DB::table('categories')
+            ->join('subcategory', 'categories.Id', '=', 'subcategory.CategoryId')
+            ->join('products', 'subcategory.Id', '=', 'products.SubCategoryId')
+            ->where('categories.id', '=', 3)
             ->paginate(3);
         //Tin tức
         $news = News::paginate(4);
-        $data = ['Products' => $products, 'men_pro' => $men_pro, 'women_pro' => $women_pro, 'pk' => $pk, 'news' => $news];
+        $data = ['Products' => $products, 'men_pro' => $men_pro, 'women_pro' => $women_pro, 'pk' => $pk, 'news' => $news,'products_new'=>$products_new];
 
-        return view('Page.Home', $data);
+        return view('Page.home', $data);
     }
 
     public function getproduct_detail(Request $rq)
@@ -269,5 +272,10 @@ class MainController extends Controller
  {
      return view('Page.account.changepassword');
  }
+
+    public  function  contact()
+    {
+        return view('Page.contact');
+    }
 }
 

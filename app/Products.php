@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Products extends Model
 {
- protected  $table='Products';
+ protected  $table='products';
     protected $guarded =[];
     protected $primaryKey = "Id";
 
@@ -25,7 +25,7 @@ class Products extends Model
 
     }
 public  function pro_detail(){
-    return $this->hasMany('App\product_detail','product_id','Id');
+    return $this->hasMany('App\Product_detail','product_id','Id');
 }
     public function color()
     {

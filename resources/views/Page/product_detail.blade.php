@@ -1,4 +1,4 @@
-@extends('page.index')
+@extends('Page.index')
 @section('product_detail')
 
     <div class="main">
@@ -69,7 +69,7 @@
                                 </div>
                                 <span class="clearfix"></span>
                             </div>
-                            {{ Counter::showAndCount('product', $pro->Id) }}
+
                             <div class="" id="productInfo">
 
                                 <h1 class="dttitleProduct">{!! $pro->Name !!}</h1>

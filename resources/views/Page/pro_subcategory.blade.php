@@ -76,9 +76,9 @@
                             <div class="productSingle productDemo req-filter size">
 
                                 <ul>
-                                    @foreach($sizes as $value)
-                                        <a class="shop99_deamonLink" href="{{route('kich-co',['size'=>$value->name,'sub_id'=>$subcat->Id])}}" style="color: black; display:inline-block;box-shadow: 0 0 0 1px #b8b8b8;min-width:38px;margin:5px 4px 5px 0;text-align:center;padding:2px 5px;border:none;">{!! $value->name!!}</a>
-                                    @endforeach
+                                    {{--@foreach()--}}
+                                        {{--<a class="shop99_deamonLink" href="{{route('kich-co',['size'=>$value->name,'sub_id'=>$subcat->Id])}}" style="color: black; display:inline-block;box-shadow: 0 0 0 1px #b8b8b8;min-width:38px;margin:5px 4px 5px 0;text-align:center;padding:2px 5px;border:none;">{!! $value->name!!}</a>--}}
+                                    {{--@endforeach--}}
                                 </ul>
                             </div>
                         </div>

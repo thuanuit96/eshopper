@@ -22,7 +22,7 @@ class OrdersController extends Controller
             $order_id=$order->order_detail->OrderId;
             $order_detail = DB::table('Order_detail')
                 ->join('Product_detail', 'Product_detail.id', '=', 'order_detail.pro_id')
-                ->join('Products','Products.Id','=','Product_detail.id')
+                ->join('Products','Products.Id','=','Product_detail.product_id')
                 ->where('OrderId',$order_id)
                 ->get();
             return view('Admin.orders.detail',['order_detail'=>$order_detail,'order'=>$order]);

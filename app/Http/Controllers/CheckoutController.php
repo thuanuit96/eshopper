@@ -19,7 +19,7 @@ use vendor\GuzzleHttp\Client;
 use Nexmo;
 
 use GuzzleHttp\Exception\RequestException;
-
+use DB;
 
 class CheckoutController extends Controller
 {
@@ -45,14 +45,17 @@ class CheckoutController extends Controller
             $order->Order_date = date('Y/m/d');
             $order->Total = $data['total'];
             $order->Note = $data['description'];
-            if ($data['paymentMethod'] == 1) {
-                $order->Payment_Method = 'COD';
-            } else
-                $order->Payment_Method = 'Ngân Lượng';
             $order->Payment_Status = 'Chưa Thanh Toán';
             $order->Status = 'Chưa giao hàng';
             $order->Total = $data['total'];
             $order->Confirm ='Chưa xác nhận';
+            if ($data['paymentMethod'] == 1){
+                $order->Payment_Method='COD';
+            }
+            else
+                $order->Payment_Method='Ngân lượng';
+
+
 
             $order->save();
             foreach (Cart::content() as $item) {
@@ -65,13 +68,28 @@ class CheckoutController extends Controller
                 $order_detail->save();
 
             }
-          if(!empty($data["customerEmail"]))
-            {$this->sendmail($data);
+                $order_mail=Order::findorfail($order->Id);
+            $product_mail=DB::table('Order_detail')
+                ->join('Product_detail', 'Product_detail.id', '=', 'order_detail.pro_id')
+                ->join('Products','Products.Id','=','Product_detail.product_id')->where('OrderId',$order->Id)->get();
+
+
+
+            if(!empty($data["customerEmail"]))
+            {$this->sendmail($data,$product_mail,$order_mail);
             }
 
-            Cart::destroy();
-            $this->sendsms();
-            return back()->with('alert','Đặt hàng thành công !Vui lòng kiêm tra thông tin đặt hàng của bạn qua email');
+//            Cart::destroy();
+    //            $this->sendsms();
+            if ($data['paymentMethod'] == 1) {
+                return redirect('/')->with(['flash_level'=>'result_msg','flash_massage'=>' Bạn Đã đặt hàng thành công !Vui lòng vào kiểm tra thông tin đơn hàng qua mail ' ]);
+
+            } else{
+                $order->Payment_Method = 'Ngân Lượng';
+                return redirect('https://www.nganluong.vn/button_payment.php?receiver=songheo718@gmail.com&product_name='.$order->Id.'&price='.$order->Total.'return_url=eshopper.test/xacnhanthanhtoan?order_id='.$order->Id);
+
+
+            }
         }
 
         else return back();
@@ -85,13 +103,24 @@ public  function sendsms (){
         'text' => $text
     ]);
     }
-    public function sendmail($input)
+    public function sendmail($input, $product_mail,$order_mail)
     {   $mail=$input["customerEmail"];
 
-        Mail::send('Page.mail', array('name'=>$input['customerName'],'email'=>$input["customerEmail"]), function($message)use($mail){
+        Mail::send('Page.mail', array('product_mail'=> $product_mail,'email'=>$input["customerEmail"],'order_mail'=>$order_mail), function($message)use($mail){
             $message->to($mail, 'Thông tin đặt hàng')->subject('Chào bạn! Dưới đây là thông tin đặt hàng của bạn');
         });
         Session::flash('flash_message', 'Send message successfully\!');
+
+    }
+    public  function xacnhanthanhtoan(Request $rq){
+
+
+        $id=$rq->order_id;
+        $order=Order::findorfail($id);
+        $order->Payment_Status = 'Đã thanh toán';
+        return redirect('/')->with(['flash_level'=>'result_msg','flash_massage'=>' Đã thanh toán thành công đơn hàng ' ]);
+
+
 
     }
 }

@@ -224,7 +224,7 @@
         </li>
         @endforeach
         <li><a href="#">Giới Thiệu</a></li>
-        <li><a href="#">Liên Hệ</a></li>
+        <li><a href="{{url('contact')}}">Liên Hệ</a></li>
         <li><a href="#">Tra cứu đơn hàng</a></li>
             </a></li>
 

@@ -52,7 +52,7 @@
 											<td>{!!$order->Address!!}</td>
 											<td>{!!$order->PhoneNumber!!}</td>
 											<td>{!!$order->created_at!!}</td>
-											<td>{!! number_format(floatval($order->Total),3) !!} Vnđ</td>
+											<td>{!!$order->Total !!} Vnđ</td>
 										</tr>
 									</tbody>
 								</table>
@@ -71,7 +71,7 @@
 											<th> Kích cỡ </th>
 											<th> Số lượng </th>
 											<th>Giá bán</th>
-											<th>Action</th>
+
 										</tr>
 									</thead>
 									<tbody>
@@ -84,9 +84,7 @@
 
 												<td>{!!$row->Quantity	!!} </td>
 												<td>{!! number_format($row->Price) !!} Vnđ</td>
-												<td>
-													<a href="{!!url('admin/sanpham/del/'.$row->Id)!!}"  title="Xóa" onclick="return xacnhan('Xóa danh mục này ?')"><span class="glyphicon glyphicon-remove">remove</span> </a>
-												</td>
+
 											</tr>
 										@endforeach
 									</tbody>

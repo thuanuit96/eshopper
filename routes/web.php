@@ -135,6 +135,12 @@ Route::get('admin/logout', ['as' => 'getLogout', 'uses' => 'Admin\AdminLoginCont
             Route::get('/del/{id}', ['as' => 'getdelnv', 'uses' => 'StaffController@getdel'])->where('id', '[0-9]+');
             Route::post('/edit', ['as' => 'posteditnv', 'uses' => 'StaffController@staff_edit'])->where('id', '[0-9]+');
         });
+        Route::group(['prefix' => '/thongke'], function () {
+            ;
+
+            Route::get('', ['as' => 'thongke', 'uses' => 'statisticalcontroller@getlist']);
+
+        });
         Route::group(['prefix' => '/ajax'], function () {
 
             Route::get('ajax_subcategory', 'AjaxController@getsubcategory');
@@ -184,6 +190,9 @@ Route::get('tai-khoan/doi-mat-khau','MainController@changepassword');
 //    Route::get('password/reset/{token?}','Auth\ResetPasswordController@showResetForm    ');
 //Route::post('password/email','Auth\PasswordController@sendResetLinkEmail');
 //Route::post('password/reset','Auth\ResetPasswordController@reset');
+Route::get('xacnhanthanhtoan','CheckoutController@xacnhanthanhtoan');
+Route::get('contact','MainController@contact');
+
 
 
 

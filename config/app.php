@@ -152,7 +152,6 @@ return [
         Elasticquent\ElasticquentServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Bhavinjr\Wishlist\Providers\WishlistServiceProvider::class,
-        Kryptonit3\Counter\CounterServiceProvider::class,
 
 
 
