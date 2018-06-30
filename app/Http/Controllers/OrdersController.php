@@ -10,7 +10,7 @@ class OrdersController extends Controller
     public function getlist()
     {
 
-            $order = Order::paginate(10);
+            $order = Order::orderBy('created_at', 'DESC')->paginate(10);
 
         return view('Admin.orders.list',['order'=>$order]);
     }
@@ -41,6 +41,7 @@ class OrdersController extends Controller
                 ->with(['flash_level'=>'result_msg','flash_massage'=>' Đơn hàng này đã được xác nhân rồi!']);
         }
         $oder->Confirm = 'Đã xác nhận';
+        $oder->Status='Đang giao hàng';
         $oder->save();
         return redirect('admin/donhang')
             ->with(['flash_level'=>'result_msg','flash_massage'=>' Đã xác nhận đơn hàng thành công !']);
@@ -49,14 +50,34 @@ class OrdersController extends Controller
     public function getdel($id)
     {
         $oder = Order::where('Id',$id)->first();
-        if ($oder->status =='Đã xác nhận') {
+        if ($oder->Status=='Đã giao hàng') {
+            $oder = Order::find($id);
+            $oder->delete();
+            return redirect('admin/donhang')
+                ->with(['flash_level'=>'result_msg','flash_massage'=>'Đã xóa đơn hàng số:  '.$id.' !']);
+        }
+        if ($oder->Confirm =='Đã xác nhận') {
             return redirect()->back()
-                ->with(['flash_level'=>'result_msg','flash_massage'=>'Không thể hủy đơn hàng số: '.$id.' vì đã được xác nhận!']);
+                ->with(['flash_level'=>'result_msg','flash_massage'=>'Không thể hủy đơn hàng số: '.$id.' vì đã được xác nhận !']);
         } else {
             $oder = Order::find($id);
             $oder->delete();
             return redirect('admin/donhang')
                 ->with(['flash_level'=>'result_msg','flash_massage'=>'Đã hủy bỏ đơn hàng số:  '.$id.' !']);
         }
+    }
+    public function postedit(Request $rq){
+
+        $oder = Order::find($rq->id);
+        $oder->Name = $rq->txtname;
+        $oder->PhoneNumber = $rq->txtphone;
+        $oder->Address = $rq->txtaddress;
+
+        $oder->Email = $rq->txtemail;
+        $oder->Status=$rq->sltstatus;
+        $oder->save();
+        return redirect('admin/donhang')
+            ->with(['flash_level'=>'result_msg','flash_massage'=>'Đã cập nhật đơn hàng']);
+
     }
 }

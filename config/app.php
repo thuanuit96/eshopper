@@ -149,9 +149,11 @@ return [
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Nexmo\Laravel\NexmoServiceProvider::class,
-        Elasticquent\ElasticquentServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Bhavinjr\Wishlist\Providers\WishlistServiceProvider::class,
+
+
+
 
 
 
@@ -226,12 +228,6 @@ return [
         'Html' => 'Collective\Html\HtmlFacade',
         "Wishlist"=> "Bhavinjr\Wishlist\Facades\Wishlist",
         'Counter' => Kryptonit3\Counter\Facades\CounterFacade::class,
-
-
-
-
-
-
     ],
 
 ];

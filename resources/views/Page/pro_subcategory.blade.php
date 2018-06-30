@@ -43,8 +43,8 @@
                             <h3 class="titleSingle" style="margin-top: 10px">Màu sắc</h3>
                             <div class="productSingle productDemo req-filter">
                                 <ul>
-                                    @foreach($colors as $value)
-                                        <a  href="{{route('mau-sac',['id'=>$value->id,'sub_id'=>$subcat->Id])}}" class="shop99_deamonLink"  title="{{$value->title}}" style="display:inline-block;background:{{$value->style}};border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px">
+                                    @foreach($color as $value)
+                                        <a  href="{{route('mau-sac',['id'=>$value->id])}}" class="shop99_deamonLink"  title="{{$value->title}}" style="display:inline-block;background:{{$value->style}};border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px">
                                         </a>
                                     @endforeach
                                     <a rel="nofollow" class="shop99_deamonLink" href="" title="Trắng" style="display:inline-block;background:#FFFFFF;border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px">
@@ -72,15 +72,8 @@
                                     <a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i4=133" title="Đen tàn" style="display:inline-block;border:1px solid #fff;line-height: 1.3;position: relative; color: black; bottom: 11px;padding: 0;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0;">Đen tàn</a><a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i4=143" title="Đỏ mận tàn" style="display:inline-block;background:#8B0000;border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px"></a>
                                 </ul>
                             </div>
-                            <h3 class="titleSingle" style="margin-top: 10px">Kích cỡ</h3>
-                            <div class="productSingle productDemo req-filter size">
 
-                                <ul>
-                                    {{--@foreach()--}}
-                                        {{--<a class="shop99_deamonLink" href="{{route('kich-co',['size'=>$value->name,'sub_id'=>$subcat->Id])}}" style="color: black; display:inline-block;box-shadow: 0 0 0 1px #b8b8b8;min-width:38px;margin:5px 4px 5px 0;text-align:center;padding:2px 5px;border:none;">{!! $value->name!!}</a>--}}
-                                    {{--@endforeach--}}
-                                </ul>
-                            </div>
+
                         </div>
                     </div>
                 </div>

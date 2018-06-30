@@ -27,7 +27,7 @@ class SearchController extends Controller
         $product = Products::where('Name', 'like', '%' . $key . '%')->orwhere('Code','like','%'.$key.'%')->get();
         $num=count($product);
 
-        return view("Page.search",['pro'=>$product,'num'=>$num]);
+        return view("Page.search",['pro'=>$product,'num'=>$num,'key'=>$key]);
 
     }
 }

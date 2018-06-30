@@ -124,6 +124,66 @@
                     } );
 
             })
+            $(".filter").on("change",function () {
+                // var id=$(this).val();
+                // $('option').attr("selected","selected");
+                var name=$(this).find('option:selected').attr("name");
+                console.log('name',name);
+                var id=$(this).val();
+                console.log(id);
+                $.ajax(
+                    {
+                        url: '<?php echo URL::to("filter_2") ?>',
+                        type: 'get',
+                        data: {
+                            "_token": "{{ csrf_token() }}",
+                            id_color: id,
+                            name:name,
+
+
+                        },
+                        datatype:"html",
+                        success: function (result) {
+                            console.log(result);
+                            $('.listProductcategory').html(result);
+
+                        },
+                        error: function(e) {
+
+                        }
+                    } );
+
+            })
+            $(".filter_search").on("change",function () {
+                // var id=$(this).val();
+                // $('option').attr("selected","selected");
+                var name=$(this).find('option:selected').attr("name");
+                console.log('name',name);
+                var id=$(this).val();
+                console.log(id);
+                $.ajax(
+                    {
+                        url: '<?php echo URL::to("filter_search") ?>',
+                        type: 'get',
+                        data: {
+                            "_token": "{{ csrf_token() }}",
+                            key: id,
+                            name:name,
+
+
+                        },
+                        datatype:"html",
+                        success: function (result) {
+                            console.log(result);
+                            $('.listProductcategory').html(result);
+
+                        },
+                        error: function(e) {
+
+                        }
+                    } );
+
+            })
         });
 
 

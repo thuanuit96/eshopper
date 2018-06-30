@@ -113,6 +113,8 @@ Route::get('admin/logout', ['as' => 'getLogout', 'uses' => 'Admin\AdminLoginCont
 
             Route::get('detail/{id}', ['as' => 'getdetail', 'uses' => 'OrdersController@getdetail'])->where('id', '[0-9]+');
             Route::post('/detail/{id}', ['as' => 'postdetail', 'uses' => 'OrdersController@postdetail'])->where('id', '[0-9]+');
+            Route::post('/edit', ['as' => 'postedit', 'uses' => 'OrdersController@postedit'])->where('id', '[0-9]+');
+
         });
         // -------------------- quan ly thong tin khach hang--------------------
         Route::group(['prefix' => '/khachhang'], function () {
@@ -177,6 +179,9 @@ Route::get('mau-sac','MainController@color')->name('mau-sac');
 Route::get('kich-co','MainController@size')->name('kich-co');
 
 Route::get('filter', 'MainController@filter');
+Route::get('filter_2', 'MainController@filter_2');
+Route::get('filter_search', 'MainController@filter_search');
+
 Route::get('test','MainController@filter');
 Route::get('search/autocomplete', 'SearchController@autocomplete');
 Route::get('timkiem','SearchController@index');
@@ -192,6 +197,11 @@ Route::get('tai-khoan/doi-mat-khau','MainController@changepassword');
 //Route::post('password/reset','Auth\ResetPasswordController@reset');
 Route::get('xacnhanthanhtoan','CheckoutController@xacnhanthanhtoan');
 Route::get('contact','MainController@contact');
+Route::get('test',function (){
+
+    return view('Page.a');
+});
+
 
 
 

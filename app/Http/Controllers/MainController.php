@@ -167,21 +167,28 @@ class MainController extends Controller
     public function listcart()
     {
 
-        $cart = Cart::content();
 
-        return view('Page.cart', ['cart' => $cart]);
+               $cart = Cart::content();
+
+               return view('Page.cart', ['cart' => $cart]);
+
+
+
     }
 
     public function cart_delete(Request $request)
     {
-        $id = $request->product_id;
-        $cart = Cart::content(); //Lấy nội dung của giỏ hàng
-        $item = Cart::search(function ($cart) use ($id) { // Lấy nội dung có id=$id
-            return $cart->id == $id;
-        })->first();
-        $rowId = $item->rowId;
-        Cart::remove($rowId);
-        return back();
+
+
+            $id = $request->product_id;
+            $cart = Cart::content(); //Lấy nội dung của giỏ hàng
+            $item = Cart::search(function ($cart) use ($id) { // Lấy nội dung có id=$id
+                return $cart->id == $id;
+            })->first();
+            $rowId = $item->rowId;
+            Cart::remove($rowId);
+            return back();
+
 
     }
 
@@ -214,14 +221,13 @@ class MainController extends Controller
     {
 
         $id = $rq->id;
-        $dm = SubCategory::findorfail($rq->sub_id);
+        $color1=product_colors::findorfail($id);
 
         $pro=Products::where('id_color','=',$id)->get();
 //        $pro = Products::where('SubcategoryId', '=', $id)->get();
 ////    die (json_encode($pro));
-// dd($pro);
 //
-        return view('Page.fiter-pro', ['pro' => $pro,'dm' => $dm]);
+        return view('Page.fiter-pro', ['pro' => $pro,'color1'=>$color1]);
 //        return back()->with('pro_color',$pro_color);
 
     }
@@ -241,33 +247,81 @@ class MainController extends Controller
         return view('Page.fiter-pro-size', ['data' => $data,'dm' => $dm]);
 
     }
-    public  function  news_detail(){
-        return view('Page.news_detail');
+    public  function  news_detail(Request $rq){
+       $news=News::findorfail($rq->id);
+       $tinmoi=News::where('Id','<>',$rq->id)->get();
+       $tinlienquan=News::where('Id','<>',$rq->id)->orderby('created_at', 'asc')->paginate(3);
+
+        return view('Page.news_detail',['news'=>$news,'tinmoi'=>$tinmoi,'tinlienquan'=>$tinlienquan]);
     }
  public  function  filter(Request $rq){
-        $id_sucategory=$rq->id_subcategory;
+    $id_sucategory=$rq->id_subcategory;
+    $key=$rq->name;
+    switch ($key) {
+        case 'un-filter':
+            $pro = Products::where('SubcategoryId','=',$id_sucategory)->get();
+            return view('Page.box-pro',['pro'=>$pro]);
+
+            break;
+        case 'price-up':
+            $pro = Products::where('SubcategoryId','=',$id_sucategory)->orderBy('Price', 'asc')->get();
+            return view('Page.box-pro',['pro'=>$pro]);
+            break;
+        case 'price-down':
+            $pro = Products::where('SubcategoryId','=',$id_sucategory)->orderByDesc('Price')->get();
+            return view('Page.box-pro',['pro'=>$pro]);
+            break;
+        case 'sale':
+            $pro = Products::where('SubcategoryId','=',$id_sucategory)->where('Discount','!=','Null')->get();
+            return view('Page.box-pro',['pro'=>$pro]);
+            break;
+    }
+
+}
+    public  function  filter_2(Request $rq){
+        $id_color=$rq->id_color;
         $key=$rq->name;
-     switch ($key) {
-         case 'un-filter':
-             $pro = Products::where('SubcategoryId','=',$id_sucategory)->get();
-             return view('Page.box-pro',['pro'=>$pro]);
+        switch ($key) {
+            case 'un-filter':
+                $pro = Products::where('id_color','=',$id_color)->get();
+                return view('Page.box-pro',['pro'=>$pro]);
 
-             break;
-         case 'price-up':
-             $pro = Products::where('SubcategoryId','=',$id_sucategory)->orderBy('Price', 'asc')->get();
-             return view('Page.box-pro',['pro'=>$pro]);
-             break;
-         case 'price-down':
-             $pro = Products::where('SubcategoryId','=',$id_sucategory)->orderByDesc('Price')->get();
-             return view('Page.box-pro',['pro'=>$pro]);
-             break;
-         case 'sale':
-             $pro = Products::where('SubcategoryId','=',$id_sucategory)->where('Discount','!=','Null')->get();
-             return view('Page.box-pro',['pro'=>$pro]);
-             break;
-     }
+                break;
+            case 'price-up':
+                $pro = Products::where('id_color','=',$id_color)->orderBy('Price', 'asc')->get();
+                return view('Page.box-pro',['pro'=>$pro]);
+                break;
+            case 'price-down':
+                $pro = Products::where('id_color','=',$id_color)->orderByDesc('Price')->get();
+                return view('Page.box-pro',['pro'=>$pro]);
+                break;
+            case 'sale':
+                break;
+        }
 
- }
+    }
+    public  function  filter_search(Request $rq){
+        $key=$rq->key;
+        $case=$rq->name;
+        switch ($case) {
+            case 'un-filter':
+                $pro = Products::where('Name', 'like', '%' . $key . '%')->orwhere('Code','like','%'.$key.'%')->get();
+                return view('Page.box-pro',['pro'=>$pro]);
+
+                break;
+            case 'price-up':
+                $pro = Products::where('Name', 'like', '%' . $key . '%')->orwhere('Code','like','%'.$key.'%')->orderBy('Price', 'asc')->get();
+                return view('Page.box-pro',['pro'=>$pro]);
+                break;
+            case 'price-down':
+                $pro = Products::where('Name', 'like', '%' . $key . '%')->orwhere('Code','like','%'.$key.'%')->orderByDesc('Price')->get();
+                return view('Page.box-pro',['pro'=>$pro]);
+                break;
+            case 'sale':
+                break;
+        }
+
+    }
  public  function  changepassword()
  {
      return view('Page.account.changepassword');

@@ -1,7 +1,6 @@
 @extends('Page.index')
 @section('fiter-pro')
     <div class="main" style="margin-top: 50px">
-        <h1 class="hidden">NỮ</h1>
         <span class="clearfix menuActive" data-rel="1"></span>
         <div class="container">
             <div class="grid-100">
@@ -11,8 +10,12 @@
                             <a href="/">Trang chủ</a>
                         </li>
                         <li>
-                            <a class="72058" href="/nu-pc72058.html">{!! $dm->Name !!}</a>
+                            <a class="72058" href="/nu-pc72058.html">Màu sắc</a>
                         </li>
+                        <li>
+                            <a class="72058" href="/nu-pc72058.html">{{$color1->name}}</a>
+                        </li>
+
                     </ul>
                     <span class="clearfix"></span>
                 </div>
@@ -43,8 +46,8 @@
                             <h3 class="titleSingle" style="margin-top: 10px">Màu sắc</h3>
                             <div class="productSingle productDemo req-filter">
                                 <ul>
-                                    @foreach($colors as $value)
-                                        <a  href="{{route('mau-sac',['id'=>$value->id,'sub_id'=>$subcat->Id])}}" class="shop99_deamonLink"  title="{{$value->title}}" style="display:inline-block;background:{{$value->style}};border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px">
+                                    @foreach($color as $value)
+                                        <a  href="{{route('mau-sac',['id'=>$value->id])}}" class="shop99_deamonLink"  title="{{$value->title}}" style="display:inline-block;background:{{$value->style}};border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px">
                                         </a>
                                     @endforeach
                                     <a rel="nofollow" class="shop99_deamonLink" href="" title="Trắng" style="display:inline-block;background:#FFFFFF;border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px">
@@ -72,15 +75,7 @@
                                     <a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i4=133" title="Đen tàn" style="display:inline-block;border:1px solid #fff;line-height: 1.3;position: relative; color: black; bottom: 11px;padding: 0;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0;">Đen tàn</a><a rel="nofollow" class="shop99_deamonLink" href="/ao-pc72062.html?i4=143" title="Đỏ mận tàn" style="display:inline-block;background:#8B0000;border:1px solid #fff;width:25px;box-shadow:0 0 0 1px #b8b8b8;margin:5px 10px 5px 0; height:22px"></a>
                                 </ul>
                             </div>
-                            <h3 class="titleSingle" style="margin-top: 10px">Kích cỡ</h3>
-                            <div class="productSingle productDemo req-filter size">
 
-                                <ul>
-                                    @foreach($sizes as $value)
-                                        <a class="shop99_deamonLink" href="{{route('kich-co',['size'=>$value->name,'sub_id'=>$subcat->Id])}}" style="color: black; display:inline-block;box-shadow: 0 0 0 1px #b8b8b8;min-width:38px;margin:5px 4px 5px 0;text-align:center;padding:2px 5px;border:none;">{!! $value->name!!}</a>
-                                    @endforeach
-                                </ul>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -90,11 +85,11 @@
                             <div class="filterProduct">
                                 <label>
                                     Sắp xếp theo
-                                    <select class="input filterMore">
-                                        <option name="un-filter" value="{{$dm->Id}}">Bỏ lọc</option>
-                                        <option name="price-up" value="{{$dm->Id}}">Giá tăng dần</option>
-                                        <option name="price-down"value="{{$dm->Id}}">Giá giảm dần</option>
-                                        <option name="sale"value="{{$dm->Id}}">Sale</option>
+                                    <select class="input filter">
+                                        <option name="un-filter" value="{{$color1->id}}">Bỏ lọc</option>
+                                        <option name="price-up" value="{{$color1->id}}">Giá tăng dần</option>
+                                        <option name="price-down" value="{{$color1->id}}">Giá giảm dần</option>
+
                                     </select>
                                 </label>
 
@@ -112,10 +107,10 @@
                     <div class="listProductcategory">
                         @foreach($pro as $value)
                             <div class="box-pro">
-                                <div class="col-sm-4 col-md-3 col-xs-6" style="width: 292px;">
-                                    <div class="post-img">
+                                <div class="col-sm-4 col-md-3 col-xs-6">
+                                    <div class="post-img" style="max-height: 340px">
                                         <a href="{{route('product_detail',['slug'=>$value->Slug,'id'=>$value->Id])}}" class="img"><img src="{{asset('images/product/'.$value->Image)}}"></a>
-                                        <button class="addc" onclick="wishlist({{$value->Id}})"><i class="fa fa-heart" aria-hidden="true">Yêu thích</i></button>
+                                        <button style="padding: 1px 13px" class="addc" onclick="wishlist({{$value->Id}})"><i class="fa fa-heart" aria-hidden="true">Yêu thích</i></button>
                                         <input type="hidden" class="pro_id" value="{{$value->Id}}">
                                         <a class="viewm" href="{{route('product_detail',['slug'=>$value->Slug,'id'=>$value->Id])}}">
                                             <i class="fa fa-search-plus" aria-hidden="true"></i> Chi tiết</a>

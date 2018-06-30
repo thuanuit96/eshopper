@@ -43,18 +43,17 @@
             </div>
             <div class="grid-75" id="catContent">
                 <h2 style="font-size: 20px;font-weight: 300;border-bottom: 1px dotted #ccc;margin: 5px 0 10px 0;padding: 0 0 5px 0;">
-                    {{$num}} <span style="font-size: 20px;color: #999">kết quả tìm kiếm</span>
+                    {{$num}} <span style="font-size: 20px;color: #999">kết quả tìm kiếm với từ khóa "<strong>{{$key}}"</strong></span>
                 </h2>
                 <div class="showPs">
                     <div class="mSort">
                         <div class="filterProduct">
                             <label>
                                 Sắp xếp theo
-                                <select class="input filterMore">
-                                    <option selected="" value="/search?">Bỏ lọc</option>
-                                    <option value="/search?q=&amp;show=priceAsc">Giá tăng dần</option>
-                                    <option value="/search?q=&amp;show=priceDesc">Giá giảm dần</option>
-                                    <option value="/search?q=&amp;show=discount">Sale</option>
+                                <select class="input filter_search">
+                                    <option name="un-filter" selected="" value="{{$key}}">Bỏ lọc</option>
+                                    <option name="price-up" value="{{$key}}">Giá tăng dần</option>
+                                    <option name="price-down"value="{{$key}}">Giá giảm dần</option>
                                 </select>
                             </label>
                         </div>
@@ -71,6 +70,7 @@
                     <div class="clear"></div>
                 </div>
                 <div class="listProductcategory">
+                    <div class="row">
                     @foreach($pro as $value)
                         <div class="box-pro">
                             <div class="col-sm-4 col-md-3 col-xs-6">
@@ -95,6 +95,7 @@
                             </div>
                         </div>
                     @endforeach
+                    </div>
 
 
                     <span class="clearfix"></span>

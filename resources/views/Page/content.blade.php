@@ -243,8 +243,8 @@
                 @foreach($news as $value)
                 <div class="col-xs-12 col-sm-6 col-md-3">
                 <div class="detai-new">
-                <h4><a href="{{route('Tin-tuc',['slug'=>$value->Slug])}}">{!!$value->Title!!}</a></h4>
-                <a href="news_detail"><img style="max-height: 250px;min-width: 262px" src="{{asset('images/product/'.$value->Images)}}"alt="{{$value->Slug}}" title="{!!$value->Title!!}">
+                <h4><a href="{{route('Tin-tuc',['slug'=>$value->Slug,'id'=>$value->Id])}}">{!!$value->Title!!}</a></h4>
+                <a href="{{route('Tin-tuc',['slug'=>$value->Slug,'id'=>$value->Id])}}"><img style="max-height: 250px;min-width: 262px" src="{{asset('images/product/'.$value->Images)}}"alt="{{$value->Slug}}" title="{!!$value->Title!!}">
                 </a>
                 <p>
                 {!! $value->Intro !!}...
@@ -254,7 +254,7 @@
                 <i class="fa fa-calendar-minus-o" aria-hidden="true"></i> {!!$value->updated_at!!}
                 </span>
                 </div>
-                <a href="news_detail" class="read-more">Xem thêm</a>
+                <a href="{{route('Tin-tuc',['slug'=>$value->Slug,'id'=>$value->Id])}}" class="read-more">Xem thêm</a>
                 </div>
                 </div>
                 @endforeach

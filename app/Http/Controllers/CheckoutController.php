@@ -23,7 +23,16 @@ use DB;
 
 class CheckoutController extends Controller
 {
-    public function  checkout(){
+    public function  checkout( Request $rq){
+        if (Cart::count() != 0){
+        if(isset($rq->order_code))
+        {
+            $id=$rq->order_code;
+            $order=Order::findorfail($id);
+            $order->Payment_Status = 'Đã thanh toán';
+            $order->save();
+            return redirect('/')->with(['flash_level'=>'result_msg','flash_massage'=>' Đã thanh toán thành công đơn hàng ' ]);
+        }
         $client = new \GuzzleHttp\Client();
         $res = $client->get('https://thongtindoanhnghiep.co/api/city');
 //       'application/json; charset=utf8';
@@ -32,6 +41,10 @@ class CheckoutController extends Controller
 
         return view('Page.checkout',['cart'=>$cart,'address'=>$data]);
     }
+    else
+         return redirect('/');
+        }
+
     public function  postcheckout(Request $req)
     {
         if (!empty(Cart::content())) {

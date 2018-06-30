@@ -3,7 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/bootstrap-stroke/1.0.1/css/bss-bootstrap.3.2.0.min.css" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -21,13 +20,6 @@
     <link href="{!!url('Admin/css/styles.css')!!}" rel="stylesheet">
     <link href="{!!url('Admin/css/font-awesome.min.css')!!}" rel="stylesheet">
     <script type="text/javascript" src="{!! asset('ckeditor/ckeditor.js') !!}"></script>
-<!--Icons-->
-
-<!--[if lt IE 9]>
-<script src="js/html5shiv.js"></script>
-<script src="js/respond.min.js"></script>
-<script src="{{asset('Admin/js/lumino.glyphs.js')}}"></script>
-
-    <![endif]-->
+    //Datetime picker
 
 </head>
