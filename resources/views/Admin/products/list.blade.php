@@ -36,7 +36,7 @@
 										<div class="modal-content">
 											<div class="modal-header">
 												<button type="button" class="close" data-dismiss="modal">&times;</button>
-												<h4 class="modal-title">Thêm sản phẩm</h4>
+												<h4 class="modal-title">Thêm tin mới</h4>
 											</div>
 											<div class="modal-body">
 												<div class="row">
@@ -55,7 +55,7 @@
 																		</select>
 																	</div>
 																	<div class="form-group">
-																		<label for="input-id">Chọn danh mục con</label>
+																		<label for="input-id">Chọn loại sản phẩm</label>
 																		<select name="sltsubcate" id="inputsltsubcate" required class="form-control inputsltsubcate	">
 																			{{--@foreach($subcategory as $row)--}}
 																			{{--<option value="{!!$row->Id!!}" >{!!$row->Name!!}</option>--}}
@@ -178,7 +178,7 @@
 													<div class="modal-content">
 														<div class="modal-header">
 															<button type="button" class="close" data-dismiss="modal">&times;</button>
-															<h4 class="modal-title">Sủa sản phẩm</h4>
+															<h4 class="modal-title">Sửa sản phẩm</h4>
 														</div>
 														<div class="modal-body">
 															<div class="row">
@@ -190,7 +190,7 @@
 																				<input type="hidden" name="pro_id" value="{{$row->Id}}">
 																				<div class="form-group">
 																					<label for="input-id">Chọn danh mục</label>
-																					<select name="sltcate" id="inputsltcate" required class="form-control inputsltcate">
+																					<select name="sltcate" id="inputsltcate" class="form-control inputsltcate">
 																						<option></option>
 																						@foreach($category as $ct)
 																							<option value="{!!$ct->Id!!}" >{!!$ct->Name!!}</option>
@@ -198,7 +198,7 @@
 																					</select>
 																				</div>
 																				<div class="form-group">
-																					<label for="input-id">Chọn danh mục con</label>
+																					<label for="input-id">Chọn loại sản phẩm</label>
 																					<select name="sltsubcate" id="inputsltsubcate"  required class="form-control inputsltsubcate">
 																						{{--@foreach($subcategory as $row)--}}
 																						{{--<option value="{!!$row->Id!!}" >{!!$row->Name!!}</option>--}}
@@ -208,11 +208,11 @@
 																				</div>
 																				<div class="form-group">
 																					<label for="input-id">Tên sản phẩm</label>
-																					<input type="text" name="txtname" id="inputTxtname" class="form-control" value="{!!$row->Name!!}"  required="required">
+																					<input type="text" name="txtname" id="inputTxtname" class="form-control" value="{!!$row->Name!!}">
 																				</div>
 																				<div class="form-group">
 																					<label for="input-id">Chọn màu sắc</label>
-																					<select name="sltcolor" id="inputsltcate" required class="form-control">
+																					<select name="sltcolor" id="inputsltcate" class="form-control">
 																						<option value="">Vui lòng chọn 1 màu sắc</option>
 																						@foreach($color as $cl)
 																							<option value="{!!$cl->id!!}" >{!!$cl->name!!}</option>
@@ -229,7 +229,7 @@
 																				</div>
 																				<div class="form-group">
 																					<div class="form-group">
-																						Hình ảnh : <input type="file" name="txtimg1" accept="image/png" id="inputtxtimg"  class="form-control" required >
+																						Hình ảnh : <input type="file" name="txtimg1" accept="image/png" id="inputtxtimg"  class="form-control" >
 
 																					</div>
 																				</div>

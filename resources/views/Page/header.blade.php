@@ -31,7 +31,7 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" role="menu">
-                        <li style="float: none"><a href="#"> Thông tin tài khoản</a></li>
+                        <li style="float: none"><a href="{{url('thong-tin-tai-khoan')}}"> Thông tin tài khoản</a></li>
                         <li style="float: none"><a href="{{route('logout')}}"> Đăng xuất</a></li>
 
                     </ul>
@@ -73,7 +73,7 @@
                                             <input  required type="password" class="form-control" name="password" placeholder="Mật khẩu">
                                         </div>
                                         <div class="form-group">
-                                            <label style="font-size: 15px;">Địa chỉ <email></email></label>
+                                            <label style="font-size: 15px;">Địa chỉ email <email></email></label>
                                             <input required type="email" class="form-control" name="email" placeholder="Email">
                                         </div>
                                         <div class="form-group">

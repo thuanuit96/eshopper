@@ -26,22 +26,16 @@ class NewsController extends Controller
     public function postadd(AddNewsRequest $rq)
     {
         $n = new News();
-        $n->title = $rq->txtTitle;
+        $n->Title = $rq->txtTitle;
         $n->slug = str_slug($rq->txtTitle,'-');
-        $n->author = $rq->txtAuth;
-        $n->tag = $rq->txttag;
-        $n->status = $rq->slstatus;
-        $n->source = $rq->txtSource;
-        $n->intro = $rq->txtIntro;
-        $n->full = $rq->txtFull;
-        $n->cat_id = $rq->sltCate;
-        $n->user_id = Auth::guard('admin')->user()->id;
-        $n->created_at = new datetime;
-
+        $n->Author = $rq->txtAuth;
+        $n->Status = $rq->slstatus;
+        $n->Intro = $rq->txtIntro;
+        $n->Content = $rq->txtFull;
         $f = $rq->file('txtimg')->getClientOriginalName();
         $filename = time().'_'.$f;
-        $n->images = $filename;
-        $rq->file('txtimg')->move('uploads/news/',$filename);
+        $n->Images = $filename;
+        $rq->file('txtimg')->move('images/news/',$filename);
 
         $n->save();
         return redirect('admin/news')
@@ -54,12 +48,13 @@ class NewsController extends Controller
     }
     public function postedit(Request $rq,$id)
     {
+        
         $n = News::find($id);
         $n->Title = $rq->txtTitle;
         $n->Slug = str_slug($rq->txtTitle,'-');
         $n->Author = $rq->txtAuth;
 //        $n->tag = $rq->txttag;
-//        $n->status = $rq->slstatus;
+        $n->Status = $rq->slstatus;
 //        $n->source = $rq->txtSource;
         $n->Intro = $rq->txtIntro;
         $n->Content = $rq->txtFull;

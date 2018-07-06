@@ -32,6 +32,12 @@ class ProductDetail extends Migration
             $table->foreign('pro_id')->references('id')->on('Product_detail')->onDelete('cascade');
 
         });
+        Schema::table('Products', function($table)
+        {
+            $table->foreign('SubCategoryId')->references('Id')->on('SubCategory')->onDelete('cascade');
+
+        });
+
     }
 
     /**

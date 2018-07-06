@@ -46,6 +46,9 @@
     @yield('product_detail')
     @yield('checkout')
     @yield('contact')
+
+    @yield('order_history')
+
     @yield('product')
      @include('Page.footer')
 

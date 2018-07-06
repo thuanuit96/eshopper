@@ -96,6 +96,8 @@
                                                                                             <option value="L">L</option>
                                                                                             <option value="M">M</option>
                                                                                             <option value="XL">XL</option>
+                                                                                            <option value="Free">Free</option>
+
 
 
                                                                                         </select>
@@ -193,6 +195,8 @@
                                                             <option value="L">L</option>
                                                             <option value="M">M</option>
                                                             <option value="XL">XL</option>
+                                                            <option value="Free">Free</option>
+
 
 
                                                         </select>

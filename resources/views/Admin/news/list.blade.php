@@ -55,11 +55,7 @@
 										<td>{!!$row->Title!!}</td>
 										<td><small>{!!$row->Intro!!}</small></td>
 										<td style="width: 90px;">
-											@if($row->status==1)
-											Hiển thị
-											@else
-											Tạm ẩn
-											@endif
+											{{$row->Status}}
 										</td>
 										<td style="width: 120px;">
 										    <a href="{!!url('admin/news/edit/'.$row->Id)!!}" title="Sửa"><span class="glyphicon glyphicon-edit">edit</span> </a>

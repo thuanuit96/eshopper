@@ -190,17 +190,21 @@ Route::get('yeu-thich','wishlistcontroller@create');
 Route::get('danh-sach-yeu-thich','wishlistcontroller@index')->name('danh-sach-yeu-thich');
 Route::get('xoadanhsach/{id}','wishlistcontroller@delete');
 Route::get('getcoupon','AjaxController@getcoupon');
-Route::get('tai-khoan/doi-mat-khau','MainController@changepassword');
+Route::get('tai-khoan/doi-mat-khau/{id}','MainController@changepassword');
 //reset password
 //    Route::get('password/reset/{token?}','Auth\ResetPasswordController@showResetForm    ');
 //Route::post('password/email','Auth\PasswordController@sendResetLinkEmail');
 //Route::post('password/reset','Auth\ResetPasswordController@reset');
 Route::get('xacnhanthanhtoan','CheckoutController@xacnhanthanhtoan');
 Route::get('contact','MainController@contact');
-Route::get('test',function (){
+Route::get('lich-su-mua-hang','MainController@order_history');
+Route::get('lich-su-mua-hang/xoa/{id}','MainController@del_order_history');
+Route::get('thong-tin-tai-khoan','MainController@account');
+Route::get('thong-tin-tai-khoan/capnhat/{id}','MainController@get_account');
+Route::post('thong-tin-tai-khoan/capnhat','MainController@post_account');
+Route::post('thong-tin-tai-khoan/doi-mat-khau','MainController@postchangepassword');
+Route::get('excel','MainController@aaa');
 
-    return view('Page.a');
-});
 
 
 

@@ -46,6 +46,8 @@
                             console.log(data.total_price);
                             $('#price_<?=$i?>').html(data.price);
                             $('#total_price').text(data.total_price);
+                            $("#cart_count").html(data.count);
+
                         }
 
 

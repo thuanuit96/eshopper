@@ -24,7 +24,7 @@ use DB;
 class CheckoutController extends Controller
 {
     public function  checkout( Request $rq){
-        if (Cart::count() != 0){
+
         if(isset($rq->order_code))
         {
             $id=$rq->order_code;
@@ -40,9 +40,8 @@ class CheckoutController extends Controller
         $cart=Cart::content();
 
         return view('Page.checkout',['cart'=>$cart,'address'=>$data]);
-    }
-    else
-         return redirect('/');
+
+
         }
 
     public function  postcheckout(Request $req)
@@ -50,7 +49,12 @@ class CheckoutController extends Controller
         if (!empty(Cart::content())) {
 
             $data = $req->all();
+
             $order = new Order();
+            if (Auth::check()) {
+                $order->UserId=Auth::user()->id;
+
+            }
             $order->Name = $data['customerName'];
             $order->Address = $data['customerAddress'].'-'.$data['customerDistrictId'].'-Tỉnh '.$data['customerCityId'];
             $order->PhoneNumber = $data['customerMobile'];
@@ -92,7 +96,7 @@ class CheckoutController extends Controller
             {$this->sendmail($data,$product_mail,$order_mail);
             }
 
-//            Cart::destroy();
+            Cart::destroy();
     //            $this->sendsms();
             if ($data['paymentMethod'] == 1) {
                 return redirect('/')->with(['flash_level'=>'result_msg','flash_massage'=>' Bạn Đã đặt hàng thành công !Vui lòng vào kiểm tra thông tin đơn hàng qua mail ' ]);

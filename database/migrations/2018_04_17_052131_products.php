@@ -23,7 +23,8 @@ class Products extends Migration
             $table->float('Price')->nullable();
             $table->string('Slug')->nullable();
             $table->string('Image')->nullable();
-            $table->integer('SubCategoryId')->unsigned()->nullable()->onDelete('cascade');;
+            $table->integer('SubCategoryId')->unsigned();
+
             $table->timestamps();
 
 

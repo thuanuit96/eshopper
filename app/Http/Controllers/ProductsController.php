@@ -34,6 +34,7 @@ class ProductsController extends Controller
     public function postadd(Request $rq)
     {
         $pro = new Products();
+        $pro->Code='SP'.rand(100, 1000);
         $pro->Name=$rq->txtname;
         $pro->slug = str_slug($rq->txtname,'-');
         $pro->Price = $rq->txtprice;
@@ -115,10 +116,17 @@ class ProductsController extends Controller
     {
 
         $pro = Products::find($rq->pro_id);
-        $pro->Name=$rq->txtname;
-        $pro->slug = str_slug($rq->txtname,'-');
+        $pro->Code='SP'.rand(100, 1000);
+        if($rq->txtname!=''){
+            $pro->Name=$rq->txtname;
+            $pro->slug = str_slug($rq->txtname,'-');
+        }
+
+
         $pro->Price = $rq->txtprice;
+        if($rq->sltcolor!=''){
         $pro->id_color = $rq->sltcolor;
+            }
         $pro->Description = $rq->txtdescription;
         $pro->SubCategoryId= $rq->sltsubcate;
         $file_path = public_path('images/product/').$pro->Image;
@@ -287,7 +295,7 @@ $pro_detail=$pro->pro_detail;
         }
         $pro_detail->save();
         return redirect()->back()
-            ->with(['flash_level'=>'result_msg','flash_massage'=>' Thêm thành công thành công !']);
+            ->with(['flash_level'=>'result_msg','flash_massage'=>' Thêm  thành công !']);
 
     }
 }

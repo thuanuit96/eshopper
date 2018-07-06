@@ -15,7 +15,7 @@ class Order extends Migration
     {
         Schema::create('Order',function (Blueprint $table){
             $table->increments('Id');
-            $table->string('UserId')->nullable();
+            $table->integer('UserId')->unsigned();
             $table->string('Name')->nullable();
             $table->string('Email')->nullable();
             $table->string('Address')->nullable();
@@ -28,6 +28,7 @@ class Order extends Migration
             $table->string('Payment_Status')->nullable();
             $table->string('Status')->nullable();
             $table->timestamps();
+            $table->foreign('UserId')->references('id')->on('users');
 
 
     });

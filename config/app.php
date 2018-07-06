@@ -151,6 +151,9 @@ return [
         Nexmo\Laravel\NexmoServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Bhavinjr\Wishlist\Providers\WishlistServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+
+
 
 
 
@@ -227,7 +230,12 @@ return [
         'Form' => 'Collective\Html\FormFacade',
         'Html' => 'Collective\Html\HtmlFacade',
         "Wishlist"=> "Bhavinjr\Wishlist\Facades\Wishlist",
-        'Counter' => Kryptonit3\Counter\Facades\CounterFacade::class,
-    ],
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+
+
+
+
+    ]
+
 
 ];

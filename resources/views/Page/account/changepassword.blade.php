@@ -22,23 +22,27 @@
                             <h3 class="panel-title">Đổi mật khẩu đăng nhập vào hệ thống</h3>
                         </div>
                         <div class="panel-body">
-                            <form class="form-horizontal" id="yw0" action="/customer/changePassword.html" method="post">
+                            <form class="form-horizontal" id="yw0" action="{{url('thong-tin-tai-khoan/doi-mat-khau')}}" method="post">
+                                {{ csrf_field() }}
+
+                                <input type="hidden" name="id" value="{{$id}}">
+
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label" for="CustomerChangePasswordForm_current_password">Mật khẩu hiện tại</label>
                                     <div class="col-sm-6">
-                                        <input class="form-control" name="CustomerChangePasswordForm[current_password]" id="CustomerChangePasswordForm_current_password" type="password">
+                                        <input class="form-control" name="current_password" id="CustomerChangePasswordForm_current_password" type="password">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label" for="CustomerChangePasswordForm_new_password">Mật khẩu mới</label>
+                                    <label class="col-sm-2 control-label" for="new_password">Mật khẩu mới</label>
                                     <div class="col-sm-6">
-                                        <input class="form-control" name="CustomerChangePasswordForm[new_password]" id="CustomerChangePasswordForm_new_password" type="password">
+                                        <input class="form-control" name="new_password" id="CustomerChangePasswordForm_new_password" type="password">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label" for="CustomerChangePasswordForm_new_password_confirmation">Xác nhận mật khẩu</label>
                                     <div class="col-sm-6">
-                                        <input class="form-control" name="CustomerChangePasswordForm[new_password_confirmation]" id="CustomerChangePasswordForm_new_password_confirmation" type="password">
+                                        <input class="form-control" name="new_password_confirmation" id="CustomerChangePasswordForm_new_password_confirmation" type="password">
                                     </div>
                                 </div>
                                 <div class="form-group">

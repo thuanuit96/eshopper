@@ -35,7 +35,7 @@
                         </article>
                         <div class="meta-s">
                   <span class="like">
-                     <div class="fb-like" data-href="iphone-7-ra-mat-chong-nuoc-camera-kep-gia-tu-649-usd.html" tppabs="http://htshop.esy.es/iphone-7-ra-mat-chong-nuoc-camera-kep-gia-tu-649-usd.html" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+                     <div class="fb-like"  data-size="small" data-show-faces="true" data-share="true"></div>
                   </span>
                             <span class="social-s">
                   <a target="_blank" href="" tppabs="https://www.facebook.com/sharer.php?u=http://htshop.esy.es/iphone-7-ra-mat-chong-nuoc-camera-kep-gia-tu-649-usd.html"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -53,7 +53,7 @@
                                 @foreach($tinlienquan as $value)
                                 <li class="col-xs-12 col-sm-12 col-md-4">
                                     <a href="{{route('Tin-tuc',['slug'=>$value->Slug,'id'=>$value->Id])}}">
-                                    <img src="{{asset('images/product/'.$value->Images)}}">
+                                    <img src="{{asset('images/news/'.$value->Images)}}">
                                     </a>
                                     <h4><a href="{{route('Tin-tuc',['slug'=>$value->Slug,'id'=>$value->Id])}}">{{$value->Title}}…</a></h4>
                                     <div class="meta">
@@ -98,7 +98,7 @@
                                     @foreach($tinmoi as $value)
                                     <li>
                                         <a href="{{route('Tin-tuc',['slug'=>$value->Slug,'id'=>$value->Id])}}" >
-                                            <img src="{{asset('images/product/'.$value->Images)}}" alt="" title="" width="80px">
+                                            <img src="{{asset('images/news/'.$value->Images)}}" alt="" title="" width="80px">
                                         </a>
                                         <h4>
                                             <a href="{{route('Tin-tuc',['slug'=>$value->Slug,'id'=>$value->Id])}}">{{$value->Title}}</a>

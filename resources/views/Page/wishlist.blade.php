@@ -35,14 +35,14 @@
                             <div class="list-link">
                                 <h3>Thông tin cá nhân</h3>
                                 <ul>
-                                    <li><a href="{{url('tai-khoan/doi-mat-khau')}}" title="Thông tin tài khoản"><i class="fa fa-caret-right" aria-hidden="true"></i> Thông tin tài khoản</a></li>
-                                    <li><a href="{{url('tai-khoan/doi-mat-khau')}}" title="Đổi mật khẩu"><i class="fa fa-caret-right" aria-hidden="true"></i> Đổi mật khẩu</a></li>
+                                    <li><a href="{{url('thong-tin-tai-khoan')}}" title="Thông tin tài khoản"><i class="fa fa-caret-right" aria-hidden="true"></i> Thông tin tài khoản</a></li>
+                                    <li><a href="{{url('tai-khoan/doi-mat-khau/'.Auth::user()->id)}}" title="Đổi mật khẩu"><i class="fa fa-caret-right" aria-hidden="true"></i> Đổi mật khẩu</a></li>
                                     <li><a href="{{url('danh-sach-yeu-thich')}}" title="Sản phẩm yêu thích"><i class="fa fa-caret-right" aria-hidden="true"></i> Sản phẩm yêu thích</a></li>
                                 </ul>
                             </div>
 
                             <div class="list-link">
-                                <a href="#" ><h3>Lịch sử mua hàng</h3></a>
+                                <a href="{{url('lich-su-mua-hang')}}" ><h3>Lịch sử mua hàng</h3></a>
 
                             </div>
                         </div>

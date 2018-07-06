@@ -24,9 +24,9 @@
                                                 <input type="text" name="customerName" class="validate[required] input customerName" value="{{Auth::user()->username}}" id="form-validation-field-0" required readonly>
                                             </label>
                                             <label>Điện thoại: *
-                                                <input type="text" name="customerMobile" class="validate[required,custom[phone]] input customerMobile" value="{{Auth::user()->phone}}" required readonly>
+                                                <input type="text" name="customerMobile" class="validate[required,custom[phone]] input customerMobile" value="{{Auth::user()->phone}}" required >
                                             </label><label>Email: *
-                                                <input type="email" name="customerEmail" class="validate[required,custom[email]] input customerEmail" value="{{Auth::user()->email}}" required readonly style=" display:block;width:80%;padding:5px;border:1px solid #ccc;margin:5px 0">
+                                                <input type="email" name="customerEmail" class="validate[required,custom[email]] input customerEmail" value="{{Auth::user()->email}}" required  style=" display:block;width:80%;padding:5px;border:1px solid #ccc;margin:5px 0">
                                             </label>
                                             <label>
                                                 Tỉnh/ Thành phố: *

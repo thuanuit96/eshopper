@@ -21,7 +21,7 @@ use App\News;
 
 use Mail;
 use DB;
-
+use Excel;
 
 use Hash;
 
@@ -105,8 +105,16 @@ class MainController extends Controller
 
     }
 
-    public function getproducts()
+    public function getproducts(Request $request)
     {
+        if (Auth::check()) {
+
+            $name  = $request->cookie(Auth::user()->username);
+
+
+        }
+
+
         $products = Products::paginate(4);
         $products_new = Products::orderBy('updated_at', 'DESC')->paginate(4);
 
@@ -126,21 +134,38 @@ class MainController extends Controller
             ->where('categories.id', '=', 3)
             ->paginate(3);
         //Tin tức
-        $news = News::paginate(4);
+        $news = News::where('Status','=','Hiển thị')->paginate(4);
         $data = ['Products' => $products, 'men_pro' => $men_pro, 'women_pro' => $women_pro, 'pk' => $pk, 'news' => $news,'products_new'=>$products_new];
 
         return view('Page.home', $data);
     }
 
     public function getproduct_detail(Request $rq)
+
     {
         $id = $rq->id;
+        if (Auth::check()) {
+            $name=Auth::user()->username;
+            $minutes = 30;
+            $user_cookie = cookie($name, $id , $minutes);
+            $name  = $rq->cookie('thuanuit9696 ');
+
+        }
+
         $product = Products::find($id);
         $subcate_id = $product->SubCategoryId;
         $pro_detail= $product->pro_detail;
-        $relate_pro = SubCategory::find($subcate_id)->products;
+
+//        $relate_pro = SubCategory::find($subcate_id)->products;
+        $relate_pro =Products::where('SubCategoryId','=',$subcate_id)->where('Id','<>' ,$id)->get();
 //        dd($relate_pro);
-        return view('Page.product_detail', ['pro'=>$product,'product_detail' => $pro_detail, 'relate_pro' => $relate_pro]);
+        if (Auth::check()){
+            return view('Page.product_detail', ['pro'=>$product,'product_detail' => $pro_detail, 'relate_pro' => $relate_pro])->withCookie($user_cookie);
+
+        }
+        else
+            return view('Page.product_detail', ['pro'=>$product,'product_detail' => $pro_detail, 'relate_pro' => $relate_pro]);
+
     }
 
     public function addcart(Request $rq)
@@ -201,7 +226,7 @@ class MainController extends Controller
         })->first();
 //        Cart::update($item->rowId, $item->qty + $request->qty);
         Cart::update($item->rowId, $request->qty);
-        $result = array('price' => $item->subtotal, 'total_price' => Cart::subtotal());
+        $result = array('price' => $item->subtotal, 'total_price' => Cart::subtotal(),'count'=>$request->qty);
         echo(json_encode($result));
 
     }
@@ -322,14 +347,144 @@ class MainController extends Controller
         }
 
     }
- public  function  changepassword()
+ public  function  changepassword($id)
  {
-     return view('Page.account.changepassword');
+     return view('Page.account.changepassword',['id'=>$id]);
  }
 
     public  function  contact()
+{
+    return view('Page.contact');
+}
+    public  function  order_history()
     {
-        return view('Page.contact');
+        return view('Page.history_order');
+    }
+    public  function  del_order_history($id)
+    {
+        $oder = Order::where('Id',$id)->first();
+        if ($oder->Status=='Đã giao hàng') {
+            $oder = Order::find($id);
+            $oder->delete();
+            return redirect()->back()
+                ->with(['flash_level'=>'result_msg','flash_massage'=>'Đã xóa đơn hàng số:  '.$id.' !']);
+        }
+        if ($oder->Confirm =='Đã xác nhận') {
+            return redirect()->back()
+                ->with(['flash_level'=>'result_msg','flash_massage'=>'Không thể hủy đơn hàng số: '.$id.' vì đã được xác nhận  !']);
+        } else {
+            $oder = Order::find($id);
+            $oder->delete();
+            return redirect()->back()
+                ->with(['flash_level'=>'result_msg','flash_massage'=>'Đã hủy bỏ đơn hàng số:  '.$id.' !']);
+        }
+    }
+    public  function  account()
+    {
+        return view('Page.account.account');
+    }
+    public  function  get_account($id)
+    {
+       $user=User::findorfail($id);
+        return view('Page.account.update',['user'=>$user]);
+    }
+    public  function  post_account( Request $rq)
+    {
+        $user=User::findorfail($rq->id_accunt);
+        $user->fullname=$rq->name;
+        $user->email=$rq->email;
+        $user->phone=$rq->phone;
+        $user->save();
+
+        return redirect()->back()
+            ->with(['flash_level'=>'result_msg','flash_massage'=>'Cập nhật thành công']);
+
+    }
+    public  function  postchangepassword( Request $rq)
+    {
+        $user=User::findorfail($rq->id);
+
+
+        $current_password = bcrypt($rq->current_password);
+
+
+        if($current_password==$user->password)
+        {
+            dd(1);
+            if($rq->new_password==$rq->new_password_confirmation)
+            {
+                $user->password=$rq->new_password;
+                $user->save();
+                return redirect()->back()
+                    ->with(['flash_level'=>'result_msg','flash_massage'=>'Đổi mật khẩu thành thành công']);
+            }
+            else
+                return redirect()->back()
+                    ->with(['alert'=>'Mật khẩu nhập lại không khớp']);
+        }
+        else
+            return redirect()->back()
+                ->with(['alert'=>'Mật khẩu hiện tại không đúng']);
+
+
+
+
+
+
+
+    }
+
+    public function aaa()
+    {
+        echo "aaa";
+        $books = Order::all();
+        $fileName = 'bookList' . time();
+
+        Excel::create($fileName, function ($excel) use ($books) { // su dung use($books) moi co the truyen gia tri bien $books tu ben ngoai vao ham
+            $excel->sheet('Thong ke sach trong kho', function ($sheet) use ($books) {
+                $sheet->mergeCells('A1:I1');//hợp  cột a1 đến i1
+
+                $sheet->cell('A1', function ($cell) {
+                    $cell->setValue('ABC Company Thống kê sách trong kho');
+
+                    $cell->setFontWeight('bold');
+                });
+
+                $result = $this->getDataToLaravelExcel($books); //Goi den ham getDataToLaravelExcel de tạo mang du lieu can in ra Excel
+
+                $sheet->fromArray($result, null, 'A3', false, true);
+            });
+        })->export('xls');
+
+
+
+
+
+
+
+//        $path = 'excel/import/' . $fileName . '.xlsx';
+//
+//        return redirect(url('/' . $path));
+
+
+    }
+
+    private function getDataToLaravelExcel($books)
+    {
+        $result = [];
+
+        foreach ($books as $key => $value) {
+            $result[] = [
+                'STT' => $key + 1,
+                'Tên sách' =>'thuần',
+                'Tác giả' => isset($value->author) ? $value->author : '',
+                'Số lượng' => isset($value->quantity) ? $value->quantity : '',
+                'Đơn giá' => isset($value->price) ? number_format($value->price) : '',
+                'Tổng' => (isset($value->quantity) && isset($value->price)) ? number_format($value->quantity * $value->price) : 0
+            ];
+        }
+
+        return $result;
     }
 }
 

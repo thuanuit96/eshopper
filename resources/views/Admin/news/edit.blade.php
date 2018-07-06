@@ -62,8 +62,8 @@
 					      			</div>					      		
 					      			<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
 					      				Trạng thái : <select name="slstatus" id="inputSlstatus" class="form-control" required="required">
-					      					<option value="1" selected>Hiển thị</option>
-					      					<option value="0">Tạm ẩn</option>
+					      					<option value="Hiển thị" selected>Hiển thị</option>
+					      					<option value="Tạm ẩn">Tạm ẩn</option>
 					      				</select>
 					      			</div>
 					      			<div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">

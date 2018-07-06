@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Order;
 use DB;
+use Nexmo;
 class OrdersController extends Controller
 {
     public function getlist()
@@ -43,6 +44,8 @@ class OrdersController extends Controller
         $oder->Confirm = 'Đã xác nhận';
         $oder->Status='Đang giao hàng';
         $oder->save();
+        $this->sendsms();
+
         return redirect('admin/donhang')
             ->with(['flash_level'=>'result_msg','flash_massage'=>' Đã xác nhận đơn hàng thành công !']);
 
@@ -80,4 +83,14 @@ class OrdersController extends Controller
             ->with(['flash_level'=>'result_msg','flash_massage'=>'Đã cập nhật đơn hàng']);
 
     }
+    public  function sendsms (){
+        $text="Da xac nhan  thanh cong don hang cua ban!!! ";
+        $nexmoClient = new Nexmo\Client(new Nexmo\Client\Credentials\Basic('206f4f31', 'U4uT0rNbInTOK3ym'));
+        $message = $nexmoClient->message()->send([
+            'from' => '@leggetter',
+            'to' => 84973962984,
+            'text' => $text
+        ]);
+    }
+
 }
