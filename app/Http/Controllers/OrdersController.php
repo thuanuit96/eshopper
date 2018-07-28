@@ -44,7 +44,7 @@ class OrdersController extends Controller
         $oder->Confirm = 'Đã xác nhận';
         $oder->Status='Đang giao hàng';
         $oder->save();
-        $this->sendsms();
+//        $this->sendsms(); Cần sửa cấu hình api thư viện nextmo và sdt của mình ở hàm sendsms
 
         return redirect('admin/donhang')
             ->with(['flash_level'=>'result_msg','flash_massage'=>' Đã xác nhận đơn hàng thành công !']);
@@ -58,6 +58,10 @@ class OrdersController extends Controller
             $oder->delete();
             return redirect('admin/donhang')
                 ->with(['flash_level'=>'result_msg','flash_massage'=>'Đã xóa đơn hàng số:  '.$id.' !']);
+        }
+        if ($oder->Payment_Status=='Đã thanh toán') {
+            return redirect()->back()
+                ->with(['flash_level'=>'result_msg','flash_massage'=>'Không thể hủy đơn hàng số: '.$id.' vì đã được thanh toán !']);
         }
         if ($oder->Confirm =='Đã xác nhận') {
             return redirect()->back()
@@ -85,7 +89,7 @@ class OrdersController extends Controller
     }
     public  function sendsms (){
         $text="Da xac nhan  thanh cong don hang cua ban!!! ";
-        $nexmoClient = new Nexmo\Client(new Nexmo\Client\Credentials\Basic('206f4f31', 'U4uT0rNbInTOK3ym'));
+        $nexmoClient = new Nexmo\Client(new Nexmo\Client\Credentials\Basic('29812cb1', 'R2ZSjoxVba5j0zZo'));
         $message = $nexmoClient->message()->send([
             'from' => '@leggetter',
             'to' => 84973962984,

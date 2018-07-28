@@ -157,10 +157,10 @@ $pro_detail=$pro->pro_detail;
         return view('Admin.products.detail',['pro_detail'=>$pro_detail,'pro'=>$pro]);
  }
  public  function edit_pro_detail(Request $rq){
-     $this->validate($rq, [
-         'sltsize' => 'required|string|max:255|unique:product_detail,size,NULL,id,product_id,'.$rq->pro_id,
-     ],
-         ['sltsize.unique' => 'Kích cỡ bạn sửa đã tồn tại']);
+//     $this->validate($rq, [
+//         'sltsize' => 'required|string|max:255|unique:product_detail,size,NULL,id,product_id,'.$rq->pro_id,
+//     ],
+//         ['sltsize.unique' => 'Kích cỡ bạn sửa đã tồn tại']);
      $pro_detail = Product_detail::find($rq->pro_detail_id);
      $pro_detail->size=$rq->sltsize;
      $pro_detail->quantity = $rq->txtquantity;

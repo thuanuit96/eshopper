@@ -144,14 +144,6 @@ class MainController extends Controller
 
     {
         $id = $rq->id;
-        if (Auth::check()) {
-            $name=Auth::user()->username;
-            $minutes = 30;
-            $user_cookie = cookie($name, $id , $minutes);
-            $name  = $rq->cookie('thuanuit9696 ');
-
-        }
-
         $product = Products::find($id);
         $subcate_id = $product->SubCategoryId;
         $pro_detail= $product->pro_detail;
@@ -159,11 +151,6 @@ class MainController extends Controller
 //        $relate_pro = SubCategory::find($subcate_id)->products;
         $relate_pro =Products::where('SubCategoryId','=',$subcate_id)->where('Id','<>' ,$id)->get();
 //        dd($relate_pro);
-        if (Auth::check()){
-            return view('Page.product_detail', ['pro'=>$product,'product_detail' => $pro_detail, 'relate_pro' => $relate_pro])->withCookie($user_cookie);
-
-        }
-        else
             return view('Page.product_detail', ['pro'=>$product,'product_detail' => $pro_detail, 'relate_pro' => $relate_pro]);
 
     }
@@ -368,6 +355,10 @@ class MainController extends Controller
             $oder->delete();
             return redirect()->back()
                 ->with(['flash_level'=>'result_msg','flash_massage'=>'Đã xóa đơn hàng số:  '.$id.' !']);
+        }
+        if ($oder->Payment_Status=='Đã thanh toán') {
+            return redirect()->back()
+                ->with(['flash_level'=>'result_msg','flash_massage'=>'Không thể hủy đơn hàng số: '.$id.' vì đã được thanh toán !']);
         }
         if ($oder->Confirm =='Đã xác nhận') {
             return redirect()->back()

@@ -31,7 +31,7 @@ class CheckoutController extends Controller
             $order=Order::findorfail($id);
             $order->Payment_Status = 'Đã thanh toán';
             $order->save();
-            return redirect('/')->with(['flash_level'=>'result_msg','flash_massage'=>' Đã thanh toán thành công đơn hàng ' ]);
+            return redirect('/')->with(['flash_level'=>'result_msg','flash_massage'=>' Đã thanh toán thành công đơn hàng! Vui lòng kiểm tra thong tin đặt hàng qua email ' ]);
         }
         $client = new \GuzzleHttp\Client();
         $res = $client->get('https://thongtindoanhnghiep.co/api/city');

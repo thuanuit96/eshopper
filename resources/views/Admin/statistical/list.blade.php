@@ -59,7 +59,7 @@
 
 
                                     <div class="col-md-3">
-                                        <a href="{!!url('admin/danhmuc/add')!!}" title=""><button type="button" class="btn btn-primary pull-right">Thêm mới danh mục</button></a>
+                                        <a href="{!!url('admin/danhmuc/add')!!}" title=""><button type="button" class="btn btn-primary pull-right">Xuất báo cáo</button></a>
 
                                     </div>
 
