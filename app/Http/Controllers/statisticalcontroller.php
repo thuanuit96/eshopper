@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+declare(strict_types=1);
 
-use Illuminate\Http\Request;
+namespace App\Http\Controllers;
 
 class statisticalcontroller extends Controller
 {
-   public  function getlist(){
-
-       return view('Admin.statistical.list');
-   }
+    public function getlist()
+    {
+        return view('Admin.statistical.list');
+    }
 }

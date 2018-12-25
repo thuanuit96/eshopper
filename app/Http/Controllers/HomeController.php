@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+declare(strict_types=1);
 
-use Illuminate\Http\Request;
+namespace App\Http\Controllers;
 
 class HomeController extends Controller
 {
@@ -25,5 +25,4 @@ class HomeController extends Controller
     {
         return view('home');
     }
-
 }

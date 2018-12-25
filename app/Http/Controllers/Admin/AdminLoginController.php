@@ -1,21 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use Auth;
-use App\Staff;
 
 class AdminLoginController extends Controller
 {
     public function getLogin()
     {
-//
         return view('admin.auth.login');
-
-
     }
+
     public function postLogin(LoginRequest $request)
     {
         $login = [
@@ -25,10 +24,10 @@ class AdminLoginController extends Controller
 
         if (Auth::guard('admins')->attempt($login)) {
             return redirect('admin/home');
-        } else {
-            return redirect()->back()->with('status', 'Email hoặc Password không chính xác');
         }
+        return redirect()->back()->with('status', 'Email hoặc Password không chính xác');
     }
+
     public function getLogout()
     {
         Auth::guard('admins')->logout();

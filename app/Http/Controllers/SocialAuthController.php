@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
-use Session;
+declare(strict_types=1);
 
-use Illuminate\Http\Request;
-use Socialite;
+namespace App\Http\Controllers;
+
 use App\User;
 use Auth;
-use App\Services\SocialAccountService;
+use Session;
+use Socialite;
 
 class SocialAuthController extends Controller
 {
@@ -18,20 +18,19 @@ class SocialAuthController extends Controller
 
     public function handleProviderCallback()
     {
-        $provider='facebook';
+        $provider = 'facebook';
 
         // Sau khi xác thực Facebook chuyển hướng về đây cùng với một token
         // Các xử lý liên quan đến đăng nhập bằng mạng xã hội cũng đưa vào đây.
 //
         $user = Socialite::driver('facebook')->stateless()->user();
-            $authUser = $this->findOrCreateUser($user, $provider);
-       Auth::login($authUser, true);
+        $authUser = $this->findOrCreateUser($user, $provider);
+        Auth::login($authUser, true);
 
-       Session::put('account',Auth::user()->username);
-      return redirect('/');
-
-
+        Session::put('account', Auth::user()->username);
+        return redirect('/');
     }
+
     public function findOrCreateUser($user, $provider)
     {
         $authUser = User::where('provider_id', $user->id)->first();
@@ -40,12 +39,12 @@ class SocialAuthController extends Controller
             return $authUser;
         }
         return User::create([
-            'username'=>$user->name,
-            'email'    =>$user->email,
-            'fullname' =>$user->name,
-            'password'=>$user->token,
-            'provider' =>'facebook',
-            'provider_id' => $user->id
+            'username' => $user->name,
+            'email' => $user->email,
+            'fullname' => $user->name,
+            'password' => $user->token,
+            'provider' => 'facebook',
+            'provider_id' => $user->id,
         ]);
     }
 }

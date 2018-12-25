@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
-use App\Categories;
-use App\SubCategory;
+declare(strict_types=1);
 
-use Illuminate\Http\Request;
+namespace App\Http\Controllers;
+
+use App\Categories;
 
 class PageController extends Controller
 {
-    function get_menu(){
-        $menu=Categories::all();
+    public function get_menu(): void
+    {
+        $menu = Categories::all();
         var_dump($menu);
-
     }
 }
