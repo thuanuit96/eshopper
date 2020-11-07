@@ -26,10 +26,8 @@ class CheckoutController extends Controller
             $order->save();
             return redirect('/')->with(['flash_level' => 'result_msg', 'flash_massage' => ' Đã thanh toán thành công đơn hàng! Vui lòng kiểm tra thong tin đặt hàng qua email ']);
         }
-        $client = new \GuzzleHttp\Client();
-        $res = $client->get('https://thongtindoanhnghiep.co/api/city');
-//       'application/json; charset=utf8';
-        $data = json_decode($res->getBody(), true);
+        $res = file_get_contents("https://thongtindoanhnghiep.co/api/city");
+        $data = json_decode($res, true);
         $cart = Cart::content();
 
         return view('Page.checkout', ['cart' => $cart, 'address' => $data]);

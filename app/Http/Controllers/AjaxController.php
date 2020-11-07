@@ -38,15 +38,15 @@ class AjaxController extends Controller
     public function getdistrict(Request $rq): void
     {
         $id = $rq->id;
+
         $client = new \GuzzleHttp\Client();
-        $res = $client->get('https://thongtindoanhnghiep.co/api/city/' . $id . '/district');
+//        $res = $client->get('https://thongtindoanhnghiep.co/api/city/' . $id . '/district');
         //  'application/json; charset=utf8';
-        $data = json_decode($res->getBody());
+        $res = file_get_contents("https://thongtindoanhnghiep.co/api/city/{$id}/district");
+        $data = json_decode($res);
 
         foreach ($data as $vl) {
             echo "<option value='{$vl->Title}'>{$vl->Title}</option>";
-
-//            echo "<option". value=".$vl['Title']>".$vl['Title']."</option>";
         }
     }
 
