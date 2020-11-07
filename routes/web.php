@@ -162,7 +162,7 @@ Route::get('search/autocomplete', 'SearchController@autocomplete');
 Route::get('timkiem', 'SearchController@index');
 Route::get('yeu-thich', 'wishlistcontroller@create');
 
-Route::get(' danh-sach-yeu-thich', 'wishlistcontroller@index')->name('danh-sach-yeu-thich');
+Route::get('danh-sach-yeu-thich', 'wishlistcontroller@index')->name('danh-sach-yeu-thich');
 Route::get('xoadanhsach/{id}', 'wishlistcontroller@delete');
 Route::get('getcoupon', 'AjaxController@getcoupon');
 Route::get('tai-khoan/doi-mat-khau/{id}', 'MainController@changepassword');
