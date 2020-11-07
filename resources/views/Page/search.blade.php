@@ -6,7 +6,7 @@
             <div class="breadcrumb_view">
                 <ul class="breadcrumbs">
                     <li>
-                        <a href="/">Trang chủ</a>
+                        <a href="#">Trang chủ</a>
                     </li>
                     <li>
                         <span>Tìm kiếm</span>

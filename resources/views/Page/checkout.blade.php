@@ -248,7 +248,7 @@
                                             @foreach($cart as $item)
                                             <div class="reviewCartItem">
                                                 <a class="borImgsreview" href="">
-                                                    <img src="//cdn.nhanh.vn/cdn/store/81/ps/20180210/1_2_21_2_06_008_118_01_10600034_01_thumb_294x441.jpg" alt="Jeans nam dáng bó cào rách phối hình in graphic BS Dreamer thân sau. Trend xanh da trời nhạt 30">
+                                                    <img src="{{asset('/images/product/'.$item->options->image)}}" alt="">
                                                 </a>
                                                 <div class="rvWrp">
                                                     <p><a href="">{{$item->name}}</a></p>

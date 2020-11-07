@@ -8,7 +8,7 @@
                 <div class="breadcrumb_view">
                     <ul class="breadcrumbs">
                         <li>
-                            <a href="/">Trang chủ</a>
+                            <a href="#">Trang chủ</a>
                         </li>
                         <li>
                             <a class="72060" href="/nam-pc72060.html">NAM</a>
@@ -46,24 +46,24 @@
                                     <p class="brBottomz"></p>
                                     <div class="caroufredsel_wrapper" style="display: block; text-align: start; float: none; position: relative; top: auto; right: auto; bottom: auto; left: auto; z-index: auto; width: 339px; height: 72px; margin: 0px; overflow: hidden;">
                                         <ul id="listImgZoom_2" style="text-align: left; float: none; position: absolute; top: 0px; right: auto; bottom: auto; left: 6px; margin: 0px; width: 1323px; height: 72px;">
-                                            <li data-src="">
-                                                <img class="cloudzoom-gallery" src="//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_01_thumb_294x440.jpg" data-cloudzoom="useZoom: '.cloudzoom', image: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_01_thumb_294x440.jpg', zoomImage: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_01_401x600.jpg'">
-                                            </li>
-                                            <li data-src="">
-                                                <img class="cloudzoom-gallery" src="//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_02_thumb_294x441.jpg" data-cloudzoom="useZoom: '.cloudzoom', image: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_02_thumb_294x441.jpg', zoomImage: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_02_400x600.jpg'">
-                                            </li>
-                                            <li data-src="//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_03_thumb_294x440.jpg">
-                                                <img class="cloudzoom-gallery" src="//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_03_thumb_294x440.jpg" data-cloudzoom="useZoom: '.cloudzoom', image: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_03_thumb_294x440.jpg', zoomImage: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_03_401x600.jpg'">
-                                            </li>
-                                            <li data-src="//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_04_thumb_294x440.jpg" style="margin-right: 10px;">
-                                                <img class="cloudzoom-gallery" src="//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_04_thumb_294x440.jpg" data-cloudzoom="useZoom: '.cloudzoom', image: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_04_thumb_294x440.jpg', zoomImage: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_04_401x600.jpg'">
-                                            </li>
-                                            <li data-src="//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_1060003305_thumb_294x440.jpg">
-                                                <img class="cloudzoom-gallery" src="//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_1060003305_thumb_294x440.jpg" data-cloudzoom="useZoom: '.cloudzoom', image: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_1060003305_thumb_294x440.jpg', zoomImage: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_1060003305_401x600.jpg'">
-                                            </li>
-                                            <li data-src="//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_06_thumb_294x440.jpg">
-                                                <img class="cloudzoom-gallery" src="//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_06_thumb_294x440.jpg" data-cloudzoom="useZoom: '.cloudzoom', image: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_06_thumb_294x440.jpg', zoomImage: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_06_401x600.jpg'">
-                                            </li>
+{{--                                            <li data-src="">--}}
+{{--                                                <img class="cloudzoom-gallery" src="//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_01_thumb_294x440.jpg" data-cloudzoom="useZoom: '.cloudzoom', image: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_01_thumb_294x440.jpg', zoomImage: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_01_401x600.jpg'">--}}
+{{--                                            </li>--}}
+{{--                                            <li data-src="">--}}
+{{--                                                <img class="cloudzoom-gallery" src="//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_02_thumb_294x441.jpg" data-cloudzoom="useZoom: '.cloudzoom', image: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_02_thumb_294x441.jpg', zoomImage: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_02_400x600.jpg'">--}}
+{{--                                            </li>--}}
+{{--                                            <li data-src="//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_03_thumb_294x440.jpg">--}}
+{{--                                                <img class="cloudzoom-gallery" src="//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_03_thumb_294x440.jpg" data-cloudzoom="useZoom: '.cloudzoom', image: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_03_thumb_294x440.jpg', zoomImage: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_03_401x600.jpg'">--}}
+{{--                                            </li>--}}
+{{--                                            <li data-src="//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_04_thumb_294x440.jpg" style="margin-right: 10px;">--}}
+{{--                                                <img class="cloudzoom-gallery" src="//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_04_thumb_294x440.jpg" data-cloudzoom="useZoom: '.cloudzoom', image: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_04_thumb_294x440.jpg', zoomImage: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_04_401x600.jpg'">--}}
+{{--                                            </li>--}}
+{{--                                            <li data-src="//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_1060003305_thumb_294x440.jpg">--}}
+{{--                                                <img class="cloudzoom-gallery" src="//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_1060003305_thumb_294x440.jpg" data-cloudzoom="useZoom: '.cloudzoom', image: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_1060003305_thumb_294x440.jpg', zoomImage: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_1060003305_401x600.jpg'">--}}
+{{--                                            </li>--}}
+{{--                                            <li data-src="//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_06_thumb_294x440.jpg">--}}
+{{--                                                <img class="cloudzoom-gallery" src="//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_06_thumb_294x440.jpg" data-cloudzoom="useZoom: '.cloudzoom', image: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_06_thumb_294x440.jpg', zoomImage: '//cdn.nhanh.vn/cdn/store/81/ps/20180511/1_2_21_2_05_001_118_02_10600033_06_401x600.jpg'">--}}
+{{--                                            </li>--}}
                                         </ul>
                                     </div>
                                 </div>

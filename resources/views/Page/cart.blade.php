@@ -84,7 +84,7 @@
                 <tr class="cartItem .even">
                     <td class="last" width="500">
                         <a class="borImgscart" href="#">
-                            <img src="//cdn.nhanh.vn/cdn/store/81/ps/20180402/1_2_25_1_05_003_118_02_10700023_01_thumb_294x441.jpg" alt="Chân váy nữ xếp ly kẻ caro. Basic đen kẻ trắng S" title="Chân váy nữ xếp ly kẻ caro. Basic đen kẻ trắng S">
+                            <img src="{{asset('/images/product/'.$item->options->image)}}" alt="" title="">
                         </a>
                         <p class="nameProductcart"><a href="">{{$item->name}}</a></p>
                         <br>
@@ -152,7 +152,7 @@
             </table>
             <div class="cartNavigator">
                 <a href="{{route('checkout')}}" class="btnCheckOut btnRed" style="width: 200px;float:right">Tiến hành thanh toán</a>
-                <a href="/" class="buyMore btnGreen ">Mua thêm sản phẩm khác</a>
+                <a href="#" class="buyMore btnGreen ">Mua thêm sản phẩm khác</a>
                 <span class="clearfix"></span>
             </div>
             <br><br>

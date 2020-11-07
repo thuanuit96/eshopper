@@ -170,8 +170,8 @@
         <div class="container">
             <div class="row">
                 <div class="logo-wrap">
-                    <a href="/" class="hidden-xs"><img class="img-responsive" src="https://serv1.alitaobao.vn/dist/images/logo.png" alt="Trang chủ alitaobao.vn"></a>
-                    <a href="/" class="visible-xs pull-left"><img src="https://serv1.alitaobao.vn/dist/images/logo-xs.png" alt="Trang chủ alitaobao.vn"></a>
+                    <a href="#" class="hidden-xs"><img class="img-responsive" src="https://serv1.alitaobao.vn/dist/images/logo.png" alt="Trang chủ alitaobao.vn"></a>
+                    <a href="#" class="visible-xs pull-left"><img src="https://serv1.alitaobao.vn/dist/images/logo-xs.png" alt="Trang chủ alitaobao.vn"></a>
                     <button class="navbar-toggle collapsed toggle-button visible-xs pull-left " data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                         <i class="fa fa-bars" aria-hidden="true"></i>
                     </button>
@@ -185,10 +185,10 @@
                     </form>
                     <div class="search-suggestions hidden-xs">
                         <span>Tìm kiếm nhiều:</span>
-                        <a class="text-muted" href="/tim-kiem.html?keyword=áo+sơ+mi+nam" target="_blank">áo sơ mi nam</a>,
-                        <a class="text-muted" href="/tim-kiem.html?keyword=áo+thun+nam" target="_blank">áo thun nam</a>,
-                        <a class="text-muted" href="/tim-kiem.html?keyword=túi+xách+nữ" target="_blank">túi xách nữ</a>,
-                        <a class="suggest-more pull-right hidden-sm" href="/search/showTagSearch.html">Xem thêm <i class="fa fa-angle-double-right"></i></a>
+                        <a class="text-muted" href="#">áo sơ mi nam</a>,
+                        <a class="text-muted" href="#">áo thun nam</a>,
+                        <a class="text-muted" href="#">túi xách nữ</a>,
+                        <a class="suggest-more pull-right hidden-sm" href="#">Xem thêm <i class="fa fa-angle-double-right"></i></a>
                     </div>
 
                     <div class="hotline hidden-xs">
@@ -210,7 +210,7 @@
 <div class="container">
 <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
     <ul class="nav navbar-nav main-menu">
-        <li class="active"><a href="#">Trang Chủ</a></li>
+        <li class="active"><a href="{{url('/')}}">Trang Chủ</a></li>
         @foreach($category as $cat)
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{$cat->Name}}<span class="caret"></span></a>

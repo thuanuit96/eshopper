@@ -8,7 +8,7 @@
                 <div class="breadcrumb_view">
                     <ul class="breadcrumbs">
                         <li>
-                            <a href="/">Trang chủ</a>
+                            <a href="#">Trang chủ</a>
                         </li>
                         <li>
                             <a class="72058" href="/nu-pc72058.html">{!! $dm->Name !!}</a>

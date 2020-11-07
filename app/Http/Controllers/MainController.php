@@ -136,7 +136,7 @@ class MainController extends Controller
             'name' => $product->Name,
             'price' => $product->Price,
             'qty' => $rq->qty,
-            'options' => ['color' => $rq->color, 'size' => $rq->size],
+            'options' => ['color' => $rq->color, 'size' => $rq->size,'image' => $product->Image],
         ];
         Cart::add($cartInfo);
         $cart = Cart::content();
